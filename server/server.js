@@ -13,10 +13,13 @@ const server = new ApolloServer({
   resolvers,
 });
 
-// integrates Apollo server with Express application as middleware
+// MIDDLEWARE (methods/fn called between processing request and sending response)
+// integrates Apollo server with Express application
 server.applyMiddleware({ app });
-
+// the following 2 middleware are required for PUT and POST requests
+// instructs that incoming request object are strings or arrays
 app.use(express.urlencoded({ extended: false }));
+// instructs that incoming request object is JSON
 app.use(express.json());
 
 db.once('open', () => {

@@ -1,0 +1,34 @@
+{
+  "name": "mern-server",
+  "version": "1.0.0",
+  "description": "WoodlandConsultingLLC Server",
+  "main": "server.js",
+  "dependencies": {
+    "apollo-server-express": "^2.21.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.0",
+    "mongoose": "^5.11.15",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node server.js",
+    "watch": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SMKrizan/WoodlandConsultingLLC.git"
+  },
+  "keywords": [
+    "lighting",
+    "design",
+    "engineering"
+  ],
+  "author": "Krizan Grosshans Pryadka Graham",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SMKrizan/WoodlandConsultingLLC/issues"
+  },
+  "homepage": "https://github.com/SMKrizan/WoodlandConsultingLLC#readme"
+}
