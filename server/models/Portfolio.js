@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const projectSchema = new Schema({
+const portfolioSchema = new Schema({
 
     name: {
         type: String,
@@ -21,13 +21,15 @@ const projectSchema = new Schema({
     location: {
         type: String
     },
-    category: {
+    category: [
+        {
         type: Schema.Types.ObjectId,
         ref: 'Category',
         required: true
-    }
+        }
+    ]
 });
 
-const Project = mongoose.model('Product', productSchema);
+const Portfolio = mongoose.model('Portfolio', portfolioSchema);
 
-module.exports = Project;
+module.exports = Portfolio;

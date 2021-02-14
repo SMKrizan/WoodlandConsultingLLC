@@ -10,7 +10,7 @@ const typeDefs = gql`
         name: String
     }
 
-    type Project {
+    type Porfolio {
         _id: ID
         name: String
         desctiption: String
@@ -18,14 +18,6 @@ const typeDefs = gql`
         date: String
         location: String
         category: Category
-
-    }
-
-    type Admin {
-        _id: ID
-        firstName: String
-        lastName: String
-        email: String
     }
 
     type Auth {
@@ -34,7 +26,6 @@ const typeDefs = gql`
     }
 
     type Mutations {
-        login(email: String!, password: String!) : Auth
     }
 `;
 

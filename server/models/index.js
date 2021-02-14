@@ -1,5 +1,5 @@
 const Category = require('./Category');
-const Project = require('./Project');
+const Project = require('./Portfolio');
 const Admin = require('./Admin');
 
 

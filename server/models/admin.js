@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const { Schema } = mongoose;
 
 const adminSchema = new Schema({
+    
     firstName: {
         type: String,
         required: true,
