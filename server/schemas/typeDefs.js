@@ -32,6 +32,10 @@ const typeDefs = gql`
         token: ID
         user: Admin
     }
+
+    type Mutations {
+        login(email: String!, password: String!) : Auth
+    }
 `;
 
 module.exports = typeDefs;
