@@ -5,6 +5,7 @@ const typeDefs = gql`
     type Query {
         WoodlandConsulting: String
     }
+    
 `;
 
 module.exports = typeDefs;
