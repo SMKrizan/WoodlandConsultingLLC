@@ -60,4 +60,7 @@ header nav{
     .nav-tabs{
         justify-content: center;
 }
+.nav-item {
+    font-size: 16px;
+}
 }
