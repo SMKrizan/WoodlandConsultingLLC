@@ -1,13 +1,14 @@
 import React from "react";
 // import Auth from "../../utils/auth";
-import { Link } from "react-router-dom";
-
+import { WrappedMap } from "react-router-dom";
+// import { Link, WrappedMap } from "react-router-dom";
 function Nav() {
     return (
         <ul className>
-            <Link to="/map">
+            {/* <Link to="/map">
                 Map
-            </Link>
+            </Link> */}
+            <WrappedMap googleMapUrl> </WrappedMap>
         </ul>
     );
 }

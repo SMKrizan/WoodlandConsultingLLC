@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-// import { ApolloProvider } from '@apollo/react-hooks';
-// import ApolloClient from 'apollo-boost';
 import Nav from "./components/Nav";
 import Map from './pages/Maps'
 import { StoreProvider } from "./utils/GlobalState";
 
+// import { ApolloProvider } from '@apollo/react-hooks';
+// import ApolloClient from 'apollo-boost';
 // const client = new ApolloClient({
 //   request: (operation) => {
 //     const token = localStorage.getItem('id_token')

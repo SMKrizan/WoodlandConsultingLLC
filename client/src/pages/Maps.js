@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
+import { GoogleMap, GoogleApiWrapper, withScriptjs, withGoogleMap, Marker } from 'google-maps-react';
 import mapStyles from './mapStyles';
-
-
 class MapContainer extends Component {
     state = {
         // An array stored in state made up of 3 different objects.
@@ -26,24 +24,29 @@ class MapContainer extends Component {
         return (
             <div style={{
                 position: "relative",
-                width: "50%",
+                width: "100%",
                 height: "1100px"
             }}
                 className="map">
-                <Map google={this.props.google}
-                    zoom={13}
+                <GoogleMap google={this.props.google}
+                    defaultZoom={10}
+                    defaultCenter={{ lat: 44.871443, lng: -90.243436 }}
                     styles={mapStyles.styles}
-                    initialCenter={{ lat: 40.7812, lng: -73.9665 }}
+                    // initialCenter={{ lat: 44.871443, lng: -90.243436 }}
                     disableDefaultUI={true}>
-                    {this.displayMarkers()}</Map>
+                    {this.displayMarkers()}
+                </GoogleMap>
             </div>
         );
     }
 }
 // export default MapContainer;
 
+const GoogleApiWrapper = withScriptjs(withGoogleMap(GoogleMap))
+
 export default GoogleApiWrapper({// Higher-Order Component that provides a wrapper around Google APIs.
-    apiKey: 'AIzaSyDNvRrMP54Urwsm3aQ1CznLiV9XHRcJRMo'
+    apiKey: process.env'REACT_APP_API_KEY'
+    // 'AIzaSyDNvRrMP54Urwsm3aQ1CznLiV9XHRcJRMo'
     // 'API KEY'
 })(MapContainer)
 

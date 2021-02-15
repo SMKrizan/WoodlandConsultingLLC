@@ -1,11 +1,10 @@
-//  project name, description, city, state, latitude, longtitude, category, date
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
 const projectSchema = new Schema({
 
-    project: {
+    name: {
         type: String,
         required: true,
         trim: true
@@ -13,33 +12,25 @@ const projectSchema = new Schema({
     description: {
         type: String
     },
-    city: {
-        type: String,
-        trim: true
-    },
-    state: {
+    image: {
         type: String
     },
     date: {
         type: String
     },
-    latitude: {
-        type: Number
-    },
-    longtitude: {
-        type: Number
-    },
-    category: {
+    location: {
         type: String
     },
-    mapMarkers: [
+    category: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Project'
+            ref: 'Category',
+            required: true
         }
     ]
 });
 
-const Map = mongoose.model('Map', projectSchema);
+const Project = mongoose.model('Project', projectSchema);
 
-module.exports = Map;
+module.exports = Project;
+
