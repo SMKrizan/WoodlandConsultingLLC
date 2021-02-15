@@ -2,7 +2,7 @@ const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
-const Admin = require("../models/admin");
+const Admin = require("../models/Admin");
 const { Admin, Category, Project } = require("../models");
 const { signToken } = require("../utils/auth");
 
