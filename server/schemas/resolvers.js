@@ -2,8 +2,7 @@ const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
-const Admin = require("../models/Admin");
-const { Admin, Category, Project, Portfolio } = require("../models");
+const { Admin, Category, Project, Portfolio, AdminForm, Map } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -14,7 +13,7 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    portfolio: async (parent, { category, name }) => {
+    portfolioProjects: async (parent, { category, name }) => {
       const params = {};
 
       if (category) {
@@ -29,7 +28,7 @@ const resolvers = {
 
       return await Project.find(params).populate("category");
     },
-    portfolio: async (parent, { _id }) => {
+    portfolioProject: async (parent, { _id }) => {
       return await (await Portfolio.findById(_id)).populate("category");
     },
   },
