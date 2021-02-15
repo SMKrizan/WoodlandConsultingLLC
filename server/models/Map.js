@@ -1,11 +1,19 @@
+<<<<<<< HEAD
 //  project name, description, city, state, latitude, longtitude, category, date
+=======
+>>>>>>> develop
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
+<<<<<<< HEAD
 const projectSchema = new Schema({
 
     project: {
+=======
+const mapSchema = new Schema({
+    projectName: {
+>>>>>>> develop
         type: String,
         required: true,
         trim: true
@@ -13,6 +21,7 @@ const projectSchema = new Schema({
     description: {
         type: String
     },
+<<<<<<< HEAD
     city: {
         type: String,
         trim: true
@@ -43,3 +52,27 @@ const projectSchema = new Schema({
 const Map = mongoose.model('Map', projectSchema);
 
 module.exports = Map;
+=======
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
+        required: true
+    },
+    cityState: {
+        type: String
+    },
+    longtitude: {
+        type: String
+    },
+    latitude: {
+        type: String
+    },
+    projectDate: {
+        type: String
+    }
+});
+
+const Map = mongoose.model('Map', mapSchema);
+
+module.exports = Map;
+>>>>>>> develop

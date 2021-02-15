@@ -1,6 +1,4 @@
-//  name, company, testimonial
-// update, delete testimonials
-
+// update, delete testimonial
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
