@@ -12,5 +12,5 @@ client:
 `npm install jwt-decode`.
 
 server:
-npm install jsonwebtoken
-npm i apollo-server-express
+`npm install jsonwebtoken`
+`npm i apollo-server-express`
