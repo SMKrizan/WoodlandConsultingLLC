@@ -1,10 +1,9 @@
-//  project name, description, city, state, latitude, longtitude, category, date
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
 const mapSchema = new Schema({
-    name: {
+    projectName: {
         type: String,
         required: true,
         trim: true
@@ -20,7 +19,7 @@ const mapSchema = new Schema({
     cityState: {
         type: String
     },
-    longtitue: {
+    longtitude: {
         type: String
     },
     latitude: {
