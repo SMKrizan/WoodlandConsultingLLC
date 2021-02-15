@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
-import { GoogleMap, GoogleApiWrapper, withScriptjs, withGoogleMap, Marker } from 'google-maps-react';
+import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import mapStyles from './mapStyles';
 class MapContainer extends Component {
     state = {
+        showingInfoWindow: false,
+        activeMarker: {},
+        selectedPlace: {},
+
         // An array stored in state made up of 3 different objects.
         myMarkers: [
 
-            { latitude: 40.710992, longitude: -74.008292 },
+            { latitude: 43.073929, longitude: -89.385239 },
             { latitude: 40.792917, longitude: -73.969497 },
-            { latitude: 40.710992, longitude: -74.008292 }]
+            { latitude: 43.073929, longitude: -89.385239 }]
     }
     //markers on the map
     displayMarkers = () => {
@@ -28,40 +32,19 @@ class MapContainer extends Component {
                 height: "1100px"
             }}
                 className="map">
-                <GoogleMap google={this.props.google}
-                    defaultZoom={10}
-                    defaultCenter={{ lat: 44.871443, lng: -90.243436 }}
+                <Map google={this.props.google}
+                    zoom={10}
+                    // defaultCenter={{ lat: 44.871443, lng: -90.243436 }}
                     styles={mapStyles.styles}
-                    // initialCenter={{ lat: 44.871443, lng: -90.243436 }}
+                    initialCenter={{ lat: 44.871443, lng: -90.243436 }}
                     disableDefaultUI={true}>
                     {this.displayMarkers()}
-                </GoogleMap>
+                </Map>
             </div>
         );
     }
 }
-// export default MapContainer;
-
-const GoogleApiWrapper = withScriptjs(withGoogleMap(GoogleMap))
 
 export default GoogleApiWrapper({// Higher-Order Component that provides a wrapper around Google APIs.
-    apiKey: process.env'REACT_APP_API_KEY'
-    // 'AIzaSyDNvRrMP54Urwsm3aQ1CznLiV9XHRcJRMo'
-    // 'API KEY'
+    apiKey: process.env.REACT_APP_API_KEY
 })(MapContainer)
-
-
-
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-// // import { useMutation } from '@apollo/react-hooks';
-
-// function Map() {
-//     return (
-//         <dev>
-//             <Link></Link>
-//         </dev>
-//     )
-// }
-// export default Map;
