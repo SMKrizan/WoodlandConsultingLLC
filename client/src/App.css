@@ -21,6 +21,14 @@ body {
   font-family: 'Lato', 'Open Sans', sans-serif;
   line-height: 1.4;
   color: var(--cream);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--plum);
+  position: relative;
+}
+a {
+  color: var(--cream);
 }
 
 p {
@@ -63,7 +71,12 @@ button:hover {
 }
 
 main {
-  margin-bottom:80px;
+  margin-bottom:60px;
+  background: var(--plum);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding:20px;
 }
 .center {
   text-align: center;
@@ -71,6 +84,7 @@ main {
 
 .background {
   padding: 30px;
+  background-color: var(--plum);
   height:100%;
 }
 
@@ -124,7 +138,7 @@ main {
   min-width:250px;
 }
 
- @media only screen and (max-width: 1000px) {
+ @media only screen and (max-width: 800px) {
 .w-9 {
   flex: 1;
 }
@@ -132,17 +146,15 @@ main {
 .padlr {
   padding: 0px 20px 0px 20px;
 }
+
+main {
+  margin-bottom:0px;
+}
 } 
 
 /* 
 ------------------------------ */
 
-.base {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  /* font-size: calc(14px + 1vmin); */
-}
 
 .App-link {
   color: black;
