@@ -20,12 +20,20 @@ const typeDefs = gql`
         category: Category
     }
 
+    type Admin {
+        _id: ID
+        firstName: String
+        lastName: String
+        email: String
+    }
+
     type Auth {
         token: ID
         user: Admin
     }
 
     type Mutations {
+        login(email: String!, password: String!): Auth
     }
 `;
 
