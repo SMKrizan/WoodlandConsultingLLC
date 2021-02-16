@@ -45,6 +45,16 @@ const mapSchema = new Schema({
     // projectDate: {
     //     type: String
     // }
+    // {
+        // company: {
+            //type: String
+        // }
+    // }
+    // {
+        // source: {
+            // type: String
+        // }
+    // }
 });
 
 const Map = mongoose.model('Map', mapSchema);

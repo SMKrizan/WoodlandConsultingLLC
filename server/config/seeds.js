@@ -25,20 +25,20 @@ db.once('open', async () => {
 
     console.log('admin seeded');
 
-    await Project.deleteMany();
+    // await Project.deleteMany();
 
-    const projects = await Project.insertMany([
-        {
-            name: '',
-            description: '',
-            image: '',
-            date: '',
-            location: '',
-            category: 'categories[]._id'
-        }
-    ])
+    // const projects = await Project.insertMany([
+    //     {
+    //         name: '',
+    //         description: '',
+    //         image: '',
+    //         date: '',
+    //         location: '',
+    //         category: 'categories[]._id'
+    //     }
+    // ])
 
-    console.log('projects seeded');
+    // console.log('projects seeded');
 
     await Map.deleteMany();
 
