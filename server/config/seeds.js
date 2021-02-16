@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { User, Project, Category } = require('../models');
+const { Project, Category } = require('../models');
 
 db.once('open', async () => {
     await Category.deleteMany();
@@ -86,23 +86,23 @@ db.once('open', async () => {
         //     city: '',
         //     state: ''
         //location :{
-            // latitude: ,
-            // longitude
+        // latitude: ,
+        // longitude
         // }
         // }
     ]);
 
     console.log('Projects seeded');
 
-    await User.deleteMany();
-    await User.create({
-        firstName: 'username',
-        lastName: 'lastname',
-        email: 'test@testmail.com',
-        password: 'password12345',
-        projects: [projects[0]._id, projects[0]._id, projects[1]._id]
-    });
-    console.log('users seeded');
+    // await User.deleteMany();
+    // await User.create({
+    //     firstName: 'username',
+    //     lastName: 'lastname',
+    //     email: 'test@testmail.com',
+    //     password: 'password12345',
+    //     projects: [projects[0]._id, projects[0]._id, projects[1]._id]
+    // });
+    // console.log('users seeded');
 
     process.exit();
 });

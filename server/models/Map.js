@@ -16,7 +16,7 @@ const mapSchema = new Schema({
     project: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Projects'
+            ref: 'Project'
             //  required: true
         }
     ]

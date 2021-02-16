@@ -4,8 +4,8 @@ const Admin = require('./Admin');
 const AdminForm = require('./AdminForm');
 const UserForm = require('./UserForm');
 const Map = require('./Map');
-const Projects = require('./Projects')
+const Project = require('./Project')
 
 
 
-module.exports = { Category, Portfolio, Projects, Admin, AdminForm, UserForm, Map };
+module.exports = { Category, Portfolio, Project, Admin, AdminForm, UserForm, Map };
