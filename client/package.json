@@ -1,11 +1,16 @@
 {
-  "name": "woodland-consulting-llc",
+  "name": "woodland-consulting-client",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
+    "@apollo/react-hooks": "^4.0.0",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
     "@testing-library/user-event": "^12.7.0",
+    "apollo-boost": "^0.4.9",
+    "graphql": "^15.5.0",
+    "graphql-tag": "^2.11.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",
