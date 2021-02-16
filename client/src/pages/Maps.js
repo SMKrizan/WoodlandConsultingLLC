@@ -5,25 +5,22 @@ class MapContainer extends Component {
     state = {
         showingInfoWindow: false,
         activeMarker: {},
-        selectedPlace: {},
-
-        // An array stored in state made up of 3 different objects.
-        myMarkers: [
-
-            { latitude: 43.073929, longitude: -89.385239 },
-            { latitude: 40.792917, longitude: -73.969497 },
-            { latitude: 43.073929, longitude: -89.385239 }]
+        selectedProject: {}
     }
-    //markers on the map
-    displayMarkers = () => {
-        return this.state.myMarkers.map((mark, index) => {
-            return <Marker id={index} position={{
-                lat: mark.latitude,
-                lng: mark.longitude
-            }}
-                onClick={() => console.log("You clicked me!", { index })} />
-        })
-    }
+    onMarkerClick = (props, marker, e) =>
+        this.setState({
+            selectedProject: props,
+            activeMarker: marker,
+            showingInfoWindow: true
+        });
+    onClose = props => {
+        if (this.state.showingInfoWindow) {
+            this.setState({
+                showingInfoWindow: false,
+                activeMarker: null
+            })
+        }
+    };
     render() {
         return (
             <div style={{
@@ -33,18 +30,30 @@ class MapContainer extends Component {
             }}
                 className="map">
                 <Map google={this.props.google}
-                    zoom={10}
-                    // defaultCenter={{ lat: 44.871443, lng: -90.243436 }}
+                    zoom={4}
                     styles={mapStyles.styles}
                     initialCenter={{ lat: 44.871443, lng: -90.243436 }}
                     disableDefaultUI={true}>
-                    {this.displayMarkers()}
+                    <Marker
+                        onClick={this.onMarkerClick}
+                        name={`$project_name`} />
+                    <InfoWindow
+                        marker={this.state.activeMarker}
+                        visible={this.state.showingInfoWindow}
+                        onClose={this.onClose}
+                    >
+                        <div>
+                            <h4>{this.state.selectedProject.project_name}</h4>
+                            <h4>My Project</h4>
+                            <h5>completed in 2016</h5>
+                        </div>
+                    </InfoWindow>
                 </Map>
             </div>
         );
     }
 }
 
-export default GoogleApiWrapper({// Higher-Order Component that provides a wrapper around Google APIs.
+export default GoogleApiWrapper({
     apiKey: process.env.REACT_APP_API_KEY
 })(MapContainer)
