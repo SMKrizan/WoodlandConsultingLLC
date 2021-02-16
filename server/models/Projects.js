@@ -18,6 +18,12 @@ const projectSchema = new Schema({
     date: {
         type: String
     },
+    city: {
+        type: String
+    },
+    state: {
+        type: String
+    },
     location: {
         type: Object
     },

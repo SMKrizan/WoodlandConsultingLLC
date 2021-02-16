@@ -45,12 +45,11 @@ class MapContainer extends Component {
                             lng: this.state.mapCenter.lng
                         }}
                         onClick={this.onMarkerClick}
-                        // name={`$project_name`}
-                        icon={{
-                            url: './WoodlandConsulting_logo_sm.png',
-                            scaledSize: new window.google.maps.Size(20, 20),
-                            background_color: "black"
-                        }}
+                    // name={`$project_name`}
+                    // icon={{
+                    //     url: './WoodlandConsulting_logo_sm.png',
+                    //     scaledSize: new window.google.maps.Size(20, 20),
+                    // }}
 
                     />
                     <InfoWindow

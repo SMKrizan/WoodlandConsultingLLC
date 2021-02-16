@@ -26,8 +26,10 @@ db.once('open', async () => {
             date: 2016,
             city: 'Rock Island',
             state: 'IL',
-            // latitude: 41.5095,
-            // longtitude: 90.5787,
+            location: {
+                latitude: 41.5095,
+                longitude: 90.5787,
+            },
             category: categories[2]._id,
 
         },
