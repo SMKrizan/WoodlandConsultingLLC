@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { Map, GoogleApiWrapper, Marker, InfoWindow } from 'google-maps-react';
 import mapStyles from './mapStyles';
+
 class MapContainer extends Component {
     state = {
         showingInfoWindow: false,
         activeMarker: {},
-        selectedProject: {}
+        selectedProject: {},
+        mapCenter: { lat: 44.871443, lng: -90.243436 }
     }
     onMarkerClick = (props, marker, e) =>
         this.setState({
@@ -24,32 +26,49 @@ class MapContainer extends Component {
     render() {
         return (
             <div style={{
-                position: "relative",
-                width: "100%",
-                height: "1100px"
+                position: "mapCenter",
+                width: "80%",
+                height: "80%",
             }}
-                className="map">
+                className="map" >
                 <Map google={this.props.google}
-                    zoom={4}
+                    zoom={5}
                     styles={mapStyles.styles}
-                    initialCenter={{ lat: 44.871443, lng: -90.243436 }}
+                    initialCenter={{
+                        lat: this.state.mapCenter.lat,
+                        lng: this.state.mapCenter.lng
+                    }}
                     disableDefaultUI={true}>
                     <Marker
+                        position={{
+                            lat: this.state.mapCenter.lat,
+                            lng: this.state.mapCenter.lng
+                        }}
                         onClick={this.onMarkerClick}
-                        name={`$project_name`} />
+                        // name={`$project_name`}
+                        icon={{
+                            url: './WoodlandConsulting_logo_sm.png',
+                            scaledSize: new window.google.maps.Size(20, 20),
+                            background_color: "black"
+                        }}
+
+                    />
                     <InfoWindow
                         marker={this.state.activeMarker}
                         visible={this.state.showingInfoWindow}
                         onClose={this.onClose}
                     >
-                        <div>
-                            <h4>{this.state.selectedProject.project_name}</h4>
-                            <h4>My Project</h4>
-                            <h5>completed in 2016</h5>
+                        <div
+                            style={{
+                                color: "black"
+                            }}>
+                            {/* <h4>{this.state.selectedProject.project_name}</h4> */}
+                            <h5>My Project</h5>
+                            <h6>completed in 2016</h6>
                         </div>
                     </InfoWindow>
                 </Map>
-            </div>
+            </div >
         );
     }
 }

@@ -15,5 +15,7 @@
   "bugs": {
     "url": "https://github.com/SMKrizan/WoodlandConsultingLLC/issues"
   },
-  "homepage": "https://github.com/SMKrizan/WoodlandConsultingLLC#readme"
+  "homepage": "https://github.com/SMKrizan/WoodlandConsultingLLC#readme",
+  "dependencies": {},
+  "devDependencies": {}
 }
