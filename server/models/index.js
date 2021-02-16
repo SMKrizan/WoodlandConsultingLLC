@@ -1,7 +1,7 @@
 const Category = require('./Category');
-const Portfolio = require('./Portfolio');
+const Project = require('./Project');
 const Admin = require('./Admin');
-const AdminForm = require('./AdminForm');
+const Testimonial = require('./Testimonial');
 const UserForm = require('./UserForm');
 const Map = require('./Map');
 

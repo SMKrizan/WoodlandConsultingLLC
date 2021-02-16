@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const AdminFormSchema = new Schema({
+const testimonialSchema = new Schema({
   firstName: {
     type: String,
     required: true,
@@ -19,13 +19,13 @@ const AdminFormSchema = new Schema({
     required: true,
     trim: true
   },
-  testimonial: {
+  message: {
     type: String,
     required: true,
     trim: true
   }
 });
 
-const AdminForm = mongoose.model('AdminForm', AdminFormSchema);
+const Testimonial = mongoose.model('Testimonial', testimonialSchema);
 
-module.exports = AdminForm;
+module.exports = Testimonial;

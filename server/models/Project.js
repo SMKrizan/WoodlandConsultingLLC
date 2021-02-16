@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const portfolioSchema = new Schema({
+const projectSchema = new Schema({
 
     name: {
         type: String,
@@ -30,6 +30,6 @@ const portfolioSchema = new Schema({
     ]
 });
 
-const Portfolio = mongoose.model('Portfolio', portfolioSchema);
+const Project = mongoose.model('Project', projectSchema);
 
-module.exports = Portfolio;
+module.exports = Project;

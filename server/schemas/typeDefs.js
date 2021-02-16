@@ -5,8 +5,10 @@ const typeDefs = gql`
     type Query {
         WoodlandConsulting: String
         categories: [Category]
-        portfolioProjects(category: ID, name: String): [Portfolio]
-        portfolioProject(_id: ID!): Portfolio
+        projects(category: ID, name: String): [Project]
+        projectById(_id: ID!): Project
+        testimonials: [Testimonial]
+        messages: [UserForm]
     }
 
     type Category {
@@ -14,7 +16,7 @@ const typeDefs = gql`
         name: String
     }
 
-    type Portfolio {
+    type Project {
         _id: ID
         name: String
         description: String
@@ -36,11 +38,12 @@ const typeDefs = gql`
         user: Admin
     }
 
-    type AdminForm {
+    type Testimonial {
+        _id: ID
         firstName: String
         lastName: String
         company: String
-        testimonial: String
+        message: String
     }
      
     type Map {
@@ -52,14 +55,22 @@ const typeDefs = gql`
         latitude: String
         projectDate: String
     }
+
+    type UserForm { 
+        name: String
+        company: String
+        email: String
+        message: String
+    }
     
     type Mutation {
         login(email: String!, password: String!): Auth
+        addTestimonial(firstName: String, lastName: String, company: String, message: String): Testimonial
+
     }
 `;
 
 module.exports = typeDefs;
-// addTestimonial(firstName: String, lastName: String, company: String, testimonial: String): AdminForm
-        // updateTestimonial(firstName: String, lastName: String, company: String, testimonial: String): AdminForm
-// deletetestimonial
-// deletemessage
+// updateTestimonial(firstName: String, lastName: String, company: String, message: String): Testimonial
+// removeTestimonial(_id: ID!): Testimonial
+// removeMessage

@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 var timestamps = require('mongoose-timestamp');
 
-const UserFormSchema = new Schema({
+const userFormSchema = new Schema({
     name: {
         type: String,
         required: true,
@@ -28,8 +28,8 @@ const UserFormSchema = new Schema({
     }
 });
 // should auto-generate a timestamp to each model entry
-UserFormSchema.plugin(timestamps);
+userFormSchema.plugin(timestamps);
 
-const UserForm = mongoose.model('UserForm', UserFormSchema);
+const UserForm = mongoose.model('UserForm', userFormSchema);
 
 module.exports = UserForm;

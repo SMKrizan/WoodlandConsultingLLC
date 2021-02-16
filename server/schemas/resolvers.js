@@ -2,7 +2,7 @@ const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
-const { Admin, Category, Project, Portfolio, AdminForm, Map } = require("../models");
+const { Admin, Category, Project, UserForm, Testimonial, Map } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -13,7 +13,7 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    portfolioProjects: async (parent, { category, name }) => {
+    projects: async (parent, { category, name }) => {
       const params = {};
 
       if (category) {
@@ -28,9 +28,15 @@ const resolvers = {
 
       return await Project.find(params).populate("category");
     },
-    portfolioProject: async (parent, { _id }) => {
+    projectById: async (parent, { _id }) => {
       return await (await Portfolio.findById(_id)).populate("category");
     },
+    testimonials: async () => {
+      return await Testimonial.find();
+    },
+    message: async () => {
+      return await UserForm.find();
+    }
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -49,6 +55,21 @@ const resolvers = {
 
       return { token, user };
     },
+    addTestimonial: async (parent, args) => {
+      const testimonial = await Testimonial.create({
+        ...args
+      });
+      return testimonial;
+    },
+    // updateTestimonial: async (parent, args) => {
+    //   const updatedTestimonial= await Testimonial.findOneAndUpdate(
+    //     {}
+    //   )
+    // },
+    // removeTestimonial: async (parent, args ) => {
+
+    // }
+
   },
 };
 
