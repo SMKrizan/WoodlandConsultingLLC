@@ -20,6 +20,7 @@ db.once('open', async () => {
         //  name, description, image, date,location(city,State),category
         {
             project_name: 'G&E Credit Union,',
+            category: categories[2]._id,
             description:
                 'New Facility Development',
             image: 'image.jpg',
@@ -29,8 +30,7 @@ db.once('open', async () => {
             location: {
                 latitude: 41.5095,
                 longitude: 90.5787,
-            },
-            category: categories[2]._id,
+            }
 
         },
         {
@@ -41,18 +41,25 @@ db.once('open', async () => {
             image: 'image.jpg',
             date: 2016,
             city: 'Tuscan',
-            state: 'AZ'
-
+            state: 'AZ',
+            location: {
+                latitude: 34.234512,
+                longitude: -112.015342,
+            }
         },
         {
-            project_name: 'Landmark Credit Union,',
+            project_name: 'Landmark Credit Union',
             category: categories[2]._id,
             description:
                 'New Facility Development',
             image: 'image.jpg',
             date: 2016,
             city: 'Muskego',
-            state: 'WI'
+            state: 'WI',
+            location: {
+                latitude: 34.234512,
+                longitude: -112.015342,
+            }
         },
         {
             project_name: 'Heritage Credit Union',
@@ -62,7 +69,11 @@ db.once('open', async () => {
             image: 'image.jpg',
             date: 2016,
             city: 'Machesney Park',
-            state: 'IL'
+            state: 'IL',
+            location: {
+                latitude: 34.234512,
+                longitude: -112.015342,
+            }
         }
         // ,
         // {
@@ -74,6 +85,10 @@ db.once('open', async () => {
         //     date: 1,
         //     city: '',
         //     state: ''
+        //location :{
+            // latitude: ,
+            // longitude
+        // }
         // }
     ]);
 
