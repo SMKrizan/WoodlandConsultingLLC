@@ -15,13 +15,13 @@ function App() {
 
   const renderPage = () => {
     // Add a switch statement that will return the appropriate component of the 'currentPage'
-    
+
     switch (currentPage) {
-      case 'Home': 
-        return <Home/>;
-      case 'About': 
-        return <About/>;
-      case 'Maps':
+      case 'Home':
+        return <Home />;
+      case 'About':
+        return <About />;
+      case 'Map':
         return <Maps />;
       case 'Portfolio':
         return <Portfolio />;
@@ -33,12 +33,12 @@ function App() {
   return (
     <body>
       <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-        <main >
-          {
-            // Render the component returned by 'renderPage()'
-            renderPage(currentPage)
-          }
-        </main>
+      <main >
+        {
+          // Render the component returned by 'renderPage()'
+          renderPage(currentPage)
+        }
+      </main>
       <Footer />
     </body>
   );
