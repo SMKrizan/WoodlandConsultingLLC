@@ -1,78 +1,52 @@
-<<<<<<< HEAD
-//  project name, description, city, state, latitude, longtitude, category, date
-=======
->>>>>>> develop
 const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-<<<<<<< HEAD
-const projectSchema = new Schema({
-
-    project: {
-=======
 const mapSchema = new Schema({
-    projectName: {
->>>>>>> develop
-        type: String,
-        required: true,
-        trim: true
+    marker: {
+
     },
-    description: {
-        type: String
-    },
-<<<<<<< HEAD
-    city: {
-        type: String,
-        trim: true
-    },
-    state: {
-        type: String
-    },
-    date: {
-        type: String
-    },
-    latitude: {
-        type: Number
-    },
-    longtitude: {
-        type: Number
-    },
-    category: {
-        type: String
-    },
-    mapMarkers: [
+    category: [
         {
             type: Schema.Types.ObjectId,
-            ref: 'Project'
+            ref: 'Category'
+            //  required: true
+        }
+    ],
+    project: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Projects'
+            //  required: true
         }
     ]
-});
-
-const Map = mongoose.model('Map', projectSchema);
-
-module.exports = Map;
-=======
-    category: {
-        type: Schema.Types.ObjectId,
-        ref: 'Category',
-        required: true
-    },
-    cityState: {
-        type: String
-    },
-    longtitude: {
-        type: String
-    },
-    latitude: {
-        type: String
-    },
-    projectDate: {
-        type: String
-    }
+    // projectName: {
+    //     type: String,
+    //     required: true,
+    //     trim: true
+    // },
+    // description: {
+    //     type: String
+    // },
+    // category: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Category',
+    //     required: true
+    // },
+    // cityState: {
+    //     type: String
+    // },
+    // longtitude: {
+    //     type: String
+    // },
+    // latitude: {
+    //     type: String
+    // },
+    // projectDate: {
+    //     type: String
+    // }
 });
 
 const Map = mongoose.model('Map', mapSchema);
 
 module.exports = Map;
->>>>>>> develop

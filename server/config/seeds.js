@@ -19,7 +19,7 @@ db.once('open', async () => {
     const projects = await Project.insertMany([
         //  name, description, image, date,location(city,State),category
         {
-            name: 'G&E Credit Union,',
+            project_name: 'G&E Credit Union,',
             description:
                 'New Facility Development',
             image: 'image.jpg',
@@ -32,7 +32,7 @@ db.once('open', async () => {
 
         },
         {
-            name: 'Hughes Federal Credit Union',
+            project_name: 'Hughes Federal Credit Union',
             category: categories[2]._id,
             description:
                 'New Facility Development',
@@ -43,7 +43,7 @@ db.once('open', async () => {
 
         },
         {
-            name: 'Landmark Credit Union,',
+            project_name: 'Landmark Credit Union,',
             category: categories[2]._id,
             description:
                 'New Facility Development',
@@ -53,7 +53,7 @@ db.once('open', async () => {
             state: 'WI'
         },
         {
-            name: 'Heritage Credit Union',
+            project_name: 'Heritage Credit Union',
             category: categories[2]._id,
             description:
                 'New Facility Development',
@@ -61,17 +61,18 @@ db.once('open', async () => {
             date: 2016,
             city: 'Machesney Park',
             state: 'IL'
-        },
-        {
-            name: '',
-            category: categories[0]._id,
-            description:
-                '',
-            image: 'image.jpg',
-            date: 1,
-            city: '',
-            state: ''
         }
+        // ,
+        // {
+        //     project_name: '',
+        //     category: categories[0]._id,
+        //     description:
+        //         '',
+        //     image: 'image.jpg',
+        //     date: 1,
+        //     city: '',
+        //     state: ''
+        // }
     ]);
 
     console.log('Projects seeded');
@@ -82,7 +83,7 @@ db.once('open', async () => {
         lastName: 'lastname',
         email: 'test@testmail.com',
         password: 'password12345',
-      projects: [projects[0]._id, projects[0]._id, projects[1]._id]
+        projects: [projects[0]._id, projects[0]._id, projects[1]._id]
     });
     console.log('users seeded');
 

@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const projectSchema = new Schema({
 
-    name: {
+    project_name: {
         type: String,
         required: true,
         trim: true
@@ -19,7 +19,7 @@ const projectSchema = new Schema({
         type: String
     },
     location: {
-        type: String
+        type: Object
     },
     category: [
         {
