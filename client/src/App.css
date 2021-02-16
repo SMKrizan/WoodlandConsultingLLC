@@ -33,27 +33,35 @@ a {
 
 p {
   padding-bottom:10px;
+  font-size: 20px;
+  font-weight: 500;
 }
 h1 {
   font-family: 'Josefin Sans', sans-serif;
   color: var(--cream);
-  font-size: 44px;
+  font-size: 55px;
   padding-bottom: 15px;
 }
 h2 {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 40px;
+  font-size: 44px;
   font-weight: 400;
 }
 h3 {
-  font-family: 'Lato', 'Open Sans', sans-serif;
-  font-size: 24px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 32px;
 }
 h4 {
   font-family: 'Josefin Sans', sans-serif;
   font-size: calc(14px + 1vmin);
   font-weight: 500;
 }
+h5 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+}
+
 button {
   font-size: calc(14px + 1vmin);
   font-weight: 400; 
@@ -70,13 +78,15 @@ button:hover {
   border-radius: 3px;
 }
 
+li {
+  list-style: none;
+}
 main {
   margin-bottom:60px;
   background: var(--plum);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding:20px;
 }
 .center {
   text-align: center;

@@ -1,5 +1,5 @@
 import "./footer.css"
-import linkedin from "../../assests/images/linkedin.png"
+import linkedin from "../../assets/images/linkedin.png"
 
 
 function Footer() {

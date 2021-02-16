@@ -1,5 +1,5 @@
 import Navtabs from "../Navtabs"
-import logo from "../../assests/images/logo/WoodlandConsulting_logo_sm-nog.png"
+import logo from "../../assets/images/logo/WoodlandConsulting_logo_sm-nog.png"
 import "./header.css"
 
 function Header(props) {
