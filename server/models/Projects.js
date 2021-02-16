@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const projectSchema = new Schema({
 
-    name: {
+    project_name: {
         type: String,
         required: true,
         trim: true
@@ -18,8 +18,14 @@ const projectSchema = new Schema({
     date: {
         type: String
     },
-    location: {
+    city: {
         type: String
+    },
+    state: {
+        type: String
+    },
+    location: {
+        type: Object
     },
     category: [
         {
@@ -33,3 +39,4 @@ const projectSchema = new Schema({
 const Project = mongoose.model('Project', projectSchema);
 
 module.exports = Project;
+

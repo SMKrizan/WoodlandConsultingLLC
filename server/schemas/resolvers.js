@@ -70,6 +70,13 @@ const resolvers = {
 
     // }
 
+
+    addProject: async (parent, args) => {
+      const project = await Project.create(args);
+      // const token = signToken(project);
+
+      return { project };
+    }
   },
 };
 

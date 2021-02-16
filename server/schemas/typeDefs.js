@@ -17,6 +17,14 @@ const typeDefs = gql`
     }
 
     type Project {
+<<<<<<< HEAD
+=======
+        _id: ID
+        name: String
+        location: Point
+    }
+    type Porfolio {
+>>>>>>> 2e4f613752400ddd2b641b0aac8cc1d68b8193b3
         _id: ID
         name: String
         description: String
@@ -66,7 +74,8 @@ const typeDefs = gql`
     type Mutation {
         login(email: String!, password: String!): Auth
         addTestimonial(firstName: String, lastName: String, company: String, message: String): Testimonial
-
+        addProject(project_name: String, description: String, image: String, location: Object, category: []): Project
+        
     }
 `;
 
