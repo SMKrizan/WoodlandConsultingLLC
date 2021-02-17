@@ -3,7 +3,6 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
     type Query {
-        WoodlandConsulting: String
         categories: [Category]
         projects(category: ID, name: String): [Project]
         projectById(_id: ID!): Project
@@ -18,12 +17,15 @@ const typeDefs = gql`
 
     type Project {
         _id: ID
-        name: String
+        projectName: String
         description: String
         image: String
-        date: String
-        location: String
+        projectDate: String
+        cityState: String
         category: Category
+        company: String
+        WC: boolean
+        location: Point
     }
 
     type Admin {
@@ -31,6 +33,7 @@ const typeDefs = gql`
         firstName: String
         lastName: String
         email: String
+        cityState: String
     }
 
     type Auth {
@@ -44,24 +47,13 @@ const typeDefs = gql`
         company: String
         message: String
     }
-     
-    type Map {
-        projectName: String
-        description: String
-        category: Category
-        cityState: String
-        longtitude: String
-        latitude: String
-        projectDate: String
-        company: String
-        source: String
-    }
 
     type UserForm { 
         name: String
         company: String
         email: String
         message: String
+        purpose: String
     }
     
     type Mutation {

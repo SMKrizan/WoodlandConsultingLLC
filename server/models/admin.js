@@ -25,6 +25,9 @@ const adminSchema = new Schema({
         required: true,
         minLength: 8
     },
+    cityState: {
+        type: String
+    }
 });
 
 // set up re-save middleware to create password

@@ -7,9 +7,6 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    WoodlandConsulting: () => {
-      return "Happy Lunar New Year!";
-    },
     categories: async () => {
       return await Category.find();
     },

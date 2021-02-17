@@ -9,11 +9,6 @@ const testimonialSchema = new Schema({
     required: true,
     trim: true
   },
-  // lastName: {
-  //   type: String,
-  //   required: true,
-  //   trim: true
-  // },
   company: {
     type: String,
     trim: true
@@ -23,10 +18,6 @@ const testimonialSchema = new Schema({
     required: true,
     trim: true
   },
-  purpose: {
-      type: Boolean,
-      // true is Woodland, false is jessica
-  }
 });
 
 const Testimonial = mongoose.model('Testimonial', testimonialSchema);
