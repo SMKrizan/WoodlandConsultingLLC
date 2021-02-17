@@ -10,10 +10,15 @@ const typeDefs = gql`
         name: String
     }
 
+    type Project {
+        _id: ID
+        name: String
+        location: Point
+    }
     type Porfolio {
         _id: ID
         name: String
-        desctiption: String
+        description: String
         image: String
         date: String
         location: String
@@ -31,9 +36,20 @@ const typeDefs = gql`
         token: ID
         user: Admin
     }
-
+     
+    type Map {
+        projectName: String
+        description: String
+        category: Category
+        cityState: String
+        longtitude: String
+        latitude: String
+        projectDate: String
+    }
     type Mutations {
         login(email: String!, password: String!): Auth
+        addProject(project_name: String, description: String, image: String, location: Object, category: []): Project
+        
     }
 `;
 

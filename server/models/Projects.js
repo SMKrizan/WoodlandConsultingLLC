@@ -2,9 +2,9 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const portfolioSchema = new Schema({
+const projectSchema = new Schema({
 
-    name: {
+    project_name: {
         type: String,
         required: true,
         trim: true
@@ -18,8 +18,14 @@ const portfolioSchema = new Schema({
     date: {
         type: String
     },
-    location: {
+    city: {
         type: String
+    },
+    state: {
+        type: String
+    },
+    location: {
+        type: Object
     },
     category: [
         {
@@ -30,6 +36,7 @@ const portfolioSchema = new Schema({
     ]
 });
 
-const Portfolio = mongoose.model('Portfolio', portfolioSchema);
+const Project = mongoose.model('Project', projectSchema);
 
-module.exports = Portfolio;
+module.exports = Project;
+

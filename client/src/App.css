@@ -69,6 +69,10 @@ button {
   background: var(--maroon); 
   border: none;
   border-radius: 5px;
+  margin: 1rem auto;
+  text-transform: uppercase;
+  color: tint(purple);
+  display: block;
 }
 button:hover {
   font-weight: 400; 
@@ -76,7 +80,23 @@ button:hover {
   background: var(--plum); 
   border: none;
   border-radius: 3px;
+  color: tint(var(--cream), 75%);
+  box-shadow:  2px 2px 5px white;
+  transition-duration: .6s;
+  transition-timing-function: ease-in-out;
 }
+button h3 {
+  font-size: 18px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  margin:auto;
+  top:2px;
+  transition-duration: .6s;
+  transition-timing-function: ease-in-out;
+  z-index: 1;
+}
+
 
 li {
   list-style: none;
@@ -95,10 +115,10 @@ main {
   box-shadow: 0px 10px 15px var(--darkplum);
 }
 .glow {
-  box-shadow: 7px 7px 15px #ffec99;
+  box-shadow: 7px 7px 10px #fdf6d4;
 }
 .glow2 {
-  box-shadow: -7px 7px 15px #ffec99;
+  box-shadow: -7px 7px 10px #fdf6d4;
 }
 .background {
   padding: 30px;

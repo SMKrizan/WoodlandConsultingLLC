@@ -1,0 +1,26 @@
+.feature-home-image {
+    background-image: url('../../assets/images/portfolio/UW_SOHE_11.JPG');
+    background-size: cover;
+    background-position: center;
+    min-height: 400px;
+    font-size: calc(14px + 1vmin);
+    padding:40px;
+    text-shadow: 6px 6px 20px black, 2px 2px 10px black;
+  }
+.feature-home-img h4 {
+    position: relative;
+    top: 60px;
+    transition-duration: .6s;
+    transition-timing-function: ease-in-out;
+    z-index: 1;
+  }
+
+  .feature-box{
+      background-color: rgba(0, 0, 0, .6);
+      min-height:100px;
+      width: 60%;
+      min-width: 260px;
+      padding: 20px;
+      
+  }
+
