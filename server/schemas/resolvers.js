@@ -56,9 +56,23 @@ const resolvers = {
       const testimonial = await Testimonial.create({
         ...args
       });
-      return testimonial;
+      return { testimonial };
     },
-
+    addMessage: async (parent, args) => {
+      const message = await UserForm.create({
+        ...args
+      });
+      return { message };
+    },
+    removeMessage: async (parent, { _id }, context) => {
+      if (context.admin) {
+        const updatedMessageList = await UserForm.findByIdAndUpdate(
+          { $pull: _id },
+          { new: true }
+        )
+        return updatedMessageList
+      }
+    }
   },
 };
 
