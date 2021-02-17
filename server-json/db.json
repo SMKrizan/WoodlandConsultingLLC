@@ -1,64 +1,68 @@
 {
-    "posts": [
-        {
-            "name": "A name",
-            "company": "A company field",
-            "email": "email@address.com",
-            "message": "message body",
-            "purpose": "ask a question",
-            "createdAt": "02/15/2021"
-        },
-        {
-            "name": "B name",
-            "company": "B company field",
-            "email": "email@address.com",
-            "message": "message body",
-            "purpose": "provide a testimonial",
-            "createdAt": "02/15/2021"
-        },
-        {
-            "name": "C name",
-            "company": "C company field",
-            "email": "email@address.com",
-            "message": "message body",
-            "purpose": "request a quote",
-            "createdAt": "02/15/2021"
-        },
-        {
-            "name": "D name",
-            "company": "D company field",
-            "email": "email@address.com",
-            "message": "message body",
-            "purpose": "leave a comment",
-            "createdAt": "02/15/2021"
-        }
-    ],
-    "admin": [
-        {
-            "first name": "Jessica",
-            "last name": "Walther",
-            "email": "woodlandconsultingllc@gmail.com",
-            "password": "123456"
-        }
-    ],
-    "testimonials": [
-        {
-            "first name": "Allan",
-            "last name": "Smith",
-            "company": "Some company",
-            "testimonial": "testimonial body"
-        },
-        {
-            "first name": "Jane",
-            "last name": "Jones",
-            "company": "Some company",
-            "testimonial": "testimonial body"
-        },
-        {
-            "first name": "Rita",
-            "last name": "Thompson",
-            "company": "Some company",
-            "testimonial": "testimonial body"
-        }
-    ]
+  "posts": [
+    {
+      "id": "1",
+      "name": "A name",
+      "company": "A company field",
+      "email": "email@address.com",
+      "message": "message body",
+      "type": "ask a question",
+      "createdAt": "02/15/2021"
+    },
+    {
+      "id": "2",
+      "name": "B name",
+      "company": "B company field",
+      "email": "email@address.com",
+      "message": "message body",
+      "type": "provide a testimonial",
+      "createdAt": "02/15/2021"
+    },
+    {
+      "id": "4",
+      "name": "D name",
+      "company": "D company field",
+      "email": "email@address.com",
+      "message": "this is a really long message to d   vvvvvdvsdgrggggggggggggdfgfbbbbbbbbbbbbbbdfbdb   sgjsgisu oruhgug oosgodj godg odndjckgbkcfbodighsghos ghdorg hodrgihos hnosrg hnosighsorgi hsigjoigthweout hworhwo ieru jir jwoitej howeih woeith woetihwoeit whoetihwtoweoith woith owith eij j k jkj j h j",
+      "type": "leave a comment",
+      "createdAt": "02/15/2021"
+    }
+  ],
+  "administrator": [
+    {
+      "id": "1",
+      "firstName": "Jessica",
+      "lastName": "Walther",
+      "email": "woodlandconsultingllc@gmail.com",
+      "city": "Slinger",
+      "state": "WI",
+      "password": "123456"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "1",
+      "name": "Allan Smith",
+      "company": "Some company",
+      "testimonial": "testimonial body"
+    },
+    {
+      "id": "2",
+      "name": "Jane Jones",
+      "company": "Some company",
+      "testimonial": "testimonial body"
+    },
+    {
+      "id": "3",
+      "name": "Rita Thompson",
+      "company": "Some company",
+      "testimonial": "testimonial body"
+    },
+    {
+      "name": "Sara",
+      "company": "asdf",
+      "testimonial": "sadf",
+      "id": "VYCQLMv"
+    }
+  ]
 }

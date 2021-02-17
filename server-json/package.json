@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server": "json-server --watch db.json --port 5000"
+    "server": "json-server --watch db.json --port 5000 --middlewares ./range.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "json-server": "^0.16.3"
+    "json-server": "^0.16.3",
+    "ra-data-simple-rest": "^3.10.4",
+    "react-admin": "^3.12.3"
   }
 }

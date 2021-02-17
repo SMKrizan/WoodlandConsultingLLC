@@ -2,18 +2,22 @@ import React from 'react';
 import { 
     List, 
     Datagrid, 
-    TextField, 
+    TextField,
+    EmailField,
     DateField, 
-    DeleteButton 
+    DeleteButton
 } from 'react-admin';
 
 const PostList = (props) => {
     return (
     <List {...props}>
         <Datagrid>
-            <TextField source='_id' />
-            <TextField source='purpose' />
-            <TextField source='email' />
+            <TextField disabled source='id' />
+            <TextField source='type' />
+            <TextField source='name' />
+            <TextField source='company' />
+            <EmailField source='email' />
+            <TextField source='message' />
             <DateField source='createdAt' />
             <DeleteButton basePath='/posts' />
         </Datagrid>

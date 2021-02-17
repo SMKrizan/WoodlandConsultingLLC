@@ -1,5 +1,5 @@
 {
-  "name": "woodland-consulting-llc",
+  "name": "woodland-consulting-client",
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:5000",
@@ -41,5 +41,9 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {}
+  "devDependencies": {},
+  "main": "index.js",
+  "author": "Krizan Grosshans Pryadka Sibley",
+  "license": "ISC",
+  "description": ""
 }

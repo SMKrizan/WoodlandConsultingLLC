@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const { Schema } = mongoose;
 
-const adminSchema = new Schema({
+const AdminSchema = new Schema({
     
     firstName: {
         type: String,
@@ -19,6 +19,14 @@ const adminSchema = new Schema({
         type: String,
         required: true,
         unique: true
+    },
+    city: {
+        type: String,
+        trim: true
+    },
+    state: {
+        type: String,
+        trim: true
     },
     password: {
         type: String,

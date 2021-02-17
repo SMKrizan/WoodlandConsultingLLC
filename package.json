@@ -4,7 +4,9 @@
   "description": "lighting design consulting firm",
   "main": "server/server.js",
   "dependencies": {
-    "if-env": "^1.0.4"
+    "if-env": "^1.0.4",
+    "ra-data-simple-rest": "^3.10.4",
+    "react-admin": "^3.12.3"
   },
   "devDependencies": {
     "concurrently": "^5.3.0"
