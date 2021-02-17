@@ -1,8 +1,15 @@
+
 const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
-const { Admin, Category, Project, UserForm, Testimonial } = require("../models");
+const {
+  Admin,
+  Category,
+  Project,
+  UserForm,
+  Testimonial,
+} = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -10,11 +17,14 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
+    admin: async () => {
+      return await Admin.find();
+    },
     projects: async (parent, { category, name }) => {
       const params = {};
 
       if (category) {
-        params.category = category
+        params.category = category;
       }
 
       if (name) {
@@ -25,15 +35,29 @@ const resolvers = {
 
       return await Project.find(params).populate("category");
     },
+    projectsByCategory: async (parent, { category, name }) => {
+      const params = {};
+
+      if (category) {
+        params.category = category;
+      }
+
+      if (name) {
+        params.name = {
+          $regex: name,
+        };
+      }
+      return await Project.find(params).populate("category");
+    },
     projectById: async (parent, { _id }) => {
-      return await (await Portfolio.findById(_id)).populate("category");
+      return await (await Project.findById(_id)).populate("category");
     },
     testimonials: async () => {
       return await Testimonial.find();
     },
     messages: async () => {
       return await UserForm.find();
-    }
+    },
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -52,13 +76,45 @@ const resolvers = {
 
       return { token, admin };
     },
+    updateAdmin: async (parent, args, context) => {
+      if (context.admin) {
+        const Admin = await Admin.findByIdAndUpdate(context.admin._id, args, {
+          new: true,
+        });
+      }
+
+      throw new AuthenticationError("Not logged in");
+    },
     addTestimonial: async (parent, args) => {
       const testimonial = await Testimonial.create({
-        ...args
+        ...args,
       });
-      return testimonial;
-    },
 
+      return { testimonial };
+    },
+    updateTestimonial: async (parent, args, context) => {
+      if (context.admin) {
+        return await Testimonial.findByIdAndUpdate(
+          context.testimonial._id,
+          args,
+          {
+            new: true,
+          }
+        );
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    removeTestimonial: async (parent, { _id }, context ) => {
+      if (context.admin) {
+      const deleteTest = await Testimonial.findByIdAndUpdate(
+        _id,
+        { $pull: _id },
+        { new: true }
+      );
+      return deleteTest;
+      }
+      throw new AuthenticationError("You need be logged in to delete a testimonial. ")
+    },
   },
 };
 
