@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&family=Lato:wght@300;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&family=Lato:wght@300;500;700;900&display=swap');
 
 /*remove inherent coding*/
 * {
@@ -10,7 +10,7 @@
 :root {
   --plum:#3e0040;
   --darkplum:#1b0024;
-  --darkgreen: #0d4a30;
+  --darkgreen: #003a08;
   --cream: #fffff7;
   --maroon: #541d3b;
 
@@ -91,7 +91,15 @@ main {
 .center {
   text-align: center;
 }
-
+.shadow {
+  box-shadow: 0px 10px 15px var(--darkplum);
+}
+.glow {
+  box-shadow: 7px 7px 15px #ffec99;
+}
+.glow2 {
+  box-shadow: -7px 7px 15px #ffec99;
+}
 .background {
   padding: 30px;
   background-color: var(--plum);

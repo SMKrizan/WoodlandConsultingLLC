@@ -34,7 +34,8 @@
     flex:1;
     padding: 10px;
     height: 220px;
-    width: 300px;
+    min-width: 300px;
+    max-width:300px;
   }
 
   .project-img {

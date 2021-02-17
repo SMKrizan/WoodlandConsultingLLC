@@ -11,7 +11,7 @@ function Portfolio() {
             <h2>Portfolio</h2>
             <h4>See projects below</h4>
         </div>
-        <div className="pad">
+        <div className="darkplumbg pad">
             <h3>
                 View Projects: Click to see larger views
             </h3>
