@@ -28,8 +28,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    background: var(--secondary-color);
-    color: var(--primary-color);
     margin:auto;
   }
   .project{
