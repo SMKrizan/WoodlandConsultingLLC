@@ -2,7 +2,7 @@ const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
-const { Admin, Category, Project, UserForm, Testimonial, Map } = require("../models");
+const { Admin, Category, Project, UserForm, Testimonial } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -58,22 +58,7 @@ const resolvers = {
       });
       return testimonial;
     },
-    // updateTestimonial: async (parent, args) => {
-    //   const updatedTestimonial= await Testimonial.findOneAndUpdate(
-    //     {}
-    //   )
-    // },
-    // removeTestimonial: async (parent, args ) => {
 
-    // }
-
-
-    // addProject: async (parent, args) => {
-    //   const project = await Project.create(args);
-    //   // const token = signToken(project);
-
-    //   return { project };
-    // }
   },
 };
 

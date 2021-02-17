@@ -22,10 +22,10 @@ const typeDefs = gql`
         image: String
         projectDate: String
         cityState: String
-        category: Category
+        category: [Category]
         company: String
-        WC: boolean
-        location: Point
+        WC: Boolean
+        location: String
     }
 
     type Admin {
@@ -55,32 +55,29 @@ const typeDefs = gql`
         message: String
         purpose: String
     }
-    input portfolioProject {
-        projectName: String
-        description: String
-        image: String!
-        category: Category
-    }
+
+   
     input client {
         company: String
         description: String
-        location: Point
+        location: String
         WC: Boolean
     }
-    input map {
-        image: String
-        WC: Boolean
-        location: Point
-        category: Category
-    }
+    
     
     type Mutation {
         login(email: String!, password: String!): Auth
         updateAdmin(firstName: String, lastName: String, email: String, cityState: String): Admin
         addTestimonial(name: String, company: String, message: String): Testimonial
-        addToPortfolio(projectData: projectProject!): Project
+        addToPortfolio( projectName: String
+            description: String
+            image: String!
+            category: [Category]): Project
         clientList(clientData: client!): Project
-        markerProject(mapData: map!): Project
+        markerProject(image: String
+            WC: Boolean
+            location: String
+            category: [Category]): Project
         updateTestimonial(name: String, company: String, message: String): Testimonial
         removeTestimonial(_id: ID!): Testimonial
         removeMessage(_id: ID!): UserForm
@@ -100,3 +97,11 @@ module.exports = typeDefs;
 // array.filter(project => {
 //     return project.image !== null
 // })
+
+// input portfolioProject {
+//     projectName: String
+//     description: String
+//     image: String!
+//     category: [Category]
+// }
+

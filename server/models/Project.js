@@ -6,7 +6,7 @@ const { Schema } = mongoose;
 
 const projectSchema = new Schema({
     projectName: {
-        type: String
+        type: String,
         trim: true
     },
     description: {
@@ -34,10 +34,10 @@ const projectSchema = new Schema({
         type: String
     },
     WC: {
-        type: boolean
+        type: Boolean
     }
 });
 
 const Project = mongoose.model('Project', projectSchema);
 
-module.exports = Project
+module.exports = Project;
