@@ -31,11 +31,9 @@
   "administrator": [
     {
       "id": "1",
-      "firstName": "Jessica",
-      "lastName": "Walther",
+      "name": "Jessica Walther",
       "email": "woodlandconsultingllc@gmail.com",
-      "city": "Slinger",
-      "state": "WI",
+      "city/state": "Slinger, WI",
       "password": "123456"
     }
   ],
