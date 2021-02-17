@@ -1,5 +1,6 @@
 // imports gql tagged template function
 const { gql } = require('apollo-server-express');
+// const Point = require('neo4j-graphql-js');
 
 const typeDefs = gql`
     type Category {
@@ -70,16 +71,12 @@ const typeDefs = gql`
         addTestimonial(name: String, company: String, message: String): Testimonial
         updateTestimonial(name: String, company: String, message: String): Testimonial
         removeTestimonial(_id: ID!): Testimonial
-        addMessage(_id: ID!, name: String!, company: String, email: String!, message: String!, purpose: String)
+        addMessage(_id: ID!, name: String!, company: String, email: String!, message: String!, purpose: String): UserForm
         removeMessage(_id: ID!): UserForm
     }
 `;
 
 module.exports = typeDefs;
-// addProject(project_name: String, description: String, image: String, location: Object, category: []): Project
-// updateTestimonial(firstName: String, lastName: String, company: String, message: String): Testimonial
-// removeTestimonial(_id: ID!): Testimonial
-// removeMessage
 
 // make image required in mutation for portfolio
 // null for not image
