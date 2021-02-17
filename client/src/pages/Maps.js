@@ -7,7 +7,8 @@ class MapContainer extends Component {
         showingInfoWindow: false,
         activeMarker: {},
         selectedProject: {},
-        mapCenter: { lat: 44.871443, lng: -90.243436 }
+        mapCenter: { lat: 44.871443, lng: -90.243436 },
+        
     }
     onMarkerClick = (props, marker, e) =>
         this.setState({
