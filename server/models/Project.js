@@ -24,12 +24,10 @@ const projectSchema = new Schema({
     location: {
         type: String
     },
-    category: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Category',
-        }
-    ],
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
+    },
     company: {
         type: String
     },

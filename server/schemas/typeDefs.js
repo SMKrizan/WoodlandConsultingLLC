@@ -2,18 +2,20 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-    type Query {
-        categories: [Category]
-        projects(category: ID, name: String): [Project]
-        projectById(_id: ID!): Project
-        testimonials: [Testimonial]
-        messages: [UserForm]
-    }
-
     type Category {
         _id: ID
         name: String
     }
+
+    type Query {
+        categories: [Category]
+        admin: Admin
+        projects: [Project]
+        projectsByCategory(category: ID, name: String): [Project]
+        projectById(_id: ID!): Project
+        testimonials: [Testimonial]
+        messages: [UserForm]
+    }    
 
     type Project {
         _id: ID
@@ -22,16 +24,15 @@ const typeDefs = gql`
         image: String
         projectDate: String
         cityState: String
-        category: [Category]
+        location: String
+        category: Category
         company: String
         WC: Boolean
-        location: String
     }
 
     type Admin {
         _id: ID
-        firstName: String
-        lastName: String
+        name: String
         email: String
         cityState: String
     }
@@ -55,7 +56,6 @@ const typeDefs = gql`
         message: String
         purpose: String
     }
-
    
     input client {
         company: String
@@ -63,23 +63,14 @@ const typeDefs = gql`
         location: String
         WC: Boolean
     }
-    
-    
+        
     type Mutation {
         login(email: String!, password: String!): Auth
-        updateAdmin(firstName: String, lastName: String, email: String, cityState: String): Admin
+        updateAdmin(name: String, email: String, cityState: String, password: String): Admin
         addTestimonial(name: String, company: String, message: String): Testimonial
-        addToPortfolio( projectName: String
-            description: String
-            image: String!
-            category: [Category]): Project
-        clientList(clientData: client!): Project
-        markerProject(image: String
-            WC: Boolean
-            location: String
-            category: [Category]): Project
         updateTestimonial(name: String, company: String, message: String): Testimonial
         removeTestimonial(_id: ID!): Testimonial
+        addMessage(_id: ID!, name: String!, company: String, email: String!, message: String!, purpose: String)
         removeMessage(_id: ID!): UserForm
     }
 `;

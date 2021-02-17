@@ -5,12 +5,7 @@ const { Schema } = mongoose;
 
 const adminSchema = new Schema({
     
-    firstName: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    lastName: {
+    name: {
         type: String,
         required: true,
         trim: true
