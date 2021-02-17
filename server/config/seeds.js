@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { Project, Category } = require('../models');
+const { Project, Category, Admin } = require('../models');
 
 db.once('open', async () => {
     await Category.deleteMany();
@@ -23,7 +23,7 @@ db.once('open', async () => {
             category: categories[2]._id,
             description:
                 'New Facility Development',
-            image: 'image.jpg',
+            // image: 'image.jpg',
             date: 2016,
             city: 'Rock Island',
             state: 'IL',
@@ -38,7 +38,7 @@ db.once('open', async () => {
             category: categories[2]._id,
             description:
                 'New Facility Development',
-            image: 'image.jpg',
+            // image: 'image.jpg',
             date: 2016,
             city: 'Tuscan',
             state: 'AZ',
@@ -52,7 +52,7 @@ db.once('open', async () => {
             category: categories[2]._id,
             description:
                 'New Facility Development',
-            image: 'image.jpg',
+            // image: 'image.jpg',
             date: 2016,
             city: 'Muskego',
             state: 'WI',
@@ -66,7 +66,7 @@ db.once('open', async () => {
             category: categories[2]._id,
             description:
                 'New Facility Development',
-            image: 'image.jpg',
+            // image: 'image.jpg',
             date: 2016,
             city: 'Machesney Park',
             state: 'IL',
@@ -74,6 +74,7 @@ db.once('open', async () => {
                 latitude: 34.234512,
                 longitude: -112.015342,
             }
+
         }
         // ,
         // {
@@ -92,17 +93,17 @@ db.once('open', async () => {
         // }
     ]);
 
-    console.log('Projects seeded');
+    console.log('PROJECTS SEEDED');
 
-    // await User.deleteMany();
-    // await User.create({
-    //     firstName: 'username',
-    //     lastName: 'lastname',
-    //     email: 'test@testmail.com',
-    //     password: 'password12345',
-    //     projects: [projects[0]._id, projects[0]._id, projects[1]._id]
-    // });
-    // console.log('users seeded');
+    await Admin.deleteMany();
+    await Admin.create({
+        firstName: 'Jessica A.',
+        lastName: 'Walther',
+        email: 'jessica@gmail.com',
+        password: 'password12345',
+    });
+
+    console.log('ADMIN SEEDED');
 
     process.exit();
 });

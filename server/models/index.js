@@ -2,10 +2,10 @@ const Category = require('./Category');
 const Portfolio = require('./Portfolio');
 const Admin = require('./Admin');
 const AdminForm = require('./AdminForm');
-const UserForm = require('./UserForm');
-const Map = require('./Map');
+// const UserForm = require('./UserForm');
+const Map = require('./Marker');
 const Project = require('./Project')
 
 
 
-module.exports = { Category, Portfolio, Project, Admin, AdminForm, UserForm, Map };
+module.exports = { Category, Portfolio, Project, Admin, AdminForm, Map };
