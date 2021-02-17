@@ -34,7 +34,7 @@ const resolvers = {
     testimonials: async () => {
       return await Testimonial.find();
     },
-    message: async () => {
+    messages: async () => {
       return await UserForm.find();
     }
   },
@@ -53,7 +53,7 @@ const resolvers = {
 
       const token = signToken(user);
 
-      return { token, user };
+      return { token, admin };
     },
     addTestimonial: async (parent, args) => {
       const testimonial = await Testimonial.create({
@@ -71,12 +71,12 @@ const resolvers = {
     // }
 
 
-    addProject: async (parent, args) => {
-      const project = await Project.create(args);
-      // const token = signToken(project);
+    // addProject: async (parent, args) => {
+    //   const project = await Project.create(args);
+    //   // const token = signToken(project);
 
-      return { project };
-    }
+    //   return { project };
+    // }
   },
 };
 

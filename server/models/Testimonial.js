@@ -4,25 +4,28 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const testimonialSchema = new Schema({
-  firstName: {
+  name: {
     type: String,
     required: true,
     trim: true
   },
-  lastName: {
-    type: String,
-    required: true,
-    trim: true
-  },
+  // lastName: {
+  //   type: String,
+  //   required: true,
+  //   trim: true
+  // },
   company: {
     type: String,
-    required: true,
     trim: true
   },
   message: {
     type: String,
     required: true,
     trim: true
+  },
+  purpose: {
+      type: Boolean,
+      // true is Woodland, false is jessica
   }
 });
 

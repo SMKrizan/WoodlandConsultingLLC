@@ -19,11 +19,6 @@ const typeDefs = gql`
     type Project {
         _id: ID
         name: String
-        // location: Point
-// }
-// type Porfolio {
-//     _id: ID
-//     name: String
         description: String
         image: String
         date: String
@@ -40,13 +35,12 @@ const typeDefs = gql`
 
     type Auth {
         token: ID
-        user: Admin
+        admin: Admin
     }
 
     type Testimonial {
         _id: ID
-        firstName: String
-        lastName: String
+        name: String
         company: String
         message: String
     }
@@ -59,6 +53,8 @@ const typeDefs = gql`
         longtitude: String
         latitude: String
         projectDate: String
+        company: String
+        source: String
     }
 
     type UserForm { 
@@ -70,9 +66,7 @@ const typeDefs = gql`
     
     type Mutation {
         login(email: String!, password: String!): Auth
-        addTestimonial(firstName: String, lastName: String, company: String, message: String): Testimonial
-        
-        
+        addTestimonial(name: String, company: String, message: String): Testimonial
     }
 `;
 
@@ -82,4 +76,16 @@ module.exports = typeDefs;
 // removeTestimonial(_id: ID!): Testimonial
 // removeMessage
 
-// goes in line 22
+// location: Point
+// }
+// type Porfolio {
+//     _id: ID
+//     name: String
+
+// make image required in mutation for portfolio
+// null for not image
+// filter on the portfolio page for image
+// in resolver before return
+// array.filter(project => {
+//     return project.image !== null
+// })
