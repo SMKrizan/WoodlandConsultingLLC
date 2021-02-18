@@ -36,18 +36,19 @@ const resolvers = {
       return await Project.find(params).populate("category");
     },
     // args?
-    projectsByCategory: async (parent, { category, projectName }) => {
-      const params = {};
+    projectsByCategory: async (parent, params) => {
+      // const params = {};
 
-      if (category) {
-        params.category = category;
-      }
+      // if (category) {
+      //   params.category = category;
+      // }
 
-      if (projectName) {
-        params.projectName = {
-          $regex: projectName,
-        };
-      }
+      // if (projectName) {
+      //   params.projectName = {
+      //     $regex: projectName,
+      //   };
+      // }
+
       return await Project.find(params).populate("category");
     },
     projectById: async (parent, { _id }) => {
@@ -58,6 +59,9 @@ const resolvers = {
     },
     messages: async () => {
       return await Message.find();
+    },
+    clientList: async () => {
+      return await Project.find();
     },
   },
   Mutation: {
@@ -130,6 +134,13 @@ const resolvers = {
         return updatedMessageList
       }
     },
+    // clientList: async ( parent, { }) => {
+    //   const client = await Project.findByIdAndUpdate(
+    //     { $push:},
+    //     { new: true }
+    // );
+    // return client;
+    // }
   },
 };
 
