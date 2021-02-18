@@ -4,7 +4,7 @@ const {
   UserInputError,
 } = require("apollo-server-express");
 const {
-  Admin,
+  Owner,
   Category,
   Project,
   Message,
@@ -17,8 +17,8 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    admin: async () => {
-      return await Admin.find();
+    owner: async () => {
+      return await Owner.find();
     },
     projects: async (parent, { category, projectName }) => {
       const params = {};
@@ -62,24 +62,24 @@ const resolvers = {
   },
   Mutation: {
     login: async (parent, { email, password }) => {
-      const admin = await Admin.findOne({ email });
+      const owner = await Owner.findOne({ email });
 
-      if (!admin) {
+      if (!owner) {
         throw new AuthenticationError("Incorrect credentials!");
       }
 
-      const correctPw = await admin.isCorrectPassword(password);
+      const correctPw = await owner.isCorrectPassword(password);
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials!");
       }
 
       const token = signToken(user);
 
-      return { token, admin };
+      return { token, owner };
     },
-    updateAdmin: async (parent, args, context) => {
-      if (context.admin) {
-        const Admin = await Admin.findByIdAndUpdate(context.admin._id, args, {
+    updateOwner: async (parent, args, context) => {
+      if (context.owner) {
+        const Owner = await Owner.findByIdAndUpdate(context.owner._id, args, {
           new: true,
         });
       }
@@ -93,7 +93,7 @@ const resolvers = {
       return { testimonial };
     },
     updateTestimonial: async (parent, args, context) => {
-      if (context.admin) {
+      if (context.owner) {
         return await Testimonial.findByIdAndUpdate(
           context.testimonial._id,
           args,
@@ -105,7 +105,7 @@ const resolvers = {
       throw new AuthenticationError("Not logged in");
     },
     removeTestimonial: async (parent, { _id }, context ) => {
-      if (context.admin) {
+      if (context.owner) {
       const deleteTest = await Testimonial.findByIdAndUpdate(
         _id,
         { $pull: _id },
@@ -122,7 +122,7 @@ const resolvers = {
         return { message };
     },
     removeMessage: async ( parent, { _id }, context ) => {
-      if (context.admin) {
+      if (context.owner) {
         const updatedMessageList = await UserForm.findByIdAndUpdate(
           { $pull: _id },
           { new: true }

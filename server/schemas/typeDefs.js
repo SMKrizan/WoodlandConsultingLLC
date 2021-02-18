@@ -9,7 +9,7 @@ const typeDefs = gql`
 
     type Query {
         categories: [Category]
-        admin: Admin
+        owner: Owner
         projects: [Project]
         projectsByCategory(category: ID, projectName: String): [Project]
         projectById(_id: ID!): Project
@@ -30,34 +30,36 @@ const typeDefs = gql`
         WC: Boolean
     }
 
-    type Admin {
+    type Owner {
         _id: ID
-        adminName: String
-        adminEmail: String
+        ownerName: String
+        ownerEmail: String
         address: String
     }
 
     type Auth {
         token: ID
-        admin: Admin
+        owner: Owner
     }
 
     type Testimonial {
         _id: ID
         tstName: String
-        company: String
+        tstCompany: String
         tstMessage: String
     }
 
     type Message { 
+        _id: ID
         userName: String
-        company: String
+        userCompany: String
         userEmail: String
         userMessage: String
         purpose: String
     }
    
     input client {
+        _id: ID
         company: String
         description: String
         location: [Location]
@@ -65,12 +67,12 @@ const typeDefs = gql`
     }
         
     type Mutation {
-        login(adminEmail: String!, password: String!): Auth
-        updateAdmin(adminName: String, adminEmail: String, address: String, password: String): Admin
-        addTestimonial(tstName: String, company: String, tstMessage: String): Testimonial
-        updateTestimonial(tstName: String, company: String, tstMessage: String): Testimonial
+        login(ownerEmail: String!, password: String!): Auth
+        updateOwner(ownerName: String, ownerEmail: String, address: String, password: String): Owner
+        addTestimonial(tstName: String, tstCompany: String, tstMessage: String): Testimonial
+        updateTestimonial(tstName: String, tstCompany: String, tstMessage: String): Testimonial
         removeTestimonial(_id: ID!): Testimonial
-        addMessage(_id: ID!, userName: String!, company: String, userEmail: String!, userMessage: String!, purpose: String): Message
+        addMessage(_id: ID!, userName: String!, userCompany: String, userEmail: String!, userMessage: String!, purpose: String): Message
         removeMessage(_id: ID!): Message
     }
 `;

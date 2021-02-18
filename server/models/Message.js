@@ -9,7 +9,7 @@ const messageSchema = new Schema({
         required: true,
         trim: true
     },
-    company: {
+    userCompany: {
         type: String,
         trim: true
     },

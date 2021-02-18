@@ -1,9 +1,9 @@
 const Category = require('./Category');
-const Admin = require('./Admin');
+const Owner = require('./Owner');
 const Testimonial = require('./Testimonial');
 const Message = require('./Message');
 const Project = require('./Project')
 
 
 
-module.exports = { Category, Project, Admin, Testimonial, Message };
+module.exports = { Category, Project, Owner, Testimonial, Message };
