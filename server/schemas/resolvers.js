@@ -1,58 +1,68 @@
+
 const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
-const Admin = require("../models/Admin");
-const { Admin, Category, Project, Portfolio } = require("../models");
+const {
+  Admin,
+  Category,
+  Project,
+  Message,
+  Testimonial,
+} = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    WoodlandConsulting: () => {
-      return "Happy Lunar New Year!";
-    },
     categories: async () => {
       return await Category.find();
     },
-    // ------------PORTFOLIO-------------------
-    portfolio: async (parent, { category, name }) => {
+    admin: async () => {
+      return await Admin.find();
+    },
+    projects: async (parent, { category, projectName }) => {
       const params = {};
 
       if (category) {
-        params.category = category
+        params.category = category;
       }
 
-      if (name) {
-        params.name = {
-          $regex: name,
+      if (projectName) {
+        params.projectName = {
+          $regex: projectName,
         };
       }
 
       return await Project.find(params).populate("category");
     },
-    portfolio: async (parent, { _id }) => {
-      return await (await Portfolio.findById(_id)).populate("category");
-    },
-    // -------------PROJECT-------------
-    project: async (parent, { category, project_name }) => {
-      const params = {};
+    // args?
+    projectsByCategory: async (parent, params) => {
+      // const params = {};
 
-      if (category) {
-        params.category = category
-      }
+      // if (category) {
+      //   params.category = category;
+      // }
 
-      if (project_name) {
-        params.project_name = {
-          $regex: project_name,
-        };
-      }
+      // if (projectName) {
+      //   params.projectName = {
+      //     $regex: projectName,
+      //   };
+      // }
 
       return await Project.find(params).populate("category");
     },
-    project: async (parent, { _id }) => {
+    projectById: async (parent, { _id }) => {
       return await (await Project.findById(_id)).populate("category");
     },
-
+    testimonials: async () => {
+      return await Testimonial.find();
+    },
+    messages: async () => {
+      return await Message.find();
+    },
+    clientList: async () => {
+      return await Project.find();
+    },
   },
   Mutation: {
     login: async (parent, { email, password }) => {
@@ -69,15 +79,68 @@ const resolvers = {
 
       const token = signToken(user);
 
-      return { token, user };
+      return { token, admin };
     },
+    updateAdmin: async (parent, args, context) => {
+      if (context.admin) {
+        const Admin = await Admin.findByIdAndUpdate(context.admin._id, args, {
+          new: true,
+        });
+      }
 
-    addProject: async (parent, args) => {
-      const project = await Project.create(args);
-      // const token = signToken(project);
-
-      return { project };
-    }
+      throw new AuthenticationError("Not logged in");
+    },
+    addTestimonial: async (parent, args) => {
+      const testimonial = await Testimonial.create({
+        ...args,
+      });
+      return { testimonial };
+    },
+    updateTestimonial: async (parent, args, context) => {
+      if (context.admin) {
+        return await Testimonial.findByIdAndUpdate(
+          context.testimonial._id,
+          args,
+          {
+            new: true,
+          }
+        );
+      }
+      throw new AuthenticationError("Not logged in");
+    },
+    removeTestimonial: async (parent, { _id }, context ) => {
+      if (context.admin) {
+      const deleteTest = await Testimonial.findByIdAndUpdate(
+        _id,
+        { $pull: _id },
+        { new: true }
+      );
+      return deleteTest;
+      }
+      throw new AuthenticationError("You need be logged in to delete a testimonial. ")
+    },
+    addMessage: async ( parent, args ) => {
+        const message = await UserForm.create({
+          ...args
+        });
+        return { message };
+    },
+    removeMessage: async ( parent, { _id }, context ) => {
+      if (context.admin) {
+        const updatedMessageList = await UserForm.findByIdAndUpdate(
+          { $pull: _id },
+          { new: true }
+        )
+        return updatedMessageList
+      }
+    },
+    // clientList: async ( parent, { }) => {
+    //   const client = await Project.findByIdAndUpdate(
+    //     { $push:},
+    //     { new: true }
+    // );
+    // return client;
+    // }
   },
 };
 

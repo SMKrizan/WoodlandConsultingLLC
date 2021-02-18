@@ -1,5 +1,5 @@
 const db = require('./connection');
-const { Project, Category, Admin } = require('../models');
+const { Category, Project, Admin } = require('../models');
 
 db.once('open', async () => {
     await Category.deleteMany();
@@ -14,7 +14,7 @@ db.once('open', async () => {
 
     console.log('CATEGORIES SEEDED');
 
-    await Project.deleteMany();
+    await Admin.deleteMany();
 
     const projects = await Project.insertMany([
         //  name, description, image, date,location(city,State),category
@@ -106,4 +106,4 @@ db.once('open', async () => {
     console.log('ADMIN SEEDED');
 
     process.exit();
-});
+})
