@@ -51,7 +51,7 @@ export const GET_MESSAGES = gql`
 // retrieve all project data
 export const GET_PROJECTS = gql`
     {
-        projects {
+        project {
             _id
             projectName
             description
@@ -72,7 +72,7 @@ export const GET_PROJECTS = gql`
 // retrieves all clients being presented on client listing (wc, citystate, company, category)
 export const GET_CLIENTLIST = gql`
     {
-        projects {
+        project {
             _id
             category
             citystate
@@ -84,20 +84,42 @@ export const GET_CLIENTLIST = gql`
 
 // retrieve projects filtered by category ()
 export const PROJECTS_BY_CATEGORY = gql`
-    {
-        projects {
-            
+    query projectsByCategory($category: String) {
+        projectsByCategory(category: $category) {
+            _id
+            projectName
+            description
+            image
+            projectdate
+            citystate
+            location {
+                latitude
+                longitude
+            }
+            category
+            company
+            wc   
         }
-
     }
 `;
 
 // retrieves project by its id
 export const PROJECT_BY_ID = gql`
-    {
-        projects {
-
+query projectsById($id: ID) {
+    projectsById(_id: $id) {
+        _id
+        projectName
+        description
+        image
+        projectdate
+        citystate
+        location {
+            latitude
+            longitude
         }
-
+        category
+        company
+        wc   
     }
+}
 `;
