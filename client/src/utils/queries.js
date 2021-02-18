@@ -10,12 +10,12 @@ export const GET_CATEGORIES = gql`
     }
 `;
 
-// retrieve admin's user data
-export const GET_ADMIN = gql`
+// retrieve owner's user data
+export const GET_OWNER = gql`
     {
-        admin {
-            adminName
-            adminEmail
+        owner {
+            ownerName
+            ownerEmail
             address
         }
     }
@@ -27,7 +27,7 @@ export const GET_TESTIMONIALS = gql`
         testimonial {
             _id
             tstName
-            company
+            tstCompany
             tstMessage
         }
     }
@@ -39,7 +39,7 @@ export const GET_MESSAGES = gql`
         message {
             _id
             userName
-            company
+            userCompany
             userEmail
             userMessage
             purpose
@@ -58,13 +58,13 @@ export const GET_PROJECTS = gql`
             image
             projectdate
             citystate
-            category
-            company
-            wc
             location {
                 latitude
                 longitude
             }
+            category
+            company
+            wc
         }
     }
 `;
@@ -73,9 +73,12 @@ export const GET_PROJECTS = gql`
 export const GET_CLIENTLIST = gql`
     {
         projects {
-
+            _id
+            category
+            citystate
+            company
+            wc
         }
-
     }
 `;
 
@@ -83,7 +86,7 @@ export const GET_CLIENTLIST = gql`
 export const PROJECTS_BY_CATEGORY = gql`
     {
         projects {
-
+            
         }
 
     }
