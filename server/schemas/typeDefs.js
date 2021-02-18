@@ -1,18 +1,17 @@
 // imports gql tagged template function
 const { gql } = require('apollo-server-express');
-// const Point = require('neo4j-graphql-js');
 
 const typeDefs = gql`
     type Category {
         _id: ID
-        name: String
+        categoryName: String
     }
 
     type Query {
         categories: [Category]
         admin: Admin
         projects: [Project]
-        projectsByCategory(category: ID, name: String): [Project]
+        projectsByCategory(category: ID, projectName: String): [Project]
         projectById(_id: ID!): Project
         testimonials: [Testimonial]
         messages: [UserForm]
@@ -25,7 +24,7 @@ const typeDefs = gql`
         image: String
         projectDate: String
         cityState: String
-        location: String
+        location: [Location]
         category: Category
         company: String
         WC: Boolean
@@ -33,9 +32,9 @@ const typeDefs = gql`
 
     type Admin {
         _id: ID
-        name: String
-        email: String
-        cityState: String
+        adminName: String
+        adminEmail: String
+        address: String
     }
 
     type Auth {
@@ -45,34 +44,34 @@ const typeDefs = gql`
 
     type Testimonial {
         _id: ID
-        name: String
+        tstName: String
         company: String
-        message: String
+        tstMessage: String
     }
 
-    type UserForm { 
-        name: String
+    type Message { 
+        userName: String
         company: String
-        email: String
-        message: String
+        userEmail: String
+        userMessage: String
         purpose: String
     }
    
     input client {
         company: String
         description: String
-        location: String
+        location: [Location]
         WC: Boolean
     }
         
     type Mutation {
-        login(email: String!, password: String!): Auth
-        updateAdmin(name: String, email: String, cityState: String, password: String): Admin
-        addTestimonial(name: String, company: String, message: String): Testimonial
-        updateTestimonial(name: String, company: String, message: String): Testimonial
+        login(adminEmail: String!, password: String!): Auth
+        updateAdmin(adminName: String, adminEmail: String, address: String, password: String): Admin
+        addTestimonial(tstName: String, company: String, tstMessage: String): Testimonial
+        updateTestimonial(tstName: String, company: String, tstMessage: String): Testimonial
         removeTestimonial(_id: ID!): Testimonial
-        addMessage(_id: ID!, name: String!, company: String, email: String!, message: String!, purpose: String): UserForm
-        removeMessage(_id: ID!): UserForm
+        addMessage(_id: ID!, userName: String!, company: String, userEmail: String!, userMessage: String!, purpose: String): Message
+        removeMessage(_id: ID!): Message
     }
 `;
 

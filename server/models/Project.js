@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const Category = require('./Category');
-
+const locationSchema= require('./Location');
 const { Schema } = mongoose;
 
 const projectSchema = new Schema({
@@ -21,9 +21,7 @@ const projectSchema = new Schema({
     cityState: {
         type: String
     },
-    location: {
-        type: String
-    },
+    location: [locationSchema],
     category: {
         type: Schema.Types.ObjectId,
         ref: 'Category',

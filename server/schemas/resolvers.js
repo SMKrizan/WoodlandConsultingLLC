@@ -7,7 +7,7 @@ const {
   Admin,
   Category,
   Project,
-  UserForm,
+  Message,
   Testimonial,
 } = require("../models");
 const { signToken } = require("../utils/auth");
@@ -20,31 +20,32 @@ const resolvers = {
     admin: async () => {
       return await Admin.find();
     },
-    projects: async (parent, { category, name }) => {
+    projects: async (parent, { category, projectName }) => {
       const params = {};
 
       if (category) {
         params.category = category;
       }
 
-      if (name) {
-        params.name = {
-          $regex: name,
+      if (projectName) {
+        params.projectName = {
+          $regex: projectName,
         };
       }
 
       return await Project.find(params).populate("category");
     },
-    projectsByCategory: async (parent, { category, name }) => {
+    // args?
+    projectsByCategory: async (parent, { category, projectName }) => {
       const params = {};
 
       if (category) {
         params.category = category;
       }
 
-      if (name) {
-        params.name = {
-          $regex: name,
+      if (projectName) {
+        params.projectName = {
+          $regex: projectName,
         };
       }
       return await Project.find(params).populate("category");
@@ -56,7 +57,7 @@ const resolvers = {
       return await Testimonial.find();
     },
     messages: async () => {
-      return await UserForm.find();
+      return await Message.find();
     },
   },
   Mutation: {

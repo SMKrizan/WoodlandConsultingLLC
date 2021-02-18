@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const testimonialSchema = new Schema({
-  name: {
+  testimonialName: {
     type: String,
     required: true,
     trim: true
