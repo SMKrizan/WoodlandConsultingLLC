@@ -41,11 +41,11 @@ db.once('open', async () => {
 
     console.log('locations seeded')
 
-    await Admin.deleteMany();
+    await Owner.deleteMany();
 
-    await Admin.create({
-        adminName: 'Jessica A. Walther',
-        adminEmail: 'jessica@gmail.com',
+    await Owner.create({
+        ownerName: 'Jessica A. Walther',
+        ownerEmail: 'jessica@gmail.com',
         password: 'password12345',
         address: 'Slinger, WI'
     });
@@ -220,28 +220,28 @@ db.once('open', async () => {
     const messages = await Message.insertMany([
         {
             userName: 'Bill Wonder',
-            company: '',
+            userCompany: '',
             userEmail: 'bill@gmail.com',
             purpose: 'Ask a question',
             userMessage: 'What is your availability for the next few months?'
         },
         {
             userName: 'Ashley Bunt',
-            company: 'Pottery Barn',
+            userCompany: 'Pottery Barn',
             userEmail: 'ashley@gmail.com',
             purpose: 'Leave a comment',
             userMessage: 'Thank you for your work.'
         },
         {
             userName: 'Kelly Woodman',
-            company: 'Woodman lighting',
+            userCompany: 'Woodman lighting',
             userEmail: 'kelly@gmail.com',
             purpose: 'Request a quote',
             userMessage: 'I am looking for a lighitng plan and quote for a remodel of the home of a client.'
         },
         {
             userName: 'Sully Dogman',
-            company: 'Bright for you',
+            userCompany: 'Bright for you',
             userEmail: 'sully@gmail.com',
             purpose: 'Provide a testimonial',
             userMessage: 'Jessica is very professional, communicative, and open to new ideas for design. She is simply the best to work with!'
@@ -255,17 +255,17 @@ db.once('open', async () => {
     const testimonials = await Testimonial.insertMany([
         {
             tstName: 'Joe Light',
-            company: 'Lighting Design',
+            tstcompany: 'Lighting Design',
             tstMessage: 'Woodland Consulting is the best in the business!'
         },
         {
             tstName: 'Jill Bulb',
-            company: 'Lighting for all',
+            tstcompany: 'Lighting for all',
             tstMessage: 'Jessica at Woodland Consulting is a great business partner and really dedicates her time to each job.'
         },
         {
             tstName: 'Jack Bright',
-            company: 'Lighting Bright',
+            tstcompany: 'Lighting Bright',
             tstMessage: 'I would recommend Woodland Consulting for any lighting project!'
         }
     ]);
