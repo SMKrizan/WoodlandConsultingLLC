@@ -1,12 +1,14 @@
-import React from 'react';
-import { Admin, Resource, ListGuesser } from 'react-admin';
-import restProvider from 'ra-data-simple-rest';
-import PostList from './components/PostList';
-import TestimonialList from './components/TstList';
-// import TstAdd from './components/TstAdd';
-// import TstEdit from './components/TstEdit';
-import Administrator from './components/AdminShow';
-// import AdminUpdate from './components/AdminUpdate';
+import React, { useState } from 'react';
+import './App.css';
+
+import Home from './pages/Home';
+import About from './pages/About';
+import Maps from './pages/Maps';
+import Portfolio from './pages/Portfolio';
+import Contact from './pages/Contact';
+
+import Header from './components/Header';
+import Footer from './components/Footer';
 
 function App() {
   return <Admin dataProvider={restProvider('http://localhost:3000')}>

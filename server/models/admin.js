@@ -5,17 +5,12 @@ const { Schema } = mongoose;
 
 const AdminSchema = new Schema({
     
-    firstName: {
+    adminName: {
         type: String,
         required: true,
         trim: true
     },
-    lastName: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    email: {
+    adminEmail: {
         type: String,
         required: true,
         unique: true
@@ -33,6 +28,9 @@ const AdminSchema = new Schema({
         required: true,
         minLength: 8
     },
+    address: {
+        type: String
+    }
 });
 
 // set up re-save middleware to create password
