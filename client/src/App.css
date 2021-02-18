@@ -10,8 +10,8 @@
 :root {
   --plum:#3e0040;
   --darkplum:#1b0024;
-  --darkgreen: #003a08;
-  --cream: #fafae7;
+  --darkgreen: #026d10;
+  --cream: #f7f7d9;
   --maroon: #541d3b;
 
   } 
@@ -67,12 +67,12 @@ button {
   font-size: calc(14px + 1vmin);
   font-weight: 400; 
   padding: 10px 20px;
-  background: var(--maroon); 
+  background: var(--darkgreen); 
   border: none;
   border-radius: 5px;
   margin: 1rem auto;
   text-transform: uppercase;
-  color: tint(purple);
+  color: #ccc6b7;
   display: block;
 }
 button:hover {
@@ -81,7 +81,7 @@ button:hover {
   background: var(--plum); 
   border: none;
   border-radius: 3px;
-  color: tint(var(--cream), 75%);
+  color: tint(var(--cream), 50%);
   box-shadow:  2px 2px 5px white;
   transition-duration: .6s;
   transition-timing-function: ease-in-out;
@@ -123,7 +123,7 @@ main {
 }
 
 .glow3 {
-  box-shadow: -7px 7px 15px rgba(200, 200, 180, 0.5);
+  box-shadow: -7px 7px 15px rgba(250, 250, 200, .5);
 }
 .background {
   padding: 30px;
@@ -171,7 +171,10 @@ main {
   padding-left: 10px;
 }
 
-.flex-ceround{
+.margin-auto {
+  margin: auto;
+}
+.flex-ceround {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;

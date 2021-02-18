@@ -6,31 +6,8 @@ import linkedin from "../../assets/images/linkedin.png"
 
 function About() {
     return (
-    <section className="pad ">
-        <div className="about-section">
-            <div className="about-img1">
-                <img src={require(`../../assets/images/portfolio/UW_SOHE_5.JPG`).default} alt='Jessica Walther'/>
-            </div>
-            <div className="box-over glow3">
-                <h2>About Woodland Consulting LLC</h2>
-                <p>Woodland Consulting, LLC, established in August 2016, provides electrical
-                lighting design consulting services. Woodland implements comprehensive
-                lighting designs including—but not limited to—aesthetic and functional layout;
-                line and low voltage lighting control systems; fixture and lamp
-                recommendations as well as all respective schedules and specifications. To
-                coordinate designs, Woodland works closely with architects, interior designers,
-                owners, contractors, and engineers. Woodland’s priority is to provide energy
-                efficient designs and documentation in compliance with local, state, and federal
-                building and energy codes.</p>
-                <a href="https://www.linkedin.com/in/catherine-sibley-93677926/" target="_blank" rel="noreferrer">
-                <img alt="linkedin link" src={linkedin} />
-            </a>
-            <a href="https://www.linkedin.com/in/catherine-sibley-93677926/" target="_blank" rel="noreferrer">
-                <img alt="linkedin link" src={linkedin} />
-            </a>
-            </div>
-        </div>
-        <div className="about-section ">
+    <section>
+        <div className="about-section bg-about pad ">
             <div className="box-over2 glow3">
                 <h2>About Jessica Walther</h2>
                 <p>The owner, Jessica A. Walther, is a certified, professional lighting designer with
@@ -46,18 +23,29 @@ function About() {
                 education), Healthcare, Libraries, Religious, Financial, Retail, Assisted Living /
                 Nursing Home, Hospice Care, Historical Renovation, Lighting Retrofit and
                 Airport projects throughout Wisconsin and the United States.</p>
-                <a href="https://www.linkedin.com/in/catherine-sibley-93677926/" target="_blank" rel="noreferrer">
-                <img alt="linkedin link" src={linkedin} />
-            </a>
-            <a href="https://www.linkedin.com/in/catherine-sibley-93677926/" target="_blank" rel="noreferrer">
-                <img alt="linkedin link" src={linkedin} />
-            </a>
             </div>
             <div className="about-img2">
-                <img src={require(`../../assets/images/jess1.jpg`).default} alt='Jessica Walther'/>
+                <img src={require(`../../assets/images/jess1sq.jpg`).default} alt='Jessica Walther'/>
             </div>
         </div>
 
+        <div className="pad margin-b80 about-section">
+            <div className="about-img1">
+                <img src={require(`../../assets/images/portfolio/UW_SOHE_5.JPG`).default} alt='Jessica Walther'/>
+            </div>
+            <div className="box-over glow3">
+                <h2>About Woodland Consulting LLC</h2>
+                <p>Woodland Consulting, LLC, established in August 2016, provides electrical
+                lighting design consulting services. Woodland implements comprehensive
+                lighting designs including—but not limited to—aesthetic and functional layout;
+                line and low voltage lighting control systems; fixture and lamp
+                recommendations as well as all respective schedules and specifications. To
+                coordinate designs, Woodland works closely with architects, interior designers,
+                owners, contractors, and engineers. Woodland’s priority is to provide energy
+                efficient designs and documentation in compliance with local, state, and federal
+                building and energy codes.</p>
+            </div>
+        </div>
     </section>
     )};
     
