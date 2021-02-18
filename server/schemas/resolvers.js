@@ -20,7 +20,26 @@ const resolvers = {
     admin: async () => {
       return await Admin.find();
     },
-    projects: async (parent, { category, projectName }) => {
+    projects: async () => {
+      return await Project.find();
+    },
+    // projects: async (parent, { category, projectName }) => {
+    //   const params = {};
+
+    //   if (category) {
+    //     params.category = category;
+    //   }
+
+    //   if (projectName) {
+    //     params.projectName = {
+    //       $regex: projectName,
+    //     };
+    //   }
+
+    //   return await Project.find(params).populate("category");
+    // },
+    // args?
+    projectsByCategory: async (parent, { category, projectName }) => {
       const params = {};
 
       if (category) {
@@ -35,24 +54,8 @@ const resolvers = {
 
       return await Project.find(params).populate("category");
     },
-    // args?
-    projectsByCategory: async (parent, params) => {
-      // const params = {};
-
-      // if (category) {
-      //   params.category = category;
-      // }
-
-      // if (projectName) {
-      //   params.projectName = {
-      //     $regex: projectName,
-      //   };
-      // }
-
-      return await Project.find(params).populate("category");
-    },
     projectById: async (parent, { _id }) => {
-      return await (await Project.findById(_id)).populate("category");
+      return await Project.findById(_id).populate("category");
     },
     testimonials: async () => {
       return await Testimonial.find();
@@ -134,13 +137,6 @@ const resolvers = {
         return updatedMessageList
       }
     },
-    // clientList: async ( parent, { }) => {
-    //   const client = await Project.findByIdAndUpdate(
-    //     { $push:},
-    //     { new: true }
-    // );
-    // return client;
-    // }
   },
 };
 
