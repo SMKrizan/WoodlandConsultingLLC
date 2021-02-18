@@ -2,6 +2,7 @@
     background-image: url('../../assets/images/portfolio/UW_SOHE_11.JPG');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     min-height: 400px;
     font-size: calc(14px + 1vmin);
     padding:40px;
@@ -14,6 +15,7 @@
     transition-timing-function: ease-in-out;
     z-index: 1;
   }
+ 
 
   .feature-box{
       background-color: rgba(0, 0, 0, .6);
@@ -24,3 +26,29 @@
       
   }
 
+  .about-home {
+    position: relative;
+    margin:auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding:40;
+    justify-content: space-around;
+    margin-bottom: 80px;
+    margin-top: -40px;
+}
+.about-home-box {
+    flex:1;
+    left: -3%;
+    top:80px;
+    max-width:60%;
+    padding: 40px;
+    background-color: var(--darkplum);
+    position: relative;
+}
+.about-home img{
+    flex:1;
+    height: 380px;
+    width: 300px;
+    position: relative;
+    box-shadow: -5px 5px 3px #fdf6d4;
+}

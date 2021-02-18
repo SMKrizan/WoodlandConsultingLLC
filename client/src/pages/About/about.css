@@ -5,8 +5,14 @@
     flex-wrap: wrap;
     padding:40;
     justify-content: space-around;
+    margin-bottom: 80px;
 }
-
+.bg-about{
+    background-image: url('../../assets/images/portfolio/UW_SOHE_2.JPG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
 
 .about-img1 img{
     flex:1;
@@ -20,7 +26,7 @@
     top:60px;
     width:800px;
     padding: 40px;
-    background: var(--darkgreen);
+    background-color: var(--darkplum);
     position: relative;
 }
 .about-img2 img{
@@ -36,7 +42,7 @@
     width:800px;
     top: 80px;
     padding: 20px 80px 40px 40px;
-    background: var(--darkplum);
+    background-color: rgba( 0, 95, 13, 7);
     position: relative;
     margin-bottom:120px;
 }

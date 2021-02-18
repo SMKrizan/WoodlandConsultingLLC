@@ -11,7 +11,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 function App() {
-  const [currentPage, handlePageChange] = useState('About');
+  const [currentPage, handlePageChange] = useState('Home');
 
   const renderPage = () => {
     // Add a switch statement that will return the appropriate component of the 'currentPage'

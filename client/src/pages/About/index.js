@@ -11,7 +11,7 @@ function About() {
             <div className="about-img1">
                 <img src={require(`../../assets/images/portfolio/UW_SOHE_5.JPG`).default} alt='Jessica Walther'/>
             </div>
-            <div className="box-over">
+            <div className="box-over glow3">
                 <h2>About Woodland Consulting LLC</h2>
                 <p>Woodland Consulting, LLC, established in August 2016, provides electrical
                 lighting design consulting services. Woodland implements comprehensive
@@ -30,8 +30,8 @@ function About() {
             </a>
             </div>
         </div>
-        <div className="about-section">
-            <div className="box-over2">
+        <div className="about-section ">
+            <div className="box-over2 glow3">
                 <h2>About Jessica Walther</h2>
                 <p>The owner, Jessica A. Walther, is a certified, professional lighting designer with
                 22 years’ experience. Mrs. Walther offers strong project coordination skills and
