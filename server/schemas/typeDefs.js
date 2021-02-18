@@ -14,7 +14,7 @@ const typeDefs = gql`
         projectsByCategory(category: ID, projectName: String): [Project]
         projectById(_id: ID!): Project
         testimonials: [Testimonial]
-        messages: [UserForm]
+        messages: [Message]
     }    
 
     type Project {
