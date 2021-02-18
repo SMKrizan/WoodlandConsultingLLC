@@ -27,8 +27,13 @@ const messageSchema = new Schema({
         default: 'Ask a question'
     }
 });
-// should auto-generate a timestamp to each model entry
+// auto-generates a timestamp for each model entry "document"
 messageSchema.plugin(timestamps);
+
+// provides a message-count to "range" required by react-admin display
+messageSchema.virtual('messageCount').get(function() {
+    return this.messages.length;
+});
 
 const Message = mongoose.model('Message', messageSchema);
 
