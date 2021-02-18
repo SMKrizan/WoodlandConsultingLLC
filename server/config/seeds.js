@@ -18,9 +18,25 @@ db.once('open', async () => {
 
     const locations = await Location.insertMany([
         {
+            latitude: '41.472351',
+            longitude: '-90.583572'
+        },
+        {
+            latitude: '32.222607',
+            longitude: '-110.974709'
+        },
+        {
+            latitude: '42.911700',
+            longitude: '-88.121520'
+        },
+        {
+            latitude: '42.3472406',
+            longitude: '-89.0389956'
+        },
+        {
             latitude: '',
             longitude: ''
-        }
+        },
     ]);
 
     console.log('locations seeded')
@@ -40,15 +56,81 @@ db.once('open', async () => {
 
     await Project.create([
         {
-            projectName: '',
-            description: '',
+            projectName: 'G&E Credit Union',
+            description: 'New facility',
             image: '',
             projectDate: '',
-            cityState: '',
-            location: 'locations[]._id',
-            category: 'categories[]._id',
-            company: '',
-            WC: ''
+            cityState: 'Rock Island, IL',
+            location: 'locations[0]._id',
+            category: 'categories[2]._id',
+            company: 'G&E',
+            WC: 'True'
+        },
+        {
+            projectName: 'Hughes Federal Credit Union',
+            description: 'New facility',
+            image: '',
+            projectDate: '',
+            cityState: 'Tucson, AZ',
+            location: 'locations[1]._id',
+            category: 'categories[2]._id',
+            company: 'Hughes',
+            WC: 'True'
+        },
+        {
+            projectName: 'Landmark Credit Union',
+            description: 'New facility',
+            image: '',
+            projectDate: '',
+            cityState: 'Muskego, WI',
+            location: 'locations[2]._id',
+            category: 'categories[2]._id',
+            company: 'Landmark',
+            WC: 'True'
+        },
+        {
+            projectName: 'Heritage Credit Union',
+            description: 'New facility',
+            image: '',
+            projectDate: '',
+            cityState: 'Machesney Park, IL',
+            location: 'locations[3]._id',
+            category: 'categories[2]._id',
+            company: 'Heritage',
+            WC: 'True'
+        },
+        {
+            projectName: 'Park City Credit Union',
+            description: 'New multi-story facility',
+            image: '',
+            projectDate: '',
+            cityState: 'Merrill, WI',
+            location: 'locations[4]._id',
+            category: 'categories[2]._id',
+            company: 'Park City',
+            WC: 'True'
+        },
+        {
+            projectName: 'Black Hills Federal Credit Union',
+            description: 'New multi-story facility',
+            image: '',
+            projectDate: '',
+            cityState: 'Rapid City, SD',
+            location: 'locations[5]._id',
+            category: 'categories[2]._id',
+            company: 'Black Hills',
+            WC: 'True'
+        },
+        {
+            projectName: 'Carter Federal Credit Union',
+            description: 'New facility',
+            image: '',
+            projectDate: '',
+            cityState: 'Bossier City, LA',
+            location: 'locations[6]._id',
+            category: 'categories[2]._id',
+            company: 'Carter',
+            WC: 'True'
         }
     ]);
 
