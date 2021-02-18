@@ -19,7 +19,8 @@ const projectSchema = new Schema({
         type: String
     },
     cityState: {
-        type: String
+        type: String,
+        trim: true
     },
     location: [locationSchema],
     category: {

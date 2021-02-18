@@ -5,12 +5,12 @@ const { Schema } = mongoose;
 
 const adminSchema = new Schema({
     
-    name: {
+    adminName: {
         type: String,
         required: true,
         trim: true
     },
-    email: {
+    adminEmail: {
         type: String,
         required: true,
         unique: true
@@ -20,7 +20,7 @@ const adminSchema = new Schema({
         required: true,
         minLength: 8
     },
-    cityState: {
+    address: {
         type: String
     }
 });

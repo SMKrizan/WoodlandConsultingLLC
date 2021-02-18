@@ -13,11 +13,11 @@ const messageSchema = new Schema({
         type: String,
         trim: true
     },
-    email: {
+    userEmail: {
         type: String,
         required: true,
     },
-    messageText: {
+    userMessage: {
         type: String,
         required: true
     },
