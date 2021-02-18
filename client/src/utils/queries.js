@@ -1,21 +1,22 @@
 import gql from 'graphql-tag';
 
 // get one category
-export const GET_CATEGORY = gql`
+export const GET_CATEGORIES = gql`
     {
         categories {
-            name
+            _id
+            categoryName
         }
     }
 `;
 
-// retrieve admin user data
+// retrieve admin's user data
 export const GET_ADMIN = gql`
     {
         admin {
-            name
-            email
-            city/state
+            adminName
+            adminEmail
+            address
         }
     }
 `;
@@ -24,9 +25,10 @@ export const GET_ADMIN = gql`
 export const GET_TESTIMONIALS = gql`
     {
         testimonial {
-            name
+            _id
+            tstName
             company
-            message
+            tstMessage
         }
     }
 `;
@@ -36,10 +38,10 @@ export const GET_MESSAGES = gql`
     {
         message {
             _id
-            name
+            userName
             company
-            email
-            message
+            userEmail
+            userMessage
             purpose
             }
         }
@@ -50,18 +52,49 @@ export const GET_MESSAGES = gql`
 export const GET_PROJECTS = gql`
     {
         projects {
-            category
-            project-name
+            _id
+            projectName
             description
-            city/state
-            project-date
+            image
+            projectdate
+            citystate
+            category
             company
             wc
-            image
             location {
-                longitude
                 latitude
+                longitude
             }
         }
+    }
+`;
+
+// retrieves all clients being presented on client listing (wc, citystate, company, category)
+export const GET_CLIENTLIST = gql`
+    {
+        projects {
+
+        }
+
+    }
+`;
+
+// retrieve projects filtered by category ()
+export const PROJECTS_BY_CATEGORY = gql`
+    {
+        projects {
+
+        }
+
+    }
+`;
+
+// retrieves project by its id
+export const PROJECT_BY_ID = gql`
+    {
+        projects {
+
+        }
+
     }
 `;
