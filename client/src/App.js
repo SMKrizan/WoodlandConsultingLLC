@@ -45,6 +45,6 @@ function App() {
     </body>
 );
   </Admin>;
-
+}
 
   export default App;

@@ -19,7 +19,7 @@ db.once('open', async () => {
     await Admin.create({
         firstName: 'Jessica A.',
         lastName: 'Walther',
-        email: 'jessica@gmail.com',
+        email: 'woodlandconsultingllc@gmail.com',
         password: 'password12345'
     });
 
