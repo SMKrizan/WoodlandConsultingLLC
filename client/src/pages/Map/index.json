@@ -1,0 +1,34 @@
+[
+    {
+        "category": [
+            602194405e33936387
+        ],
+        "_id": 602194405e3393638,
+        "project_name": "G&E Credit Union",
+        "description": "New Facility Development",
+        "date": 2016,
+        "city": "Rock Island",
+        "state": "IL",
+        "location": {
+            "latitude": 41.5095,
+            "longitude": 90.5787
+        },
+        "__v": 0
+    },
+    {
+        "category": [
+            602194405e33936387
+        ],
+        "_id": 602194405e3393638,
+        "project_name": "Hughes Federal Credit Union",
+        "description": "New Facility Development",
+        "date": 2016,
+        "city": "Tuscan",
+        "state": "AZ",
+        "location": {
+            "latitude": 34.234512,
+            "longitude": -112.015342
+        },
+        "__v": 0
+    }
+]

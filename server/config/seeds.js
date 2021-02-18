@@ -93,7 +93,7 @@ db.once('open', async () => {
         // }
     ]);
 
-    console.log('PROJECTS SEEDED');
+    console.log('PROJECTS SEEDED', projects);
 
     await Admin.deleteMany();
     await Admin.create({
