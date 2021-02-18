@@ -31,7 +31,8 @@ const projectSchema = new Schema({
         type: String
     },
     WC: {
-        type: Boolean
+        type: Boolean,
+        default: true
     }
 });
 
