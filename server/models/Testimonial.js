@@ -13,7 +13,7 @@ const testimonialSchema = new Schema({
     type: String,
     trim: true
   },
-  message: {
+  tstMessage: {
     type: String,
     required: true,
     trim: true
