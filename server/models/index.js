@@ -1,10 +1,9 @@
 const Category = require('./Category');
-const Portfolio = require('./Portfolio');
-const Admin = require('./Admin');
-const AdminForm = require('./AdminForm');
-const UserForm = require('./UserForm');
-const Map = require('./Map');
+const Owner = require('./Owner');
+const Testimonial = require('./Testimonial');
+const Message = require('./Message');
+const Project = require('./Project')
 
 
 
-module.exports = { Category, Portfolio, Admin, AdminForm, UserForm, Map };
+module.exports = { Category, Project, Owner, Testimonial, Message };

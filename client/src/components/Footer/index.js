@@ -8,7 +8,8 @@ function Footer() {
             <a href="https://www.linkedin.com/in/catherine-sibley-93677926/" target="_blank" rel="noreferrer">
                 <img alt="linkedin link" src={linkedin} />
             </a>
-            <a>Woodland Consulting LLC</a>
+
+            <a> Woodland Consulting LLC</a>
         </footer>
     )
 }
