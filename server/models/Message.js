@@ -1,8 +1,9 @@
 //  Model for data collected from user via contact form
-// const mongoose = require('mongoose');
-// const { Schema } = mongoose;
 // var timestamps = require('mongoose-timestamp');
 
+const mongoose = require("mongoose");
+
+const { Schema } = mongoose;
 const messageSchema = new Schema({
     userName: {
         type: String,

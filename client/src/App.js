@@ -4,7 +4,7 @@ import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
 // 
-import Maps from './pages/Maps';
+import Map from './pages/Map';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 
@@ -23,7 +23,7 @@ function App() {
       case 'About':
         return <About />;
       case 'Map':
-        return <Maps />;
+        return <Map />;
       case 'Portfolio':
         return <Portfolio />;
       default:

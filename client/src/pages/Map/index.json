@@ -1,34 +1,45 @@
-[
-    {
-        "category": [
-            602194405e33936387
-        ],
-        "_id": 602194405e3393638,
-        "project_name": "G&E Credit Union",
-        "description": "New Facility Development",
-        "date": 2016,
-        "city": "Rock Island",
-        "state": "IL",
-        "location": {
-            "latitude": 41.5095,
-            "longitude": 90.5787
-        },
-        "__v": 0
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+        }
     },
-    {
-        "category": [
-            602194405e33936387
-        ],
-        "_id": 602194405e3393638,
-        "project_name": "Hughes Federal Credit Union",
-        "description": "New Facility Development",
-        "date": 2016,
-        "city": "Tuscan",
-        "state": "AZ",
-        "location": {
-            "latitude": 34.234512,
-            "longitude": -112.015342
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "PARK_ID": 960,
+                "FACILITYID": 28014,
+                "NAME": "Bearbrook Skateboard Park",
+                "ADDRESS": "8720 Russell Road",
+                "DESCRIPTIO": "Flat asphalt surface, 5 components"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.3372987731628,
+                    45.38332153627205
+                ]
+            }
         },
-        "__v": 0
-    }
-]
+        {
+            "type": "Feature",
+            "properties": {
+                "PARK_ID": 1219,
+                "FACILITYID": 28001,
+                "NAME": "Bob MacQuarrie Skateboard Park (SK8 Extreme Park)",
+                "ADDRESS": "1490 Youville Drive",
+                "DESCRIPTIO": "Flat asphalt summer"
+            },
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    -75.54651808657795,
+                    45.46713458191736
+                ]
+            }
+        }
+    ]
+}
