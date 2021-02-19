@@ -14,203 +14,196 @@ db.once('open', async () => {
 
     console.log('CATEGORIES SEEDED');
 
-    // await Location.deleteMany();
-
-    // await Project.updateOne(
-        
-    //     { $push: { locations } },
-    //     { runValidators: true }
-
-    // );
+    // for (let i = 0; i < 44; i += 1) {
 
     const locations = [
         {
-            latitude: '41.472351',
-            longitude: '-90.583572'
+            latitude: 41.472351,
+            longitude: -90.583572
         },
         {
-            latitude: '32.222607',
-            longitude: '-110.974709'
+            latitude: 32.222607,
+            longitude: -110.974709
         },
         {
-            latitude: '42.911700',
-            longitude: '-88.121520'
+            latitude: 42.911700,
+            longitude: -88.121520
         },
         {
-            latitude: '42.3472406',
-            longitude: '-89.0389956'
+            latitude: 42.3472406,
+            longitude: -89.0389956
         },
         {
-            latitude: '45.1812858581543',
-            longitude: '-89.68519592285156'
+            latitude: 45.1812858581543,
+            longitude: -89.68519592285156
         },
         {
-            latitude: '44.0869329',
-            longitude: '-103.2274481'
+            latitude: 44.0869329,
+            longitude: -103.2274481
         },
         {
-            latitude: '32.5369356',
-            longitude: '-93.6952689'
+            latitude: 32.5369356,
+            longitude: -93.6952689
         },
         {
-            latitude: '41.139981',
-            longitude: '-104.820246'
+            latitude: 41.139981,
+            longitude: -104.820246
         },
         {
-            latitude: '43.1775302',
-            longitude: '-83.7831059'
+            latitude: 43.1775302,
+            longitude: -83.7831059
         },
         {
-            latitude: '42.9572508',
-            longitude: '-83.8305144'
+            latitude: 42.9572508,
+            longitude: -83.8305144
         },
         {
-            latitude: '41.5910323',
-            longitude: '-93.6046655'
+            latitude: 41.5910323,
+            longitude: -93.6046655
         },
         {
-            latitude: '32.5221828',
-            longitude: '-93.7651944'
+            latitude: 32.5221828,
+            longitude: -93.7651944
         },
         {
-            latitude: '41.7571701',
-            longitude: '-88.3147539'
+            latitude: 41.7571701,
+            longitude: -88.3147539
         },
         {
-            latitude: '41.0944767',
-            longitude: '-88.4250597'
+            latitude: 41.0944767,
+            longitude: -88.4250597
         },
         {
-            latitude: '43.978576',
-            longitude: '-90.5040214'
+            latitude: 43.978576,
+            longitude: -90.5040214
         },
         {
-            latitude: '33.0206179',
-            longitude: '-80.1747537'
+            latitude: 33.0206179,
+            longitude: -80.1747537
         },
         {
-            latitude: '41.5910323',
-            longitude: '-93.6046655'
+            latitude: 41.5910323,
+            longitude: -93.6046655
         },
         {
-            latitude: '42.9614039',
-            longitude: '-88.0125865'
+            latitude: 42.9614039,
+            longitude: -88.0125865
         },
         {
-            latitude: '43.7508284',
-            longitude: '-87.71453'
+            latitude: 43.7508284,
+            longitude: -87.71453
         },
         {
-            latitude: '34.1476452',
-            longitude: '-118.1444779'
+            latitude: 34.1476452,
+            longitude: -118.1444779
         },
         // 20
         {
-            latitude: '38.029306',
-            longitude: '-78.4766781'
+            latitude: 38.029306,
+            longitude: -78.4766781
         },
         {
-            latitude: '45.3324647',
-            longitude: '-93.7460804'
+            latitude: 45.3324647,
+            longitude: -93.7460804
         },
         {
-            latitude: '35.4729886',
-            longitude: '-97.5170536'
+            latitude: 35.4729886,
+            longitude: -97.5170536
         },
         {
-            latitude: '45.159967',
-            longitude: '-92.9932734'
+            latitude: 45.159967,
+            longitude: -92.9932734
         },
         {
-            latitude: '39.9403453',
-            longitude: '-82.0131924'
+            latitude: 39.9403453,
+            longitude: -82.0131924
         },
         {
-            latitude: '43.1352881',
-            longitude: '-87.9356423'
+            latitude: 43.1352881,
+            longitude: -87.9356423
         },
         {
-            latitude: '35.4729886',
-            longitude: '-97.5170536'
+            latitude: 35.4729886,
+            longitude: -97.5170536
         },
         {
-            latitude: '35.2225717',
-            longitude: '-97.4394816'
+            latitude: 35.2225717,
+            longitude: -97.4394816
         },
         {
-            latitude: '47.6038321',
-            longitude: '-122.3300624'
+            latitude: 47.6038321,
+            longitude: -122.3300624
         },
         {
-            latitude: '43.074761',
-            longitude: '-89.3837613'
+            latitude: 43.074761,
+            longitude: -89.3837613
         },
         // 30
         {
-            latitude: '43.2219088',
-            longitude: '-87.9822969'
+            latitude: 43.2219088,
+            longitude: -87.9822969
         },
         {
-            latitude: '43.9349223',
-            longitude: '-93.6974928'
+            latitude: 43.9349223,
+            longitude: -93.6974928
         },
         {
-            latitude: '42.5685582',
-            longitude: '-83.3733531'
+            latitude: 42.5685582,
+            longitude: -83.3733531
         },
         {
-            latitude: '27.7477253',
-            longitude: '-97.4014129'
+            latitude: 27.7477253,
+            longitude: -97.4014129
         },
         {
-            latitude: '41.8789942',
-            longitude: '-87.8436412'
+            latitude: 41.8789942,
+            longitude: -87.8436412
         },
         {
-            latitude: '42.9190347',
-            longitude: '-87.9496972'
+            latitude: 42.9190347,
+            longitude: -87.9496972
         },
         {
-            latitude: '35.767368',
-            longitude: '-80.79693'
+            latitude: 35.767368,
+            longitude: -80.79693
         },
         {
-            latitude: '43.076113',
-            longitude: '-88.7742707'
+            latitude: 43.076113,
+            longitude: -88.7742707
         },
         {
-            latitude: '43.0349931',
-            longitude: '-87.922497'
+            latitude: 43.0349931,
+            longitude: -87.922497
         },
         {
-            latitude: '42.6330703',
-            longitude: '-88.6437138'
+            latitude: 42.6330703,
+            longitude: -88.6437138
         },
         {
-            latitude: '42.7260523',
-            longitude: '-87.7825242'
+            latitude: 42.7260523,
+            longitude: -87.7825242
         },
         {
-            latitude: '43.0798281',
-            longitude: '-89.4306643'
+            latitude: 43.0798281,
+            longitude: -89.4306643
         },
         {
-            latitude: '43.0349931',
-            longitude: '-87.922497'
+            latitude: 43.0349931,
+            longitude: -87.922497
         },
         {
-            latitude: '32.9337381',
-            longitude: '-97.0788754'
+            latitude: 32.9337381,
+            longitude: -97.0788754
         },
     ];
 
-    await Project.updateOne(
-        
-        { $push: { locations } },
-        { runValidators: true }
+    // await Project.updateOne(
+    //     {_id: Project._id},
+    //     { $push:  locations  },
+    //     { runValidators: true }
 
-    );
-
+    // );
+    // }
 
     console.log('locations seeded')
 
@@ -227,7 +220,7 @@ db.once('open', async () => {
 
     await Project.deleteMany();
 
-    await Project.create([
+    await Project.insertMany([
         {
             projectName: 'G&E Credit Union',
             description: 'New facility',
