@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/SMKrizan/WoodlandConsultingLLC#readme",
   "dependencies": {
+    "graphql": "^15.5.0",
     "if-env": "^1.0.4",
     "nodemon": "^2.0.7"
   },

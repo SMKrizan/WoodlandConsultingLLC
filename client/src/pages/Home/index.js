@@ -1,12 +1,34 @@
 import React from 'react';
+import { useQuery} from '@apollo/react-hooks';
+import {GET_TESTIMONIALS} from '../../utils/queries'
 import './home.css'
 
 function Home() {
+    
+
+
+    const { loading, data} = useQuery(GET_TESTIMONIALS);
+    const testimonialData = data
+  
+    if (loading) {
+      return <div>Loading...</div>;
+    }
+    if (!testimonialData) {
+        console.log("no testimonials pulled....")
+        return <h2>LOADING...</h2>;
+      }
+
+      let randomQuote = function(){
+        console.log("running randomQuote")
+        console.log(testimonialData)
+        return  testimonialData[Math.floor(Math.random()*4)]
+      }
+      let chosenQuote = randomQuote()
     return (
     <section>
             <div className="feature-home-image">
                 <div className="glow feature-box">
-                    <h4><i>"Jess's work was impecable and striking. I would reconend working with her to anyone."</i></h4>
+                    <h4><i>{chosenQuote.tstMessage}</i></h4>
                     <p>Ipsum Facto - UW Chairman</p>
                     <div className="flex-left">
                         <div className="padlr">
