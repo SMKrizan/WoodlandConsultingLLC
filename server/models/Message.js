@@ -1,5 +1,5 @@
 //  Model for data collected from user via contact form
-// var timestamps = require('mongoose-timestamp');
+var timestamps = require('mongoose-timestamp');
 
 const mongoose = require("mongoose");
 

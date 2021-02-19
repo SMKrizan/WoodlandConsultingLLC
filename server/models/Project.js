@@ -30,9 +30,6 @@ const projectSchema = new Schema({
     state: {
         type: String
     },
-    location: {
-        type: Object
-    },
     category: [
         {
             type: Schema.Types.ObjectId,
