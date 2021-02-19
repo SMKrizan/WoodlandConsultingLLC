@@ -18,44 +18,32 @@ const resolvers = {
       return await Category.find();
     },
     owner: async () => {
-      return await Owner.find();
+
+      const owner = await Owner.findOne();
+      console.log('Owner: ', owner)
+      return owner
     },
     projects: async () => {
       return await Project.find();
     },
-    // projects: async (parent, { category, projectName }) => {
-    //   const params = {};
-
-    //   if (category) {
-    //     params.category = category;
-    //   }
-
-    //   if (projectName) {
-    //     params.projectName = {
-    //       $regex: projectName,
-    //     };
-    //   }
-
-    //   return await Project.find(params).populate("category");
-    // },
-    // args?
-    projectsByCategory: async (parent, { category, projectName }) => {
+    projectsByCategory: async (parent, { category }) => {
       const params = {};
-
       if (category) {
-        params.category = category;
+        params.categoryName = category;
       }
 
-      if (projectName) {
-        params.projectName = {
-          $regex: projectName,
-        };
-      }
-
-      return await Project.find(params).populate("category");
+      // if (projectName) {
+      //   params.projectName = {
+      //     $regex: projectName,
+      //   };
+      // }
+      
+      const project = Project.find({ category });
+      console.log('category: ', category)
+      return project
     },
     projectById: async (parent, { _id }) => {
-      return await Project.findById(_id).populate("category");
+      return Project.findOne({ _id });
     },
     testimonials: async () => {
       return await Testimonial.find();
@@ -80,7 +68,7 @@ const resolvers = {
         throw new AuthenticationError("Incorrect credentials!");
       }
 
-      const token = signToken(user);
+      const token = signToken(owner);
 
       return { token, owner };
     },
@@ -116,25 +104,25 @@ const resolvers = {
     },
     removeTestimonial: async (parent, { _id }, context ) => {
       if (context.owner) {
-      const deleteTest = await Testimonial.findByIdAndUpdate(
+      const updatedTestimonials = await Testimonial.findByIdAndUpdate(
         _id,
         { $pull: _id },
         { new: true }
       );
-      // is there something other than the deleted testimonial that should be returned here?
-      return deleteTest;
+      return updatedTestimonials;
       }
       throw new AuthenticationError("You must be logged in to perform this action.")
     },
     addMessage: async ( parent, args ) => {
-        const message = await UserForm.create({
+        const message = await Message.create({
           ...args
         });
         return { message };
     },
     removeMessage: async ( parent, { _id }, context ) => {
       if (context.owner) {
-        const updatedMessageList = await UserForm.findByIdAndUpdate(
+        const updatedMessageList = await Message.findByIdAndUpdate(
+          _id,
           { $pull: _id },
           { new: true }
         )
