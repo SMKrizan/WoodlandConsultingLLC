@@ -25,11 +25,15 @@ const messageSchema = new Schema({
         type: String,
         enum: ['Ask a question', 'Leave a comment', 'Request a quote', 'Provide a testimonial'],
         default: 'Ask a question'
-    }
+    },
 });
 // should auto-generate a timestamp to each model entry
 messageSchema.plugin(timestamps);
 
+messageSchema.virtual('messageCount').get(function() {
+    return this.messages.length;
+});
+  
 const Message = mongoose.model('Message', messageSchema);
 
 module.exports = Message;

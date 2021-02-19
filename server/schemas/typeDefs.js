@@ -44,6 +44,7 @@ const typeDefs = gql`
     userEmail: String
     userMessage: String
     purpose: String
+    messageCount: Int
   }
 
   type Project {

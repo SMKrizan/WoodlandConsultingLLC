@@ -93,11 +93,14 @@ const resolvers = {
 
       throw new AuthenticationError("Not logged in");
     },
-    addTestimonial: async (parent, args) => {
-      const testimonial = await Testimonial.create({
-        ...args,
-      });
-      return { testimonial };
+    addTestimonial: async (parent, args, context) => {
+      if (context.owner) {
+        const testimonial = await Testimonial.create({
+          ...args,
+        });
+        return { testimonial };
+      }
+      throw new AuthenticationError("You must be logged in to perform this action.");
     },
     updateTestimonial: async (parent, args, context) => {
       if (context.owner) {
@@ -109,7 +112,7 @@ const resolvers = {
           }
         );
       }
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("You must be logged in to perform this action.");
     },
     removeTestimonial: async (parent, { _id }, context ) => {
       if (context.owner) {
@@ -118,9 +121,10 @@ const resolvers = {
         { $pull: _id },
         { new: true }
       );
+      // is there something other than the deleted testimonial that should be returned here?
       return deleteTest;
       }
-      throw new AuthenticationError("You need be logged in to delete a testimonial. ")
+      throw new AuthenticationError("You must be logged in to perform this action.")
     },
     addMessage: async ( parent, args ) => {
         const message = await UserForm.create({
@@ -136,6 +140,7 @@ const resolvers = {
         )
         return updatedMessageList
       }
+      throw new AuthenticationError("You must be logged in to perform this action.");
     },
   },
 };
