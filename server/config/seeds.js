@@ -16,10 +16,10 @@ db.once('open', async () => {
 
     // for (let i = 0; i < 44; i += 1) {
 
-    const locations = [
+    const locations = ([
         {
-            latitude: 41.472351,
-            longitude: -90.583572
+            latitude: '41.472351',
+            longitude: '-90.583572'
         },
         {
             latitude: 32.222607,
@@ -195,15 +195,14 @@ db.once('open', async () => {
             latitude: 32.9337381,
             longitude: -97.0788754
         },
-    ];
+    ]);
 
-    // await Project.updateOne(
-    //     {_id: Project._id},
-    //     { $push:  locations  },
-    //     { runValidators: true }
+    await Project.updateOne(
 
-    // );
-    // }
+        { $push:  locations  },
+        { runValidators: true }
+    );
+    
 
     console.log('locations seeded')
 
@@ -228,8 +227,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Rock Island, IL',
-            location: locations[0]._id,
-            category: categories[2]._id,
+            location: locations[0],
+            category: categories[2],
             company: 'G&E',
             WC: 'true'
         },

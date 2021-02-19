@@ -20,7 +20,6 @@ const resolvers = {
     owner: async () => {
       return await Owner.find();
     },
-    
     projects: async (parent, { category, projectName }) => {
       const params = {};
 
