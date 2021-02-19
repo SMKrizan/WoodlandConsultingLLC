@@ -53,8 +53,8 @@ mutation updateTestimonial($tstName: String!, $tstCompany: String!, $tstMessage:
 `;
 
 export const REMOVE_TESTIMONIAL = gql`
-mutation removeTestimonial($_id: ID) {
-    removeTestimonial(_id: $_id) {
+mutation removeTestimonial($id: ID) {
+    removeTestimonial(_id: $id) {
         _id
         tstName
         tstCompany
@@ -76,12 +76,13 @@ mutation addMessage(
             userEmail: $userEmail, 
             userMessage: $userMessage, 
             purpose: $purpose) {
-                _id: ID
-                userName: String
-                userCompany: String
-                userEmail: String
-                userMessage: String
-                purpose: String
+                _id
+                userName
+                userCompany
+                userEmail
+                userMessage
+                purpose
+                messageCount
         }
     }
 `;
@@ -99,14 +100,13 @@ mutation removeMessage(
             userEmail: $userEmail, 
             userMessage: $userMessage, 
             purpose: $purpose) {
-                _id: ID
-                userName: String
-                userCompany: String
-                userEmail: String
-                userMessage: String
-                purpose: String
+                _id
+                userName
+                userCompany
+                userEmail
+                userMessage
+                purpose
+                messageCount
         }
     }
 `;
-
-
