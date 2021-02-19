@@ -4,7 +4,7 @@ const {
   UserInputError,
 } = require("apollo-server-express");
 const {
-  Admin,
+  Owner,
   Category,
   Project,
   Message,
@@ -17,42 +17,33 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    admin: async () => {
-      return await Admin.find();
+    owner: async () => {
+
+      const owner = await Owner.findOne();
+      console.log('Owner: ', owner)
+      return owner
     },
-    projects: async (parent, { category, projectName }) => {
+    projects: async () => {
+      return await Project.find().populate('category');
+    },
+    projectsByCategory: async (parent, { category }) => {
       const params = {};
-
       if (category) {
-        params.category = category;
+        params.categoryName = category;
       }
-
-      if (projectName) {
-        params.projectName = {
-          $regex: projectName,
-        };
-      }
-
-      return await Project.find(params).populate("category");
-    },
-    // args?
-    projectsByCategory: async (parent, params) => {
-      // const params = {};
-
-      // if (category) {
-      //   params.category = category;
-      // }
 
       // if (projectName) {
       //   params.projectName = {
       //     $regex: projectName,
       //   };
       // }
-
-      return await Project.find(params).populate("category");
+      
+      const project = Project.find({ category });
+      console.log('category: ', category)
+      return project
     },
     projectById: async (parent, { _id }) => {
-      return await (await Project.findById(_id)).populate("category");
+      return Project.findOne({ _id });
     },
     testimonials: async () => {
       return await Testimonial.find();
@@ -66,38 +57,43 @@ const resolvers = {
   },
   Mutation: {
     login: async (parent, { email, password }) => {
-      const admin = await Admin.findOne({ email });
+      const owner = await Owner.findOne({ email });
 
-      if (!admin) {
+      if (!owner) {
         throw new AuthenticationError("Incorrect credentials!");
       }
 
-      const correctPw = await admin.isCorrectPassword(password);
+      const correctPw = await owner.isCorrectPassword(password);
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials!");
       }
 
-      const token = signToken(user);
+      const token = signToken(owner);
 
-      return { token, admin };
+      return { token, owner };
     },
-    updateAdmin: async (parent, args, context) => {
-      if (context.admin) {
-        const Admin = await Admin.findByIdAndUpdate(context.admin._id, args, {
+    updateOwner: async (parent, args, context) => {
+      if (context.owner) {
+        console.log('owner:', context.owner._id, args)
+        const owner = await Owner.findByIdAndUpdate({_id: context.owner._id}, args, {
           new: true,
         });
+        console.log('owner: ', owner)
       }
 
       throw new AuthenticationError("Not logged in");
     },
-    addTestimonial: async (parent, args) => {
-      const testimonial = await Testimonial.create({
-        ...args,
-      });
-      return { testimonial };
+    addTestimonial: async (parent, args, context) => {
+      if (context.owner) {
+        const testimonial = await Testimonial.create({
+          ...args,
+        });
+        return { testimonial };
+      }
+      throw new AuthenticationError("You must be logged in to perform this action.");
     },
     updateTestimonial: async (parent, args, context) => {
-      if (context.admin) {
+      if (context.owner) {
         return await Testimonial.findByIdAndUpdate(
           context.testimonial._id,
           args,
@@ -106,41 +102,36 @@ const resolvers = {
           }
         );
       }
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("You must be logged in to perform this action.");
     },
     removeTestimonial: async (parent, { _id }, context ) => {
-      if (context.admin) {
-      const deleteTest = await Testimonial.findByIdAndUpdate(
+      if (context.owner) {
+      const updatedTestimonials = await Testimonial.findByIdAndUpdate(
         _id,
         { $pull: _id },
         { new: true }
       );
-      return deleteTest;
+      return updatedTestimonials;
       }
-      throw new AuthenticationError("You need be logged in to delete a testimonial. ")
+      throw new AuthenticationError("You must be logged in to perform this action.")
     },
     addMessage: async ( parent, args ) => {
-        const message = await UserForm.create({
+        const message = await Message.create({
           ...args
         });
         return { message };
     },
     removeMessage: async ( parent, { _id }, context ) => {
-      if (context.admin) {
-        const updatedMessageList = await UserForm.findByIdAndUpdate(
+      if (context.owner) {
+        const updatedMessageList = await Message.findByIdAndUpdate(
+          _id,
           { $pull: _id },
           { new: true }
         )
         return updatedMessageList
       }
+      throw new AuthenticationError("You must be logged in to perform this action.");
     },
-    // clientList: async ( parent, { }) => {
-    //   const client = await Project.findByIdAndUpdate(
-    //     { $push:},
-    //     { new: true }
-    // );
-    // return client;
-    // }
   },
 };
 

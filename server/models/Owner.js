@@ -3,14 +3,14 @@ const bcrypt = require('bcrypt');
 
 const { Schema } = mongoose;
 
-const AdminSchema = new Schema({
+const ownerSchema = new Schema({
     
-    adminName: {
+    ownerName: {
         type: String,
         required: true,
         trim: true
     },
-    adminEmail: {
+    ownerEmail: {
         type: String,
         required: true,
         unique: true
@@ -34,7 +34,7 @@ const AdminSchema = new Schema({
 });
 
 // set up re-save middleware to create password
-adminSchema.pre('save', async function(next) {
+ownerSchema.pre('save', async function(next) {
     if (this.isNew || this.isModified('password')) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
@@ -44,10 +44,10 @@ adminSchema.pre('save', async function(next) {
 });
 
 // compare entered password with hashed password
-adminSchema.methods.isCorrectPassword = async function(password) {
+ownerSchema.methods.isCorrectPassword = async function(password) {
     return await bcrypt.compare(password, this.password);
 };
 
-const Admin = mongoose.model('Admin', adminSchema);
+const Owner = mongoose.model('Owner', ownerSchema);
 
-module.exports = Admin;
+module.exports = Owner;

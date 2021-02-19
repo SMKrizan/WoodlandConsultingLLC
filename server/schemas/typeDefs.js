@@ -9,14 +9,41 @@ const typeDefs = gql`
 
   type Query {
     categories: [Category]
-    admin: Admin
+    owner: Owner
     projects: [Project]
-    projectsByCategory(category: ID, projectName: String): [Project]
+    projectsByCategory(category: String!): [Project]
     projectById(_id: ID!): Project
     testimonials: [Testimonial]
     messages: [Message]
     clientList: [Project]
+  }
 
+  type Owner {
+    _id: ID
+    ownerName: String
+    ownerEmail: String
+    address: String
+  }
+
+  type Auth {
+    token: ID
+    owner: Owner
+  }
+
+  type Testimonial {
+    _id: ID
+    tstName: String
+    tstCompany: String
+    tstMessage: String
+  }
+
+  type Message {
+    _id: ID
+    userName: String
+    userCompany: String
+    userEmail: String
+    userMessage: String
+    purpose: String 
   }
 
   type Project {
@@ -32,64 +59,39 @@ const typeDefs = gql`
     WC: Boolean
   }
 
-  type Admin {
-    _id: ID
-    adminName: String
-    adminEmail: String
-    address: String
-  }
-
-  type Auth {
-    token: ID
-    admin: Admin
-  }
-
-  type Testimonial {
-    _id: ID
-    tstName: String
-    company: String
-    tstMessage: String
-  }
-  type Message {
-    userName: String
-    company: String
-    userEmail: String
-    userMessage: String
-    purpose: String
-  }
   type Location {
+    _id: ID
     latitude: Float
     longitude: Float
   }
+
   type Mutation {
-    login(adminEmail: String!, password: String!): Auth
-    updateAdmin(
-      adminName: String
-      adminEmail: String
+    login(ownerEmail: String!, password: String!): Auth
+    updateOwner(
+      ownerName: String
+      ownerEmail: String
       address: String
       password: String
-    ): Admin
+    ): Owner
     addTestimonial(
       tstName: String
-      company: String
+      tstCompany: String
       tstMessage: String
     ): Testimonial
     updateTestimonial(
       tstName: String
-      company: String
+      tstCompany: String
       tstMessage: String
     ): Testimonial
     removeTestimonial(_id: ID!): Testimonial
     addMessage(
-      _id: ID!
       userName: String!
-      company: String
+      userCompany: String
       userEmail: String!
       userMessage: String!
       purpose: String
     ): Message
     removeMessage(_id: ID!): Message
-   
   }
 `;
 

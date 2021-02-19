@@ -1,39 +1,45 @@
 //  Model for data collected from user via contact form
 const mongoose = require('mongoose');
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
 var timestamps = require('mongoose-timestamp');
 
-const messageSchema = new Schema({
-    userName: {
-        type: String,
-        required: true,
-        trim: true
-    },
-    company: {
-        type: String,
-        trim: true
-    },
-    userEmail: {
-        type: String,
-        required: true,
-    },
-    userMessage: {
-        type: String,
-        required: true
-    },
-    purpose: {
-        type: String,
-        enum: ['Ask a question', 'Leave a comment', 'Request a quote', 'Provide a testimonial'],
-        default: 'Ask a question'
+const messageSchema = new Schema(
+    {
+        userName: {
+            type: String,
+            required: true,
+            trim: true
+        },
+        userCompany: {
+            type: String,
+            trim: true
+        },
+        userEmail: {
+            type: String,
+            required: true,
+        },
+        userMessage: {
+            type: String,
+            required: true
+        },
+        purpose: {
+            type: String,
+            enum: ['Ask a question', 'Leave a comment', 'Request a quote', 'Provide a testimonial'],
+            default: 'Ask a question'
+        },
     }
-});
-// auto-generates a timestamp for each model entry "document"
+    // {
+    //     toJSON: {
+    //         getters: true
+    //     }
+    // }
+);
+// should auto-generate a timestamp to each model entry
 messageSchema.plugin(timestamps);
 
-// provides a message-count to "range" required by react-admin display
-messageSchema.virtual('messageCount').get(function() {
-    return this.messages.length;
-});
+// messageSchema.virtual('messageCount').get(function () {
+//     return this.messages.length;
+// });
 
 const Message = mongoose.model('Message', messageSchema);
 
