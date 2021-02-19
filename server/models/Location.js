@@ -11,11 +11,6 @@ const locationSchema = new Schema(
       type: Number,
     },
   },
-  {
-    toJSON: {
-      getters: true,
-    },
-  }
 );
 
 module.exports = locationSchema;

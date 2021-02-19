@@ -36,11 +36,6 @@ const projectSchema = new Schema(
       default: true,
     },
   },
-  {
-    toJSON: {
-      getters: true,
-    },
-  }
 );
 
 const Project = mongoose.model("Project", projectSchema);
