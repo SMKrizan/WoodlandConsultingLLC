@@ -9,7 +9,7 @@ const {
     Marker,
     InfoWindow,
 } = require("react-google-maps");
-// const KEY = process.env.REACT_APP_API_KEY;
+
 const Map = compose(
     withProps({
         googleMapURL: `https://maps.googleapis.com/maps/api/js?&key=${process.env.REACT_APP_API_KEY}
@@ -54,6 +54,10 @@ const Map = compose(
                 lng: -90.243436
             }}
             onClick={props.onToggleOpen}
+            icon={{
+                url: '/src/images/logo/WoodlandConsulting_logo_sm.png',
+                scaledSize: new window.google.maps.Size(20, 20),
+            }}
         >
             <InfoWindow onCloseClick={props.onToggleOpen}>
                 <div>
