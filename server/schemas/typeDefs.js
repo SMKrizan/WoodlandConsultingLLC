@@ -1,56 +1,123 @@
 // imports gql tagged template function
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-    type Query {
-        WoodlandConsulting: String
-    }
-    type Category {
-        _id: ID
-        name: String
-    }
+  type Category {
+    _id: ID
+    categoryName: String
+  }
 
-    type Project {
-        _id: ID
-        name: String
-        location: Point
-    }
-    type Porfolio {
-        _id: ID
-        name: String
-        description: String
-        image: String
-        date: String
-        location: String
-        category: Category
-    }
+  type Query {
+    categories: [Category]
+    owner: Owner
+    projects: [Project]
+    projectsByCategory(category: ID, projectName: String): [Project]
+    projectById(_id: ID!): Project
+    testimonials: [Testimonial]
+    messages: [Message]
+    clientList: [Project]
+  }
 
-    type Admin {
+    type Owner {
         _id: ID
-        firstName: String
-        lastName: String
-        email: String
+        ownerName: String
+        ownerEmail: String
+        address: String
     }
 
     type Auth {
         token: ID
-        user: Admin
+        owner: Owner
     }
-     
-    type Map {
-        projectName: String
+
+    type Testimonial {
+        _id: ID
+        tstName: String
+        tstCompany: String
+        tstMessage: String
+    }
+
+    type Message { 
+        _id: ID
+        userName: String
+        userCompany: String
+        userEmail: String
+        userMessage: String
+        purpose: String
+    }
+   
+    input client {
+        _id: ID
+        company: String
         description: String
-        category: Category
-        cityState: String
-        longtitude: String
-        latitude: String
-        projectDate: String
+        location: [Location]
+        WC: Boolean
     }
-    type Mutations {
-        login(email: String!, password: String!): Auth
-        addProject(project_name: String, description: String, image: String, location: Object, category: []): Project
         
-    }
+  type Project {
+    _id: ID
+    projectName: String
+    description: String
+    image: String
+    projectDate: String
+    cityState: String
+    location: [Location]
+    category: Category
+    company: String
+    WC: Boolean
+  }
+
+  type Location {
+    _id: ID
+    latitude: Float
+    longitude: Float
+  }
+
+  type Mutation {
+    login(ownerEmail: String!, password: String!): Auth
+    updateOwner(
+      ownerName: String
+      ownerEmail: String
+      address: String
+      password: String
+    ): Owner
+    addTestimonial(
+      tstName: String
+      tstCompany: String
+      tstMessage: String
+    ): Testimonial
+    updateTestimonial(
+      tstName: String
+      tstCompany: String
+      tstMessage: String
+    ): Testimonial
+    removeTestimonial(_id: ID!): Testimonial
+    addMessage(
+      _id: ID!
+      userName: String!
+      userCompany: String
+      userEmail: String!
+      userMessage: String!
+      purpose: String
+    ): Message
+    removeMessage(_id: ID!): Message
+   
+  }
 `;
 
 module.exports = typeDefs;
+
+// make image required in mutation for portfolio
+// null for not image
+// filter on the portfolio page for image
+// in resolver before return
+// array.filter(project => {
+//     return project.image !== null
+// })
+// clientList(company: String, description: String, location: [Location], WC: Boolean): [Project]
+// input client {
+//     company: String
+//     description: String
+//     location: [Location]
+//     WC: Boolean
+// }

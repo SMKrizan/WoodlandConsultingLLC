@@ -38,10 +38,10 @@ function Home() {
     <div className="darkplumbg pad">
         <h2>Project Map</h2>
         <div className="flex-center">
-            <div className="maps-home flex1 pad40lr flex-center">
+            <div className="maps-home flex1 pad40lr flex-center ">
                 Woodland Consulting's Founder has work located across the United States. Click to see a map showing where you can find her work nearest to you.  
             </div>
-            <div className="hover-glow flex-center maps-img">
+            <div className="hover-glow flex-center  glow maps-img">
                 <button><h3>Contact</h3></button>
             </div>
         </div>
