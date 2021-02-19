@@ -18,42 +18,34 @@ const typeDefs = gql`
     clientList: [Project]
   }
 
-    type Owner {
-        _id: ID
-        ownerName: String
-        ownerEmail: String
-        address: String
-    }
+  type Owner {
+    _id: ID
+    ownerName: String
+    ownerEmail: String
+    address: String
+  }
 
-    type Auth {
-        token: ID
-        owner: Owner
-    }
+  type Auth {
+    token: ID
+    owner: Owner
+  }
 
-    type Testimonial {
-        _id: ID
-        tstName: String
-        tstCompany: String
-        tstMessage: String
-    }
+  type Testimonial {
+    _id: ID
+    tstName: String
+    tstCompany: String
+    tstMessage: String
+  }
 
-    type Message { 
-        _id: ID
-        userName: String
-        userCompany: String
-        userEmail: String
-        userMessage: String
-        purpose: String
-    }
-   
-    input client {
-        _id: ID
-        company: String
-        description: String
-        location: [Location]
-        WC: Boolean
-    }
-        
+  type Message {
+    _id: ID
+    userName: String
+    userCompany: String
+    userEmail: String
+    userMessage: String
+    purpose: String
+  }
+
   type Project {
     _id: ID
     projectName: String
@@ -101,7 +93,6 @@ const typeDefs = gql`
       purpose: String
     ): Message
     removeMessage(_id: ID!): Message
-   
   }
 `;
 

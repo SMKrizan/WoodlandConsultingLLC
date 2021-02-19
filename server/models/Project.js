@@ -22,7 +22,7 @@ const projectSchema = new Schema({
         type: String,
         trim: true
     },
-    location: [Location],
+    location: [locationSchema],
     category: {
         type: Schema.Types.ObjectId,
         ref: 'Category',
