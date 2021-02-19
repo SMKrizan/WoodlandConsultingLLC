@@ -1,12 +1,13 @@
+
 const mongoose = require('mongoose');
 
+const Category = require('./Category');
+const locationSchema = require('./Location');
 const { Schema } = mongoose;
 
 const projectSchema = new Schema({
-
-    project_name: {
+    projectName: {
         type: String,
-        required: true,
         trim: true
     },
     description: {
@@ -15,7 +16,7 @@ const projectSchema = new Schema({
     image: {
         type: String
     },
-    date: {
+    projectDate: {
         type: String
     },
     cityState: {
@@ -27,19 +28,16 @@ const projectSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Category',
     },
-    state: {
+    company: {
         type: String
     },
-    category: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Category',
-            required: true
-        }
-    ]
+    WC: {
+        type: Boolean,
+        default: true
+    }
 });
 
-const Project = mongoose.model('Projects', projectSchema);
+const Project = mongoose.model('Project', projectSchema);
 
 module.exports = Project;
 

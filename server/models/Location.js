@@ -4,10 +4,10 @@ const { Schema } = mongoose;
 
 const locationSchema = new Schema({
     latitude: {
-        type: Number
+        type: Float
     },
     longitude: {
-        type: Number
+        type: Float
     }
 });
 
