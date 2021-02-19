@@ -24,7 +24,7 @@ const resolvers = {
       return owner
     },
     projects: async () => {
-      return await Project.find();
+      return await Project.find().populate('category');
     },
     projectsByCategory: async (parent, { category }) => {
       const params = {};
@@ -74,9 +74,11 @@ const resolvers = {
     },
     updateOwner: async (parent, args, context) => {
       if (context.owner) {
-        const Owner = await Owner.findByIdAndUpdate(context.owner._id, args, {
+        console.log('owner:', context.owner._id, args)
+        const owner = await Owner.findByIdAndUpdate({_id: context.owner._id}, args, {
           new: true,
         });
+        console.log('owner: ', owner)
       }
 
       throw new AuthenticationError("Not logged in");
