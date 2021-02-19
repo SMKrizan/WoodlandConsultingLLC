@@ -4,12 +4,10 @@ import {GET_TESTIMONIALS} from '../../utils/queries'
 import './home.css'
 
 function Home() {
-    
-
 
     const { loading, data} = useQuery(GET_TESTIMONIALS);
-    const testimonialData = data
-  
+    const testimonialData = data?.testimonial || [];
+
     if (loading) {
       return <div>Loading...</div>;
     }
@@ -18,17 +16,17 @@ function Home() {
         return <h2>LOADING...</h2>;
       }
 
-      let randomQuote = function(){
-        console.log("running randomQuote")
+    //   let randomQuote = function(){
+    //     console.log("running randomQuote")
         console.log(testimonialData)
-        return  testimonialData[Math.floor(Math.random()*4)]
-      }
-      let chosenQuote = randomQuote()
+    //     return  testimonialData[Math.floor(Math.random()*4)]
+    //   }
+    //   let chosenQuote = randomQuote()
     return (
     <section>
             <div className="feature-home-image">
                 <div className="glow feature-box">
-                    <h4><i>{chosenQuote.tstMessage}</i></h4>
+                    {/* <h4><i>{chosenQuote.tstMessage}</i></h4> */}
                     <p>Ipsum Facto - UW Chairman</p>
                     <div className="flex-left">
                         <div className="padlr">

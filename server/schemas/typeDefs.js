@@ -11,55 +11,13 @@ const typeDefs = gql`
     categories: [Category]
     owner: Owner
     projects: [Project]
-<<<<<<< HEAD
-    projectsByCategory(category: ID, projectName: String): [Project]
-=======
     projectsByCategory(category: String!): [Project]
->>>>>>> bd696b503bbca0aefad75d2cc364e1a928159058
     projectById(_id: ID!): Project
     testimonials: [Testimonial]
     messages: [Message]
     clientList: [Project]
   }
 
-<<<<<<< HEAD
-    type Owner {
-        _id: ID
-        ownerName: String
-        ownerEmail: String
-        address: String
-    }
-
-    type Auth {
-        token: ID
-        owner: Owner
-    }
-
-    type Testimonial {
-        _id: ID
-        tstName: String
-        tstCompany: String
-        tstMessage: String
-    }
-
-    type Message { 
-        _id: ID
-        userName: String
-        userCompany: String
-        userEmail: String
-        userMessage: String
-        purpose: String
-    }
-   
-    input client {
-        _id: ID
-        company: String
-        description: String
-        location: [Location]
-        WC: Boolean
-    }
-        
-=======
   type Owner {
     _id: ID
     ownerName: String
@@ -88,7 +46,6 @@ const typeDefs = gql`
     purpose: String 
   }
 
->>>>>>> bd696b503bbca0aefad75d2cc364e1a928159058
   type Project {
     _id: ID
     projectName: String

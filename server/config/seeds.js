@@ -14,7 +14,7 @@ db.once('open', async () => {
 
     console.log('CATEGORIES SEEDED');
 
-    // await Location.deleteMany();
+    // for (let i = 0; i < 44; i += 1) {
 
     // await Project.updateOne(
         
@@ -205,12 +205,11 @@ db.once('open', async () => {
     ]);
 
     await Project.updateOne(
-        
-        { $push: { locations } },
+
+        { $push:  locations  },
         { runValidators: true }
-
     );
-
+    
 
     console.log('locations seeded')
 
@@ -229,7 +228,8 @@ db.once('open', async () => {
 
     await Project.deleteMany();
 
-    await Project.create([
+    await Project.insertMany([
+        
         {
             projectName: 'G&E Credit Union',
             description: 'New facility',
@@ -777,4 +777,3 @@ db.once('open', async () => {
 
     process.exit();
 })
-

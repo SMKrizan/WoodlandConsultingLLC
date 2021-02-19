@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
-
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
 import Home from './pages/Home';
 import About from './pages/About';
 import Maps from './pages/Maps';
@@ -9,6 +10,10 @@ import Contact from './pages/Contact';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
+
+const client = new ApolloClient({
+  uri: '/graphql'
+});
 
 function App() {
   const [currentPage, handlePageChange] = useState('Home');
@@ -31,7 +36,8 @@ function App() {
   };
 
   return (
-    <body>
+    <ApolloProvider client={client}>
+    <div>
       <Header currentPage={currentPage} handlePageChange={handlePageChange} />
       <main >
         {
@@ -40,7 +46,8 @@ function App() {
         }
       </main>
       <Footer />
-    </body>
+    </div>
+    </ApolloProvider>
   );
 }
 
