@@ -16,6 +16,13 @@ db.once('open', async () => {
 
     // for (let i = 0; i < 44; i += 1) {
 
+    // await Project.updateOne(
+        
+    //     { $push: { locations } },
+    //     { runValidators: true }
+
+    // );
+
     const locations = ([
         {
             latitude: '41.472351',
@@ -208,12 +215,14 @@ db.once('open', async () => {
 
     await Owner.deleteMany();
 
-    await Owner.create({
+    await Owner.create(
+    {
         ownerName: 'Jessica A. Walther',
-        ownerEmail: 'jessica@gmail.com',
+        ownerEmail: 'woodlandconsultingllc@gmail.com',
         password: 'password12345',
         address: 'Slinger, WI'
-    });
+    }
+);
 
     console.log('owner seeded');
 
@@ -238,8 +247,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Tucson, AZ',
-            location: locations[1]._id,
-            category: categories[2]._id,
+            location: locations[1],
+            category: categories[2],
             company: 'Hughes',
             WC: 'true'
         },
@@ -249,8 +258,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Muskego, WI',
-            location: locations[2]._id,
-            category: categories[2]._id,
+            location: locations[2],
+            category: categories[2],
             company: 'Landmark',
             WC: 'true'
         },
@@ -260,8 +269,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Machesney Park, IL',
-            location: locations[3]._id,
-            category: categories[2]._id,
+            location: locations[3],
+            category: categories[2],
             company: 'Heritage',
             WC: 'true'
         },
@@ -271,8 +280,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Merrill, WI',
-            location: locations[4]._id,
-            category: categories[2]._id,
+            location: locations[4],
+            category: categories[2],
             company: 'Park City',
             WC: 'true'
         },
@@ -282,8 +291,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Rapid City, SD',
-            location: locations[5]._id,
-            category: categories[2]._id,
+            location: locations[5],
+            category: categories[2],
             company: 'Black Hills',
             WC: 'true'
         },
@@ -293,8 +302,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Bossier City, LA',
-            location: locations[6]._id,
-            category: categories[2]._id,
+            location: locations[6],
+            category: categories[2],
             company: 'Carter',
             WC: 'true'
         },
@@ -304,8 +313,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Cheyenne, WY',
-            location: locations[7]._id,
-            category: categories[2]._id,
+            location: locations[7],
+            category: categories[2],
             company: 'WYHY',
             WC: 'true'
         },
@@ -315,8 +324,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Vienna Township, MI',
-            location: locations[8]._id,
-            category: categories[2]._id,
+            location: locations[8],
+            category: categories[2],
             company: 'Dort',
             WC: 'true'
         },
@@ -326,8 +335,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Swartz Creek, MI',
-            location: locations[9]._id,
-            category: categories[2]._id,
+            location: locations[9],
+            category: categories[2],
             company: 'Dort',
             WC: 'true'
         },
@@ -337,8 +346,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Des Moines, IA',
-            location: locations[10]._id,
-            category: categories[2]._id,
+            location: locations[10],
+            category: categories[2],
             company: 'Serve',
             WC: 'true'
         },
@@ -348,8 +357,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Shreveport, LA',
-            location: locations[11]._id,
-            category: categories[2]._id,
+            location: locations[11],
+            category: categories[2],
             company: 'Carter',
             WC: 'true'
         },
@@ -359,8 +368,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Aurora, IL',
-            location: locations[12]._id,
-            category: categories[2]._id,
+            location: locations[12],
+            category: categories[2],
             company: 'NorthStar',
             WC: 'true'
         },
@@ -370,8 +379,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Dwight, IL',
-            location: locations[13]._id,
-            category: categories[2]._id,
+            location: locations[13],
+            category: categories[2],
             company: 'Pontiac',
             WC: 'true'
         },
@@ -381,8 +390,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Tomah, WI',
-            location: locations[14]._id,
-            category: categories[2]._id,
+            location: locations[14],
+            category: categories[2],
             company: '1st Community',
             WC: 'true'
         },
@@ -392,8 +401,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Summerville, SC',
-            location: locations[15]._id,
-            category: categories[2]._id,
+            location: locations[15],
+            category: categories[2],
             company: 'Bayer',
             WC: 'true'
         },
@@ -403,8 +412,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Des Moines, IA',
-            location: locations[16]._id,
-            category: categories[2]._id,
+            location: locations[16],
+            category: categories[2],
             company: 'Financial Plus',
             WC: 'true'
         },
@@ -414,8 +423,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Greenfield, WI ',
-            location: locations[17]._id,
-            category: categories[2]._id,
+            location: locations[17],
+            category: categories[2],
             company: 'LandMark',
             WC: 'true'
         },
@@ -425,8 +434,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Sheboygan, WI',
-            location: locations[18]._id,
-            category: categories[2]._id,
+            location: locations[18],
+            category: categories[2],
             company: 'Kohler',
             WC: 'true'
         },
@@ -436,8 +445,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Pasadena, CA ',
-            location: locations[19]._id,
-            category: categories[2]._id,
+            location: locations[19],
+            category: categories[2],
             company: 'LA Financial',
             WC: 'true'
         },
@@ -447,8 +456,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Charlottesville, VA',
-            location: locations[20]._id,
-            category: categories[2]._id,
+            location: locations[20],
+            category: categories[2],
             company: 'C&F',
             WC: 'true'
         },
@@ -458,8 +467,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Big Lake, MN',
-            location: locations[21]._id,
-            category: categories[2]._id,
+            location: locations[21],
+            category: categories[2],
             company: 'MINNCO',
             WC: 'true'
         },
@@ -469,8 +478,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Oklahoma City, OK',
-            location: locations[22]._id,
-            category: categories[2]._id,
+            location: locations[22],
+            category: categories[2],
             company: 'True Sky',
             WC: 'true'
         },
@@ -480,8 +489,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Hugo, MN',
-            location: locations[23]._id,
-            category: categories[2]._id,
+            location: locations[23],
+            category: categories[2],
             company: 'Heartland',
             WC: 'true'
         },
@@ -491,8 +500,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: ' Zanesville, OH',
-            location: locations[24]._id,
-            category: categories[2]._id,
+            location: locations[24],
+            category: categories[2],
             company: 'Bayer Heritage',
             WC: 'true'
         },
@@ -502,8 +511,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Glendale, WI',
-            location: locations[25]._id,
-            category: categories[2]._id,
+            location: locations[25],
+            category: categories[2],
             company: 'Landmark',
             WC: 'true'
         },
@@ -513,8 +522,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Oklahoma City, OK',
-            location: locations[26]._id,
-            category: categories[2]._id,
+            location: locations[26],
+            category: categories[2],
             company: 'True Sky',
             WC: 'true'
         },
@@ -524,8 +533,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Norman, OK',
-            location: locations[27]._id,
-            category: categories[2]._id,
+            location: locations[27],
+            category: categories[2],
             company: 'True Sky',
             WC: 'true'
         },
@@ -535,8 +544,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Seattle, WA',
-            location: locations[28]._id,
-            category: categories[2]._id,
+            location: locations[28],
+            category: categories[2],
             company: 'Waterfront',
             WC: 'true'
         },
@@ -546,8 +555,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Madison, WI',
-            location: locations[29]._id,
-            category: categories[2]._id,
+            location: locations[29],
+            category: categories[2],
             company: 'Heartland',
             WC: 'true'
         },
@@ -557,8 +566,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: ' Mequon, WI',
-            location: locations[30]._id,
-            category: categories[2]._id,
+            location: locations[30],
+            category: categories[2],
             company: 'Landmark',
             WC: 'true'
         },
@@ -568,8 +577,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Waldorf, MI ',
-            location: locations[31]._id,
-            category: categories[2]._id,
+            location: locations[31],
+            category: categories[2],
             company: 'Cedar Point',
             WC: 'true'
         },
@@ -579,8 +588,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'West Bloomfield Township, MI',
-            location: locations[32]._id,
-            category: categories[2]._id,
+            location: locations[32],
+            category: categories[2],
             company: 'Alliance',
             WC: 'true'
         },
@@ -590,8 +599,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Corpus Christi, TX',
-            location: locations[33]._id,
-            category: categories[2]._id,
+            location: locations[33],
+            category: categories[2],
             company: 'Chemcel',
             WC: 'true'
         },
@@ -601,8 +610,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Maywood, IL',
-            location: locations[34]._id,
-            category: categories[4]._id,
+            location: locations[34],
+            category: categories[4],
             company: 'ComEd',
             WC: 'true'
         },
@@ -612,8 +621,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Oak Creek, WI',
-            location: locations[35]._id,
-            category: categories[2]._id,
+            location: locations[35],
+            category: categories[2],
             company: 'Commercial',
             WC: 'true'
         },
@@ -623,8 +632,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Oak Creek, WI',
-            location: locations[36]._id,
-            category: categories[4]._id,
+            location: locations[36],
+            category: categories[4],
             company: 'Industrial',
             WC: 'true'
         },
@@ -634,8 +643,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Johnson Creek, WI ',
-            location: locations[37]._id,
-            category: categories[3]._id,
+            location: locations[37],
+            category: categories[3],
             company: 'Johnson Creek',
             WC: 'true'
         },
@@ -645,8 +654,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Milwaukee, WI',
-            location: locations[38]._id,
-            category: categories[3]._id,
+            location: locations[38],
+            category: categories[3],
             company: 'Dye My Darling',
             WC: 'true'
         },
@@ -656,8 +665,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Delavan, WI ',
-            location: locations[39]._id,
-            category: categories[4]._id,
+            location: locations[39],
+            category: categories[4],
             company: 'Lake Lawn Resort',
             WC: 'true'
         },
@@ -667,8 +676,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Racine, WI',
-            location: locations[40]._id,
-            category: categories[0]._id,
+            location: locations[40],
+            category: categories[0],
             company: 'Gateway Technical College',
             WC: 'false'
         },
@@ -678,8 +687,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Madison WI',
-            location: locations[41]._id,
-            category: categories[0]._id,
+            location: locations[41],
+            category: categories[0],
             company: 'University of Wisconsin Madison',
             WC: 'false'
         },
@@ -689,8 +698,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Milwaukee, WI ',
-            location: locations[42]._id,
-            category: categories[2]._id,
+            location: locations[42],
+            category: categories[2],
             company: 'Colliers',
             WC: 'false'
         },
@@ -700,8 +709,8 @@ db.once('open', async () => {
             image: '',
             projectDate: '',
             cityState: 'Grapevine, TX',
-            location: locations[43]._id,
-            category: categories[2]._id,
+            location: locations[43],
+            category: categories[2],
             company: 'DL Rogers',
             WC: 'false'
         },
