@@ -45,14 +45,6 @@ const typeDefs = gql`
         userMessage: String
         purpose: String
     }
-   
-    input client {
-        _id: ID
-        company: String
-        description: String
-        location: [Location]
-        WC: Boolean
-    }
         
   type Project {
     _id: ID
