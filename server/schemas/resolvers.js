@@ -18,44 +18,32 @@ const resolvers = {
       return await Category.find();
     },
     owner: async () => {
-      return await Owner.find();
+
+      const owner = await Owner.findOne();
+      console.log('Owner: ', owner)
+      return owner
     },
     projects: async () => {
-      return await Project.find();
+      return await Project.find().populate('category');
     },
-    // projects: async (parent, { category, projectName }) => {
-    //   const params = {};
-
-    //   if (category) {
-    //     params.category = category;
-    //   }
-
-    //   if (projectName) {
-    //     params.projectName = {
-    //       $regex: projectName,
-    //     };
-    //   }
-
-    //   return await Project.find(params).populate("category");
-    // },
-    // args?
-    projectsByCategory: async (parent, { category, projectName }) => {
+    projectsByCategory: async (parent, { category }) => {
       const params = {};
-
       if (category) {
-        params.category = category;
+        params.categoryName = category;
       }
 
-      if (projectName) {
-        params.projectName = {
-          $regex: projectName,
-        };
-      }
-
-      return await Project.find(params).populate("category");
+      // if (projectName) {
+      //   params.projectName = {
+      //     $regex: projectName,
+      //   };
+      // }
+      
+      const project = Project.find({ category });
+      console.log('category: ', category)
+      return project
     },
     projectById: async (parent, { _id }) => {
-      return await Project.findById(_id).populate("category");
+      return Project.findOne({ _id });
     },
     testimonials: async () => {
       return await Testimonial.find();
@@ -80,24 +68,29 @@ const resolvers = {
         throw new AuthenticationError("Incorrect credentials!");
       }
 
-      const token = signToken(user);
+      const token = signToken(owner);
 
       return { token, owner };
     },
     updateOwner: async (parent, args, context) => {
       if (context.owner) {
-        const Owner = await Owner.findByIdAndUpdate(context.owner._id, args, {
+        console.log('owner:', context.owner._id, args)
+        const owner = await Owner.findByIdAndUpdate({_id: context.owner._id}, args, {
           new: true,
         });
+        console.log('owner: ', owner)
       }
 
       throw new AuthenticationError("Not logged in");
     },
-    addTestimonial: async (parent, args) => {
-      const testimonial = await Testimonial.create({
-        ...args,
-      });
-      return { testimonial };
+    addTestimonial: async (parent, args, context) => {
+      if (context.owner) {
+        const testimonial = await Testimonial.create({
+          ...args,
+        });
+        return { testimonial };
+      }
+      throw new AuthenticationError("You must be logged in to perform this action.");
     },
     updateTestimonial: async (parent, args, context) => {
       if (context.owner) {
@@ -109,33 +102,35 @@ const resolvers = {
           }
         );
       }
-      throw new AuthenticationError("Not logged in");
+      throw new AuthenticationError("You must be logged in to perform this action.");
     },
     removeTestimonial: async (parent, { _id }, context ) => {
       if (context.owner) {
-      const deleteTest = await Testimonial.findByIdAndUpdate(
+      const updatedTestimonials = await Testimonial.findByIdAndUpdate(
         _id,
         { $pull: _id },
         { new: true }
       );
-      return deleteTest;
+      return updatedTestimonials;
       }
-      throw new AuthenticationError("You need be logged in to delete a testimonial. ")
+      throw new AuthenticationError("You must be logged in to perform this action.")
     },
     addMessage: async ( parent, args ) => {
-        const message = await UserForm.create({
+        const message = await Message.create({
           ...args
         });
         return { message };
     },
     removeMessage: async ( parent, { _id }, context ) => {
       if (context.owner) {
-        const updatedMessageList = await UserForm.findByIdAndUpdate(
+        const updatedMessageList = await Message.findByIdAndUpdate(
+          _id,
           { $pull: _id },
           { new: true }
         )
         return updatedMessageList
       }
+      throw new AuthenticationError("You must be logged in to perform this action.");
     },
   },
 };

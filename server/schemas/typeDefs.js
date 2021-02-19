@@ -11,7 +11,7 @@ const typeDefs = gql`
     categories: [Category]
     owner: Owner
     projects: [Project]
-    projectsByCategory(category: ID, projectName: String): [Project]
+    projectsByCategory(category: String!): [Project]
     projectById(_id: ID!): Project
     testimonials: [Testimonial]
     messages: [Message]
@@ -43,7 +43,7 @@ const typeDefs = gql`
     userCompany: String
     userEmail: String
     userMessage: String
-    purpose: String
+    purpose: String 
   }
 
   type Project {
@@ -85,7 +85,6 @@ const typeDefs = gql`
     ): Testimonial
     removeTestimonial(_id: ID!): Testimonial
     addMessage(
-      _id: ID!
       userName: String!
       userCompany: String
       userEmail: String!
