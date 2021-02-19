@@ -20,25 +20,23 @@ const resolvers = {
     owner: async () => {
       return await Owner.find();
     },
-    projects: async () => {
-      return await Project.find();
+    
+    projects: async (parent, { category, projectName }) => {
+      const params = {};
+
+      if (category) {
+        params.category = category;
+      }
+
+      if (projectName) {
+        params.projectName = {
+          $regex: projectName,
+        };
+      }
+
+      return await Project.find(params).populate("category");
     },
-    // projects: async (parent, { category, projectName }) => {
-    //   const params = {};
-
-    //   if (category) {
-    //     params.category = category;
-    //   }
-
-    //   if (projectName) {
-    //     params.projectName = {
-    //       $regex: projectName,
-    //     };
-    //   }
-
-    //   return await Project.find(params).populate("category");
-    // },
-    // args?
+    
     projectsByCategory: async (parent, { category, projectName }) => {
       const params = {};
 

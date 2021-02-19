@@ -221,6 +221,7 @@ db.once('open', async () => {
     await Project.deleteMany();
 
     await Project.insertMany([
+        
         {
             projectName: 'G&E Credit Union',
             description: 'New facility',

@@ -53,7 +53,7 @@ const typeDefs = gql`
     image: String
     projectDate: String
     cityState: String
-    location: [Location]
+    location: Location
     category: Category
     company: String
     WC: Boolean
