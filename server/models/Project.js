@@ -18,8 +18,14 @@ const projectSchema = new Schema({
     date: {
         type: String
     },
-    city: {
-        type: String
+    cityState: {
+        type: String,
+        trim: true
+    },
+    location: [Location],
+    category: {
+        type: Schema.Types.ObjectId,
+        ref: 'Category',
     },
     state: {
         type: String
