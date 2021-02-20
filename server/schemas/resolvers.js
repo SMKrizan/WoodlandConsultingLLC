@@ -86,6 +86,7 @@ const resolvers = {
       throw new AuthenticationError("You must be logged in to perform this action.");
     },
     updateTestimonial: async (parent, args, context) => {
+      console.log("args", args)
       if (context.owner) {
         return await Testimonial.findByIdAndUpdate(
           _id, args, 
