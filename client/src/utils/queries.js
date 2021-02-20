@@ -14,6 +14,7 @@ export const GET_CATEGORIES = gql`
 export const GET_OWNER = gql`
     {
         owner {
+            _id
             ownerName
             ownerEmail
             address
@@ -43,7 +44,6 @@ export const GET_MESSAGES = gql`
             userEmail
             userMessage
             purpose
-            messageCount
             }
         }
     }
@@ -85,8 +85,8 @@ export const GET_CLIENTLIST = gql`
 
 // retrieve projects filtered by category ()
 export const PROJECTS_BY_CATEGORY = gql`
-    query projectsByCategory($category: String) {
-        projectsByCategory(category: $category) {
+    query projectsByCategory($categoryName: String) {
+        projectsByCategory(categoryName: $categoryName) {
             _id
             projectName
             description
@@ -106,8 +106,8 @@ export const PROJECTS_BY_CATEGORY = gql`
 
 // retrieves project by its id
 export const PROJECT_BY_ID = gql`
-query projectsById($id: ID) {
-    projectsById(_id: $id) {
+query projectById($id: ID) {
+    projectById(_id: $id) {
         _id
         projectName
         description
