@@ -1,0 +1,18 @@
+{
+  "name": "server-json",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "json-server": "^0.16.3",
+    "nodemon": "^2.0.7",
+    "ra-data-simple-rest": "^3.10.4",
+    "react-admin": "^3.12.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "jsonserver": "json-server --watch db.json --port 5000"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -42,8 +42,8 @@ export const ADD_TESTIMONIAL = gql`
 `;
 
 export const UPDATE_TESTIMONIAL = gql`
-mutation updateTestimonial($tstName: String!, $tstCompany: String!, $tstMessage: String!) {
-    updateTestimonial(tstName: $tstName, tstCompany: $tstCompany, tstMessage: $tstMessage) {
+mutation updateTestimonial($_id: ID! $tstName: String, $tstCompany: String, $tstMessage: String) {
+    updateTestimonial(_id: $_id, tstName: $tstName, tstCompany: $tstCompany, tstMessage: $tstMessage) {
         _id
         tstName
         tstCompany
@@ -53,7 +53,7 @@ mutation updateTestimonial($tstName: String!, $tstCompany: String!, $tstMessage:
 `;
 
 export const REMOVE_TESTIMONIAL = gql`
-mutation removeTestimonial($id: ID) {
+mutation removeTestimonial($_id: ID!) {
     removeTestimonial(_id: $id) {
         _id
         tstName
@@ -82,7 +82,6 @@ mutation addMessage(
                 userEmail
                 userMessage
                 purpose
-                messageCount
         }
     }
 `;
@@ -106,7 +105,6 @@ mutation removeMessage(
                 userEmail
                 userMessage
                 purpose
-                messageCount
         }
     }
 `;
