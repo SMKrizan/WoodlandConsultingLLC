@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import mapStyles from './mapStyles';
 import {
     GoogleMap,
     withGoogleMap,
-    // InfoWindow,
+    InfoWindow,
     withScriptjs,
     Marker
 } from "react-google-maps";
@@ -12,10 +12,11 @@ import { useQuery } from '@apollo/react-hooks';
 import { GET_PROJECTS } from "../../utils/queries";
 
 function MapG() {
-    // const [selectedProject, setSelectedProject] = useState(null);
     const { loading, data } = useQuery(GET_PROJECTS);
     const projectData = data?.projects || [];
     console.log("PROJECTS", data?.projects);
+
+    const [currentProject, setCurrentProject] = useState(null);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -36,48 +37,54 @@ function MapG() {
         >
             {projectData.map(item => (
                 <Marker
+                    key={item._id}
                     position={{
                         lat: item.location.[0].latitude,
                         lng: item.location.[0].longitude
                     }}
                     onClick={() => {
-                        // setSelectedproject(projectName);
+                        setCurrentProject(projectData);
                     }}
+                // icon={{
+                //     url: `WoodlandConsulting_logo_sm_nog.png`,
+                //     scaledSize: new window.google.maps.Size(20, 20)
+                // }}
+
                 />
-             ))}
+            ))}
 
-            {/* < InfoWindow
-            //     onCloseClick={() => {
-            //         setSelectedproject(null);
-            //     }}
-            position={{
-            //     location: projects.locations
-            lat: 44.871443,
-            lng: -90.243436
-            }}
-            // position={{
-            //     lat: projects.location.latitude,
-            //     lng: projects.location.longitude
-            // }}
-            >
-            </InfoWindow> */}
+            {currentProject && (
+                < InfoWindow
+                    onCloseClick={() => {
+                        setCurrentProject(null);
+                    }}
+                    position={{
+                        lat: currentProject.location.[0].latitude,
+                        lng: currentProject.location.[0].longitude
+                    }}
+                >
+                    <div>
+                        <h4>{currentProject.projectName}</h4>
+                        <p>{currentProject.description}</p>
+                    </div>
 
+                </InfoWindow>
+            )}
         </GoogleMap >
     );
 }
-const MapWrapped = withScriptjs(withGoogleMap(MapG));
+
+const MapWithAMakredInfoWindow = withScriptjs(withGoogleMap(MapG));
 
 export default function Map() {
     return (
         <div style={{ width: "100vw", height: "100vh" }}>
-            <MapWrapped
+            <MapWithAMakredInfoWindow
                 googleMapURL={`https://maps.googleapis.com/maps/api/js?&v=3.exp&libraries=geometry,drawing,places&key=${process.env.REACT_APP_API_KEY}`}
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
             />
-            {/* <ProjectList
-            /> */}
         </div>
     );
 }
