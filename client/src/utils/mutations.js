@@ -82,7 +82,6 @@ mutation addMessage(
                 userEmail
                 userMessage
                 purpose
-                messageCount
         }
     }
 `;
@@ -106,7 +105,6 @@ mutation removeMessage(
                 userEmail
                 userMessage
                 purpose
-                messageCount
         }
     }
 `;
