@@ -1,5 +1,5 @@
 {
-  "posts": [
+  "messages": [
     {
       "id": "1",
       "name": "A name",
@@ -28,7 +28,7 @@
       "createdAt": "02/15/2021"
     }
   ],
-  "administrator": [
+  "owner": [
     {
       "id": "1",
       "name": "Jessica Walther",
