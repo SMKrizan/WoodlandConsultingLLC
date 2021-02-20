@@ -11,6 +11,15 @@ import Contact from './pages/Contact';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
+
+import { ApolloProvider } from '@apollo/react-hooks';
+import ApolloClient from 'apollo-boost';
+
+const client = new ApolloClient({
+  uri: '/graphql'
+});
+
+
 function App() {
   const [currentPage, handlePageChange] = useState('About');
 
@@ -26,13 +35,16 @@ function App() {
         return <Map />;
       case 'Portfolio':
         return <Portfolio />;
+      case 'Contact':
+        return 'Contact';
       default:
         return <Contact />;
     }
   };
 
   return (
-    <body>
+    <ApolloProvider client={client}>
+
       <Header currentPage={currentPage} handlePageChange={handlePageChange} />
       <main >
         {
@@ -41,7 +53,7 @@ function App() {
         }
       </main>
       <Footer />
-    </body>
+    </ApolloProvider>
   );
 }
 
