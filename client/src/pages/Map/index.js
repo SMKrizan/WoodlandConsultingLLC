@@ -1,88 +1,76 @@
-import React, { useState } from 'react';
+import React from 'react';
 import mapStyles from './mapStyles';
-import { useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/react-hooks';
-import Project from '../../components/Project';
-import { GET_PROJECTS } from '../../utils/queries';
-
+import ProjectList from '../../components/ProjectList';
 import {
     GoogleMap,
     withGoogleMap,
+    // InfoWindow,
     withScriptjs,
-    Marker,
-    InfoWindow
+    Marker
 } from "react-google-maps";
 
-const MapG = props => {
-    const [selectedProject, setSelectedProject] = useState(null);
-    const { project: projectParam } = useParams();
-
-    const { loading, projectData } = useQuery(GET_PROJECTS, {
-        variables: { project: projectParam }
-    });
-    console.log("params", projectParam)
-    const projects = projectData?.projects || [];
-
-    console.log("LIST", projects);
-
+function MapG() {
+    // const [selectedProject, setSelectedProject] = useState(null);
     return (
+        <GoogleMap
+            defaultZoom={4}
+            defaultCenter={{
+                lat: 44.8714,
+                lng: -90.2434
+            }}
+            defaultOptions={{ styles: mapStyles.styles }}
 
-        // <div>
-        <div>{loading ? <div>Loading...</div> : <Project project={projects} />}
-
-            <GoogleMap
-                defaultZoom={4}
-                defaultCenter={{
-                    lat: 44.8714,
-                    lng: -90.2434
+        >
+            <Marker
+                // <ProjectList></ProjectList>
+                // key={setSelectedProject._id}
+                position={{
+                    lat: 44.871443,
+                    lng: -90.243436
+                    // lat: latitude,
+                    // lng: longitute
                 }}
-                defaultOptions={{ styles: mapStyles.styles }}>
-                <Marker
-                    key={projects._id}
-                    location={{
-                        // lat: 44.871443,
-                        // lng: -90.243436
-                        lat: projects.latitude,
-                        lng: projects.longitute
-                    }}
-                    onClick={() => {
-                        setSelectedProject(projects);
-                    }}
-                />
-                {selectedProject && (
-                    <InfoWindow
-                        onCloseClick={() => { setSelectedProject(null); }}
-                        location={{
-                            // lat: 44.871443,
-                            // lng: -90.243436
-                            lat: projects.latitude,
-                            lng: projects.longitute
-                        }}
-                    // position={{
-                    //     location: projects.locations
-                    // lat: 44.871443,
-                    // lng: -90.243436
-                    // }}
-                    // position={{
-                    //     lat: projects.location.latitude,
-                    //     lng: projects.location.longitude
-                    // }}
-                    >
-                        <div>
-                            {projects.projectName}
-                            {projects.description}
-                        </div>
+                onClick={() => {
+                    // setSelectedproject(projectName);
+                }}
+            />
+            {/* {/* {selectedProject 
+            &&
+             (
+                 
+               ```  */ // <InfoWindow
+                //     onCloseClick={() => {
+                //         setSelectedproject(null);
+                //     }}
+                //     location={{
+                //         // lat: 44.871443,
+                //         // lng: -90.243436
+                //         lat: projects.latitude,
+                //         lng: projects.longitute
+                //     }}
+                // position={{
+                //     location: projects.locations
+                // lat: 44.871443,
+                // lng: -90.243436
+                // }}
+                // position={{
+                //     lat: projects.location.latitude,
+                //     lng: projects.location.longitude
+                // }}
+                // >
+                // <div>
+                //     {projects.projectName}
+                //     {projects.description}
+                // </div>
 
-                    </InfoWindow>
+                // </InfoWindow>
+                // ) */}
+            }
+        </GoogleMap>
+    );
 
-                )}
-                {/* // </div> */}
-            </GoogleMap>
-        </div>
-    )
-};
+}
 const MapWrapped = withScriptjs(withGoogleMap(MapG));
-
 
 export default function Map() {
     return (
@@ -93,8 +81,7 @@ export default function Map() {
                 containerElement={<div style={{ height: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
             />
-            {/* <Project /> */}
-
+            <ProjectList />
         </div>
     );
 }
