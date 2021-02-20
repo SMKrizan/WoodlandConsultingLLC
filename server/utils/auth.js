@@ -16,8 +16,7 @@ module.exports = {
         .trim();
     }
 
-    console.log("token", token)
-
+    // console.log("token", token)
 
     if (!token) {
       return req;
@@ -33,7 +32,6 @@ module.exports = {
 
     return req;
   },
-  // 
   signToken: function ({ _id, ownerName, ownerEmail }) {
     const payload = { _id, ownerName, ownerEmail };
 

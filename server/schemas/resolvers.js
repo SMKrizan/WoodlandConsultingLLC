@@ -18,7 +18,6 @@ const resolvers = {
       return await Category.find();
     },
     owner: async () => {
-
       const owner = await Owner.findOne();
       console.log('Owner: ', owner)
       return owner
@@ -29,9 +28,9 @@ const resolvers = {
     projectsByCategory: async (parent, { category }) => {
       const params = {};
       if (category) {
+        console.log(params.categoryName)
         params.categoryName = category;
       }
-    
       const project = Project.find({ category });
       console.log('category: ', category)
       return project
@@ -82,15 +81,15 @@ const resolvers = {
         const testimonial = await Testimonial.create({
           ...args,
         });
-        return { testimonial };
+        return testimonial;
       }
       throw new AuthenticationError("You must be logged in to perform this action.");
     },
     updateTestimonial: async (parent, args, context) => {
+      console.log("args", args)
       if (context.owner) {
         return await Testimonial.findByIdAndUpdate(
-          context.testimonial._id,
-          args,
+          _id, args, 
           {
             new: true,
           }
@@ -100,10 +99,8 @@ const resolvers = {
     },
     removeTestimonial: async (parent, { _id }, context ) => {
       if (context.owner) {
-      const updatedTestimonials = await Testimonial.findByIdAndUpdate(
+      const updatedTestimonials = await Testimonial.findByIdAndDelete(
         _id,
-        { $pull: _id },
-        { new: true }
       );
       return updatedTestimonials;
       }
@@ -113,15 +110,11 @@ const resolvers = {
         const message = await Message.create({
           ...args
         });
-        return { message };
+        return message ;
     },
     removeMessage: async ( parent, { _id }, context ) => {
       if (context.owner) {
-        const updatedMessageList = await Message.findByIdAndUpdate(
-          _id,
-          { $pull: _id },
-          { new: true }
-        )
+        const updatedMessageList = await Message.findByIdAndDelete(_id)
         return updatedMessageList
       }
       throw new AuthenticationError("You must be logged in to perform this action.");

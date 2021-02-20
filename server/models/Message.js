@@ -44,7 +44,7 @@ const messageSchema = new Schema(
 messageSchema.plugin(timestamps);
 mongoose.model('Message', messageSchema);
 
-// counts length of messages array to provide this information to "range"  (required by react-admin)
+// counts length of messages array
 messageSchema.virtual('messageCount').get(function () {
     return this.messages.length;
 });
