@@ -6,6 +6,7 @@ import './home.css'
 function Home() {
 
     const { loading, data } = useQuery(GET_TESTIMONIALS);
+    console.log(data)
     const testimonialData = data?.testimonial || ['empty'];
     console.log(testimonialData)
     if (loading) {

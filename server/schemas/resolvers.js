@@ -26,13 +26,14 @@ const resolvers = {
     projects: async () => {
       return await Project.find().populate('category');
     },
-    projectsByCategory: async (parent, { category }) => {
+    projectsByCategory: async (parent, { categoryName }) => {
+      console.log("here", categoryName)
       const params = {};
-      if (category) {
-        params.categoryName = category;
+      if (categoryName) {
+        params.categoryName = categoryName;
       }
-      const project = Project.find({category});
-      console.log('category: ', category )
+      const project = Project.find({ category: {_id: {categoryName} } });
+      console.log('category: ', categoryName )
       return project
     },
     projectById: async (parent, { _id }) => {
@@ -88,13 +89,18 @@ const resolvers = {
     updateTestimonial: async (parent, args, context) => {
       console.log("args", args)
       if (context.owner) {
-        return await Testimonial.findByIdAndUpdate(
-          _id, args, 
+        const updatedTestimonial = await Testimonial.findByIdAndUpdate(
+          args._id, args,
           {
             new: true,
           }
+          
         );
+        console.log("======================", updatedTestimonial)
+        return updatedTestimonial;
+        
       }
+      
       throw new AuthenticationError("You must be logged in to perform this action.");
     },
     removeTestimonial: async (parent, { _id }, context ) => {
