@@ -44,8 +44,12 @@ export const GET_MESSAGES = gql`
             userEmail
             userMessage
             purpose
+<<<<<<< HEAD
             
         }
+=======
+            }
+>>>>>>> develop
     }
 `;
 

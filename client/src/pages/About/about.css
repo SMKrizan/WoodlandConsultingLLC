@@ -1,0 +1,52 @@
+.about-section {
+    position: relative;
+    margin:auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding:20px;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+.bg-about{
+    background-image: url('../../assets/images/portfolio/UW_SOHE_4.JPG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.about-img1 img{
+    flex:1;
+    height: 380px;
+    width: 300px;
+    position: relative;
+}
+.box-over {
+    flex:1;
+    left: -3%;
+    top:60px;
+    width:800px;
+    padding: 40px;
+    background-color: var(--darkplum);
+    position: relative;
+}
+.about-img2 img{
+    flex:1;
+    top: 100px;
+    right: 40px;
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    position: relative;
+}
+.box-over2 {
+    flex:1;
+    width:800px;
+    top: 40px;
+    padding: 20px 80px 40px 40px;
+    background-color: rgba(0, 0, 0, .8);
+    position: relative;
+    margin-bottom:120px;
+}
+.margin-b80 {
+    margin-bottom: 80px;
+  }
