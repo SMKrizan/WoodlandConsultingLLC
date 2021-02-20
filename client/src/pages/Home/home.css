@@ -1,0 +1,98 @@
+.feature-home-image {
+    background-image: url('../../assets/images/portfolio/UW_SOHE_11.JPG');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 500px;
+    font-size: calc(14px + 1vmin);
+    padding:40px;
+    text-shadow: 6px 6px 20px black, 2px 2px 10px black;
+  }
+
+  .feature-box{
+      background-color: rgba(0, 0, 0, .6);
+      min-height:100px;
+      width: 70%;
+      min-width: 260px;
+      padding: 40px;   
+  }
+  .flex-left {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+}
+
+.flex-center {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+  .feature-box h4{
+    font-size: calc(24px + 1vmin);
+  }
+  .about-home {
+    position: relative;
+    margin:auto;
+    display: flex;
+    flex-wrap: wrap;
+    padding:0px 80px;
+    justify-content: space-around;
+    margin-bottom: 80px;
+    margin-top: -40px;
+}
+.about-home-box {
+    flex:1;
+    left: -3%;
+    top:80px;
+    /* max-width:60%; */
+    padding: 40px;
+    background-color: var(--darkplum);
+    position: relative;
+}
+.about-home img{
+    flex:1;
+    height: 380px;
+    width: 300px;
+    position: relative;
+    box-shadow: -10px 7px 5px rgba(270, 270, 210, .8);
+}
+
+.pad-b80 {
+    padding-bottom: 80px;
+  }
+  .pad40lr {
+    padding:0px 60px;
+  }
+
+.maps-home {
+    max-width: 500px;
+    min-width:500px;
+    margin-right: -50px;
+    height:500px;
+    border-radius: 50%; 
+    background-color: var(--maroon);
+    overflow: hidden;
+    font-size: 28px;
+    text-align:center;
+}
+
+.maps-img {
+    background-image: url('../../assets/images/maps.png');
+    background-position: center;
+    max-width: 500px;
+    width:500px;
+    margin-right: -50px;
+    height:500px;
+    border-radius: 50%; 
+}
+
+.hover-glow {
+    box-shadow:  2px 2px 5px black;
+  }
+  .hover-glow :hover {
+    box-shadow:  2px 2px 5px white;
+    transition-duration: .6s;
+    transition-timing-function: ease-in-out;
+  }
