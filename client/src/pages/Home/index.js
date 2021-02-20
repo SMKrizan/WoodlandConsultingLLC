@@ -1,38 +1,29 @@
 import React from 'react';
-import { useQuery} from '@apollo/react-hooks';
-import {GET_TESTIMONIALS} from '../../utils/queries'
+import { useQuery } from '@apollo/react-hooks';
+import { GET_TESTIMONIALS } from '../../utils/queries'
 import './home.css'
 
 function Home() {
 
-    const { loading, data} = useQuery(GET_TESTIMONIALS);
+    const { loading, data } = useQuery(GET_TESTIMONIALS);
     const testimonialData = data?.testimonial || ['empty'];
     console.log(data?.testimonial)
     if (loading) {
-      return <div>Loading...</div>;
+        return <div>Loading...</div>;
     }
     if (!testimonialData) {
         console.log("no testimonials pulled....")
         return <h2>LOADING...</h2>;
-      }
+    }
 
-      let randomQuote = function(){
-         console.log("running randomQuote")
-        console.log(testimonialData)
-         return  testimonialData[Math.floor(Math.random()*4)]
-       }
-       let chosenQuote = randomQuote(testimonialData)
+    //   let randomQuote = function(){
+    //      console.log("running randomQuote")
+    //     console.log(testimonialData)
+    //      return  testimonialData[Math.floor(Math.random()*4)]
+    //    }
+    //    let chosenQuote = randomQuote(testimonialData)
     return (
-<<<<<<< HEAD
         <section>
-            <h2>Home</h2>
-        </section>
-    )
-};
-
-export default Home;
-=======
-    <section>
             <div className="feature-home-image">
                 <div className="glow feature-box">
                     {/* <h4><i>{chosenQuote.tstMessage}</i></h4> */}
@@ -49,7 +40,7 @@ export default Home;
             </div>
             <div className="pad-b80 about-home">
                 <div >
-                    <img src={require(`../../assets/images/portfolio/UW_SOHE_5.JPG`).default} alt='Jessica Walther'/>
+                    <img src={require(`../../assets/images/portfolio/UW_SOHE_5.JPG`).default} alt='Jessica Walther' />
                 </div>
                 <div className="about-home-box glow3">
                     <h2>About Woodland Consulting LLC</h2>
@@ -64,20 +55,20 @@ export default Home;
                     building and energy codes.</p>
                 </div>
             </div>
-    <div className="darkplumbg pad">
-        <h2>Project Map</h2>
-        <div className="flex-center">
-            <div className="maps-home flex1 pad40lr flex-center ">
-                Woodland Consulting's Founder has work located across the United States. Click to see a map showing where you can find her work nearest to you.  
+            <div className="darkplumbg pad">
+                <h2>Project Map</h2>
+                <div className="flex-center">
+                    <div className="maps-home flex1 pad40lr flex-center ">
+                        Woodland Consulting's Founder has work located across the United States. Click to see a map showing where you can find her work nearest to you.
             </div>
-            <div className="hover-glow flex-center  glow maps-img">
-                <button><h3>Contact</h3></button>
-            </div>
-        </div>
+                    <div className="hover-glow flex-center  glow maps-img">
+                        <button><h3>Contact</h3></button>
+                    </div>
+                </div>
             Signup
         </div>
-    </section>
-    )};
-    
-    export default Home;
->>>>>>> develop
+        </section>
+    )
+};
+
+export default Home;

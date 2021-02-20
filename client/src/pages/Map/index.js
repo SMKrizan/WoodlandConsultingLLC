@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import mapStyles from './mapStyles';
-
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/react-hooks';
 import Project from '../../components/Project';
 import { GET_PROJECTS } from '../../utils/queries';
@@ -13,10 +13,14 @@ import {
     InfoWindow
 } from "react-google-maps";
 
-function MapG() {
+const MapG = props => {
     const [selectedProject, setSelectedProject] = useState(null);
+    const { project: projectParam } = useParams();
 
-    const { loading, projectData } = useQuery(GET_PROJECTS);
+    const { loading, projectData } = useQuery(GET_PROJECTS, {
+        variables: { project: projectParam }
+    });
+    console.log("params", projectParam)
     const projects = projectData?.projects || [];
 
     console.log("LIST", projects);
@@ -75,8 +79,8 @@ function MapG() {
                 {/* // </div> */}
             </GoogleMap>
         </div>
-    );
-}
+    )
+};
 const MapWrapped = withScriptjs(withGoogleMap(MapG));
 
 
