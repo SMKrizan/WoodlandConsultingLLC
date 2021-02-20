@@ -79,6 +79,7 @@ const typeDefs = gql`
       tstMessage: String!
     ): Testimonial
     updateTestimonial(
+      _id: ID!
       tstName: String
       tstCompany: String
       tstMessage: String
