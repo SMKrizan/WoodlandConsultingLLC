@@ -45,7 +45,6 @@ export const GET_MESSAGES = gql`
             purpose
             messageCount
             }
-        }
     }
 `;
 

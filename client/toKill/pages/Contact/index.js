@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button, Col } from "reactstrap";
 import { validateEmail } from "../../utils/helpers";
-import './contact.css'
 
 function Contact() {
   const [characterCount, setCharacterCount] = useState(0);
@@ -47,7 +46,7 @@ function Contact() {
   
 
   return (
-    <div className="pad"> 
+    <div>
       <h2>Contact</h2>
       <Form>
         {/* style={{ padding: "20px", margin: "auto" }}> */}
