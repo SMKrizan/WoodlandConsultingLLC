@@ -10,33 +10,31 @@ import {
     EditButton
 } from 'react-admin';
 
-export const OwnerInfo = props => (
+export const ownerInfo = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
-            <TextField source="name" />
-            <EmailField source="email" />
-            <TextField source="city/state" />
+            <TextField source="ownerName" />
+            <EmailField source="ownerEmail" />
+            <TextField source="address" />
             <TextField source="password" />
         </Datagrid>
     </List>
 );
 
-const OwnerUpdate = (props) => {
+const ownerUpdate = (props) => {
     return (
     <Edit title='Update your information:' {...props}>
         <SimpleForm>
-            <TextInput source='firstName' />
-            <TextInput source='lastName' />
-            <EmailField source='email' />
-            <TextInput source='city' />
-            <TextInput source='state' />
+            <TextInput source='ownerName' />
+            <EmailField source='ownerEmail' />
+            <TextInput source='address' />
             <TextInput source='password' />
-            <EditButton label='Edit' basepath='/administrator' />
+            <EditButton label='Edit' basepath='/owner' />
         </SimpleForm>
     </Edit>
     )
 }
 
 
-export default { OwnerInfo, OwnerUpdate };
+export default { ownerInfo, ownerUpdate };

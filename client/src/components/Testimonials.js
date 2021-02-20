@@ -11,7 +11,7 @@ import {
     EditButton
 } from 'react-admin';
 
-export const TstList = props => (
+export const tstList = props => (
     <List {...props}>
         <Datagrid rowClick="edit">
             <TextField source="id" />
@@ -22,7 +22,7 @@ export const TstList = props => (
     </List>
 );
 
-const TstEdit = (props) => {
+const tstEdit = (props) => {
     return (
     <Edit title='Edit/Delete testimonials:' {...props}>
         <SimpleForm>
@@ -37,7 +37,7 @@ const TstEdit = (props) => {
     )
 }
 
-const TstAdd = (props) => {
+const tstAdd = (props) => {
     return (
     <Create title='Add a testimonial:' {...props}>
         <SimpleForm>
@@ -51,4 +51,4 @@ const TstAdd = (props) => {
     )
 }
 
-export default { TstList, TstEdit, TstAdd };
+export default { tstList, tstEdit, tstAdd };
