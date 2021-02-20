@@ -69,25 +69,12 @@ const resolvers = {
     },
     updateOwner: async (parent, args, context) => {
       if (context.owner) {
-        console.log('updateOwner args: ', args)
-        console.log('updateOwner context.owner:', context.owner._id)
+        console.log('owner:', context.owner._id, args)
         const owner = await Owner.findByIdAndUpdate({_id: context.owner._id}, args, {
           new: true,
         });
-        context.owner.pre('save', async function(next) {
-          if (this.isModified('password')) {
-              const saltRounds = 10;
-              this.password = await bcrypt.hash(this.password, saltRounds);
-          }
-      
-          next();
-      });
-      
-      // compare entered password with hashed password
-      ownerSchema.methods.isCorrectPassword = async function(password) {
-          return await bcrypt.compare(password, this.password);
-      };
-}
+        console.log('owner: ', owner)
+      }
 
       throw new AuthenticationError("Not logged in");
     },
