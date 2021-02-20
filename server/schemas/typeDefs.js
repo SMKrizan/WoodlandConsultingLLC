@@ -53,7 +53,7 @@ const typeDefs = gql`
     image: String
     projectDate: String
     cityState: String
-    location: [Location]
+    location: Location
     category: Category
     company: String
     WC: Boolean
@@ -74,9 +74,9 @@ const typeDefs = gql`
       password: String
     ): Owner
     addTestimonial(
-      tstName: String
-      tstCompany: String
-      tstMessage: String
+      tstName: String!
+      tstCompany: String!
+      tstMessage: String!
     ): Testimonial
     updateTestimonial(
       tstName: String

@@ -81,7 +81,7 @@ const resolvers = {
         const testimonial = await Testimonial.create({
           ...args,
         });
-        return { testimonial };
+        return testimonial ;
       }
       throw new AuthenticationError("You must be logged in to perform this action.");
     },
