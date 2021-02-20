@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery} from '@apollo/react-hooks';
-import {GET_TESTIMONIALS} from '../../utils/queries'
+import {GET_TESTIMONIALS} from '../../utils/queries';
+import ContactForm from '../../components/ContactForm'
 import './home.css'
 
 function Home() {
@@ -66,9 +67,13 @@ function Home() {
             <div className="hover-glow flex-center  glow maps-img">
                 <button><h3>Contact</h3></button>
             </div>
-        </div>
-            Signup
-        </div>
+        </div >
+    </div>
+            <div className="feature-home-image">
+                <div className="glow feature-box">
+                 <ContactForm />
+                 </div>
+            </div>
     </section>
     )};
     

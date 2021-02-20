@@ -56,7 +56,7 @@ function ContactForm() {
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
             <Label for="name" sm={2} size="lg">Name:</Label>
             <Col sm={10}>
-            <Input style={{ width: "75%"}}
+            <Input style={{ width: "90%"}}
                 type="text"
                 name="name"
                 id="nameInput"
@@ -70,7 +70,7 @@ function ContactForm() {
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
             <Label for="company" sm={2} size="lg">Company:</Label>
             <Col sm={10}>
-            <Input style={{ width: "75%"}}
+            <Input style={{ width: "90%"}}
                 type="text"
                 name="company"
                 id="companyInput"
@@ -84,7 +84,7 @@ function ContactForm() {
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
             <Label for="email" sm={2} size="lg">Email Address:</Label>
             <Col sm={10}>
-            <Input style={{ width: "75%"}}
+            <Input style={{ width: "90%"}}
                 type="email"
                 name="email"
                 id="emailInput"
@@ -124,7 +124,7 @@ function ContactForm() {
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
             <Label for="exampleText" sm={2} size="lg">Message:</Label>
             <Col sm={10}>
-            <Input style={{ width: "75%"}}
+            <Input style={{ width: "90%"}}
                 type="textarea"
                 name="text"
                 rows="5"
