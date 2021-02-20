@@ -7,12 +7,12 @@ import restProvider from 'ra-data-simple-rest';
 
 import Owner from '../components/Owner';
 import Messages from '../components/Messages';
-import Testimonials from '../components/Testimonials';
+import { tstList, tstEdit, tstAdd } from '../components/Testimonials';
 
 const AdminPage = () => {
     return <Admin dataProvider={restProvider('http://localhost:3000')}>
     <Resource name='messages' list={Messages} />
-    <Resource name='testimonials' list={TstList} edit={TstEdit}  />
+    <Resource name='testimonials' list={tstList} edit={tstEdit}  />
     <Resource name='owner' list={Owner} />
   </Admin>;
 };
