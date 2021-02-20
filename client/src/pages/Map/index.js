@@ -1,6 +1,5 @@
 import React from 'react';
 import mapStyles from './mapStyles';
-import ProjectList from '../../components/ProjectList';
 import {
     GoogleMap,
     withGoogleMap,
@@ -9,66 +8,62 @@ import {
     Marker
 } from "react-google-maps";
 
+import { useQuery } from '@apollo/react-hooks';
+import { GET_PROJECTS } from "../../utils/queries";
+
 function MapG() {
     // const [selectedProject, setSelectedProject] = useState(null);
+    const { loading, data } = useQuery(GET_PROJECTS);
+    const projectData = data?.projects || [];
+    console.log("PROJECTS", data?.projects);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    if (!projectData) {
+        console.log("nothing pulled....")
+        return <h2>LOADING...</h2>;
+    }
     return (
-        <GoogleMap
+
+        < GoogleMap
             defaultZoom={4}
             defaultCenter={{
                 lat: 44.8714,
                 lng: -90.2434
             }}
             defaultOptions={{ styles: mapStyles.styles }}
-
         >
-            <Marker
-                // <ProjectList></ProjectList>
-                // key={setSelectedProject._id}
-                position={{
-                    lat: 44.871443,
-                    lng: -90.243436
-                    // lat: latitude,
-                    // lng: longitute
-                }}
-                onClick={() => {
-                    // setSelectedproject(projectName);
-                }}
-            />
-            {/* {/* {selectedProject 
-            &&
-             (
-                 
-               ```  */ // <InfoWindow
-                //     onCloseClick={() => {
-                //         setSelectedproject(null);
-                //     }}
-                //     location={{
-                //         // lat: 44.871443,
-                //         // lng: -90.243436
-                //         lat: projects.latitude,
-                //         lng: projects.longitute
-                //     }}
-                // position={{
-                //     location: projects.locations
-                // lat: 44.871443,
-                // lng: -90.243436
-                // }}
-                // position={{
-                //     lat: projects.location.latitude,
-                //     lng: projects.location.longitude
-                // }}
-                // >
-                // <div>
-                //     {projects.projectName}
-                //     {projects.description}
-                // </div>
+            {projectData.map(item => (
+                <Marker
+                    position={{
+                        lat: item.location.[0].latitude,
+                        lng: item.location.[0].longitude
+                    }}
+                    onClick={() => {
+                        // setSelectedproject(projectName);
+                    }}
+                />
+             ))}
 
-                // </InfoWindow>
-                // ) */}
-            }
-        </GoogleMap>
+            {/* < InfoWindow
+            //     onCloseClick={() => {
+            //         setSelectedproject(null);
+            //     }}
+            position={{
+            //     location: projects.locations
+            lat: 44.871443,
+            lng: -90.243436
+            }}
+            // position={{
+            //     lat: projects.location.latitude,
+            //     lng: projects.location.longitude
+            // }}
+            >
+            </InfoWindow> */}
+
+        </GoogleMap >
     );
-
 }
 const MapWrapped = withScriptjs(withGoogleMap(MapG));
 
@@ -81,7 +76,8 @@ export default function Map() {
                 containerElement={<div style={{ height: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
             />
-            <ProjectList />
+            {/* <ProjectList
+            /> */}
         </div>
     );
 }
