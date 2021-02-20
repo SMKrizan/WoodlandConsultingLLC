@@ -14,14 +14,17 @@ import {
 } from "react-google-maps";
 
 function MapG() {
+    const [selectedProject, setSelectedProject] = useState(null);
 
     const { loading, projectData } = useQuery(GET_PROJECTS);
-    const project = projectData?.projects || [];
-    const [selectedProject, setSelectedProject] = useState(null);
+    const projects = projectData?.projects || [];
+
+    console.log("LIST", projects);
+
     return (
 
         // <div>
-        <div>{loading ? <div>Loading...</div> : <Project projects={project} />}
+        <div>{loading ? <div>Loading...</div> : <Project project={projects} />}
 
             <GoogleMap
                 defaultZoom={4}
@@ -31,15 +34,15 @@ function MapG() {
                 }}
                 defaultOptions={{ styles: mapStyles.styles }}>
                 <Marker
-                    key={project._id}
+                    key={projects._id}
                     location={{
                         // lat: 44.871443,
                         // lng: -90.243436
-                        lat: project.latitude,
-                        lng: project.longitute
+                        lat: projects.latitude,
+                        lng: projects.longitute
                     }}
                     onClick={() => {
-                        setSelectedProject(project);
+                        setSelectedProject(projects);
                     }}
                 />
                 {selectedProject && (
@@ -48,8 +51,8 @@ function MapG() {
                         location={{
                             // lat: 44.871443,
                             // lng: -90.243436
-                            lat: project.latitude,
-                            lng: project.longitute
+                            lat: projects.latitude,
+                            lng: projects.longitute
                         }}
                     // position={{
                     //     location: projects.locations
@@ -62,8 +65,8 @@ function MapG() {
                     // }}
                     >
                         <div>
-                            {project.projectName}
-                            {project.description}
+                            {projects.projectName}
+                            {projects.description}
                         </div>
 
                     </InfoWindow>
@@ -85,9 +88,9 @@ export default function Map() {
                 loadingElement={<div style={{ height: `100%` }} />}
                 containerElement={<div style={{ height: `100%` }} />}
                 mapElement={<div style={{ height: `100%` }} />}
-            >
-                <Project />
-            </MapWrapped>
+            />
+            {/* <Project /> */}
+
         </div>
     );
 }
