@@ -35,6 +35,8 @@ const typeDefs = gql`
     tstName: String
     tstCompany: String
     tstMessage: String
+    createdAt: String
+    updatedAt: String
   }
 
   type Message {
@@ -44,6 +46,8 @@ const typeDefs = gql`
     userEmail: String
     userMessage: String
     purpose: String 
+    messages: [Message]
+    createdAt: String
   }
 
   type Project {

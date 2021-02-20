@@ -1,8 +1,10 @@
 
+const bcrypt = require('bcrypt');
 const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
+
 const {
   Owner,
   Category,
@@ -51,7 +53,7 @@ const resolvers = {
   Mutation: {
     login: async (parent, { email, password }) => {
       const owner = await Owner.findOne({ email });
-
+      console.log('Owner login: ', owner, email, password)
       if (!owner) {
         throw new AuthenticationError("Incorrect credentials!");
       }
@@ -67,12 +69,25 @@ const resolvers = {
     },
     updateOwner: async (parent, args, context) => {
       if (context.owner) {
-        console.log('owner:', context.owner._id, args)
+        console.log('updateOwner args: ', args)
+        console.log('updateOwner context.owner:', context.owner._id)
         const owner = await Owner.findByIdAndUpdate({_id: context.owner._id}, args, {
           new: true,
         });
-        console.log('owner: ', owner)
-      }
+        context.owner.pre('save', async function(next) {
+          if (this.isModified('password')) {
+              const saltRounds = 10;
+              this.password = await bcrypt.hash(this.password, saltRounds);
+          }
+      
+          next();
+      });
+      
+      // compare entered password with hashed password
+      ownerSchema.methods.isCorrectPassword = async function(password) {
+          return await bcrypt.compare(password, this.password);
+      };
+}
 
       throw new AuthenticationError("Not logged in");
     },
