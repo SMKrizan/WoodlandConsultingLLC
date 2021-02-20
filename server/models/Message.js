@@ -27,19 +27,27 @@ const messageSchema = new Schema(
             enum: ['Ask a question', 'Leave a comment', 'Request a quote', 'Provide a testimonial'],
             default: 'Ask a question'
         },
+        messages: [
+            {
+                type: Schema.Types.ObjectId,
+                ref: 'Message'
+            }
+        ]
+    },
+    {
+        toJSON: {
+            virtuals: true
+        }
     }
-    // {
-    //     toJSON: {
-    //         getters: true
-    //     }
-    // }
 );
-// should auto-generate a timestamp to each model entry
+// auto-generates 'createdAt' and 'updatedAt' properties for each document
 messageSchema.plugin(timestamps);
+mongoose.model('Message', messageSchema);
 
-// messageSchema.virtual('messageCount').get(function () {
-//     return this.messages.length;
-// });
+// counts length of messages array to provide this information to "range"  (required by react-admin)
+messageSchema.virtual('messageCount').get(function () {
+    return this.messages.length;
+});
 
 const Message = mongoose.model('Message', messageSchema);
 

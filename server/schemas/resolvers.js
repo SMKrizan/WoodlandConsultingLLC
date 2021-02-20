@@ -31,13 +31,7 @@ const resolvers = {
       if (category) {
         params.categoryName = category;
       }
-
-      // if (projectName) {
-      //   params.projectName = {
-      //     $regex: projectName,
-      //   };
-      // }
-      
+    
       const project = Project.find({ category });
       console.log('category: ', category)
       return project

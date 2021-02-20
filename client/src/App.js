@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import './App.css';
-import { Admin, Resource } from 'react-admin';
 import Home from './pages/Home';
 import About from './pages/About';
 import Maps from './pages/Maps';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
+import AdminPage from './pages/AdminPage';
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -24,15 +24,14 @@ function App() {
         return <Maps />;
       case 'Portfolio':
         return <Portfolio />;
+      case 'AdminPage':
+        return <AdminPage />
       default:
         return <Contact />;
     }
   };
 
-  return <Admin dataProvider={restProvider('http://localhost:3000')}>
-    <Resource name='posts' list={PostList} />
-    <Resource name='testimonials' list={TestimonialList} />
-    <Resource name='administrator' list={Administrator} />
+  return (
     <body>
       <Header currentPage={currentPage} handlePageChange={handlePageChange} />
       <main >
@@ -43,8 +42,7 @@ function App() {
       </main>
       <Footer />
     </body>
-);
-  </Admin>;
-}
+  );
+};
 
   export default App;

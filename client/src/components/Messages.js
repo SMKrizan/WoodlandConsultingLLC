@@ -8,7 +8,7 @@ import {
     DeleteButton
 } from 'react-admin';
 
-const PostList = (props) => {
+const Messages = (props) => {
     return (
     <List {...props}>
         <Datagrid>
@@ -25,4 +25,4 @@ const PostList = (props) => {
     )
 }
 
-export default PostList;
+export default Messages;
