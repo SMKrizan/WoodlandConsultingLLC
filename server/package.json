@@ -11,7 +11,8 @@
   },
   "devDependencies": {},
   "scripts": {
-    "jsonserver": "json-server --watch db.json --port 5000"
+    "jsonserver": "json-server --watch db.json --port 5000",
+    "watch": "nodemon"
   },
   "author": "",
   "license": "ISC"
