@@ -6,8 +6,8 @@ import './home.css'
 function Home() {
 
     const { loading, data} = useQuery(GET_TESTIMONIALS);
-    const testimonialData = data?.testimonial || ['empty'];
-    console.log(data?.testimonial)
+    const testimonialData = data?.testimonials ;
+    console.log(data?.testimonials)
     if (loading) {
       return <div>Loading...</div>;
     }
@@ -16,18 +16,20 @@ function Home() {
         return <h2>LOADING...</h2>;
       }
 
-      let randomQuote = function(){
+      let randomQuote = function(testimonialData){
          console.log("running randomQuote")
-        console.log(testimonialData)
-         return  testimonialData[Math.floor(Math.random()*4)]
+         const chosenQuote = testimonialData[Math.floor(Math.random()*testimonialData.length)]
+        return chosenQuote
        }
-       let chosenQuote = randomQuote(testimonialData)
+    const quote = randomQuote(testimonialData)
+
     return (
     <section>
             <div className="feature-home-image">
                 <div className="glow feature-box">
-                    {/* <h4><i>{chosenQuote.tstMessage}</i></h4> */}
-                    <p>Ipsum Facto - UW Chairman</p>
+
+                    <h4><i>"{quote.tstMessage}"</i></h4>
+                    <p><b>{quote.tstName} - {quote.tstCompany}</b> </p>
                     <div className="flex-left">
                         <div className="padlr">
                             <button className=""><h3>View Works</h3></button>

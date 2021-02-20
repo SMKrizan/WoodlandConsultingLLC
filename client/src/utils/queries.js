@@ -25,7 +25,7 @@ export const GET_OWNER = gql`
 // retrieve all posted testimonials
 export const GET_TESTIMONIALS = gql`
     {
-        testimonial {
+        testimonials {
             _id
             tstName
             tstCompany
@@ -37,7 +37,7 @@ export const GET_TESTIMONIALS = gql`
 // retrieve all submitted contact-form data
 export const GET_MESSAGES = gql`
     {
-        message {
+        messages {
             _id
             userName
             userCompany
@@ -51,7 +51,7 @@ export const GET_MESSAGES = gql`
 // retrieve all project data
 export const GET_PROJECTS = gql`
     {
-        project {
+        projects {
             _id
             projectName
             description
