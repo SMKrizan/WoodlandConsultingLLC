@@ -56,13 +56,16 @@ export const GET_PROJECTS = gql`
             projectName
             description
             image
-            projectdate
-            citystate
+            projectDate
+            cityState
             location {
                 latitude
                 longitude
             }
-            category
+            category {
+                _id
+                categoryName
+            }
             company
             wc
         }
