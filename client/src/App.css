@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&family=Lato:wght@300;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,300;1,400;1,500;1,600&family=Lato:wght@300;500;700;900&display=swap');
 
 /*remove inherent coding*/
 * {
@@ -10,8 +10,8 @@
 :root {
   --plum:#3e0040;
   --darkplum:#1b0024;
-  --darkgreen: #0d4a30;
-  --cream: #fffff7;
+  --darkgreen: #026d10;
+  --cream: #f7f7d9;
   --maroon: #541d3b;
 
   } 
@@ -33,34 +33,47 @@ a {
 
 p {
   padding-bottom:10px;
+  font-size: 20px;
+  font-weight: 500;
 }
 h1 {
   font-family: 'Josefin Sans', sans-serif;
   color: var(--cream);
-  font-size: 44px;
+  font-size: 55px;
   padding-bottom: 15px;
 }
 h2 {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 40px;
+  font-size: 44px;
   font-weight: 400;
 }
 h3 {
-  font-family: 'Lato', 'Open Sans', sans-serif;
-  font-size: 24px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
 }
 h4 {
   font-family: 'Josefin Sans', sans-serif;
   font-size: calc(14px + 1vmin);
   font-weight: 500;
 }
+h5 {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+}
+
 button {
   font-size: calc(14px + 1vmin);
   font-weight: 400; 
   padding: 10px 20px;
-  background: var(--maroon); 
+  background: var(--darkgreen); 
   border: none;
   border-radius: 5px;
+  margin: 1rem auto;
+  text-transform: uppercase;
+  color: #ccc6b7;
+  display: block;
 }
 button:hover {
   font-weight: 400; 
@@ -68,20 +81,50 @@ button:hover {
   background: var(--plum); 
   border: none;
   border-radius: 3px;
+  color: tint(var(--cream), 50%);
+  box-shadow:  2px 2px 5px white;
+  transition-duration: .6s;
+  transition-timing-function: ease-in-out;
+}
+button h3 {
+  font-size: 18px;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  margin:auto;
+  top:2px;
+  transition-duration: .6s;
+  transition-timing-function: ease-in-out;
+  z-index: 1;
 }
 
+
+li {
+  list-style: none;
+}
 main {
   margin-bottom:60px;
   background: var(--plum);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  padding:20px;
 }
 .center {
   text-align: center;
 }
+.shadow {
+  box-shadow: 0px 10px 15px var(--darkplum);
+}
+.glow {
+  box-shadow: 7px 7px 10px #fdf6d4;
+}
+.glow2 {
+  box-shadow: -7px 7px 10px #fdf6d4;
+}
 
+.glow3 {
+  box-shadow: -7px 7px 15px rgba(250, 250, 200, .5);
+}
 .background {
   padding: 30px;
   background-color: var(--plum);
@@ -128,7 +171,15 @@ main {
   padding-left: 10px;
 }
 
-
+.margin-auto {
+  margin: auto;
+}
+.flex-ceround {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin:auto;
+}
 .w-6 {
   flex:1;
   min-width:250px;
@@ -137,7 +188,9 @@ main {
   flex:2;
   min-width:250px;
 }
-
+.flex1 {
+  flex:1;
+}
  @media only screen and (max-width: 800px) {
 .w-9 {
   flex: 1;
