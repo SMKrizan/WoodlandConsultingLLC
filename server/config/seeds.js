@@ -14,15 +14,6 @@ db.once('open', async () => {
 
     console.log('CATEGORIES SEEDED');
 
-    // for (let i = 0; i < 44; i += 1) {
-
-    // await Project.updateOne(
-        
-    //     { $push: { locations } },
-    //     { runValidators: true }
-
-    // );
-
     const locations = ([
         {
             latitude: '41.472351',

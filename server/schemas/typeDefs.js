@@ -6,12 +6,12 @@ const typeDefs = gql`
     _id: ID
     categoryName: String
   }
-
+  
   type Query {
     categories: [Category]
     owner: Owner
     projects: [Project]
-    projectsByCategory(category: String!): [Project]
+    projectsByCategory(categoryName: String!): [Project]
     projectById(_id: ID!): Project
     testimonials: [Testimonial]
     messages: [Message]
@@ -53,7 +53,7 @@ const typeDefs = gql`
     image: String
     projectDate: String
     cityState: String
-    location: Location
+    location: [Location]
     category: Category
     company: String
     WC: Boolean

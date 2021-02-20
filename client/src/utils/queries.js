@@ -25,7 +25,7 @@ export const GET_OWNER = gql`
 // retrieve all posted testimonials
 export const GET_TESTIMONIALS = gql`
     {
-        testimonial {
+        testimonials {
             _id
             tstName
             tstCompany
@@ -37,7 +37,7 @@ export const GET_TESTIMONIALS = gql`
 // retrieve all submitted contact-form data
 export const GET_MESSAGES = gql`
     {
-        message {
+        messages {
             _id
             userName
             userCompany
@@ -51,20 +51,22 @@ export const GET_MESSAGES = gql`
 // retrieve all project data
 export const GET_PROJECTS = gql`
     {
-        project {
+        projects {
             _id
             projectName
             description
             image
-            projectdate
-            citystate
+            projectDate
+            cityState
             location {
                 latitude
                 longitude
             }
-            category
+            category {
+                categoryName
+            }
             company
-            wc
+            WC
         }
     }
 `;
@@ -72,33 +74,37 @@ export const GET_PROJECTS = gql`
 // retrieves all clients being presented on client listing (wc, citystate, company, category)
 export const GET_CLIENTLIST = gql`
     {
-        project {
+        projects {
             _id
-            category
-            citystate
+            category {
+                categoryName
+            }
+            cityState
             company
-            wc
+            WC
         }
     }
 `;
 
 // retrieve projects filtered by category ()
 export const PROJECTS_BY_CATEGORY = gql`
-    query projectsByCategory($categoryName: String) {
+    query projectsByCategory($categoryName: String!) {
         projectsByCategory(categoryName: $categoryName) {
             _id
             projectName
             description
             image
-            projectdate
-            citystate
+            projectDate
+            cityState
             location {
                 latitude
                 longitude
             }
-            category
+            category {
+                categoryName
+            }
             company
-            wc   
+            WC
         }
     }
 `;
@@ -111,15 +117,17 @@ query projectById($id: ID) {
         projectName
         description
         image
-        projectdate
-        citystate
+        projectDate
+        cityState
         location {
             latitude
             longitude
         }
-        category
+        category {
+            categoryName
+        }
         company
-        wc   
+        WC  
     }
 }
 `;

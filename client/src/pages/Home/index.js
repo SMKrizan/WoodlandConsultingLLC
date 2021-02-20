@@ -1,13 +1,13 @@
 import React from 'react';
-import { useQuery} from '@apollo/react-hooks';
-import {GET_TESTIMONIALS} from '../../utils/queries'
+import { useQuery } from '@apollo/react-hooks';
+import { GET_TESTIMONIALS } from '../../utils/queries'
 import './home.css'
 
 function Home() {
 
-    const { loading, data} = useQuery(GET_TESTIMONIALS);
+    const { loading, data } = useQuery(GET_TESTIMONIALS);
     const testimonialData = data?.testimonial || ['empty'];
-    console.log(data?.testimonial)
+    console.log(testimonialData)
     if (loading) {
       return <div>Loading...</div>;
     }
