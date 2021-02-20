@@ -758,17 +758,17 @@ db.once('open', async () => {
     const testimonials = await Testimonial.insertMany([
         {
             tstName: 'Joe Light',
-            tstcompany: 'Lighting Design',
+            tstCompany: 'Lighting Design',
             tstMessage: 'Woodland Consulting is the best in the business!'
         },
         {
             tstName: 'Jill Bulb',
-            tstcompany: 'Lighting for all',
+            tstCompany: 'Lighting for all',
             tstMessage: 'Jessica at Woodland Consulting is a great business partner and really dedicates her time to each job.'
         },
         {
             tstName: 'Jack Bright',
-            tstcompany: 'Lighting Bright',
+            tstCompany: 'Lighting Bright',
             tstMessage: 'I would recommend Woodland Consulting for any lighting project!'
         }
     ]);

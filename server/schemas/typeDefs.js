@@ -74,9 +74,9 @@ const typeDefs = gql`
       password: String
     ): Owner
     addTestimonial(
-      tstName: String
-      tstCompany: String
-      tstMessage: String
+      tstName: String!
+      tstCompany: String!
+      tstMessage: String!
     ): Testimonial
     updateTestimonial(
       tstName: String
