@@ -53,7 +53,7 @@ mutation updateTestimonial($_id: ID! $tstName: String, $tstCompany: String, $tst
 `;
 
 export const REMOVE_TESTIMONIAL = gql`
-mutation removeTestimonial($id: ID!) {
+mutation removeTestimonial($_id: ID!) {
     removeTestimonial(_id: $id) {
         _id
         tstName
