@@ -1,0 +1,7 @@
+.infoWindow h5{
+    color: var(--darkplum);
+}
+.infoWindow p{
+    color: var(--darkplum);
+font-size: 16px;
+}

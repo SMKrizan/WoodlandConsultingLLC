@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import mapStyles from './mapStyles';
+import './map.css';
 import {
     GoogleMap,
     withGoogleMap,
@@ -38,19 +39,20 @@ function Map() {
         >
             {projectData.map(item => (
                 <Marker
-                    // key={item._id}
+                    key={item._id}
                     position={{
                         lat: item.location[0].latitude,
                         lng: item.location[0].longitude
                     }}
                     onClick={() => {
+                        currentProject && setCurrentProject(null)
                         setCurrentProject(item);
                         console.log("data", item)
                     }}
-                // icon={{
-                //     url: `WoodlandConsulting_logo_sm_nog.png`,
-                //     scaledSize: new window.google.maps.Size(20, 20)
-                // }}
+                    defaultIcon={{
+                        url: `https://drive.google.com/uc?id=12200MXzCiZ4zxSNRHXbyqzz1QGC-HBVL`,
+                        scaledSize: new window.google.maps.Size(35, 35)
+                    }}
 
                 />
             ))}
