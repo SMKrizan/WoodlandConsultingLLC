@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
-import './App.css';
 import { ApolloProvider } from '@apollo/react-hooks';
+// import { ApolloClient, InMemoryCache } from '@apollo/client';
 import ApolloClient from 'apollo-boost';
+import { BrowserRouter as Router} from 'react-router-dom';
+import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
 import Maps from './pages/Maps';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
-import { BrowserRouter as Router} from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
+
+//const cache = new InMemoryCache();
+
 
 const client = new ApolloClient({
   request: operation => {
@@ -23,6 +27,30 @@ const client = new ApolloClient({
   },
   uri: '/graphql'
 });
+
+
+
+// const cache = new InMemoryCache();
+
+// const client = new ApolloClient({
+//   // Provide required constructor fields
+//   cache: cache,
+//   uri: '/graphql',
+
+//   // Provide some optional constructor fields
+//   name: 'react-web-client',
+//   version: '1.3',
+//   // queryDeduplication: false,
+//   defaultOptions: {
+//     watchQuery: {
+//       fetchPolicy: 'network-only'
+//     },
+//     query: {
+//         fetchPolicy: 'cache-and-network',
+//         returnPartialData: true
+//     }
+//   },
+// });
 
 function App() {
   const [currentPage, handlePageChange] = useState('Home');

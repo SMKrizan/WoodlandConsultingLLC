@@ -63,6 +63,10 @@ export const GET_PROJECTS = gql`
                 longitude
             }
             category {
+<<<<<<< HEAD
+=======
+                _id
+>>>>>>> 22a5648a44921827a212453c93845ff418f1506f
                 categoryName
             }
             company
