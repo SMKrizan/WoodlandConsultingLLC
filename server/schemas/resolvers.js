@@ -23,17 +23,13 @@ const resolvers = {
       console.log('Owner: ', owner)
       return owner
     },
-    projects: async () => {
-      return await Project.find().populate('category');
-    },
-    projectsByCategory: async (parent, { categoryName }) => {
-      console.log("here", categoryName)
+    projectsByCategory: async (parent, { category }) => {
       const params = {};
-      if (categoryName) {
-        params.categoryName = categoryName;
+      if (category) {
+        params.categoryName = category;
       }
-      const project = Project.find({ category: {_id: {categoryName} } });
-      console.log('category: ', categoryName )
+
+      const project  = Project.find({ category });
       return project
     },
     projectById: async (parent, { _id }) => {

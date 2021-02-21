@@ -11,7 +11,7 @@ const typeDefs = gql`
     categories: [Category]
     owner: Owner
     projects: [Project]
-    projectsByCategory(categoryName: String!): [Project]
+    projectsByCategory(category: String!): [Project]
     projectById(_id: ID!): Project
     testimonials: [Testimonial]
     messages: [Message]
