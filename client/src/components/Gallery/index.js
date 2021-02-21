@@ -30,6 +30,10 @@ function Gallery() {
                     <h4>category</h4>
                 </div>
             </div>
+            <img 
+      src="https://drive.google.com/uc?id=1MAO7Cp_JLPR2eRUtLOoDFZmiFlHB2aT3"
+      alt="new"
+      />
 
             <div className="project">
                 <div className="project-img" style={{  backgroundImage: "url(" + image1 + ")"}}>

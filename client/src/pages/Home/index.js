@@ -30,13 +30,13 @@ function Home() {
                 <div className="glow feature-box">
 
                     <h4><i>"{quote.tstMessage}"</i></h4>
-                    <p><b>{quote.tstName} - {quote.tstCompany}</b> </p>
+                    <p>{quote.tstName} - {quote.tstCompany}</p>
                     <div className="flex-left">
-                        <div className="padlr">
-                            <button className=""><h3>View Works</h3></button>
+                        <div>
+                            <button><h3>View Works</h3></button>
                         </div>
-                        <div className="padlr">
-                            <button className="flex1"><h3>Contact</h3></button>
+                        <div>
+                            <button><h3>Contact</h3></button>
                         </div>
                     </div>
                 </div>

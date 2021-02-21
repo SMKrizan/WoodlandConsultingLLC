@@ -70,7 +70,7 @@ button {
   background: var(--darkgreen); 
   border: none;
   border-radius: 5px;
-  margin: 1rem auto;
+  margin: 10px;
   text-transform: uppercase;
   color: #ccc6b7;
   display: block;
