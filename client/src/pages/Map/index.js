@@ -50,8 +50,8 @@ function Map() {
                         console.log("data", item)
                     }}
                     defaultIcon={{
-                        url: `https://drive.google.com/uc?id=12200MXzCiZ4zxSNRHXbyqzz1QGC-HBVL`,
-                        scaledSize: new window.google.maps.Size(35, 35)
+                        url: `https://drive.google.com/uc?id=11k7iv_DCI6TdiMbnPTjxNDh42JdMymzy`,
+                        scaledSize: new window.google.maps.Size(35, 45)
                     }}
 
                 />
