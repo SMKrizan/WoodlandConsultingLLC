@@ -30,7 +30,6 @@ export const GET_TESTIMONIALS = gql`
             tstName
             tstCompany
             tstMessage
-            createdAt
             updatedAt
         }
     }

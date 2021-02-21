@@ -36,7 +36,6 @@ export const ADD_TESTIMONIAL = gql`
       tstName
       tstCompany
       tstMessage
-      }
     }
   }
 `;

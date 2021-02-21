@@ -2,9 +2,9 @@ import { useReducer } from "react";
 import {
   SUBMIT_MESSAGE,
   DELETE_MESSAGE,
-  ADD_TESTIMONIAL,
-  UPDATE_TESTIMONIAL,
-  DELETE_TESTIMONIAL,
+  ADD_TST,
+  UPDATE_TST,
+  DELETE_TST,
   UPDATE_OWNER_INFO,
 } from "./actions";
 
@@ -14,31 +14,31 @@ export const reducer = (state, action) => {
     case SUBMIT_MESSAGE:
       return {
         ...state,
-        message: [...action.message]
+        messages: [...action.messages]
       };
       // admin-page message deletion
     case DELETE_MESSAGE:
       return {
         ...state,
-        message: [...action.message]
+        messages: [...action.messages]
       }
     // add testimonial from admin page
-    case ADD_TESTIMONIAL:
+    case ADD_TST:
       return {
         ...state,
-        testimonial: [...action.testimonial]
+        testimonials: [...action.testimonials]
       }
     // update testimonial from admin page
-    case UPDATE_TESTIMONIAL:
+    case UPDATE_TST:
       return {
         ...state,
-        testimonial: [...action.testimonial]
+        testimonials: [...action.testimonials]
       }
     // delete testimonial text from admin page
-    case DELETE_TESTIMONIAL:
+    case DELETE_TST:
       return {
         ...state,
-        testimonial: [...action.testimonial]
+        testimonials: [...action.testimonials]
       }
     // update owner info on admin page
     case UPDATE_OWNER_INFO:

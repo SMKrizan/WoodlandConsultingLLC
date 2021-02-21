@@ -20,47 +20,40 @@ const MessageList = ({ userName, userCompany, userEmail, userMessage, purpose, c
     if (loading) {
         return <div>Loading...</div>;
     }
-    else if (!messageData) {
-        return <h2>No messages available...</h2>;
+    else if (!messageData.length) {
+        return <h2>No messages to display.</h2>;
     }
 
-    useEffect(() => {
-        if(messages) {
-            dispatch({
-                type: DELETE_MESSAGE,
-                messages: 
-            })
-        }
-    });
+    // useEffect(() => {
+    //     if(messages) {
+    //         dispatch({
+    //             type: DELETE_MESSAGE,
+    //             messages: 
+    //         })
+    //     }
+    // });
 
-    const handleClick = id => {
-        dispatch({
-            type: DELETE_MESSAGE,
-            messages: messageList
-        })
-    }
+    // const handleClick = id => {
+    //     dispatch({
+    //         type: DELETE_MESSAGE,
+    //         messages: messageList
+    //     })
+    // }
     
-    // first checking to see whether thoughts array contains data
-    if (!messageList.length) {
-        return <h3>No Messages</h3>;
-    }
-
     return (
         <div>
             <h3>You have {messageData.length} messages:</h3>
-            {messageList &&
-                messageList.map(message => (
+            {messageData &&
+                messageData.map(message => (
                     // 'key' is required on mapped data for React to track data changes
-                    <div key={message._id}>
+                    <div key={messageData._id}>
                         <>
-                        <p>
-                            {purpose}
-                        Name: {userName}
-                        Company: {userCompany}
-                        Email: {userEmail}
-                        Message: {userMessage}
-                        Date: {createdAt}
-                        </p>
+                        <h4>{purpose}</h4>
+                        <h5>Name: {userName}</h5>
+                        <h5>Company: {userCompany}</h5>
+                        <h5>Email: {userEmail}</h5>
+                        <p>Message: {userMessage}</p>
+                        <h5>Date: {createdAt}</h5>
                         </>
                     </div>
                 ))}
