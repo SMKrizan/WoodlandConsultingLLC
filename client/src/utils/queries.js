@@ -30,6 +30,8 @@ export const GET_TESTIMONIALS = gql`
             tstName
             tstCompany
             tstMessage
+            createdAt
+            updatedAt
         }
     }
 `;
@@ -44,6 +46,7 @@ export const GET_MESSAGES = gql`
             userEmail
             userMessage
             purpose
+            createdAt
             }
     }
 `;

@@ -7,7 +7,9 @@ import About from './pages/About';
 import Maps from './pages/Maps';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
-import { BrowserRouter as Router} from 'react-router-dom';
+// import AdminPage from './pages/AdminPage';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { StoreProvider } from './utils/GlobalState';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -39,6 +41,8 @@ function App() {
         return <Maps />;
       case 'Portfolio':
         return <Portfolio />;
+      // case 'AdminPage':
+      //   return <AdminPage />;
       default:
         return <Contact />;
     }
@@ -47,14 +51,16 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-            <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-            <main >
-              {
-                // Render the component returned by 'renderPage()'
-                renderPage(currentPage)
-              }
-            </main>
-            <Footer />
+        <StoreProvider>
+          <Header currentPage={currentPage} handlePageChange={handlePageChange} />
+          <main >
+            {
+              // Render the component returned by 'renderPage()'
+              renderPage(currentPage)
+            }
+          </main>
+          <Footer />
+        </StoreProvider>
       </Router>
     </ApolloProvider>
   );
