@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery} from '@apollo/react-hooks';
 
 
-import image1 from '../../assets/images/portfolio/Colliers_1.JPG';
+import image1 from '../../assets/images/portfolio/UW_SOHE_2-min.JPG';
 import { GET_PROJECTS } from '../../utils/queries';
 
 
