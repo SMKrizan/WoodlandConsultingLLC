@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery} from '@apollo/react-hooks';
 
 
-import image1 from '../../assets/images/portfolio/Colliers_1.JPG';
+import image1 from '../../assets/images/portfolio/UW_SOHE_2-min.JPG';
 import { GET_PROJECTS } from '../../utils/queries';
 
 
@@ -30,6 +30,10 @@ function Gallery() {
                     <h4>category</h4>
                 </div>
             </div>
+            <img 
+      src="https://drive.google.com/uc?id=1MAO7Cp_JLPR2eRUtLOoDFZmiFlHB2aT3"
+      alt="new"
+      />
 
             <div className="project">
                 <div className="project-img" style={{  backgroundImage: "url(" + image1 + ")"}}>

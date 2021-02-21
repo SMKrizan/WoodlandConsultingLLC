@@ -30,20 +30,20 @@ function Home() {
                 <div className="glow feature-box">
 
                     <h4><i>"{quote.tstMessage}"</i></h4>
-                    <p><b>{quote.tstName} - {quote.tstCompany}</b> </p>
+                    <p>{quote.tstName} - {quote.tstCompany}</p>
                     <div className="flex-left">
-                        <div className="padlr">
-                            <button className=""><h3>View Works</h3></button>
+                        <div>
+                            <button><h3>View Works</h3></button>
                         </div>
-                        <div className="padlr">
-                            <button className="flex1"><h3>Contact</h3></button>
+                        <div>
+                            <button><h3>Contact</h3></button>
                         </div>
                     </div>
                 </div>
             </div>
             <div className="pad-b80 about-home">
                 <div >
-                    <img src={require(`../../assets/images/portfolio/UW_SOHE_5.JPG`).default} alt='Jessica Walther' />
+                    <img src={require(`../../assets/images/portfolio/UW_SOHE_6-min.JPG`).default} alt='Jessica Walther'/>
                 </div>
                 <div className="about-home-box glow3">
                     <h2>About Woodland Consulting LLC</h2>
