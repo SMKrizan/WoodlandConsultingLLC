@@ -19,7 +19,9 @@ function Gallery() {
         return <h2>LOADING...</h2>;
       }
 
-
+      const galleryImages = projectData.filter((project) => project.image == '');
+      console.log("this")
+      console.log(galleryImages)
     return (
         <div className="gallery pad">
             <div className="project">

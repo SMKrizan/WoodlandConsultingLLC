@@ -67,7 +67,7 @@ export const GET_PROJECTS = gql`
                 categoryName
             }
             company
-            wc
+            WC
         }
     }
 `;
