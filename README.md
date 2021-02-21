@@ -16,3 +16,6 @@ client:
 server:
 `npm install jsonwebtoken`
 `npm i apollo-server-express`
+
+root
+`npx react-codemod rename-unsafe-lifecycles` (to fix:react-dom.development.js:67 Warning: componentWillMount has been renamed, and is not recommended for use.)

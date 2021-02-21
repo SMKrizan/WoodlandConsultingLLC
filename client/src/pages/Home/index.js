@@ -1,13 +1,14 @@
 import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { GET_TESTIMONIALS } from '../../utils/queries'
+import { useQuery} from '@apollo/react-hooks';
+import {GET_TESTIMONIALS} from '../../utils/queries';
+import ContactForm from '../../components/ContactForm'
 import './home.css'
 
 function Home() {
 
-    const { loading, data } = useQuery(GET_TESTIMONIALS);
-    const testimonialData = data?.testimonial || ['empty'];
-    console.log(data?.testimonial)
+    const { loading, data} = useQuery(GET_TESTIMONIALS);
+    const testimonialData = data?.testimonials ;
+    console.log(data?.testimonials)
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -16,12 +17,20 @@ function Home() {
         return <h2>LOADING...</h2>;
     }
 
+      let randomQuote = function(testimonialData){
+         console.log("running randomQuote")
+         const chosenQuote = testimonialData[Math.floor(Math.random()*testimonialData.length)]
+        return chosenQuote
+       }
+    const quote = randomQuote(testimonialData)
+
     return (
         <section>
             <div className="feature-home-image">
                 <div className="glow feature-box">
 
-                    <p>Ipsum Facto - UW Chairman</p>
+                    <h4><i>"{quote.tstMessage}"</i></h4>
+                    <p><b>{quote.tstName} - {quote.tstCompany}</b> </p>
                     <div className="flex-left">
                         <div className="padlr">
                             <button className=""><h3>View Works</h3></button>
@@ -55,14 +64,17 @@ function Home() {
                     <div className="maps-home flex1 pad40lr flex-center ">
                         Woodland Consulting's Founder has work located across the United States. Click to see a map showing where you can find her work nearest to you.
             </div>
-                    <div className="hover-glow flex-center  glow maps-img">
-                        <button><h3>Contact</h3></button>
-                    </div>
-                </div>
-            Signup
-        </div>
-        </section>
-    )
-};
-
-export default Home;
+            <div className="hover-glow flex-center  glow maps-img">
+                <button><h3>Contact</h3></button>
+            </div>
+        </div >
+    </div>
+            <div className="feature-home-image">
+                <div className="glow feature-box">
+                 <ContactForm />
+                 </div>
+            </div>
+    </section>
+    )};
+    
+    export default Home;

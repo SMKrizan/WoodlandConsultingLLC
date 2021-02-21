@@ -13,7 +13,6 @@
     "graphql-tag": "^2.11.0",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.1",
-    "react-awesome-slider": "^4.1.0",
     "react-dom": "^17.0.1",
     "react-google-maps": "^9.4.5",
     "react-router-dom": "^5.2.0",
@@ -22,10 +21,9 @@
     "web-vitals": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "react-scripts start --max-http-header-size=1000000000",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "sass": "node-sass sass/ -o build/css/",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
