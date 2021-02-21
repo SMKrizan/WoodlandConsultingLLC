@@ -10,12 +10,12 @@ function Home() {
     const testimonialData = data?.testimonials ;
     console.log(data?.testimonials)
     if (loading) {
-      return <div>Loading...</div>;
+        return <div>Loading...</div>;
     }
     if (!testimonialData) {
         console.log("no testimonials pulled....")
         return <h2>LOADING...</h2>;
-      }
+    }
 
       let randomQuote = function(testimonialData){
          console.log("running randomQuote")
@@ -25,7 +25,7 @@ function Home() {
     const quote = randomQuote(testimonialData)
 
     return (
-    <section>
+        <section>
             <div className="feature-home-image">
                 <div className="glow feature-box">
 
@@ -43,7 +43,7 @@ function Home() {
             </div>
             <div className="pad-b80 about-home">
                 <div >
-                    <img src={require(`../../assets/images/portfolio/UW_SOHE_5.JPG`).default} alt='Jessica Walther'/>
+                    <img src={require(`../../assets/images/portfolio/UW_SOHE_5.JPG`).default} alt='Jessica Walther' />
                 </div>
                 <div className="about-home-box glow3">
                     <h2>About Woodland Consulting LLC</h2>
@@ -58,11 +58,11 @@ function Home() {
                     building and energy codes.</p>
                 </div>
             </div>
-    <div className="darkplumbg pad">
-        <h2>Project Map</h2>
-        <div className="flex-center">
-            <div className="maps-home flex1 pad40lr flex-center ">
-                Woodland Consulting's Founder has work located across the United States. Click to see a map showing where you can find her work nearest to you.  
+            <div className="darkplumbg pad">
+                <h2>Project Map</h2>
+                <div className="flex-center">
+                    <div className="maps-home flex1 pad40lr flex-center ">
+                        Woodland Consulting's Founder has work located across the United States. Click to see a map showing where you can find her work nearest to you.
             </div>
             <div className="hover-glow flex-center  glow maps-img">
                 <button><h3>Contact</h3></button>
