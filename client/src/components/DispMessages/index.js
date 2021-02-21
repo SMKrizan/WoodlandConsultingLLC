@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { useStoreContext } from "../../utils/GlobalState";
 
-import { GET_MESSAGES } from '../utils/queries';
+import { GET_MESSAGES } from '../../utils/queries';
 import { UPDATE_MESSAGES } from '../../utils/actions';
 // import { REMOVE_MESSAGE } from '../utils/mutations';
 // import { idbPromise } from "../../utils/helpers";
@@ -12,13 +12,13 @@ import { UPDATE_MESSAGES } from '../../utils/actions';
 const messageList = ({ userName, userCompany, userEmail, userMessage, purpose, createdAt }) => {
     const [state, dispatch] = useStoreContext();
     const { messages } = state;
-    const { data: messages } = useQuery(GET_MESSAGES);
+    const { data: getMessages } = useQuery(GET_MESSAGES);
 
     useEffect(() => {
         if(messages) {
             dispatch({
                 type: GET_MESSAGES,
-                messages: messageList
+                getMessages: messageList
             })
         }
     });

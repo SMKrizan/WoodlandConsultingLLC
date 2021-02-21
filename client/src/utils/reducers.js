@@ -1,43 +1,50 @@
 import { useReducer } from "react";
 import {
-  GET_PROJECTS,
-  UPDATE_MESSAGES,
-  ADD_TESTIMONIALS,
-  UPDATE_TESTIMONIALS,
+  QUERY_MESSAGES,
+  QUERY_TESTIMONIALS,
+  QUERY_OWNER_INFO,
+  UPDATE_OWNER_INFO,
+  ADD_TESTIMONIAL,
   REMOVE_TESTIMONIALS,
-  UPDATE_OWNER_INFO
 } from "./actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case GET_PROJECTS:
+
+    case GET_MESSAGES:
       return {
         ...state,
-        categories: [...action.categories],
+        getMessages: [...action.getMessages]
       };
 
-    case UPDATE_MESSAGES:
+    case ADD_MESSAGE:
       return {
         ...state,
-        messages: [...action.messages]
-      }
-    
-    case ADD_TESTIMONIALS:
-      return {
-        ...state,
-        testimonials: [...action.testimonials]
+        addMessage: [...action.addMessage]
       }
 
-    case UPDATE_TESTIMONIALS:
+    case REMOVE_MESSAGE:
       return {
         ...state,
-        testimonials: [...action.testimonials]
+        removeMessage: [...action.removeMessage]
       }
 
-    case REMOVE_TESTIMONIALS:
+    case ADD_TESTIMONIAL:
       return {
         ...state,
-        testimonials: [...action.testimonials]
+        addTestimonial: [...action.addTestimonial]
+      }
+
+    case UPDATE_TESTIMONIAL:
+      return {
+        ...state,
+        updateTestimonial: [...action.updateTestimonial]
+      }
+
+    case REMOVE_TESTIMONIAL:
+      return {
+        ...state,
+        removeTestimonial: [...action.removeTestimonial]
       }
 
     case UPDATE_OWNER_INFO:
@@ -45,7 +52,6 @@ export const reducer = (state, action) => {
         ...state,
         ownerInfo: [...action.ownerInfo]
       }
-
 
     default:
       return state;

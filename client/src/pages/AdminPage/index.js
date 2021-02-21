@@ -2,10 +2,12 @@
 // Nice to have: location to enter client list data, location to add photos and photo data
 
 import React from 'react';
-import DispMessages from '../components/DispMessages';
+import { useStoreContext } from "../../utils/GlobalState";
+
+import DispMessages from '../../components/DispMessages';
 // import DispTestimonials from '../components/DispTestimonials';
 // import DispOwner from '../components/DispOwner';
-import Auth from '../utils/auth';
+import Auth from '../../utils/auth';
 
 const AdminPage = () => {
     return (
