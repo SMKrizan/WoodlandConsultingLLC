@@ -5,10 +5,10 @@ import ApolloClient from 'apollo-boost';
 import Home from './pages/Home';
 import About from './pages/About';
 // 
-import Map from './pages/Map';
+import GoogleMapReact from './pages/GoogleMapReact';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -37,7 +37,7 @@ function App() {
       case 'About':
         return <About />;
       case 'Map':
-        return <Map />;
+        return <GoogleMapReact />;
       case 'Portfolio':
         return <Portfolio />;
       case 'Contact':
@@ -50,14 +50,14 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-            <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-            <main >
-              {
-                // Render the component returned by 'renderPage()'
-                renderPage(currentPage)
-              }
-            </main>
-            <Footer />
+        <Header currentPage={currentPage} handlePageChange={handlePageChange} />
+        <main >
+          {
+            // Render the component returned by 'renderPage()'
+            renderPage(currentPage)
+          }
+        </main>
+        <Footer />
       </Router>
     </ApolloProvider>
   );
