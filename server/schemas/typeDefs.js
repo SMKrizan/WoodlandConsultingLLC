@@ -31,6 +31,8 @@ const typeDefs = gql`
     tstName: String
     tstCompany: String
     tstMessage: String
+    createdAt: String
+    updatedAt: String
   }
   type Message {
     _id: ID
@@ -39,6 +41,8 @@ const typeDefs = gql`
     userEmail: String
     userMessage: String
     purpose: String 
+    messages: [Message]
+    createdAt: String
   }
   type Project {
     _id: ID

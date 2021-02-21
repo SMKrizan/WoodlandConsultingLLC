@@ -1,8 +1,10 @@
 
+const bcrypt = require('bcrypt');
 const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
+
 const {
   Owner,
   Category,
@@ -51,7 +53,7 @@ const resolvers = {
   Mutation: {
     login: async (parent, { email, password }) => {
       const owner = await Owner.findOne({ email });
-
+      console.log('Owner login: ', owner, email, password)
       if (!owner) {
         throw new AuthenticationError("Incorrect credentials!");
       }
