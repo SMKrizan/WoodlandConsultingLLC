@@ -28,7 +28,7 @@ function MapG() {
     return (
 
         < GoogleMap
-            defaultZoom={4}
+            defaultZoom={5}
             defaultCenter={{
                 lat: 44.8714,
                 lng: -90.2434
@@ -39,11 +39,12 @@ function MapG() {
                 <Marker
                     key={item._id}
                     position={{
-                        lat: item.location.[0].latitude,
-                        lng: item.location.[0].longitude
+                        lat: item.location[0].latitude,
+                        lng: item.location[0].longitude
                     }}
                     onClick={() => {
-                        setCurrentProject(projectData);
+                        setCurrentProject(item);
+                        console.log("data", item)
                     }}
                 // icon={{
                 //     url: `WoodlandConsulting_logo_sm_nog.png`,
@@ -52,15 +53,15 @@ function MapG() {
 
                 />
             ))}
-
             {currentProject && (
                 < InfoWindow
                     onCloseClick={() => {
                         setCurrentProject(null);
+
                     }}
                     position={{
-                        lat: currentProject.location.[0].latitude,
-                        lng: currentProject.location.[0].longitude
+                        lat: currentProject.location[0].latitude,
+                        lng: currentProject.location[0].longitude
                     }}
                 >
                     <div>
