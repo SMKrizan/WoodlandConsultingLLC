@@ -3,16 +3,14 @@
 
 import React from 'react';
 import DispMessages from '../components/DispMessages';
-import DispTestimonials from '../components/DispTestimonials';
-import DispOwner from '../components/DispOwner';
+// import DispTestimonials from '../components/DispTestimonials';
+// import DispOwner from '../components/DispOwner';
 import Auth from '../utils/auth';
 
 const AdminPage = () => {
     return (
         <div>
             <DispMessages />
-            <DispTestimonials />
-            <DispOwner />
         </div>
     )
 };

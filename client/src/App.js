@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
-// import { ApolloClient, InMemoryCache } from '@apollo/client';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router} from 'react-router-dom';
 import './App.css';
@@ -9,8 +8,7 @@ import About from './pages/About';
 import Maps from './pages/Maps';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
-// import AdminPage from './pages/AdminPage';
-import { BrowserRouter as Router } from 'react-router-dom';
+import AdminPage from './pages/AdminPage';
 import { StoreProvider } from './utils/GlobalState';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -30,30 +28,6 @@ const client = new ApolloClient({
   uri: '/graphql'
 });
 
-
-
-// const cache = new InMemoryCache();
-
-// const client = new ApolloClient({
-//   // Provide required constructor fields
-//   cache: cache,
-//   uri: '/graphql',
-
-//   // Provide some optional constructor fields
-//   name: 'react-web-client',
-//   version: '1.3',
-//   // queryDeduplication: false,
-//   defaultOptions: {
-//     watchQuery: {
-//       fetchPolicy: 'network-only'
-//     },
-//     query: {
-//         fetchPolicy: 'cache-and-network',
-//         returnPartialData: true
-//     }
-//   },
-// });
-
 function App() {
   const [currentPage, handlePageChange] = useState('Home');
 
@@ -69,8 +43,8 @@ function App() {
         return <Maps />;
       case 'Portfolio':
         return <Portfolio />;
-      // case 'AdminPage':
-      //   return <AdminPage />;
+      case 'AdminPage':
+        return <AdminPage />;
       default:
         return <Contact />;
     }

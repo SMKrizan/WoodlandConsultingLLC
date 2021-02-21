@@ -1,5 +1,4 @@
 // creates new context object and makes state data available to all components that call for it
-// used by: 
 import React, { createContext, useContext } from "react";
 import { useProductReducer } from './reducers'
 
