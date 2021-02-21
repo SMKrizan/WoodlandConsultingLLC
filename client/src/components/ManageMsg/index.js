@@ -3,29 +3,39 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { useStoreContext } from "../../utils/GlobalState";
 
 import { GET_MESSAGES } from '../../utils/queries';
-import { UPDATE_MESSAGES } from '../../utils/actions';
+import { DELETE_MESSAGE } from '../../utils/actions';
 // import { REMOVE_MESSAGE } from '../utils/mutations';
 // import { idbPromise } from "../../utils/helpers";
 // import Auth from '../utils/auth';
 
-// conditionally renders message data; data is destructured to avoid having to use 'props.userName' etc. throughout JSX code
-const messageList = ({ userName, userCompany, userEmail, userMessage, purpose, createdAt }) => {
+// conditionally renders message data; destructuring rather than using 'props.userName' etc. throughout JSX code
+const MessageList = ({ userName, userCompany, userEmail, userMessage, purpose, createdAt }) => {
     const [state, dispatch] = useStoreContext();
     const { messages } = state;
-    const { data: getMessages } = useQuery(GET_MESSAGES);
+
+    // reminder: "data" is the object described by associated query/mutation
+    const { loading, data } = useQuery(GET_MESSAGES);
+    const messageData = data?.messages;
+    console.log('messageData: ', messageData)
+    if (loading) {
+        return <div>Loading...</div>;
+    }
+    else if (!messageData) {
+        return <h2>No messages available...</h2>;
+    }
 
     useEffect(() => {
         if(messages) {
             dispatch({
-                type: GET_MESSAGES,
-                getMessages: messageList
+                type: DELETE_MESSAGE,
+                messages: 
             })
         }
     });
 
     const handleClick = id => {
         dispatch({
-            type: UPDATE_MESSAGES,
+            type: DELETE_MESSAGE,
             messages: messageList
         })
     }
@@ -37,7 +47,7 @@ const messageList = ({ userName, userCompany, userEmail, userMessage, purpose, c
 
     return (
         <div>
-            <h3>You have {messageList.length} messages:</h3>
+            <h3>You have {messageData.length} messages:</h3>
             {messageList &&
                 messageList.map(message => (
                     // 'key' is required on mapped data for React to track data changes

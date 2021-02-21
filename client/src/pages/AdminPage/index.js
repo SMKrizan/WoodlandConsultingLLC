@@ -4,15 +4,15 @@
 import React from 'react';
 import { useStoreContext } from "../../utils/GlobalState";
 
-import DispMessages from '../../components/DispMessages';
-// import DispTestimonials from '../components/DispTestimonials';
-// import DispOwner from '../components/DispOwner';
+import ManageMsg from '../../components/ManageMsg';
+// import ManageTst from '../components/ManageTst';
+// import OwnerInfo from '../components/OwnerInfo';
 import Auth from '../../utils/auth';
 
 const AdminPage = () => {
     return (
         <div>
-            <DispMessages />
+            <ManageMsg />
         </div>
     )
 };
