@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import mapStyles from './mapStyles';
+import './map.css';
 import {
     GoogleMap,
     withGoogleMap,
@@ -11,7 +12,7 @@ import {
 import { useQuery } from '@apollo/react-hooks';
 import { GET_PROJECTS } from "../../utils/queries";
 
-function MapG() {
+function Map() {
     const { loading, data } = useQuery(GET_PROJECTS);
     const projectData = data?.projects || [];
     console.log("PROJECTS", data?.projects);
@@ -25,13 +26,14 @@ function MapG() {
         console.log("nothing pulled....")
         return <h2>LOADING...</h2>;
     }
+
     return (
 
         < GoogleMap
-            defaultZoom={5}
+            defaultZoom={4.3}
             defaultCenter={{
-                lat: 44.8714,
-                lng: -90.2434
+                lat: 32.3182,
+                lng: -86.90234
             }}
             defaultOptions={{ styles: mapStyles.styles }}
         >
@@ -43,13 +45,14 @@ function MapG() {
                         lng: item.location[0].longitude
                     }}
                     onClick={() => {
+                        currentProject && setCurrentProject(null)
                         setCurrentProject(item);
                         console.log("data", item)
                     }}
-                // icon={{
-                //     url: `WoodlandConsulting_logo_sm_nog.png`,
-                //     scaledSize: new window.google.maps.Size(20, 20)
-                // }}
+                    defaultIcon={{
+                        url: `https://drive.google.com/uc?id=11k7iv_DCI6TdiMbnPTjxNDh42JdMymzy`,
+                        scaledSize: new window.google.maps.Size(35, 45)
+                    }}
 
                 />
             ))}
@@ -57,27 +60,25 @@ function MapG() {
                 < InfoWindow
                     onCloseClick={() => {
                         setCurrentProject(null);
-
                     }}
                     position={{
                         lat: currentProject.location[0].latitude,
                         lng: currentProject.location[0].longitude
                     }}
                 >
-                    <div>
-                        <h4>{currentProject.projectName}</h4>
+                    <div className="infoWindow">
+                        <h5>{currentProject.projectName}</h5>
                         <p>{currentProject.description}</p>
                     </div>
-
                 </InfoWindow>
             )}
         </GoogleMap >
     );
 }
 
-const MapWithAMakredInfoWindow = withScriptjs(withGoogleMap(MapG));
+const MapWithAMakredInfoWindow = withScriptjs(withGoogleMap(Map));
 
-export default function Map() {
+export default function GoogleMapReact() {
     return (
         <div style={{ width: "100vw", height: "100vh" }}>
             <MapWithAMakredInfoWindow
@@ -89,3 +90,4 @@ export default function Map() {
         </div>
     );
 }
+

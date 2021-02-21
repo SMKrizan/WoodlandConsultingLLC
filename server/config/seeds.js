@@ -751,9 +751,9 @@ db.once('open', async () => {
         }
     ]);
 
-    console.log('messages seeded')
+console.log('messages seeded')
 
-    await Testimonial.deleteMany();
+await Testimonial.deleteMany();
 
     const testimonials = await Testimonial.insertMany([
         {
