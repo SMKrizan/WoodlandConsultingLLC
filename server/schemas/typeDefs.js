@@ -6,7 +6,6 @@ const typeDefs = gql`
     _id: ID
     categoryName: String
   }
-
   type Query {
     categories: [Category]
     owner: Owner
@@ -17,19 +16,16 @@ const typeDefs = gql`
     messages: [Message]
     clientList: [Project]
   }
-
   type Owner {
     _id: ID
     ownerName: String
     ownerEmail: String
     address: String
   }
-
   type Auth {
     token: ID
     owner: Owner
   }
-
   type Testimonial {
     _id: ID
     tstName: String
@@ -38,7 +34,6 @@ const typeDefs = gql`
     createdAt: String
     updatedAt: String
   }
-
   type Message {
     _id: ID
     userName: String
@@ -49,7 +44,6 @@ const typeDefs = gql`
     messages: [Message]
     createdAt: String
   }
-
   type Project {
     _id: ID
     projectName: String
@@ -62,13 +56,11 @@ const typeDefs = gql`
     company: String
     WC: Boolean
   }
-
   type Location {
     _id: ID
     latitude: Float
     longitude: Float
   }
-
   type Mutation {
     login(ownerEmail: String!, password: String!): Auth
     updateOwner(

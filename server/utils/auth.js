@@ -16,8 +16,7 @@ module.exports = {
         .trim();
     }
 
-    // console.log("token", token)
-
+     console.log("token", token)
 
     if (!token) {
       return req;
@@ -28,7 +27,7 @@ module.exports = {
       req.owner = data;
     }
     catch {
-      console.log('Invalid token');
+       console.log('Invalid token');
     }
 
     return req;

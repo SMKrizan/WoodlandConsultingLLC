@@ -1,4 +1,3 @@
-
 let styles = [
     {
         "featureType": "administrative",
@@ -89,4 +88,4 @@ let styles = [
     }
 ];
 
-export default {styles};
+export default { styles };
