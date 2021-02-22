@@ -3,7 +3,6 @@
 
 import React, { useState } from 'react';
 import { useStoreContext } from "../../utils/GlobalState";
-import { Container } from 'reactstrap';
 import classnames from 'classnames';
 
 import ManageMsg from '../../components/ManageMsg';
@@ -15,11 +14,9 @@ const AdminPage = (props) => {
 
     return (
         <div>
-            <Container>
                 <ManageMsg />
                 <ManageTst />
                 <OwnerInfo />
-            </Container>
         </div>
     )
 };

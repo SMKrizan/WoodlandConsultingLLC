@@ -14,10 +14,11 @@ const TestimonialList = (props) => {
     // reminder: "data" is the object described by associated query/mutation
     const { loading, data } = useQuery(GET_TESTIMONIALS);
     const testimonialData = data?.testimonials;
+    console.log('tstCompany: ', testimonialData[0].tstCompany)
     console.log('testimonialData: ', testimonialData)
 
     return (
-        <div>
+        <>
             <h4>There are currently {testimonialData.length} testimonials displaying to your page:</h4>
             {testimonialData &&
                 testimonialData.map(testimonial => (
@@ -30,6 +31,7 @@ const TestimonialList = (props) => {
                                     <CardSubtitle tag="h6" className="mb-2 text-muted">{testimonial.tstCompany}</CardSubtitle>
                                     <CardText>{testimonial.tstMessage}</CardText>
                                     <CardSubtitle tag="h6" className="mb-2 text-muted">{testimonial.updatedAt}</CardSubtitle>
+                                    <CardSubtitle tag="h6" className="mb-2 text-muted">{testimonial.createdAt}</CardSubtitle>
                                     <Button>Update</Button>
                                     <Button>Delete</Button>
                                 </CardBody>
@@ -37,7 +39,7 @@ const TestimonialList = (props) => {
                         </CardGroup>
                     </div>
                 ))}
-        </div>
+        </>
     );
 };
 

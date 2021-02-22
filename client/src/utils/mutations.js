@@ -36,6 +36,7 @@ export const ADD_TESTIMONIAL = gql`
       tstName
       tstCompany
       tstMessage
+      createdAt
     }
   }
 `;
@@ -47,6 +48,7 @@ mutation updateTestimonial($_id: ID! $tstName: String, $tstCompany: String, $tst
         tstName
         tstCompany
         tstMessage
+        updatedAt
         }    
     }
 `;
