@@ -161,6 +161,10 @@ main {
 .pad {
   padding:20px 20px 20px 20px;
 }
+
+.pad40 {
+  padding:40px;
+}
 .padlr {
   padding: 0px 40px 0px 40px;
 }

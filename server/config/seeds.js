@@ -684,7 +684,7 @@ db.once('open', async () => {
         {
             projectName: 'University of Wisconsin Madison – School of Human Ecology',
             description: 'Addition and remodel',
-            image: 'https://drive.google.com/uc?id=1O72bZUm4R88xjGwWZDTotJaShqeBRb6o',
+            image: 'https://drive.google.com/uc?id=1nHNebNY-b9Q_j4SeqSCR-MnMRK_4XNoO',
             projectDate: '',
             cityState: 'Madison WI',
             location: locations[41],
@@ -706,7 +706,7 @@ db.once('open', async () => {
         {
             projectName: 'University of Wisconsin Madison – School of Human Ecology',
             description: 'Addition and remodel',
-            image: 'https://drive.google.com/uc?id=1nHNebNY-b9Q_j4SeqSCR-MnMRK_4XNoOY',
+            image: 'https://drive.google.com/uc?id=1O72bZUm4R88xjGwWZDTotJaShqeBRb6o',
             projectDate: '',
             cityState: 'Madison WI',
             location: locations[41],
