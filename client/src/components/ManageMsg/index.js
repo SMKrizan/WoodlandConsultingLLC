@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { useStoreContext } from "../../utils/GlobalState";
+import { Table } from 'reactstrap';
 
 import { GET_MESSAGES } from '../../utils/queries';
 import { DELETE_MESSAGE } from '../../utils/actions';
@@ -9,7 +10,7 @@ import { DELETE_MESSAGE } from '../../utils/actions';
 // import Auth from '../utils/auth';
 
 // conditionally renders message data; destructuring rather than using 'props.userName' etc. throughout JSX code
-const MessageList = ({ userName, userCompany, userEmail, userMessage, purpose, createdAt }) => {
+const MessageList = (props) => {
     const [state, dispatch] = useStoreContext();
     const { messages } = state;
 
@@ -24,41 +25,38 @@ const MessageList = ({ userName, userCompany, userEmail, userMessage, purpose, c
         return <h2>No messages to display.</h2>;
     }
 
-    // useEffect(() => {
-    //     if(messages) {
-    //         dispatch({
-    //             type: DELETE_MESSAGE,
-    //             messages: 
-    //         })
-    //     }
-    // });
-
-    // const handleClick = id => {
-    //     dispatch({
-    //         type: DELETE_MESSAGE,
-    //         messages: messageList
-    //     })
-    // }
-    
     return (
-        <div>
-            <h3>You have {messageData.length} messages:</h3>
-            {messageData &&
-                messageData.map(message => (
-                    // 'key' is required on mapped data for React to track data changes
-                    <div key={messageData._id}>
-                        <>
-                        <h4>{purpose}</h4>
-                        <h5>Name: {userName}</h5>
-                        <h5>Company: {userCompany}</h5>
-                        <h5>Email: {userEmail}</h5>
-                        <p>Message: {userMessage}</p>
-                        <h5>Date: {createdAt}</h5>
-                        </>
-                    </div>
-                ))}
+        <div className="pad">
+            <h4>You have {messageData.length} messages:</h4>
+            <Table responsive>
+                    <thead>
+                        <tr>
+                            <th>Delete</th>
+                            <th>Type</th>
+                            <th>Name</th>
+                            <th>Company</th>
+                            <th>Email</th>
+                            <th>Message</th>
+                            <th>Date Received</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {messageData &&
+                            messageData.map(message => (
+                                <tr key={messageData._id}>
+                                    <td>[ ]</td>
+                                    <td>{message.purpose}</td>
+                                    <td>{message.userName}</td>
+                                    <td>{message.userCompany}</td>
+                                    <td>{message.userEmail}</td>
+                                    <td>{message.userMessage}</td>
+                                    <td>{message.createdAt}</td>
+                                </tr>
+                            ))}
+                    </tbody>
+                </Table >
         </div>
     );
-};
+}
 
 export default MessageList;

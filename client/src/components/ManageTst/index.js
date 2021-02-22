@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { useStoreContext } from "../../utils/GlobalState";
+import { Card, CardText, CardBody, CardGroup, CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 import { GET_TESTIMONIALS } from '../../utils/queries';
 import { ADD_TST, UPDATE_TST, DELETE_TST } from '../../utils/actions';
 // import Auth from '../utils/auth';
 
-const TestimonialList = ({ _id, tstName, tstCompany, tstMessage, updatedAt }) => {
-
+const TestimonialList = (props) => {
     const [state, dispatch] = useStoreContext();
     const { testimonials } = state;
 
@@ -18,21 +18,28 @@ const TestimonialList = ({ _id, tstName, tstCompany, tstMessage, updatedAt }) =>
 
     return (
         <div>
-            <h3>There are currently {testimonialData.length} testimonials displaying to your page:</h3>
+            <h4>There are currently {testimonialData.length} testimonials displaying to your page:</h4>
             {testimonialData &&
-                testimonialData.map(message => (
+                testimonialData.map(testimonial => (
                     // 'key' is required on mapped data for React to track data changes
-                    <div key={_id}>
-                        <div>
-                            <h4>Name: {tstName}</h4>
-                            <h4>Company: {tstCompany}</h4>
-                            <p>Message: {tstMessage}</p>
-                            <h4>Updated: {updatedAt}</h4>
-                        </div>
+                    <div key={testimonial._id}>
+                        <CardGroup>
+                            <Card>
+                                <CardBody>
+                                    <CardTitle tag="h5">{testimonial.tstName}</CardTitle>
+                                    <CardSubtitle tag="h6" className="mb-2 text-muted">{testimonial.tstCompany}</CardSubtitle>
+                                    <CardText>{testimonial.tstMessage}</CardText>
+                                    <CardSubtitle tag="h6" className="mb-2 text-muted">{testimonial.updatedAt}</CardSubtitle>
+                                    <Button>Update</Button>
+                                    <Button>Delete</Button>
+                                </CardBody>
+                            </Card>
+                        </CardGroup>
                     </div>
                 ))}
         </div>
     );
 };
+
 
 export default TestimonialList;

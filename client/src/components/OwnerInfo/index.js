@@ -22,15 +22,6 @@ const ManageOwnerInfo = ({ ownerName, ownerEmail, address }) => {
         return <h2>Something went wrong.</h2>;
     }
 
-    // useEffect(() => {
-    //     if(ownerInfo) {
-    //         dispatch({
-    //             type: UPDATE_OWNER_INFO,
-    //             ownerInfo: 
-    //         })
-    //     }
-    // });
-
     return (
         <div>
             <h3>Name: {ownerName}</h3>

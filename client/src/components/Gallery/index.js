@@ -1,11 +1,8 @@
 import React from 'react';
 import { useQuery} from '@apollo/react-hooks';
 
-
 import image1 from '../../assets/images/portfolio/Colliers_1.JPG';
 import { GET_PROJECTS } from '../../utils/queries';
-
-
 
 function Gallery() {
     const { loading, data} = useQuery(GET_PROJECTS);
