@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const Category = require("./Category");
-const locationSchema = require("./Location");
+const Category = require('./Category');
+const locationSchema = require('./Location');
 const { Schema } = mongoose;
 
 const projectSchema = new Schema(

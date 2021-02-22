@@ -1,10 +1,9 @@
 .feature-home-image {
-    background-image: url('../../assets/images/portfolio/UW_SOHE_11.JPG');
+    background-image: url('../../assets/images/portfolio/UW_SOHE_11-min.JPG');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     min-height: 500px;
-    font-size: calc(14px + 1vmin);
     padding:40px;
     text-shadow: 6px 6px 20px black, 2px 2px 10px black;
   }
@@ -30,7 +29,7 @@
 }
 
   .feature-box h4{
-    font-size: calc(24px + 1vmin);
+    font-size: calc(20px + 1vmin);
   }
   .about-home {
     position: relative;
