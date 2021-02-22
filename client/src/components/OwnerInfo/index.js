@@ -1,43 +1,71 @@
 import React, { useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { useStoreContext } from "../../utils/GlobalState";
-
+import { Card, CardText, CardHeader, CardTitle, CardBody } from 'reactstrap';
 import { GET_OWNER } from '../../utils/queries';
-import { UPDATE_OWNER } from '../../utils/mutations';
-import { UPDATE_OWNER_INFO } from '../../utils/actions'
+// import { UPDATE_OWNER } from '../../utils/mutations';
+import { UPDATE_OWNER_INFO } from '../../utils/actions';
 // import Auth from '../utils/auth';
 
-const ManageOwnerInfo = ({ ownerName, ownerEmail, address }) => {
+const ManageOwnerInfo = () => {
     const [state, dispatch] = useStoreContext();
+
     const { ownerInfo } = state;
 
-    // reminder: "data" is the object described by associated query/mutation
     const { loading, data } = useQuery(GET_OWNER);
-    const ownerData = data?.ownerInfo;
-    console.log('ownerData: ', ownerData)
+
+    const ownerData = data?.owner || [];
+    console.log('ownerData: ', data?.owner);
     if (loading) {
         return <div>Loading...</div>;
     }
-    else if (!ownerData) {
+    if (!ownerData) {
         return <h2>Something went wrong.</h2>;
     }
 
     // useEffect(() => {
-    //     if(ownerInfo) {
+    //     if (ownerInfo) {
     //         dispatch({
     //             type: UPDATE_OWNER_INFO,
-    //             ownerInfo: 
+    //             ownerInfo: data.ownerData
     //         })
     //     }
     // });
 
+    const updateOwnerInfo = item => {
+        dispatch({
+            type: UPDATE_OWNER_INFO,
+            _id: item._id,
+            ownerName: item.ownerName,
+            ownerEmail: item.ownerImail,
+            address: item.address
+        })
+    } // const onChange = (e) => {
+    // const value = e.target.value;
+    // dispatch({
+    //     type: UPDATE_OWNER_INFO,
+    //     _id: item._id
+    // });
+
+
+
     return (
-        <div>
-            <h3>Name: {ownerName}</h3>
-            <h3>Email: {ownerEmail}</h3>
-            <h3>Address {address}</h3>
-        </div>
+
+        <Card outline color='secondary'>
+            <CardHeader> Owner</CardHeader>
+            <CardBody>
+                <CardTitle><h3>Name: {ownerData.ownerName}</h3></CardTitle>
+                <CardText><h3>Email: {ownerData.ownerEmail}</h3></CardText>
+                <CardText><h3>Address {ownerData.address}</h3></CardText>
+            </CardBody>
+            <div>
+                <button onClick={updateOwnerInfo}> Update</button>
+            </div>
+        </Card>
+
+
     );
 };
 
 export default ManageOwnerInfo;
+
