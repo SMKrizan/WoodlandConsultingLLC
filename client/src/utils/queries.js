@@ -88,8 +88,8 @@ export const GET_CLIENTLIST = gql`
 
 // retrieve projects filtered by category ()
 export const PROJECTS_BY_CATEGORY = gql`
-    query projectsByCategory($categoryName: String!) {
-        projectsByCategory(categoryName: $categoryName) {
+    query projectsByCategory($category: String!) {
+        projectsByCategory(category: $category) {
             _id
             projectName
             description
@@ -99,9 +99,6 @@ export const PROJECTS_BY_CATEGORY = gql`
             location {
                 latitude
                 longitude
-            }
-            category {
-                categoryName
             }
             company
             WC
