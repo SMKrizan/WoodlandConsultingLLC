@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Form, FormGroup, Input, Button, Col, Label } from 'reactstrap';
 // import { useMutation } from '@apollo/react-hooks';
 // import { LOGIN_USER} from '../utils/mutations';
-import Auth from '../../utils/auth';
+// import Auth from '../../utils/auth';
 import { validateEmail  } from '../../utils/helpers';
 
 const LoginForm = () => {
