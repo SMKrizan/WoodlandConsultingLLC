@@ -10,7 +10,7 @@ import { GET_PROJECTS } from '../../utils/queries';
 function Gallery() {
     const { loading, data} = useQuery(GET_PROJECTS);
     const projectData = data?.projects ;
-    console.log(projectData)
+
     if (loading) {
       return <div>Loading...</div>;
     }
@@ -19,57 +19,24 @@ function Gallery() {
         return <h2>LOADING...</h2>;
       }
 
-      const galleryImages = projectData.filter((project) => project.image == '');
-      console.log("this")
+      const [galleryImages] = [projectData.filter((project) => project.image != '')];
       console.log(galleryImages)
     return (
-        <div className="gallery pad">
-            <div className="project">
-                <div className="project-img" style={{  backgroundImage: "url(" + image1 + ")"}}>
-                    <h3>Project Name</h3>
-                    <h4>category</h4>
+        <section>
+        {galleryImages.map(project => 
+            <div key={project._Id}>
+                <div className="gallery pad">
+                    <div className="project">
+                        {/* <div className="project-img" style={{  backgroundImage: "url(" + {project.image} + ")"}}> */}
+                            <h3>{project.projectName}</h3>
+                            <h4>{project.category.categoryName}</h4>
+                        {/* </div> */}
+                    </div>
                 </div>
             </div>
-            <img 
-      src="https://drive.google.com/uc?id=1MAO7Cp_JLPR2eRUtLOoDFZmiFlHB2aT3"
-      alt="new"
-      />
-
-            <div className="project">
-                <div className="project-img" style={{  backgroundImage: "url(" + image1 + ")"}}>
-                    <h3>Project Name</h3>
-                    <h4>category</h4>
-                </div>
-            </div>
-
-            <div className="project">
-                <div className="project-img" style={{  backgroundImage: "url(" + image1 + ")"}}>
-                    <h3>Project Name</h3>
-                    <h4>category</h4>
-                </div>
-            </div>
-
-            <div className="project">
-                <div className="project-img" style={{  backgroundImage: "url(" + image1 + ")"}}>
-                    <h3>Project Name</h3>
-                    <h4>category</h4>
-                </div>
-            </div>
-
-            <div className="project">
-                <div className="project-img" style={{  backgroundImage: "url(" + image1 + ")"}}>
-                    <h3>Project Name</h3>
-                    <h4>category</h4>
-                </div>
-            </div>
-
-            <div className="project">
-                <div className="project-img" style={{  backgroundImage: "url(" + image1 + ")"}}>
-                    <h3>Project Name</h3>
-                    <h4>category</h4>
-                </div>
-            </div>
-        </div>
+            
+          )}
+          </section>
     )
 }
 
