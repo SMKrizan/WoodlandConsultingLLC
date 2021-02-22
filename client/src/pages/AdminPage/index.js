@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import { useStoreContext } from "../../utils/GlobalState";
 import classnames from 'classnames';
 
-import ManageMsg from '../../components/ManageMsg';
-import ManageTst from '../../components/ManageTst';
+import MsgList from '../../components/MsgList';
+import TstList from '../../components/TstList';
 import OwnerInfo from '../../components/OwnerInfo';
 // import Auth from '../../utils/auth';
 
@@ -14,8 +14,8 @@ const AdminPage = (props) => {
 
     return (
         <div>
-                <ManageMsg />
-                <ManageTst />
+                <MsgList />
+                <TstList />
                 <OwnerInfo />
         </div>
     )
