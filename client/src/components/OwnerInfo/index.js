@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
+
+import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { useStoreContext } from "../../utils/GlobalState";
-import { Card, CardText, CardHeader, CardTitle, CardBody } from 'reactstrap';
+import { UPDATE_OWNER } from '../../utils/mutations';
 import { GET_OWNER } from '../../utils/queries';
-// import { UPDATE_OWNER } from '../../utils/mutations';
-import { UPDATE_OWNER_INFO } from '../../utils/actions';
+// import { useStoreContext } from "../../utils/GlobalState";
+// import { UPDATE_OWNER_INFO } from '../../utils/actions';
 // import Auth from '../utils/auth';
+import { Modal } from 'react-responsive-modal';
 
 const ManageOwnerInfo = () => {
-    const [state, dispatch] = useStoreContext();
 
-    const { ownerInfo } = state;
+    const [open, setOpen] = React.useState(false);
+    const [newOwnerInfo, setNewOwnerInfo] = useState("");
+    const [updateOwner, { error }] = useMutation(UPDATE_OWNER);
 
     const { loading, data } = useQuery(GET_OWNER);
 
@@ -22,48 +24,53 @@ const ManageOwnerInfo = () => {
     if (!ownerData) {
         return <h2>Something went wrong.</h2>;
     }
-
-    // useEffect(() => {
-    //     if (ownerInfo) {
-    //         dispatch({
-    //             type: UPDATE_OWNER_INFO,
-    //             ownerInfo: data.ownerData
-    //         })
-    //     }
-    // });
-
-    const updateOwnerInfo = item => {
-        dispatch({
-            type: UPDATE_OWNER_INFO,
-            _id: item._id,
-            ownerName: item.ownerName,
-            ownerEmail: item.ownerImail,
-            address: item.address
-        })
-    } // const onChange = (e) => {
-    // const value = e.target.value;
-    // dispatch({
-    //     type: UPDATE_OWNER_INFO,
-    //     _id: item._id
-    // });
-
-
+    // -----------------CHANGE INPUT--------------------
+    function handleChange(event) {
+        setNewOwnerInfo(event.target.value)
+        console.log(event.target.value)
+    }
+    // ---------------UPDATE INFO ______
+    const handleFormSubmit = async event => {
+        event.preventDefault();
+        try {
+            await updateOwner({})
+            setNewOwnerInfo('');
+        } catch (e) {
+            console.error(e);
+        }
+    }
 
     return (
-
-        <Card outline color='secondary'>
-            <CardHeader> Owner</CardHeader>
-            <CardBody>
-                <CardTitle><h3>Name: {ownerData.ownerName}</h3></CardTitle>
-                <CardText><h3>Email: {ownerData.ownerEmail}</h3></CardText>
-                <CardText><h3>Address {ownerData.address}</h3></CardText>
-            </CardBody>
+        <>
             <div>
-                <button onClick={updateOwnerInfo}> Update</button>
+                <h3>Name: {ownerData.ownerName}</h3>
+                <h3>Email: {ownerData.ownerEmail}</h3>
+                <h3>Address {ownerData.address}</h3>
             </div>
-        </Card>
+            <div>
+                <button className="button" onClick={() => setOpen(true)}> Update </button>
+            </div>
 
+            <Modal open={open} onClose={() => setOpen(false)}>
+                <h2>Please update your information</h2>
+                <form
+                    action=""
+                    value={newOwnerInfo}
+                    onChange={handleChange}
+                >
+                    <p><label htmlFor="ownerName">
+                        Name <input type="text" /></label></p>
+                    <p><label htmlFor="ownerEmail">
+                        Email <input type="text" /></label></p>
+                    <p><label htmlFor="ownerAddress">
+                        Address <input type="text" /></label></p>
 
+                    <button onSubmit={handleFormSubmit}>Submit</button>
+                    {/* <input type="submit" value="Submit" /> */}
+                </form>
+                {error && <div>Something went wrong...</div>}
+            </Modal>
+        </>
     );
 };
 
