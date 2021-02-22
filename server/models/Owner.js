@@ -1,10 +1,11 @@
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const { Schema } = mongoose;
 
 const ownerSchema = new Schema({
-    
+
     ownerName: {
         type: String,
         required: true,
@@ -26,7 +27,7 @@ const ownerSchema = new Schema({
 });
 
 // set up re-save middleware to create password
-ownerSchema.pre('save', async function(next) {
+ownerSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
@@ -36,7 +37,7 @@ ownerSchema.pre('save', async function(next) {
 });
 
 // compare entered password with hashed password
-ownerSchema.methods.isCorrectPassword = async function(password) {
+ownerSchema.methods.isCorrectPassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
 

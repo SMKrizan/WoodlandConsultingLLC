@@ -1,7 +1,8 @@
+
 const mongoose = require('mongoose');
 
 const Category = require('./Category');
-const locationSchema= require('./Location');
+const locationSchema = require('./Location');
 const { Schema } = mongoose;
 
 const projectSchema = new Schema({
@@ -39,3 +40,4 @@ const projectSchema = new Schema({
 const Project = mongoose.model('Project', projectSchema);
 
 module.exports = Project;
+

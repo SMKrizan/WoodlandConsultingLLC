@@ -1,6 +1,6 @@
 import React from 'react';
 import './about.css'
-import Example from '../../assets/images/portfolio/UW_SOHE_5.JPG'
+import Example from '../../assets/images/portfolio/UW_SOHE_4-min.JPG'
 import linkedin from "../../assets/images/linkedin.png"
 
 
@@ -31,7 +31,7 @@ function About() {
 
         <div className="pad margin-b80 about-section">
             <div className="about-img1">
-                <img src={require(`../../assets/images/portfolio/UW_SOHE_5.JPG`).default} alt='Jessica Walther'/>
+                <img src={require(`../../assets/images/portfolio/UW_SOHE_4-min.JPG`).default} alt='Jessica Walther'/>
             </div>
             <div className="box-over glow3">
                 <h2>About Woodland Consulting LLC</h2>

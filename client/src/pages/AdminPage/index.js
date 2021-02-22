@@ -8,7 +8,7 @@ import classnames from 'classnames';
 import ManageMsg from '../../components/ManageMsg';
 import ManageTst from '../../components/ManageTst';
 import OwnerInfo from '../../components/OwnerInfo';
-import Auth from '../../utils/auth';
+// import Auth from '../../utils/auth';
 
 const AdminPage = (props) => {
 

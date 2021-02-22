@@ -33,8 +33,8 @@ const resolvers = {
       if (category) {
         params.categoryName = category;
       }
-      const project = Project.find({ category });
-      console.log('category: ', category)
+
+      const project  = Project.find({ category });
       return project
     },
     projectById: async (parent, { _id }) => {

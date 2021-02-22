@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
-import { BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
-import Maps from './pages/Maps';
+import Map from './pages/Map';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import AdminPage from './pages/AdminPage';
@@ -40,7 +40,7 @@ function App() {
       case 'About':
         return <About />;
       case 'Map':
-        return <Maps />;
+        return <Map />;
       case 'Portfolio':
         return <Portfolio />;
       case 'AdminPage':
