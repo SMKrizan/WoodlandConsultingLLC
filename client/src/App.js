@@ -40,9 +40,9 @@ function App() {
       case 'Portfolio':
         return <Portfolio />;
       case 'Contact':
-        return 'Contact';
-      default:
         return <Contact />;
+      default:
+        return <Home />;
     }
   };
 

@@ -1,27 +1,34 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Form, FormGroup, Input, Button, Col, Label } from 'reactstrap';
-// import { useMutation } from '@apollo/react-hooks';
-// import { LOGIN_USER} from '../utils/mutations';
-// import Auth from '../../utils/auth';
+import { useMutation } from '@apollo/react-hooks';
+import { OWNER_LOGIN } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 import { validateEmail  } from '../../utils/helpers';
 
-const LoginForm = () => {
-  const [characterCount, setCharacterCount] = useState(0);
+function LoginForm(props) {
+  // const [characterCount, setCharacterCount] = useState(0);
   const [formState, setFormState] = useState({
-  email: "",
+  ownerEmail: "",
   password: ""
   });
+
+  const[ownerLogin, { error }] = useMutation(OWNER_LOGIN);
   const [errorMessage, setErrorMessage] = useState(" ");
-  const { email, password } = formState;
+  const { ownerEmail, password } = formState;
 
-  function handleSubmit(e) {
-  e.preventDefault();
-  if (!errorMessage) {
-      console.log(formState);
+  const handleFormSubmit = async event => {
+  event.preventDefault();
+
+  try {
+    const mutationResponse = await ownerLogin({ variables: { ownerEmail: formState.ownerEmail, password: formState.password } })
+    const token = mutationResponse.data.login.token;
+    Auth.login(token);
+  } catch (e) {
+    console.log(e)
   }
   }
-
   function handleChange(e) {
+// const handleChange = event => {
   if (e.target.name === "email") {
       const isValid = validateEmail(e.target.value);
       console.log(isValid);
@@ -40,11 +47,11 @@ const LoginForm = () => {
   if (!errorMessage) {
       setFormState({ ...formState, [e.target.name]: e.target.value });
   }
-  }
+}
 
   return (
     <>
-    <form id="contact-form" onSubmit={handleSubmit} style={{ padding: "20px"}}>
+    <form id="contact-form" onSubmit={handleFormSubmit} style={{ padding: "20px"}}>
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
             <Label for="email" sm={2} size="lg">Email Address:</Label>
             <Col sm={10}>
@@ -52,7 +59,7 @@ const LoginForm = () => {
                 type="email"
                 name="email"
                 id="emailInput"
-                defaultValue={email}
+                defaultValue={ownerEmail}
                 onBlur={handleChange}
                 placeholder= "Enter your email"
                 bsSize="lg" 
@@ -71,6 +78,13 @@ const LoginForm = () => {
                 placeholder="Enter your password"
                 bsSize="lg"
             />
+            <div>
+              {
+                error ? <div>
+                  <p>The provided credentials are incorrect.</p>
+                  </div> : null
+              }
+            </div>
             </Col>
             </FormGroup>
             <Button type="submit" style={{ margin: "auto" }}>
