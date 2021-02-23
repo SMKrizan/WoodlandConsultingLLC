@@ -39,8 +39,6 @@ const ContactForm = () => {
         await addMessage({
             variables: { userName: formState.userName, userCompany: formState.userCompany, userEmail: formState.userEmail, userMessage: formState.userMessage} 
         });
-        // clear form value
-        // setText('');
     } catch (e) {
         console.error(e)
     }
