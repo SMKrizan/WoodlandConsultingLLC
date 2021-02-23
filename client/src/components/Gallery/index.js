@@ -18,7 +18,7 @@ function Gallery() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentPhoto, setCurrentPhoto] = useState();
 
-    
+
     if (loading) {
       return <div>Loading...</div>;
     }
@@ -28,7 +28,7 @@ function Gallery() {
       }
 
     //filter if have images  
-    const [galleryImages] = [projectData.filter((project) => project.image != '')];
+    const [galleryImages] = [projectData.filter((project) => project.image !== '')];
     
     //toggle modal
     const toggleModal = (project) => {
