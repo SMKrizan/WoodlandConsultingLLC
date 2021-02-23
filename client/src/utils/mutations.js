@@ -4,12 +4,12 @@ import gql from 'graphql-tag';
 
 // $email and $password passed as arguments for login; returns logged-in user's data and token
 export const OWNER_LOGIN = gql`
-mutation login($email: String!, $password: String!) {
-  login(email: $email, password: $password) {
+mutation login($ownerEmail: String!, $password: String!) {
+  login(ownerEmail: $ownerEmail, password: $password) {
     token
-    user {
+    owner {
       _id
-      username
+      ownerName
     }
   }
 }
@@ -36,9 +36,10 @@ export const ADD_TESTIMONIAL = gql`
       tstName
       tstCompany
       tstMessage
-      createdAt
+      created_at
+      updated_at
+      }
     }
-  }
 `;
 
 export const UPDATE_TESTIMONIAL = gql`
@@ -48,8 +49,8 @@ mutation updateTestimonial($_id: ID! $tstName: String, $tstCompany: String, $tst
         tstName
         tstCompany
         tstMessage
-        createdAt
-        updatedAt
+        created_at
+        updated_at
         }    
     }
 `;
@@ -61,6 +62,8 @@ mutation removeTestimonial($_id: ID!) {
         tstName
         tstCompany
         tstMessage
+        created_at
+        updated_at
     }
 }
 `;
@@ -84,6 +87,8 @@ mutation addMessage(
                 userEmail
                 userMessage
                 purpose
+                created_at
+                updated_at
         }
     }
 `;
@@ -107,6 +112,8 @@ mutation removeMessage(
                 userEmail
                 userMessage
                 purpose
+                created_at
+                updated_at
         }
     }
 `;

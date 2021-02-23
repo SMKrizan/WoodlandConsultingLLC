@@ -14,15 +14,6 @@ db.once('open', async () => {
 
     console.log('CATEGORIES SEEDED');
 
-    // await Location.deleteMany();
-
-    // await Project.updateOne(
-        
-    //     { $push: { locations } },
-    //     { runValidators: true }
-
-    // );
-
     const locations = ([
         {
             latitude: '41.472351',
@@ -205,12 +196,11 @@ db.once('open', async () => {
     ]);
 
     await Project.updateOne(
-        
-        { $push: { locations } },
+
+        { $push:  locations  },
         { runValidators: true }
-
     );
-
+    
 
     console.log('locations seeded')
 
@@ -229,7 +219,8 @@ db.once('open', async () => {
 
     await Project.deleteMany();
 
-    await Project.create([
+    await Project.insertMany([
+        
         {
             projectName: 'G&E Credit Union',
             description: 'New facility',
@@ -673,7 +664,7 @@ db.once('open', async () => {
         {
             projectName: 'Gateway Technical College',
             description: 'Various remodeling projects',
-            image: '',
+            image: 'https://drive.google.com/uc?id=1zJfQqV1mGBVS5TCZIYiOyDXMPUGDME46',
             projectDate: '',
             cityState: 'Racine, WI',
             location: locations[40],
@@ -684,7 +675,62 @@ db.once('open', async () => {
         {
             projectName: 'University of Wisconsin Madison – School of Human Ecology',
             description: 'Addition and remodel',
-            image: '',
+            image: 'https://drive.google.com/uc?id=1nHNebNY-b9Q_j4SeqSCR-MnMRK_4XNoO',
+            projectDate: '',
+            cityState: 'Madison WI',
+            location: locations[41],
+            category: categories[0],
+            company: 'University of Wisconsin Madison',
+            WC: 'false'
+        },
+        {
+            projectName: 'University of Wisconsin Madison – School of Human Ecology',
+            description: 'Addition and remodel',
+            image: 'https://drive.google.com/uc?id=1F-FPpi0EaKoXtTnI0PN-YoIYOGRlu5PY',
+            projectDate: '',
+            cityState: 'Madison WI',
+            location: locations[41],
+            category: categories[0],
+            company: 'University of Wisconsin Madison',
+            WC: 'false'
+        },
+        {
+            projectName: 'University of Wisconsin Madison – School of Human Ecology',
+            description: 'Addition and remodel',
+            image: 'https://drive.google.com/uc?id=1O72bZUm4R88xjGwWZDTotJaShqeBRb6o',
+            projectDate: '',
+            cityState: 'Madison WI',
+            location: locations[41],
+            category: categories[0],
+            company: 'University of Wisconsin Madison',
+            WC: 'false'
+        },
+        {
+            projectName: 'University of Wisconsin Madison – School of Human Ecology',
+            description: 'Addition and remodel',
+            image: 'https://drive.google.com/uc?id=1BSH2lwz_hpRpKolM2A-4mWeZi9gCa5Te',
+            projectDate: '',
+            cityState: 'Madison WI',
+            location: locations[41],
+            category: categories[0],
+            company: 'University of Wisconsin Madison',
+            WC: 'false'
+        },
+        {
+            projectName: 'University of Wisconsin Madison – School of Human Ecology',
+            description: 'Addition and remodel',
+            image: 'https://drive.google.com/uc?id=1hstg_laCtJ82uCeJkhBMuOWoMyANdIvV',
+            projectDate: '',
+            cityState: 'Madison WI',
+            location: locations[41],
+            category: categories[0],
+            company: 'University of Wisconsin Madison',
+            WC: 'false'
+        },
+        {
+            projectName: 'University of Wisconsin Madison – School of Human Ecology',
+            description: 'Addition and remodel',
+            image: 'https://drive.google.com/uc?id=1FQUvnaN0VUp5zCFb1buIDnq0nfjLuMoc',
             projectDate: '',
             cityState: 'Madison WI',
             location: locations[41],
@@ -695,7 +741,7 @@ db.once('open', async () => {
         {
             projectName: 'Colliers Corporate Office',
             description: 'New Office',
-            image: '',
+            image: 'https://drive.google.com/uc?id=1D3Bj79xULceQjc0xpTphOr-EE_J2QjsV',
             projectDate: '',
             cityState: 'Milwaukee, WI ',
             location: locations[42],
@@ -706,7 +752,40 @@ db.once('open', async () => {
         {
             projectName: 'DL Rogers Corporate Office',
             description: '3 Story high profile office building for owner – coordinated lighting design, deliverables and construction',
-            image: '',
+            image: 'https://drive.google.com/uc?id=18wz4pLvmbmttkAiPxonCjJ9OzSfRXxJr',
+            projectDate: '',
+            cityState: 'Grapevine, TX',
+            location: locations[43],
+            category: categories[2],
+            company: 'DL Rogers',
+            WC: 'false'
+        },
+        {
+            projectName: 'DL Rogers Corporate Office',
+            description: '3 Story high profile office building for owner – coordinated lighting design, deliverables and construction',
+            image: 'https://drive.google.com/uc?id=1_bqC3mdmCfR0OBx2EZ27EXYRjlIJjQAo',
+            projectDate: '',
+            cityState: 'Grapevine, TX',
+            location: locations[43],
+            category: categories[2],
+            company: 'DL Rogers',
+            WC: 'false'
+        },
+        {
+            projectName: 'DL Rogers Corporate Office',
+            description: '3 Story high profile office building for owner – coordinated lighting design, deliverables and construction',
+            image: 'https://drive.google.com/uc?id=10xEX3IC-9uX2zc9P9e4oVAtopcjRl79g',
+            projectDate: '',
+            cityState: 'Grapevine, TX',
+            location: locations[43],
+            category: categories[2],
+            company: 'DL Rogers',
+            WC: 'false'
+        },
+        {
+            projectName: 'DL Rogers Corporate Office',
+            description: '3 Story high profile office building for owner – coordinated lighting design, deliverables and construction',
+            image: 'https://drive.google.com/uc?id=1vTDvBp4FB4Q-G7iOYDdmL6Ry1RpXumfb',
             projectDate: '',
             cityState: 'Grapevine, TX',
             location: locations[43],

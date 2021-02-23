@@ -6,6 +6,7 @@ const typeDefs = gql`
     _id: ID
     categoryName: String
   }
+
   type Query {
     categories: [Category]
     owner: Owner
@@ -31,8 +32,8 @@ const typeDefs = gql`
     tstName: String
     tstCompany: String
     tstMessage: String
-    createdAt: String
-    updatedAt: String
+    created_at: String
+    updated_at: String
   }
   type Message {
     _id: ID
@@ -41,8 +42,8 @@ const typeDefs = gql`
     userEmail: String
     userMessage: String
     purpose: String 
-    messages: [Message]
-    createdAt: String
+    created_at: String
+    updated_at: String
   }
   type Project {
     _id: ID
@@ -93,18 +94,3 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
-
-// make image required in mutation for portfolio
-// null for not image
-// filter on the portfolio page for image
-// in resolver before return
-// array.filter(project => {
-//     return project.image !== null
-// })
-// clientList(company: String, description: String, location: [Location], WC: Boolean): [Project]
-// input client {
-//     company: String
-//     description: String
-//     location: [Location]
-//     WC: Boolean
-// }

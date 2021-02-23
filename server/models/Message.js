@@ -26,6 +26,14 @@ const messageSchema = new Schema(
             enum: ['Ask a question', 'Leave a comment', 'Request a quote', 'Provide a testimonial'],
             default: 'Ask a question'
         },
+        created_at: {
+            type: Date,
+            default: Date.now
+          },
+          updated_at: {
+            type: Date,
+            default: Date.now
+          },
         messages: [
             {
                 type: Schema.Types.ObjectId,
@@ -33,14 +41,6 @@ const messageSchema = new Schema(
             }
         ]
     },
-    {
-        timestamps: true
-    },
-    {
-        toJSON: {
-            virtuals: true
-        }
-    }
 );
 
 // counts length of messages array
