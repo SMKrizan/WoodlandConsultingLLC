@@ -32,7 +32,6 @@ function App() {
   const [currentPage, handlePageChange] = useState('Home');
 
   const renderPage = () => {
-    // Add a switch statement that will return the appropriate component of the 'currentPage'
 
     switch (currentPage) {
       case 'Home':
