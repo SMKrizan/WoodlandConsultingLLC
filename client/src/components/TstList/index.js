@@ -24,12 +24,14 @@ const TestimonialList = (props) => {
   const { testimonials, testimonial } = state;
   const [updatedTst, { error }] = useMutation(UPDATE_TESTIMONIAL);
 
-//   const formState: {
-//       tstName = tstData.tstName,
-//       tstCompany: tstData.tstCompany,
-//       tstMessage: tstData.tstMessage,
-//       createdAt: tstData.createdAt
-//     }
+//   
+  const initialTstData = (tstData) {
+
+      tstName = tstData.tstName,
+      tstCompany: tstData.tstCompany,
+      tstMessage: tstData.tstMessage,
+      createdAt: tstData.createdAt
+    }
 
 
 
@@ -41,6 +43,7 @@ const TestimonialList = (props) => {
   // updates testimonial state values with user-updates to form
     const handleTstUpdate = (e) => {
       if (tstData._id === this._id) {
+          console.log(tstData._id)
         dispatch({
           type: UPDATE_TST,
           name: e.target.name,
