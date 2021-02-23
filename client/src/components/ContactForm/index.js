@@ -1,24 +1,56 @@
 import React, { useState } from "react";
+import { useMutation } from '@apollo/react-hooks';
 import { Form, FormGroup, Label, Input, Button, Col } from "reactstrap";
 import { validateEmail } from "../../utils/helpers";
+import { ADD_MESSAGE } from "../../utils/mutations";
+import { GET_MESSAGES } from "../../utils/queries";
 
-function ContactForm() {
-    const [characterCount, setCharacterCount] = useState(0);
-    const [formState, setFormState] = useState({
-    name: "",
-    company: "",
-    email: "",
-    message: "",
+const ContactForm = () => {
+
+  const [formState, setFormState] = useState({
+      userName: "",
+      userEmail: "",
+      userCompany: "",
+      userMessage: ""
+  })
+//   const { userName, userEmail, userCompany, userMessage } = formState;
+
+    const [addMessage, { error }] = useMutation(ADD_MESSAGE, {
+            update(cache, { data: { addMessage } }) {
+                try {
+                    // could potentially not exist yet, so wrap in a try...catch
+                // read what's currenty in the cache
+                const { messages } = cache.readQuery({ query: GET_MESSAGES });
+
+                // prepend the newest thought to the front of the array
+                cache.writeQuery({
+                    query: GET_MESSAGES,
+                    data: { messages: [addMessage, ...messages] }
+                });
+            } catch (e) {
+                console.log(e)
+            }
+        }
     });
+    
     const [errorMessage, setErrorMessage] = useState(" ");
-    const { name, company, email, message } = formState;
 
-    function handleSubmit(e) {
-    e.preventDefault();
-    if (!errorMessage) {
-        console.log(formState);
+    const handleSubmit = async event => {
+    event.preventDefault();
+    
+    try {
+        console.log("=========", formState.userName)
+        // adds messages to database
+        const messageInput = await addMessage({
+            variables: { userName: formState.userName, userCompany: formState.userCompany, userEmail: formState.userEmail, userMessage: formState.userMessage} })
+            console.log("here", messageInput)
+        // });
+        // clear form value
+        // setText('');
+    } catch (e) {
+        console.error(e)
     }
-    }
+    };
 
     function handleChange(e) {
     if (e.target.name === "email") {
@@ -40,16 +72,11 @@ function ContactForm() {
         setFormState({ ...formState, [e.target.name]: e.target.value });
     }
     }
-    // if (event.target.value.length <=280) {
-    //   setCharacterCount(event.target.value.length);
-    // }
-
 
     return (
     <div className="pad"> 
         <h2>Contact</h2>
-        {/* style={{ padding: "20px", margin: "auto" }}> */}
-        {/* <div style={{ color: "darkslategrey", fontWeight: "bold", fontSize: "20px", paddingLeft: "20px" }}> </div>*/}
+        <p>{error && <span className="ml-2">Something went wrong...</span>}</p>
 
         <form id="contact-form" onSubmit={handleSubmit}>
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
@@ -59,7 +86,7 @@ function ContactForm() {
                 type="text"
                 name="name"
                 id="nameInput"
-                defaultValue={name}
+                // defaultValue={ userName }
                 onBlur={handleChange}
                 placeholder="Enter your name"
                 bsSize="lg"
@@ -73,7 +100,7 @@ function ContactForm() {
                 type="text"
                 name="company"
                 id="companyInput"
-                defaultValue={company}
+                // defaultValue={ userCompany }
                 onBlur={handleChange}
                 placeholder="Company name, if applicable"
                 bsSize="lg"
@@ -87,7 +114,7 @@ function ContactForm() {
                 type="email"
                 name="email"
                 id="emailInput"
-                defaultValue={email}
+                // defaultValue={ userEmail }
                 onBlur={handleChange}
                 placeholder= "Enter your preferred email"
                 bsSize="lg"
@@ -128,7 +155,7 @@ function ContactForm() {
                 name="text"
                 rows="5"
                 id="messageInput"
-                defaultValue={message}
+                // defaultValue={ userMessage}
                 onBlur={handleChange}
                 bsSize="lg"
             />
