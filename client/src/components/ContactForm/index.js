@@ -29,17 +29,16 @@ const ContactForm = () => {
         }
     });
     
-    const [errorMessage, setErrorMessage] = useState(" ");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const handleSubmit = async event => {
     event.preventDefault();
-    
+    console.log( formState)
     try {
         // adds messages to database
         await addMessage({
             variables: { userName: formState.userName, userCompany: formState.userCompany, userEmail: formState.userEmail, userMessage: formState.userMessage} 
         });
-        // console.log("tada", messageUser)
         // clear form value
         // setText('');
     } catch (e) {
@@ -48,6 +47,7 @@ const ContactForm = () => {
     };
 
     function handleChange(e) {
+        console.log(e.target.name, e.target.value)
     if (e.target.name === "email") {
         const isValid = validateEmail(e.target.value);
         console.log(isValid);
@@ -63,6 +63,7 @@ const ContactForm = () => {
         setErrorMessage("");
         }
     }
+
     if (!errorMessage) {
         setFormState({ ...formState, [e.target.name]: e.target.value });
     }
