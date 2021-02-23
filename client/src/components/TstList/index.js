@@ -23,40 +23,42 @@ const TestimonialList = (props) => {
   const [state, dispatch] = useStoreContext();
   const { testimonials, testimonial } = state;
   const [updatedTst, { error }] = useMutation(UPDATE_TESTIMONIAL);
-
-//   
-  const initialTstData = (tstData) {
-
-      tstName = tstData.tstName,
-      tstCompany: tstData.tstCompany,
-      tstMessage: tstData.tstMessage,
-      createdAt: tstData.createdAt
-    }
-
-
-
+  
+  // QUERY data from db to display testimonials to admin page
   // reminder: "data" is the object described by associated query/mutation
   const { loading, data } = useQuery(GET_TESTIMONIALS);
   const tstData = data?.testimonials || [];
-  console.log("tstData: ", tstData);
+  console.log('tstData: ', tstData)
+  
+  // function initialFormState() {
+  //   const [formState, setFormState] = useState(testimonial)
+  // }
 
-  // updates testimonial state values with user-updates to form
-    const handleTstUpdate = (e) => {
-      if (tstData._id === this._id) {
-          console.log(tstData._id)
-        dispatch({
-          type: UPDATE_TST,
-          name: e.target.name,
-          value: e.target.value,
-        });
-      }
-      return testimonial
-    };
+  // useEffect(() => {
+  //   // set form field values
+  //   tstName: tstData.tstName,
+  //   tstCompany: tstData.tstCompany,
+  //   tstMessage: tstData.tstMessage,
+  // }
 
-  // submits replaced/updated testimonial values to db for persistent storage
+
+  // use STATE to set initial form values to those of selected testimonial  
+  const handleFormState = (e, tstData) => {
+    if (tstData._id === this._id) {
+      console.log('this.tstData: ', this.tstData)
+      dispatch({
+        type: UPDATE_TST,
+        name: e.target.name,
+        value: e.target.value,
+      });
+    }
+  };
+  
+ 
+  // use MUTATION to submit replaced/updated testimonial values to db for persistent storage
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try {
+    // try {
       const mutationResponse = await updatedTst({
         variables: {
           tstName: tstData.tstName,
@@ -64,11 +66,11 @@ const TestimonialList = (props) => {
           tstMessage: tstData.tstMessage,
         },
       });
-      const token = mutationResponse.data.updatedTst.token;
-      Auth.login(token);
-    } catch (event) {
-      console.log(event);
-    }
+      // const token = mutationResponse.data.updatedTst.token;
+    //   Auth.login(token);
+    // } catch (event) {
+    //   console.log(event);
+    // }
   };
 
   // modal
@@ -95,10 +97,10 @@ const TestimonialList = (props) => {
                   </CardSubtitle>
                   <CardText>{testimonial.tstMessage}</CardText>
                   <CardSubtitle tag="h6" className="mb-2 text-muted">
-                    {testimonial.updatedAt}
+                    {testimonial.updated_at}
                   </CardSubtitle>
                   <CardSubtitle tag="h6" className="mb-2 text-muted">
-                    {testimonial.createdAt}
+                    {testimonial.created_at}
                   </CardSubtitle>
                   <Button className="button" onClick={() => setOpen(true)}>
                     Update
@@ -116,11 +118,11 @@ const TestimonialList = (props) => {
               Name:
               <input
                 type="text"
-                name="tstName"
+                name='tstName'
                 placeholder={tstData.tstName}
                 value={tstData.tstName}
-                onChange={(e) => handleTstUpdate(e)}
-              />
+                onMouseOut={(e) => handleFormState(tstData._id)}
+              />${tstData.tstName}
             </label>
           </p>
           <p>
@@ -131,7 +133,7 @@ const TestimonialList = (props) => {
                 name="tstCompany"
                 placeholder={tstData.tstCompany}
                 value={tstData.tstCompany}
-                onchange={(e) => handleTstUpdate(e)}
+                onMouseOut={(e) => handleFormState(e)}
               />
             </label>
           </p>
@@ -143,7 +145,7 @@ const TestimonialList = (props) => {
                 name="tstMessage"
                 placeholder={tstData.tstMessage}
                 value={tstData.tstMessage}
-                onChange={(e) => handleTstUpdate(e)}
+                onMouseOut={(e) => handleFormState(e)}
               />
             </label>
           </p>

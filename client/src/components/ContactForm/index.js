@@ -3,148 +3,156 @@ import { Form, FormGroup, Label, Input, Button, Col } from "reactstrap";
 import { validateEmail } from "../../utils/helpers";
 
 function ContactForm() {
-    const [characterCount, setCharacterCount] = useState(0);
-    const [formState, setFormState] = useState({
+  const [characterCount, setCharacterCount] = useState(0);
+  const [formState, setFormState] = useState({
     name: "",
     company: "",
     email: "",
     message: "",
-    });
-    const [errorMessage, setErrorMessage] = useState(" ");
-    const { name, company, email, message } = formState;
+  });
+  const [errorMessage, setErrorMessage] = useState(" ");
+  const { name, company, email, message } = formState;
 
-    function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     if (!errorMessage) {
-        console.log(formState);
+      console.log(formState);
     }
-    }
+  }
 
-    function handleChange(e) {
+  function handleChange(e) {
     if (e.target.name === "email") {
-        const isValid = validateEmail(e.target.value);
-        console.log(isValid);
-        if (!isValid) {
+      const isValid = validateEmail(e.target.value);
+      if (!isValid) {
         setErrorMessage("Your email is invalid.");
-        } else {
+      } else {
         setErrorMessage("");
-        }
+      }
     } else {
-        if (!e.target.value.length) {
+      if (!e.target.value.length) {
         setErrorMessage(`${e.target.name} is required.`);
-        } else {
+      } else {
         setErrorMessage("");
-        }
+      }
     }
     if (!errorMessage) {
-        setFormState({ ...formState, [e.target.name]: e.target.value });
+      setFormState({ ...formState, [e.target.name]: e.target.value });
     }
-    }
-    // if (event.target.value.length <=280) {
-    //   setCharacterCount(event.target.value.length);
-    // }
-// {/* style={{ padding: "20px", margin: "auto" }}> */}
-//         {/* <div style={{ color: "darkslategrey", fontWeight: "bold", fontSize: "20px", paddingLeft: "20px" }}> </div>*/}
+  }
+  // if (event.target.value.length <=280) {
+  //   setCharacterCount(event.target.value.length);
+  // }
+  // {/* style={{ padding: "20px", margin: "auto" }}> */}
+  //         {/* <div style={{ color: "darkslategrey", fontWeight: "bold", fontSize: "20px", paddingLeft: "20px" }}> </div>*/}
 
-
-    return (
-    <div className="pad"> 
-        <h2>Contact</h2>
-        <form id="contact-form" onSubmit={handleSubmit}>
-            <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-            <Label for="name" sm={2} size="lg">Name:</Label>
-            <Col sm={10}>
-            <Input style={{ width: "90%"}}
-                type="text"
-                name="name"
-                id="nameInput"
-                defaultValue={name}
-                onBlur={handleChange}
-                placeholder="Enter your name"
-                bsSize="lg"
+  return (
+    <div className="pad">
+      <h2>Contact</h2>
+      <form id="contact-form" onSubmit={handleSubmit}>
+        <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
+          <Label for="name" sm={2} size="lg">
+            Name:
+          </Label>
+          <Col sm={10}>
+            <Input
+              style={{ width: "90%" }}
+              type="text"
+              name="name"
+              id="nameInput"
+              defaultValue={name}
+              onBlur={handleChange}
+              placeholder="Enter your name"
+              bsSize="lg"
             />
-            </Col>
-            </FormGroup>
-            <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-            <Label for="company" sm={2} size="lg">Company:</Label>
-            <Col sm={10}>
-            <Input style={{ width: "90%"}}
-                type="text"
-                name="company"
-                id="companyInput"
-                defaultValue={company}
-                onBlur={handleChange}
-                placeholder="Company name, if applicable"
-                bsSize="lg"
+          </Col>
+        </FormGroup>
+        <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
+          <Label for="company" sm={2} size="lg">
+            Company:
+          </Label>
+          <Col sm={10}>
+            <Input
+              style={{ width: "90%" }}
+              type="text"
+              name="company"
+              id="companyInput"
+              defaultValue={company}
+              onBlur={handleChange}
+              placeholder="Company name, if applicable"
+              bsSize="lg"
             />
-            </Col>
-            </FormGroup>
-            <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-            <Label for="email" sm={2} size="lg">Email Address:</Label>
-            <Col sm={10}>
-            <Input style={{ width: "90%"}}
-                type="email"
-                name="email"
-                id="emailInput"
-                defaultValue={email}
-                onBlur={handleChange}
-                placeholder= "Enter your preferred email"
-                bsSize="lg"
-                
+          </Col>
+        </FormGroup>
+        <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
+          <Label for="email" sm={2} size="lg">
+            Email Address:
+          </Label>
+          <Col sm={10}>
+            <Input
+              style={{ width: "90%" }}
+              type="email"
+              name="email"
+              id="emailInput"
+              defaultValue={email}
+              onBlur={handleChange}
+              placeholder="Enter your preferred email"
+              bsSize="lg"
             />
-            </Col>
-            </FormGroup>
-            <div style={{}}>
-            <FormGroup check>
+          </Col>
+        </FormGroup>
+        <div style={{}}>
+          <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio1" /> Ask a Question
+              <Input type="radio" name="radio1" /> Ask a Question
             </Label>
-            </FormGroup>
-            <FormGroup check>
+          </FormGroup>
+          <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio2" /> Leave a comment
+              <Input type="radio" name="radio2" /> Leave a comment
             </Label>
-            </FormGroup>
-            <FormGroup check>
+          </FormGroup>
+          <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio3" /> Request a quote
+              <Input type="radio" name="radio3" /> Request a quote
             </Label>
-            </FormGroup>
-            <FormGroup check>
+          </FormGroup>
+          <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio4" /> Provide a testimonial
+              <Input type="radio" name="radio4" /> Provide a testimonial
             </Label>
-            </FormGroup>
-            </div>
-            {/* <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
+          </FormGroup>
+        </div>
+        {/* <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
             Character Count: {characterCount}/280
             </p> */}
-            <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-            <Label for="exampleText" sm={2} size="lg">Message:</Label>
-            <Col sm={10}>
-            <Input style={{ width: "90%"}}
-                type="textarea"
-                name="text"
-                rows="5"
-                id="messageInput"
-                defaultValue={message}
-                onBlur={handleChange}
-                bsSize="lg"
+        <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
+          <Label for="exampleText" sm={2} size="lg">
+            Message:
+          </Label>
+          <Col sm={10}>
+            <Input
+              style={{ width: "90%" }}
+              type="textarea"
+              name="text"
+              rows="5"
+              id="messageInput"
+              defaultValue={message}
+              onBlur={handleChange}
+              bsSize="lg"
             />
-            </Col>
-            </FormGroup>
-            {errorMessage && (
-            <div>
-                <p className="error-text">{errorMessage}</p>
-            </div>
-            )}
-            <Button type="submit" style={{ margin: "auto" }}>
-            Submit
-            </Button>
-        </form>
-
+          </Col>
+        </FormGroup>
+        {errorMessage && (
+          <div>
+            <p className="error-text">{errorMessage}</p>
+          </div>
+        )}
+        <Button type="submit" style={{ margin: "auto" }}>
+          Submit
+        </Button>
+      </form>
     </div>
-    );
+  );
 }
 
 export default ContactForm;

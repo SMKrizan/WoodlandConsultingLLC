@@ -15,7 +15,6 @@ const ManageOwnerInfo = () => {
     const { loading, data } = useQuery(GET_OWNER);
 
     const ownerData = data?.owner || [];
-    console.log('ownerData: ', data?.owner);
     if (loading) {
         return <div>Loading...</div>;
     }
