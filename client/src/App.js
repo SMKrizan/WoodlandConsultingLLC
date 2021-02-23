@@ -6,9 +6,10 @@ import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
 import Map from './pages/Map';
+// import AdminPage from './components/AdminPage';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
-import AdminPage from './pages/AdminPage';
+ import AdminPage from './pages/AdminPage';
 import { StoreProvider } from './utils/GlobalState';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -42,10 +43,12 @@ function App() {
         return <Map />;
       case 'Portfolio':
         return <Portfolio />;
-      case 'AdminPage':
-        return <AdminPage />;
-      default:
+      case 'Contact':
         return <Contact />;
+      case 'AdminPage':
+        return <AdminPage />
+      default:
+        return <Home />;
     }
   };
 

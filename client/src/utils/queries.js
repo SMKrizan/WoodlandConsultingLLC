@@ -30,7 +30,8 @@ export const GET_TESTIMONIALS = gql`
             tstName
             tstCompany
             tstMessage
-            updatedAt
+            created_at
+            updated_at
         }
     }
 `;
@@ -45,12 +46,12 @@ export const GET_MESSAGES = gql`
             userEmail
             userMessage
             purpose
-            createdAt
+            created_at
+            updated_at
             }
     }
 `;
-
-// retrieve all project data
+// export const QUERY_PROJECTS = gql`
 export const GET_PROJECTS = gql`
     {
         projects {
@@ -77,33 +78,34 @@ export const GET_PROJECTS = gql`
 // retrieves all clients being presented on client listing (wc, citystate, company, category)
 export const GET_CLIENTLIST = gql`
     {
-        project {
+        projects {
             _id
-            category
-            citystate
+            category {
+                categoryName
+            }
+            cityState
             company
-            wc
+            WC
         }
     }
 `;
 
 // retrieve projects filtered by category ()
 export const PROJECTS_BY_CATEGORY = gql`
-    query projectsByCategory($categoryName: String) {
-        projectsByCategory(categoryName: $categoryName) {
+    query projectsByCategory($category: String!) {
+        projectsByCategory(category: $category) {
             _id
             projectName
             description
             image
-            projectdate
-            citystate
+            projectDate
+            cityState
             location {
                 latitude
                 longitude
             }
-            category
             company
-            wc   
+            WC
         }
     }
 `;
@@ -116,15 +118,17 @@ query projectById($id: ID) {
         projectName
         description
         image
-        projectdate
-        citystate
+        projectDate
+        cityState
         location {
             latitude
             longitude
         }
-        category
+        category {
+            categoryName
+        }
         company
-        wc   
+        WC  
     }
 }
 `;

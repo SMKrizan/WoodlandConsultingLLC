@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Form, FormGroup, Label, Input, Button, Col } from "reactstrap";
 import { validateEmail } from "../../utils/helpers";
 
-
 function ContactForm() {
     const [characterCount, setCharacterCount] = useState(0);
     const [formState, setFormState] = useState({

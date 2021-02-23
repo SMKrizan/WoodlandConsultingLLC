@@ -25,9 +25,6 @@ const resolvers = {
       console.log('Owner: ', owner)
       return owner
     },
-    projects: async () => {
-      return await Project.find().populate('category');
-    },
     projectsByCategory: async (parent, { category }) => {
       const params = {};
       if (category) {
@@ -53,7 +50,7 @@ const resolvers = {
   Mutation: {
     login: async (parent, { email, password }) => {
       const owner = await Owner.findOne({ email });
-      console.log('Owner login: ', owner, email, password)
+      console.log(owner)
       if (!owner) {
         throw new AuthenticationError("Incorrect credentials!");
       }
@@ -90,13 +87,18 @@ const resolvers = {
     updateTestimonial: async (parent, args, context) => {
       console.log("args", args)
       if (context.owner) {
-        return await Testimonial.findByIdAndUpdate(
-          _id, args, 
+        const updatedTestimonial = await Testimonial.findByIdAndUpdate(
+          args._id, args,
           {
             new: true,
           }
+          
         );
+        console.log("======================", updatedTestimonial)
+        return updatedTestimonial;
+        
       }
+      
       throw new AuthenticationError("You must be logged in to perform this action.");
     },
     removeTestimonial: async (parent, { _id }, context ) => {
