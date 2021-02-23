@@ -21,8 +21,17 @@ import Auth from "../../utils/auth";
 
 const TestimonialList = (props) => {
   const [state, dispatch] = useStoreContext();
-  const { testimonials } = state;
+  const { testimonials, testimonial } = state;
   const [updatedTst, { error }] = useMutation(UPDATE_TESTIMONIAL);
+
+//   const formState: {
+//       tstName = tstData.tstName,
+//       tstCompany: tstData.tstCompany,
+//       tstMessage: tstData.tstMessage,
+//       createdAt: tstData.createdAt
+//     }
+
+
 
   // reminder: "data" is the object described by associated query/mutation
   const { loading, data } = useQuery(GET_TESTIMONIALS);
@@ -31,13 +40,14 @@ const TestimonialList = (props) => {
 
   // updates testimonial state values with user-updates to form
     const handleTstUpdate = (e) => {
-      if (tstData._id === this.id) {
+      if (tstData._id === this._id) {
         dispatch({
           type: UPDATE_TST,
           name: e.target.name,
           value: e.target.value,
         });
       }
+      return testimonial
     };
 
   // submits replaced/updated testimonial values to db for persistent storage
@@ -105,7 +115,7 @@ const TestimonialList = (props) => {
                 type="text"
                 name="tstName"
                 placeholder={tstData.tstName}
-                value={this.tstName}
+                value={tstData.tstName}
                 onChange={(e) => handleTstUpdate(e)}
               />
             </label>
@@ -117,7 +127,7 @@ const TestimonialList = (props) => {
                 type="text"
                 name="tstCompany"
                 placeholder={tstData.tstCompany}
-                value={this.tstCompany}
+                value={tstData.tstCompany}
                 onchange={(e) => handleTstUpdate(e)}
               />
             </label>
@@ -129,7 +139,7 @@ const TestimonialList = (props) => {
                 type="text"
                 name="tstMessage"
                 placeholder={tstData.tstMessage}
-                value={this.tstMessage}
+                value={tstData.tstMessage}
                 onChange={(e) => handleTstUpdate(e)}
               />
             </label>

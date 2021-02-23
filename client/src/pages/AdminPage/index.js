@@ -12,17 +12,27 @@ import OwnerInfo from "../../components/OwnerInfo";
 const AdminPage = (props) => {
   return (
     <div>
-      {Auth.loggedIn() ? (
-        <div>
-          <MsgList />
-          <TstList />
-          <OwnerInfo />
-        </div>
-      ) : (
-        <span>Please log in.</span>
-      )}
+      <MsgList />
+      <TstList />
+      <OwnerInfo />
     </div>
   );
 };
+
+// const AdminPage = (props) => {
+//   return (
+//     <div>
+//       {Auth.loggedIn() ? (
+//         <div>
+//           <MsgList />
+//           <TstList />
+//           <OwnerInfo />
+//         </div>
+//       ) : (
+//         <span>Please log in.</span>
+//       )}
+//     </div>
+//   );
+// };
 
 export default AdminPage;
