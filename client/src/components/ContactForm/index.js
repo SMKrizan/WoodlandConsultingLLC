@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from '@apollo/react-hooks';
-import { Form, FormGroup, Label, Input, Button, Col } from "reactstrap";
+import { FormGroup, Label, Input, Button, Col } from "reactstrap";
 import { validateEmail } from "../../utils/helpers";
 import { ADD_MESSAGE } from "../../utils/mutations";
 import { GET_MESSAGES } from "../../utils/queries";
@@ -13,16 +13,12 @@ const ContactForm = () => {
       userCompany: "",
       userMessage: ""
   })
-//   const { userName, userEmail, userCompany, userMessage } = formState;
 
     const [addMessage, { error }] = useMutation(ADD_MESSAGE, {
             update(cache, { data: { addMessage } }) {
                 try {
-                    // could potentially not exist yet, so wrap in a try...catch
-                // read what's currenty in the cache
                 const { messages } = cache.readQuery({ query: GET_MESSAGES });
 
-                // prepend the newest thought to the front of the array
                 cache.writeQuery({
                     query: GET_MESSAGES,
                     data: { messages: [addMessage, ...messages] }
@@ -39,12 +35,11 @@ const ContactForm = () => {
     event.preventDefault();
     
     try {
-        console.log("=========", formState.userName)
         // adds messages to database
-        const messageInput = await addMessage({
-            variables: { userName: formState.userName, userCompany: formState.userCompany, userEmail: formState.userEmail, userMessage: formState.userMessage} })
-            console.log("here", messageInput)
-        // });
+        await addMessage({
+            variables: { userName: formState.userName, userCompany: formState.userCompany, userEmail: formState.userEmail, userMessage: formState.userMessage} 
+        });
+        // console.log("tada", messageUser)
         // clear form value
         // setText('');
     } catch (e) {
@@ -80,13 +75,13 @@ const ContactForm = () => {
 
         <form id="contact-form" onSubmit={handleSubmit}>
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-            <Label for="name" sm={2} size="lg">Name:</Label>
+            <Label for="userName" sm={2} size="lg">Name:</Label>
             <Col sm={10}>
             <Input style={{ width: "90%"}}
                 type="text"
-                name="name"
+                name="userName"
                 id="nameInput"
-                // defaultValue={ userName }
+                defaultValue={ formState.userName }
                 onBlur={handleChange}
                 placeholder="Enter your name"
                 bsSize="lg"
@@ -94,13 +89,13 @@ const ContactForm = () => {
             </Col>
             </FormGroup>
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-            <Label for="company" sm={2} size="lg">Company:</Label>
+            <Label for="userCompany" sm={2} size="lg">Company:</Label>
             <Col sm={10}>
             <Input style={{ width: "90%"}}
                 type="text"
-                name="company"
+                name="userCompany"
                 id="companyInput"
-                // defaultValue={ userCompany }
+                defaultValue={ formState.userCompany }
                 onBlur={handleChange}
                 placeholder="Company name, if applicable"
                 bsSize="lg"
@@ -108,13 +103,13 @@ const ContactForm = () => {
             </Col>
             </FormGroup>
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-            <Label for="email" sm={2} size="lg">Email Address:</Label>
+            <Label for="userEmail" sm={2} size="lg">Email Address:</Label>
             <Col sm={10}>
             <Input style={{ width: "90%"}}
                 type="email"
-                name="email"
+                name="userEmail"
                 id="emailInput"
-                // defaultValue={ userEmail }
+                defaultValue={ formState.userEmail }
                 onBlur={handleChange}
                 placeholder= "Enter your preferred email"
                 bsSize="lg"
@@ -148,14 +143,14 @@ const ContactForm = () => {
             Character Count: {characterCount}/280
             </p> */}
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-            <Label for="exampleText" sm={2} size="lg">Message:</Label>
+            <Label for="userMessage" sm={2} size="lg">Message:</Label>
             <Col sm={10}>
             <Input style={{ width: "90%"}}
                 type="textarea"
-                name="text"
+                name="userMessage"
                 rows="5"
                 id="messageInput"
-                // defaultValue={ userMessage}
+                defaultValue={ formState.userMessage}
                 onBlur={handleChange}
                 bsSize="lg"
             />
@@ -169,6 +164,7 @@ const ContactForm = () => {
             <Button type="submit" style={{ margin: "auto" }}>
             Submit
             </Button>
+            {/* <p>{!error && <span className="ml-2">Thank you for your message! We will be in touch soon!</span>}</p> */}
         </form>
     </div>
     );
