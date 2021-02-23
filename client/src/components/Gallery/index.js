@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { useQuery} from '@apollo/react-hooks';
 
 import ImageModal from '../ImageModal'
-import image1 from '../../assets/images/portfolio/UW_SOHE_2-min.JPG';
 import { GET_PROJECTS } from '../../utils/queries';
 
 
@@ -12,7 +11,7 @@ function Gallery() {
     const [currentPhoto, setCurrentPhoto] = useState();
   
 
-
+    //get projects 
     const { loading, data} = useQuery(GET_PROJECTS);
     const projectData = data?.projects ;
 
@@ -21,13 +20,13 @@ function Gallery() {
     }
     if (!projectData) {
         console.log("no testimonials pulled....")
-        return <h2>LOADING...</h2>;
+        return <h2>No Projects Currently Available</h2>;
       }
 
+    //filter if have images  
     const [galleryImages] = [projectData.filter((project) => project.image != '')];
-    console.log(galleryImages)
-
-
+    
+    //toggle modal
     const toggleModal = (project) => {
         setCurrentPhoto({ ...project});
         setIsModalOpen(!isModalOpen);
@@ -42,7 +41,7 @@ function Gallery() {
 
                 <div            
                 onClick={() => toggleModal(project)}
-                key={project._Id} 
+                key={project._id} 
                 >
                     <div className="project">
                         <div className="project-img" style={{  backgroundImage: `url(" ${project.image} ")`}}> 

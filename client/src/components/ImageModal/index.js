@@ -1,21 +1,17 @@
 import React from 'react';
+import './ImageModal.css'
 
 const ImageModal = ({ onClose, currentPhoto }) => {
-  const { company, category, image  } = currentPhoto;
+  const { cityState, image, projectName  } = currentPhoto;
 
   return (
-    <div className="modalBackdrop">
-      <div className="modalContainer">
-        <h3 className="modalTitle">{company} </h3>
-        <img src={`${image}`} alt="current category" />
-        <p>
-          pop test
-        </p>
-        <button type="button" onClick={onClose}>
-          Close this modal
-        </button>
+    <div className="modalbg" onClick={onClose}>
+      <div className="modalbox">
+            <img src={`${image}`} alt="current category" />
+            <h4>{projectName}</h4>
+            <p>{cityState}</p>
       </div>
-    </div>
+    </div >
   );
 };
 
