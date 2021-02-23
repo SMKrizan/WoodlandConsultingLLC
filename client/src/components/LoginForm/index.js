@@ -6,6 +6,7 @@ import Auth from '../../utils/auth';
 // import { validateEmail  } from '../../utils/helpers';
 
 function LoginForm(props) {
+  console.log("-----", props)
   // const [characterCount, setCharacterCount] = useState(0);
   const [formState, setFormState] = useState({
   ownerEmail: "",
@@ -13,14 +14,13 @@ function LoginForm(props) {
   })
 
   const[ownerLogin, { error }] = useMutation(OWNER_LOGIN);
-  // const [errorMessage, setErrorMessage] = useState(" ");
-  // const { ownerEmail, password } = formState;
 
   const handleFormSubmit = async event => {
   event.preventDefault();
 
   try {
     const mutationResponse = await ownerLogin({ variables: { ownerEmail: formState.ownerEmail, password: formState.password } })
+    console.log("======", mutationResponse)
     const token = mutationResponse.data.login.token;
     Auth.login(token);
   } catch (e) {

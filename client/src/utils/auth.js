@@ -1,5 +1,6 @@
 import decode from 'jwt-decode';
 import Portfolio from '../pages/Portfolio';
+import AdminPage from '../components/AdminPage';
 
 // creates new JS class of which a new version will be instantiated for every component that imports it; this ensures a new version of functionality is being used and reduces risk of leaving remnant data; applied OOP principles so that each method is responsible for one thing and one thing only
 class AuthService {
@@ -41,7 +42,7 @@ class AuthService {
         // saves user token to localStorage
         localStorage.setItem('id_token', idToken);
 
-        window.location.assign('/');
+        window.location.assign('/Contact');
     }
 
     // clear token from localStorage and force logout with reload
