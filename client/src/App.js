@@ -6,6 +6,7 @@ import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
 import Map from './pages/Map';
+import AdminPage from './components/AdminPage';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
 import Header from './components/Header';
@@ -40,9 +41,11 @@ function App() {
       case 'Portfolio':
         return <Portfolio />;
       case 'Contact':
-        return 'Contact';
-      default:
         return <Contact />;
+      case 'AdminPage' :
+        return <AdminPage />
+      default:
+        return <Home />;
     }
   };
 

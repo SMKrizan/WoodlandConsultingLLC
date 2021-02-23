@@ -18,7 +18,19 @@ const testimonialSchema = new Schema({
     required: true,
     trim: true
   },
-});
+  created_at: {
+    type: Date,
+    default: Date.now
+  },
+  updated_at: {
+    type: Date,
+    default: Date.now
+  }
+},
+{
+  timestamps: true
+}
+);
 
 const Testimonial = mongoose.model('Testimonial', testimonialSchema);
 
