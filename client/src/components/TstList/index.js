@@ -22,7 +22,7 @@ import Auth from "../../utils/auth";
 const TestimonialList = (props) => {
   const [state, dispatch] = useStoreContext();
   const { testimonials, testimonial } = state;
-  const [updatedTst, { error }] = useMutation(UPDATE_TESTIMONIAL);
+  const [updatedTst] = useMutation(UPDATE_TESTIMONIAL);
   
   // QUERY data from db to display testimonials to admin page
   // reminder: "data" is the object described by associated query/mutation
@@ -30,41 +30,20 @@ const TestimonialList = (props) => {
   const tstData = data?.testimonials || [];
   console.log('tstData: ', tstData)
   
-  // function initialFormState() {
-  //   const [formState, setFormState] = useState(testimonial)
-  // }
-
-  // useEffect(() => {
-  //   // set form field values
-  //   tstName: tstData.tstName,
-  //   tstCompany: tstData.tstCompany,
-  //   tstMessage: tstData.tstMessage,
-  // }
-
-
-  // use STATE to set initial form values to those of selected testimonial  
-  const handleFormState = (e, tstData) => {
-    if (tstData._id === this._id) {
-      console.log('this.tstData: ', this.tstData)
-      dispatch({
-        type: UPDATE_TST,
-        name: e.target.name,
-        value: e.target.value,
-      });
-    }
-  };
   
  
   // use MUTATION to submit replaced/updated testimonial values to db for persistent storage
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    console.log('updated modalData: ', modalData)
     // try {
       const mutationResponse = await updatedTst({
         variables: {
-          tstName: tstData.tstName,
-          tstCompany: tstData.tstCompany,
-          tstMessage: tstData.tstMessage,
-        },
+          _id: modalData._id,
+          tstName: modalData.tstName,
+          tstCompany: modalData.tstCompany,
+          tstMessage: modalData.tstMessage
+        }
       });
       // const token = mutationResponse.data.updatedTst.token;
     //   Auth.login(token);
@@ -74,9 +53,23 @@ const TestimonialList = (props) => {
   };
 
   // modal
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [modalData, setModalData] = useState({});
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
+const handleClick = (testimonial) => {
+    setModalData(testimonial)
+}
+ 
+
+const handleInputChange = (e) => {
+  const {name, value} = e.target
+   setModalData({
+     ...modalData, 
+    // indicates to get value of name attribute and return the associated value property 
+     [name]: value
+   })
+}
 
   return (
     <>
@@ -102,7 +95,10 @@ const TestimonialList = (props) => {
                   <CardSubtitle tag="h6" className="mb-2 text-muted">
                     {testimonial.created_at}
                   </CardSubtitle>
-                  <Button className="button" onClick={() => setOpen(true)}>
+                  <Button className="button" onClick={() => {
+                    setOpen(true)
+                    handleClick(testimonial)
+                    }}>
                     Update
                   </Button>
                 </CardBody>
@@ -111,46 +107,50 @@ const TestimonialList = (props) => {
           </div>
         ))}
       <Modal open={open} onClose={() => setOpen(false)}>
+        {console.log('modalData: ', modalData)}
         <h2>Replace/update current testimonial:</h2>
         <form action="">
           <p>
-            <label labelName="name">
+            <label labelName="tstName">
               Name:
               <input
                 type="text"
                 name='tstName'
-                placeholder={tstData.tstName}
-                value={tstData.tstName}
-                onMouseOut={(e) => handleFormState(tstData._id)}
-              />${tstData.tstName}
+                placeholder={modalData.tstName}
+                value={modalData.tstName}
+                onChange={handleInputChange}
+                // onMouseOut={(e) => handleFormState(modalData._id)}
+              />${modalData.tstName}
             </label>
           </p>
           <p>
-            <label labelName="company">
+            <label labelName="tstCompany">
               Company:
               <input
                 type="text"
                 name="tstCompany"
-                placeholder={tstData.tstCompany}
-                value={tstData.tstCompany}
-                onMouseOut={(e) => handleFormState(e)}
+                placeholder={modalData.tstCompany}
+                value={modalData.tstCompany}
+                onChange={handleInputChange}
+                // onMouseOut={(e) => handleFormState(e)}
               />
             </label>
           </p>
           <p>
-            <label labelName="Message">
+            <label labelName="tstMessage">
               Message:
               <input
                 type="text"
                 name="tstMessage"
-                placeholder={tstData.tstMessage}
-                value={tstData.tstMessage}
-                onMouseOut={(e) => handleFormState(e)}
+                placeholder={modalData.tstMessage}
+                value={modalData.tstMessage}
+                onChange={handleInputChange}
+                // onMouseOut={(e) => handleFormState(e)}
               />
             </label>
           </p>
-          <button onSubmit={handleFormSubmit}>Submit</button>
-          <input type="submit" value="Submit" />
+          <button onClick={handleFormSubmit}>Submit</button>
+          {/* <input type="submit" value="Submit" /> */}
         </form>
       </Modal>
     </>

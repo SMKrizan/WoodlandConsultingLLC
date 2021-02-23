@@ -10,6 +10,7 @@ const StoreProvider = ({ value = [], ...props }) => {
         messages: [],
         testimonials: [],
         testimonial: {},
+        modalData: {},
         ownerInfo: [],
         // tstForm: false,
         // tstFormVals: {}
