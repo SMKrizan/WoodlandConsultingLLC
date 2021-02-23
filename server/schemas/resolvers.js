@@ -48,7 +48,7 @@ const resolvers = {
   Mutation: {
     login: async (parent, { email, password }) => {
       const owner = await Owner.findOne({ email });
-
+      console.log(owner)
       if (!owner) {
         throw new AuthenticationError("Incorrect credentials!");
       }

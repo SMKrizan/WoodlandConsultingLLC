@@ -3,18 +3,18 @@ import { Form, FormGroup, Input, Button, Col, Label } from 'reactstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { OWNER_LOGIN } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-import { validateEmail  } from '../../utils/helpers';
+// import { validateEmail  } from '../../utils/helpers';
 
 function LoginForm(props) {
   // const [characterCount, setCharacterCount] = useState(0);
   const [formState, setFormState] = useState({
   ownerEmail: "",
   password: ""
-  });
+  })
 
   const[ownerLogin, { error }] = useMutation(OWNER_LOGIN);
-  const [errorMessage, setErrorMessage] = useState(" ");
-  const { ownerEmail, password } = formState;
+  // const [errorMessage, setErrorMessage] = useState(" ");
+  // const { ownerEmail, password } = formState;
 
   const handleFormSubmit = async event => {
   event.preventDefault();
@@ -28,25 +28,7 @@ function LoginForm(props) {
   }
   }
   function handleChange(e) {
-// const handleChange = event => {
-  if (e.target.name === "email") {
-      const isValid = validateEmail(e.target.value);
-      console.log(isValid);
-      if (!isValid) {
-      setErrorMessage("Your email is invalid.");
-      } else {
-      setErrorMessage("");
-      }
-  } else {
-      if (!e.target.value.length) {
-      setErrorMessage(`${e.target.name} is required.`);
-      } else {
-      setErrorMessage("");
-      }
-  }
-  if (!errorMessage) {
       setFormState({ ...formState, [e.target.name]: e.target.value });
-  }
 }
 
   return (
@@ -59,7 +41,7 @@ function LoginForm(props) {
                 type="email"
                 name="email"
                 id="emailInput"
-                defaultValue={ownerEmail}
+                // defaultValue={ownerEmail}
                 onBlur={handleChange}
                 placeholder= "Enter your email"
                 bsSize="lg" 
@@ -73,7 +55,7 @@ function LoginForm(props) {
                 type="text"
                 name="password"
                 id="passwordInput"
-                defaultValue={password}
+                // defaultValue={password}
                 onBlur={handleChange}
                 placeholder="Enter your password"
                 bsSize="lg"
