@@ -2,7 +2,7 @@ import React from 'react';
 
 function Navtabs(props) {
 
-  const tabs = ['Home', 'About', 'Map', 'Portfolio', 'Contact'];
+  const tabs = ['Home', 'About', 'Map', 'Portfolio', 'Contact', 'AdminPage'];
   return (
     <div>
       <ul className="nav nav-tabs">

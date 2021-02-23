@@ -6,6 +6,7 @@ const typeDefs = gql`
     _id: ID
     categoryName: String
   }
+
   type Query {
     categories: [Category]
     owner: Owner
@@ -31,6 +32,8 @@ const typeDefs = gql`
     tstName: String
     tstCompany: String
     tstMessage: String
+    created_at: String
+    updated_at: String
   }
   type Message {
     _id: ID
@@ -39,6 +42,8 @@ const typeDefs = gql`
     userEmail: String
     userMessage: String
     purpose: String 
+    created_at: String
+    updated_at: String
   }
   type Project {
     _id: ID

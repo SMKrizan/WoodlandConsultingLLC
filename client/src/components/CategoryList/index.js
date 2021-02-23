@@ -21,10 +21,13 @@ function CategoryList() {
     console.log(libraries)
 
     const [health] = [projectData.filter((project) => project.category.categoryName == 'Healthcare/Hospice')];
+
+
     console.log(health)
     let cleanedHealth = [...new Set(health)]
     console.log("health", cleanedHealth)
 
+    
     const [commercial] = [projectData.filter((project) => project.category.categoryName == 'Commercial/Office')];
     console.log(commercial)
     const [retail] = [projectData.filter((project) => project.category.categoryName == 'Retail/Restaurant')];
