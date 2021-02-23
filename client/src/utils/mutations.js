@@ -48,6 +48,7 @@ mutation updateTestimonial($_id: ID! $tstName: String, $tstCompany: String, $tst
         tstName
         tstCompany
         tstMessage
+        createdAt
         updatedAt
         }    
     }

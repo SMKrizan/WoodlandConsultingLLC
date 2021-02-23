@@ -23,15 +23,6 @@ const ManageOwnerInfo = () => {
         return <h2>Something went wrong.</h2>;
     }
 
-    // useEffect(() => {
-    //     if (ownerInfo) {
-    //         dispatch({
-    //             type: UPDATE_OWNER_INFO,
-    //             ownerInfo: data.ownerData
-    //         })
-    //     }
-    // });
-
     const updateOwnerInfo = item => {
         dispatch({
             type: UPDATE_OWNER_INFO,
@@ -40,15 +31,8 @@ const ManageOwnerInfo = () => {
             ownerEmail: item.ownerImail,
             address: item.address
         })
-    } // const onChange = (e) => {
-    // const value = e.target.value;
-    // dispatch({
-    //     type: UPDATE_OWNER_INFO,
-    //     _id: item._id
-    // });
-
-
-
+    } 
+    
     return (
 
         <Card outline color='secondary'>

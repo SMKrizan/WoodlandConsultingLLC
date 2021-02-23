@@ -9,7 +9,10 @@ const StoreProvider = ({ value = [], ...props }) => {
     const [state, dispatch] = useProductReducer({
         messages: [],
         testimonials: [],
-        ownerInfo: []
+        testimonial: {},
+        ownerInfo: [],
+        // tstForm: false,
+        // tstFormVals: {}
     });
     console.log('GlobalState-data: ', state);
     return <Provider value={[state, dispatch]} {...props} />;
