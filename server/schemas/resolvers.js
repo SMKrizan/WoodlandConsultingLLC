@@ -19,6 +19,9 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
+    projects: async () => {      
+      return await Project.find().populate('category');    
+    },
     owner: async () => {
 
       const owner = await Owner.findOne();
@@ -49,6 +52,7 @@ const resolvers = {
     clientList: async () => {
       return await Project.find();
     },
+
   },
   Mutation: {
     login: async (parent, { email, password }) => {

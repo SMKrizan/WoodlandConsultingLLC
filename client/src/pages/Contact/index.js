@@ -7,8 +7,12 @@ import './contact.css'
 function Contact() {
 
   return (
-    <ContactForm></ContactForm>
-  );
-}
+    <section>
+        <div>
+            <ContactForm />
+        </div>
+    </section>
+  )
+};
 
 export default Contact;

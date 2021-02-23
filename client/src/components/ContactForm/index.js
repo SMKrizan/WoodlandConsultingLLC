@@ -43,14 +43,13 @@ function ContactForm() {
     // if (event.target.value.length <=280) {
     //   setCharacterCount(event.target.value.length);
     // }
+// {/* style={{ padding: "20px", margin: "auto" }}> */}
+//         {/* <div style={{ color: "darkslategrey", fontWeight: "bold", fontSize: "20px", paddingLeft: "20px" }}> </div>*/}
 
 
     return (
     <div className="pad"> 
         <h2>Contact</h2>
-        {/* style={{ padding: "20px", margin: "auto" }}> */}
-        {/* <div style={{ color: "darkslategrey", fontWeight: "bold", fontSize: "20px", paddingLeft: "20px" }}> </div>*/}
-
         <form id="contact-form" onSubmit={handleSubmit}>
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
             <Label for="name" sm={2} size="lg">Name:</Label>
@@ -143,6 +142,7 @@ function ContactForm() {
             Submit
             </Button>
         </form>
+
     </div>
     );
 }
