@@ -165,6 +165,7 @@ const ContactForm = () => {
             </Button>
             {/* <p>{!error && <span className="ml-2">Thank you for your message! We will be in touch soon!</span>}</p> */}
         </form>
+
     </div>
     );
 }

@@ -8,8 +8,8 @@ function Portfolio() {
     return (
     <section>
         <div className="feature-image">
-            <h2>Portfolio</h2>
-            <h4>See projects below</h4>
+            <h2>"Dark is not the opposite of light, it's the absence of light."</h2>
+            <h4> - Adam Yauch</h4>
         </div>
         <div className="darkplumbg pad">
             <h3>
@@ -23,7 +23,7 @@ function Portfolio() {
         <div className=" darkplumbg project-category-bg">
             <div>
                 <h3>
-                    Full List of Projectsby Category
+                    List of Projects by Category
                 </h3>
             </div>
             < CategoryList/>

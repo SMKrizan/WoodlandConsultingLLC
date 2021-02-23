@@ -39,17 +39,17 @@ p {
 h1 {
   font-family: 'Josefin Sans', sans-serif;
   color: var(--cream);
-  font-size: 55px;
+  font-size: 40px;
   padding-bottom: 15px;
 }
 h2 {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 44px;
+  font-size: 36px;
   font-weight: 400;
 }
 h3 {
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 400;
 }
 h4 {
@@ -64,7 +64,7 @@ h5 {
 }
 
 button {
-  font-size: calc(14px + 1vmin);
+  font-size: calc(14px);
   font-weight: 400; 
   padding: 10px 20px;
   background: var(--darkgreen); 
@@ -87,7 +87,7 @@ button:hover {
   transition-timing-function: ease-in-out;
 }
 button h3 {
-  font-size: 18px;
+  font-size: 14px;
   position: relative;
   text-align: center;
   text-transform: uppercase;
@@ -160,6 +160,10 @@ main {
 
 .pad {
   padding:20px 20px 20px 20px;
+}
+
+.pad40 {
+  padding:40px;
 }
 .padlr {
   padding: 0px 40px 0px 40px;
