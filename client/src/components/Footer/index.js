@@ -6,7 +6,7 @@ import Auth from "../../utils/auth";
 // import { validateEmail } from "../../utils/helpers";
 // import { Link } from 'react-router-dom';
 import LoginForm from "../LoginForm";
-import { Card, Modal, Button, Tab, Nav } from "react-bootstrap";
+import { Card, Modal, Button, Tab } from "react-bootstrap";
 
 function Footer() {
   const [showModal, setShowModal] = useState(false);
@@ -18,8 +18,8 @@ function Footer() {
           <Button onClick={Auth.logout}>Logout</Button>
         </>
       ) : (
-        <Button onClick={() => setShowModal(true)}>Admin Login</Button>
-      )}
+          <Button onClick={() => setShowModal(true)}>Admin Login</Button>
+        )}
       <Card>
         <Modal
           style={{ margin: "150px", padding: "30px", border: "solid" }}
@@ -50,8 +50,9 @@ function Footer() {
       >
         <img alt="linkedin link" src={linkedin} />
       </a>
-
-      <a> Woodland Consulting LLC</a>
+      <div>
+        Woodland Consulting LLC
+      </div>
     </footer>
   );
 }

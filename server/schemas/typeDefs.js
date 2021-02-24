@@ -68,7 +68,6 @@ const typeDefs = gql`
       ownerName: String
       ownerEmail: String
       address: String
-      password: String
     ): Owner
     addTestimonial(
       tstName: String!
