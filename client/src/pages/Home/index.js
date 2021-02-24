@@ -76,12 +76,14 @@ function Home(props) {
                     <div className="maps-home pad flex1 flex-center">
                         Woodland Consulting's Founder has work located across the United States. Click to see a map showing where you can find her work nearest to you.
             </div>
-            <div className="hover-glow flex-center  glow maps-img">
+            <div className=" flex-center  maps-img">
+                <div>
                     <a
                         href={'# portfolio'}
                         onClick={() => props.handlePageChange('Map')}>
                         <button><h3>View Map</h3></button>
                     </a>
+                </div>
             </div>
         </div >
     </div>

@@ -5,7 +5,7 @@ import { OWNER_LOGIN } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 
-function LoginForm() {
+function LoginForm(props) {
   const [formState, setFormState] = useState({
   ownerEmail: "",
   password: ""

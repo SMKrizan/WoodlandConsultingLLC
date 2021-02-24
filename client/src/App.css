@@ -29,6 +29,7 @@ body {
 }
 a {
   color: var(--cream);
+  text-decoration: none;
 }
 
 p {
@@ -95,7 +96,7 @@ button h3 {
   top:2px;
   transition-duration: .6s;
   transition-timing-function: ease-in-out;
-  z-index: 1;
+  z-index: 99;
 }
 
 

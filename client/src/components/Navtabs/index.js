@@ -1,8 +1,9 @@
 import React from 'react';
+import Auth from '../../utils/auth';
 
 function Navtabs(props) {
 
-  const tabs = ['Home', 'About', 'Map', 'Portfolio', 'Contact', 'AdminPage'];
+  const tabs = ['Home', 'About', 'Map', 'Portfolio', 'Contact'];
   return (
     <div>
       <ul className="nav nav-tabs">
@@ -19,6 +20,21 @@ function Navtabs(props) {
             </a>
           </li>
         ))}
+        {Auth.loggedIn() ? (
+                <li className="nav-item" key={'AdminPage'}>
+                  <a
+                    href={'# AdminPage'}
+                    onClick={() => props.handlePageChange('AdminPage')}
+                    className={
+                      props.currentPage === 'AdminPage' ? 'nav-link active' : 'nav-link'
+                    }
+                  >
+                    {'AdminPage'}
+                  </a>
+                </li>
+              ) : (
+                    <>  </>
+                )}
       </ul>
     </div>
   );
