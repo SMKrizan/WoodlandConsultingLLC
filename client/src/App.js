@@ -28,6 +28,7 @@ const client = new ApolloClient({
 function App() {
   const [currentPage, handlePageChange] = useState('Home');
 
+
   const renderPage = () => {
     // Add a switch statement that will return the appropriate component of the 'currentPage'
 
@@ -54,10 +55,12 @@ function App() {
       <Router>
         <Header currentPage={currentPage} handlePageChange={handlePageChange} />
         <main >
+
           {
             // Render the component returned by 'renderPage()'
             renderPage(currentPage)
           }
+
         </main>
         <Footer />
       </Router>
