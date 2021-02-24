@@ -65,6 +65,7 @@ const typeDefs = gql`
   type Mutation {
     login(ownerEmail: String!, password: String!): Auth
     updateOwner(
+      _id: ID!
       ownerName: String
       ownerEmail: String
       address: String

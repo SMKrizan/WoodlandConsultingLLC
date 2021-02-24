@@ -9,88 +9,88 @@
 // Form fields: ownerName, ownerEmail, address
 // Mutation: UPDATE_OWNER updates db
 // Action: UPDATE_OWNER_INFO updates state
-import React, { useState } from 'react';
-import { UPDATE_OWNER } from '../../utils/mutations';
-import { useMutation } from '@apollo/react-hooks';
+// import React, { useState } from 'react';
+// import { UPDATE_OWNER } from '../../utils/mutations';
+// import { useMutation } from '@apollo/react-hooks';
 
 
-// import { Modal } from 'react-responsive-modal';
+// // import { Modal } from 'react-responsive-modal';
 
-const OwnerUpdates = (props) => {
-
-
-    const [newOwnerInfo, setNewOwnerInfo] = useState({ name: '', email: '', address: '' });
-    const [updateOwner, { error }] = useMutation(UPDATE_OWNER);
+// const OwnerUpdates = (props) => {
 
 
-    const handleFormSubmit = event => {
-        event.preventDefault();
-        updateOwner({ variables: { name: newOwnerInfo.ownerName, email: newOwnerInfo.ownerEmail, address: newOwnerInfo.address } })
-    };
+//     const [newOwnerInfo, setNewOwnerInfo] = useState({ name: '', email: '', address: '' });
+//     const [updateOwner, { error }] = useMutation(UPDATE_OWNER);
 
-    // -----------------CHANGE INPUT--------------------
-    function handleChange(event) {
-        const { name, value } = event.target;
-        setNewOwnerInfo({
-            ...newOwnerInfo,
-            [name]: value
-        });
-    }
-    //     const [open, setOpen] = React.useState(false);
 
-    return (
+//     const handleFormSubmit = event => {
+//         event.preventDefault();
+//         updateOwner({ variables: { name: newOwnerInfo.ownerName, email: newOwnerInfo.ownerEmail, address: newOwnerInfo.address } })
+//     };
 
-        <form
-            value={newOwnerInfo}
-            onSubmit={handleFormSubmit}
-        >
-            <p><label htmlFor="ownerName">
-                Name <input type="name" onChange={handleChange} /></label></p>
-            <p><label htmlFor="ownerEmail">
-                Email <input type="email" onChange={handleChange} /></label></p>
-            <p><label htmlFor="ownerAddress">
-                Address <input type="address" onChange={handleChange} /></label></p>
-            {
-                error ? <div>
-                    <p className="error-text" >Provide information</p>
-                </div> : null
-            }
-            <button>Submit</button>
-            <input type="submit" value="Submit" />
+//     // -----------------CHANGE INPUT--------------------
+//     function handleChange(event) {
+//         const { name, value } = event.target;
+//         setNewOwnerInfo({
+//             ...newOwnerInfo,
+//             [name]: value
+//         });
+//     }
+//     //     const [open, setOpen] = React.useState(false);
 
-        </form>
-        //         <>
-        //             <button className="button" onClick={() => setOpen(true)}>
-        //                 Open modal
-        //       </button>
+//     return (
 
-        //             <Modal open={open} onClose={() => setOpen(false)}>
-        //                 <h2>Please update your information</h2>
-        //                 <form action="">
-        //                     <p>
-        //                         <label htmlFor="ownerName">
-        //                             Name
-        //               <input type="text" />
-        //                         </label>
-        //                     </p>
-        //                     <p>
-        //                         <label htmlFor="ownerEmail">
-        //                             Email
-        //               <input type="text" />
-        //                         </label>
-        //                     </p>
-        //                     <p>
-        //                         <label htmlFor="ownerAddress">
-        //                             Address
-        //               <input type="text" />
-        //                         </label>
-        //                     </p>
-        //                     <button>test</button>
-        //                     <input type="submit" value="Submit" />
-        //                 </form>
-        //             </Modal>
-        //         </>
-    );
-};
+//         <form
+//             value={newOwnerInfo}
+//             onSubmit={handleFormSubmit}
+//         >
+//             <p><label htmlFor="ownerName">
+//                 Name <input type="name" onChange={handleChange} /></label></p>
+//             <p><label htmlFor="ownerEmail">
+//                 Email <input type="email" onChange={handleChange} /></label></p>
+//             <p><label htmlFor="ownerAddress">
+//                 Address <input type="address" onChange={handleChange} /></label></p>
+//             {
+//                 error ? <div>
+//                     <p className="error-text" >Provide information</p>
+//                 </div> : null
+//             }
+//             <button>Submit</button>
+//             <input type="submit" value="Submit" />
 
-export default OwnerUpdates;
+//         </form>
+//         //         <>
+//         //             <button className="button" onClick={() => setOpen(true)}>
+//         //                 Open modal
+//         //       </button>
+
+//         //             <Modal open={open} onClose={() => setOpen(false)}>
+//         //                 <h2>Please update your information</h2>
+//         //                 <form action="">
+//         //                     <p>
+//         //                         <label htmlFor="ownerName">
+//         //                             Name
+//         //               <input type="text" />
+//         //                         </label>
+//         //                     </p>
+//         //                     <p>
+//         //                         <label htmlFor="ownerEmail">
+//         //                             Email
+//         //               <input type="text" />
+//         //                         </label>
+//         //                     </p>
+//         //                     <p>
+//         //                         <label htmlFor="ownerAddress">
+//         //                             Address
+//         //               <input type="text" />
+//         //                         </label>
+//         //                     </p>
+//         //                     <button>test</button>
+//         //                     <input type="submit" value="Submit" />
+//         //                 </form>
+//         //             </Modal>
+//         //         </>
+//     );
+// };
+
+// export default OwnerUpdates;
