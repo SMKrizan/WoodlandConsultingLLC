@@ -1,25 +1,22 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
-import { useStoreContext } from "../../utils/GlobalState";
-import { UPDATE_OWNER } from '../../utils/mutations';
 import { GET_OWNER } from '../../utils/queries';
+import { UPDATE_OWNER } from '../../utils/mutations';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import Auth from '../../utils/auth';
-//  import { UPDATE_OWNER_INFO } from '../../utils/actions';
 
 const ManageOwnerInfo = (props) => {
-
-    const [state, dispatch] = useStoreContext();
-    const { owner, nOwner } = state;
 
     const { loading, data } = useQuery(GET_OWNER);
     const ownerData = data?.owner || [];
     console.log('ownerData: ', data?.owner);
 
-    const [open, setOpen] = React.useState(false);
-    const [newOwnerInfo, setNewOwnerInfo] = useState({ ownerName: '', ownerEmail: '', address: '' });
     const [updateOwner, { error }] = useMutation(UPDATE_OWNER);
+    const [open, setOpen] = React.useState(false);
+
+    // const [newOwnerInfo, setNewOwnerInfo] = useState({ ownerName: '', ownerEmail: '', address: '' });
+    const [newOwnerInfo, setNewOwnerInfo] = useState({});
 
     if (loading) {
         return <div>Loading...</div>;
@@ -45,7 +42,7 @@ const ManageOwnerInfo = (props) => {
 
             const mutationResponse = await updateOwner({
                 variables: {
-                    _id: newOwnerInfo.ID,
+                    _id: newOwnerInfo._id,
                     ownerName: newOwnerInfo.ownerName,
                     ownerEmail: newOwnerInfo.ownerEmail,
                     address: newOwnerInfo.address
@@ -81,11 +78,11 @@ const ManageOwnerInfo = (props) => {
                 >
 
                     <p><label htmlFor="ownerName">
-                        Name <input type="name" name="ownerName" onChange={handleChange} /></label></p>
+                        New Name: <input type="name" name="ownerName" value={newOwnerInfo.ownerName} onChange={handleChange} /></label></p>
                     <p><label htmlFor="ownerEmail">
-                        Email <input type="email" name="ownerEmail" onChange={handleChange} /></label></p>
+                        New Email: <input type="email" name="ownerEmail" value={newOwnerInfo.ownerEmail} onChange={handleChange} /></label></p>
                     <p><label htmlFor="ownerAddress">
-                        Address <input type="address" name="address" onChange={handleChange} /></label></p>
+                        New Address: <input type="address" name="address" value={newOwnerInfo.address} onChange={handleChange} /></label></p>
                     {
                         error ? <div>
                             < p className="error-text" > Something went wrong..Please provide information</p>
@@ -97,14 +94,7 @@ const ManageOwnerInfo = (props) => {
                 </form>
 
             </Modal >
-
-            {/* <div>
-                <h3>Name: {newOwnerInfo.ownerName}</h3>
-                <h3>Email: {newOwnerInfo.ownerEmail}</h3>
-                <h3>Address {newOwnerInfo.address}</h3>
-            </div> */}
         </>
-
     );
 };
 

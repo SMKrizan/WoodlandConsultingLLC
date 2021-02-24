@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-
+require("dotenv").config()
 const secret = process.env.SECRET;
 const expiration = '2h';
 
@@ -16,7 +16,7 @@ module.exports = {
         .trim();
     }
 
-     console.log("token", token)
+    console.log("token", token)
 
     if (!token) {
       return req;
@@ -27,7 +27,7 @@ module.exports = {
       req.owner = data;
     }
     catch {
-       console.log('Invalid token');
+      console.log('Invalid token');
     }
 
     return req;
