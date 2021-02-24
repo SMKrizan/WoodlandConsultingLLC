@@ -66,14 +66,11 @@ const TestimonialList = (props) => {
 
   return (
     <>
-      <h3 className="padtb">
-        There are currently {tstData.length} testimonials displaying to your
-        page:
-      </h3>
-      {tstData &&
-        tstData.map((testimonial) => (
-          // 'key' is required on mapped data for React to track data changes
+      <h3 className="padtb">Currently displaying testimonials: </h3>
+      {tstData && tstData.map((testimonial) => (
           <div key={testimonial._id}>
+            <h3>{new Date(parseInt(tstData.created_at)).toLocaleDateString()}</h3>
+            <h3>{new Date(parseInt(tstData.updated_at)).toLocaleDateString()}</h3>
             <CardGroup className="padb">
               <Card className=' box shadow pad'>
                 <CardBody>
@@ -102,7 +99,6 @@ const TestimonialList = (props) => {
           </div>
         ))}
       <Modal open={open} onClose={() => setOpen(false)}>
-        {/* {console.log("modalData: ", modalData)} */}
         <h2>Replace/update testimonial:</h2>
         <form>
           <p>
