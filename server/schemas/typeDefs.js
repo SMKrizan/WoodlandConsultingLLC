@@ -94,18 +94,3 @@ const typeDefs = gql`
 `;
 
 module.exports = typeDefs;
-
-// make image required in mutation for portfolio
-// null for not image
-// filter on the portfolio page for image
-// in resolver before return
-// array.filter(project => {
-//     return project.image !== null
-// })
-// clientList(company: String, description: String, location: [Location], WC: Boolean): [Project]
-// input client {
-//     company: String
-//     description: String
-//     location: [Location]
-//     WC: Boolean
-// }

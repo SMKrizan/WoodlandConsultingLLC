@@ -4,8 +4,6 @@ import { useQuery} from '@apollo/react-hooks';
 import ImageModal from '../ImageModal'
 import { GET_PROJECTS } from '../../utils/queries';
 
-
-
 function Gallery() {
 
 
@@ -20,7 +18,7 @@ function Gallery() {
 
 
     if (loading) {
-      return <div>Loading...</div>;
+        return <div>Loading...</div>;
     }
     if (!projectData) {
         console.log("no testimonials pulled....")

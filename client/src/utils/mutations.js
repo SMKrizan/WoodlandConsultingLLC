@@ -16,7 +16,7 @@ mutation login($ownerEmail: String!, $password: String!) {
 `;
 
 export const UPDATE_OWNER = gql`
-mutation updateOwner($ownerEmail: String!, $ownerName: String!, $address: String, $password: String!) {
+mutation updateOwner($ownerEmail: String, $ownerName: String, $address: String, $password: String) {
   updateOwner(ownerEmail: $ownerEmail, ownerName: $ownerName, address: $address, password: $password) {
     token
     owner {
