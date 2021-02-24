@@ -15,62 +15,55 @@ import {
 
 // import TstUpdate from '../TstUpdate';
 import { GET_TESTIMONIALS } from "../../utils/queries";
-import { UPDATE_TST } from "../../utils/actions";
+// import { UPDATE_TST } from "../../utils/actions";
 import { UPDATE_TESTIMONIAL } from "../../utils/mutations";
-import Auth from "../../utils/auth";
+// import Auth from "../../utils/auth";
 
 const TestimonialList = (props) => {
   const [state, dispatch] = useStoreContext();
   const { testimonials, testimonial } = state;
-  const [updatedTst] = useMutation(UPDATE_TESTIMONIAL);
-  
-  // QUERY data from db to display testimonials to admin page
-  // reminder: "data" is the object described by associated query/mutation
+
+  // queries data from db to display testimonials to admin page
   const { loading, data } = useQuery(GET_TESTIMONIALS);
   const tstData = data?.testimonials || [];
-  console.log('tstData: ', tstData)
-  
-  
- 
-  // use MUTATION to submit replaced/updated testimonial values to db for persistent storage
+
+  // submits replaced/updated testimonial values to db for persistent storage
+  const [updatedTst] = useMutation(UPDATE_TESTIMONIAL);
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log('updated modalData: ', modalData)
-    // try {
-      const mutationResponse = await updatedTst({
-        variables: {
-          _id: modalData._id,
-          tstName: modalData.tstName,
-          tstCompany: modalData.tstCompany,
-          tstMessage: modalData.tstMessage
-        }
-      });
-      // const token = mutationResponse.data.updatedTst.token;
-    //   Auth.login(token);
-    // } catch (event) {
-    //   console.log(event);
-    // }
+    // console.log("updated modalData: ", modalData);
+    const mutationResponse = await updatedTst({
+      variables: {
+        _id: modalData._id,
+        tstName: modalData.tstName,
+        tstCompany: modalData.tstCompany,
+        tstMessage: modalData.tstMessage,
+      },
+    });
   };
 
+  // state is updated with any new form values
+  const [modalData, setModalData] = useState({});
+  const handleClick = (testimonial) => {
+    setModalData(testimonial);
+  };
+  
+  // grabs any updated form values with other retained object properties
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setModalData({
+      ...modalData,
+      // gets value of name attribute and returns associated value property
+      [name]: value,
+    });
+  };
+  
   // modal
   const [open, setOpen] = useState(false);
-  const [modalData, setModalData] = useState({});
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
-const handleClick = (testimonial) => {
-    setModalData(testimonial)
-}
- 
-
-const handleInputChange = (e) => {
-  const {name, value} = e.target
-   setModalData({
-     ...modalData, 
-    // indicates to get value of name attribute and return the associated value property 
-     [name]: value
-   })
-}
-
+  
   return (
     <>
       <h4>
@@ -95,10 +88,13 @@ const handleInputChange = (e) => {
                   <CardSubtitle tag="h6" className="mb-2 text-muted">
                     {testimonial.created_at}
                   </CardSubtitle>
-                  <Button className="button" onClick={() => {
-                    setOpen(true)
-                    handleClick(testimonial)
-                    }}>
+                  <Button
+                    className="button"
+                    onClick={() => {
+                      setOpen(true);
+                      handleClick(testimonial);
+                    }}
+                  >
                     Update
                   </Button>
                 </CardBody>
@@ -107,50 +103,43 @@ const handleInputChange = (e) => {
           </div>
         ))}
       <Modal open={open} onClose={() => setOpen(false)}>
-        {console.log('modalData: ', modalData)}
-        <h2>Replace/update current testimonial:</h2>
-        <form action="">
+        {/* {console.log("modalData: ", modalData)} */}
+        <h2>Replace/update testimonial:</h2>
+        <form>
           <p>
-            <label labelName="tstName">
+            <label name="tstName">
               Name:
               <input
                 type="text"
-                name='tstName'
-                placeholder={modalData.tstName}
+                name="tstName"
                 value={modalData.tstName}
                 onChange={handleInputChange}
-                // onMouseOut={(e) => handleFormState(modalData._id)}
-              />${modalData.tstName}
+              />
             </label>
           </p>
           <p>
-            <label labelName="tstCompany">
+            <label name="tstCompany">
               Company:
               <input
                 type="text"
                 name="tstCompany"
-                placeholder={modalData.tstCompany}
                 value={modalData.tstCompany}
                 onChange={handleInputChange}
-                // onMouseOut={(e) => handleFormState(e)}
               />
             </label>
           </p>
           <p>
-            <label labelName="tstMessage">
+            <label name="tstMessage">
               Message:
               <input
                 type="text"
                 name="tstMessage"
-                placeholder={modalData.tstMessage}
                 value={modalData.tstMessage}
                 onChange={handleInputChange}
-                // onMouseOut={(e) => handleFormState(e)}
               />
             </label>
           </p>
           <button onClick={handleFormSubmit}>Submit</button>
-          {/* <input type="submit" value="Submit" /> */}
         </form>
       </Modal>
     </>
