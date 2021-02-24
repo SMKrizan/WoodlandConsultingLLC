@@ -12,6 +12,7 @@ import Contact from './pages/Contact';
 import { StoreProvider } from './utils/GlobalState';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import 'react-responsive-modal/styles.css';
 
 //const cache = new InMemoryCache();
 
@@ -36,7 +37,7 @@ function App() {
 
     switch (currentPage) {
       case 'Home':
-        return <Home />;
+        return <Home handlePageChange={handlePageChange}/>;
       case 'About':
         return <About />;
       case 'Map':
@@ -60,7 +61,7 @@ function App() {
           <main >
             {
               // Render the component returned by 'renderPage()'
-              renderPage(currentPage)
+              renderPage(currentPage) 
             }
           </main>
           <Footer />

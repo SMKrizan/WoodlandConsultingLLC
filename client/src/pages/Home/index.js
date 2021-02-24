@@ -4,7 +4,7 @@ import {GET_TESTIMONIALS} from '../../utils/queries';
 import ContactForm from '../../components/ContactForm'
 import './home.css'
 
-function Home() {
+function Home(props) {
 
     const { loading, data} = useQuery(GET_TESTIMONIALS);
     const testimonialData = data?.testimonials ;
@@ -24,6 +24,8 @@ function Home() {
        }
     const quote = randomQuote(testimonialData)
 
+
+
     return (
         <section>
             <div className="feature-home-image">
@@ -33,10 +35,20 @@ function Home() {
                     <p>{quote.tstName} - {quote.tstCompany}</p>
                     <div className="flex-left">
                         <div>
-                            <button><h3>View Works</h3></button>
+                            <a
+                                href={'# portfolio'}
+                                onClick={() => props.handlePageChange('Portfolio')}
+                            >
+                                <button><h3>View Portfolio</h3></button>
+                             </a>
                         </div>
                         <div>
-                            <button><h3>Contact</h3></button>
+                        <a
+                                href={'# portfolio'}
+                                onClick={() => props.handlePageChange('Contact')}
+                            >
+                                <button><h3>Contact</h3></button>
+                             </a>
                         </div>
                     </div>
                 </div>
@@ -65,7 +77,11 @@ function Home() {
                         Woodland Consulting's Founder has work located across the United States. Click to see a map showing where you can find her work nearest to you.
             </div>
             <div className="hover-glow flex-center  glow maps-img">
-                <button><h3>Contact</h3></button>
+                    <a
+                        href={'# portfolio'}
+                        onClick={() => props.handlePageChange('Map')}>
+                        <button><h3>View Map</h3></button>
+                    </a>
             </div>
         </div >
     </div>
