@@ -37,9 +37,9 @@ const ManageOwnerInfo = () => {
         <Card outline color='secondary'>
             <CardHeader> Owner</CardHeader>
             <CardBody>
-                <CardTitle><h3>Name: {ownerData.ownerName}</h3></CardTitle>
-                <CardText><h3>Email: {ownerData.ownerEmail}</h3></CardText>
-                <CardText><h3>Address {ownerData.address}</h3></CardText>
+                <CardTitle><p>Name: {ownerData.ownerName}</p></CardTitle>
+                <CardText><p>Email: {ownerData.ownerEmail}</p></CardText>
+                <CardText><p>Address {ownerData.address}</p></CardText>
             </CardBody>
             <div>
                 <button onClick={updateOwnerInfo}> Update</button>
