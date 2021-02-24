@@ -9,15 +9,6 @@ import MsgList from "../../components/MsgList";
 import TstList from "../../components/TstList";
 import OwnerInfo from "../../components/OwnerInfo";
 
-// const AdminPage = (props) => {
-//   return (
-//     <div>
-//       <MsgList />
-//       <TstList />
-//       <OwnerInfo />
-//     </div>
-//   );
-// };
 
 const AdminPage = (props) => {
   return (

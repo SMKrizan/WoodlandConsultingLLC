@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { useStoreContext } from "../../utils/GlobalState";
 import { Modal } from "react-responsive-modal";
@@ -63,7 +63,7 @@ const TestimonialList = (props) => {
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
-  
+
   return (
     <>
       <h4>
