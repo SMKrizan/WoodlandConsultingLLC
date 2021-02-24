@@ -25,7 +25,6 @@ const resolvers = {
     owner: async () => {
 
       const owner = await Owner.findOne();
-      console.log('Owner: ', owner)
       return owner
     },
     projects: async () => {
@@ -72,11 +71,9 @@ const resolvers = {
     },
     updateOwner: async (parent, args, context) => {
       if (context.owner) {
-        console.log('owner:', context.owner._id, args)
         const owner = await Owner.findByIdAndUpdate({_id: context.owner._id}, args, {
           new: true,
         });
-        console.log('owner: ', owner)
       }
 
       throw new AuthenticationError("Not logged in");
@@ -91,7 +88,6 @@ const resolvers = {
       throw new AuthenticationError("You must be logged in to perform this action.");
     },
     updateTestimonial: async (parent, args, context) => {
-      console.log("args", args)
       if (context.owner) {
         const updatedTestimonial = await Testimonial.findByIdAndUpdate(
           args._id, args,
@@ -100,7 +96,6 @@ const resolvers = {
           }
           
         );
-        console.log("======================", updatedTestimonial)
         return updatedTestimonial;
         
       }
@@ -125,8 +120,11 @@ const resolvers = {
     removeMessage: async ( parent, { _id }, context ) => {
       if (context.owner) {
         const updatedMessageList = await Message.findByIdAndDelete(
-        _id,);
-
+        _id,
+        {
+          new: true
+        }
+        );
         console.log("======", updatedMessageList);
         return updatedMessageList
       }

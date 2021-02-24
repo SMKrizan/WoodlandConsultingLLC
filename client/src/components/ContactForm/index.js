@@ -39,6 +39,12 @@ const ContactForm = () => {
         await addMessage({
             variables: { userName: formState.userName, userCompany: formState.userCompany, userEmail: formState.userEmail, userMessage: formState.userMessage} 
         });
+        return (
+            alert("Thanks for the message."),
+            window.location.assign('/')
+        )
+        
+
     } catch (e) {
         console.error(e)
     }
@@ -71,12 +77,11 @@ const ContactForm = () => {
 //   function handleOptionChange(e) {
 //       if (e.target.name === "radio1") {
           
-//           setPurposeType({ ...purposeType, [e.target.name]: e.target.value})
+//           const setPurpose = setPurposeType({ ...purposeType, [e.target.name]: e.target.value})
 //       } else {
 //           (e.target.name === "radio2"); {
-        
-//           setPurposeType({ ...purposeType, [e.target.name]: e.target.value})
-//         }
+//           const setPurposeAgain = setPurposeType({ ...purposeType, [e.target.name]: e.target.value})
+//           }
 //       }
 //   }
 
@@ -132,15 +137,19 @@ const ContactForm = () => {
             <div style={{}}>
             <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio1" checked= {true}/> Ask a Question
+                <Input type="radio" name="radio1" 
+                // checked= {handleOptionChange}
+                /> Ask a Question
             </Label>
             </FormGroup>
             <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio2" /> Leave a comment
+                <Input type="radio" name="radio2" 
+                // checked= {handleOptionChange} 
+                /> Leave a comment
             </Label>
             </FormGroup>
-            <FormGroup check>
+            {/* <FormGroup check>
             <Label check>
                 <Input type="radio" name="radio3" /> Request a quote
             </Label>
@@ -149,7 +158,7 @@ const ContactForm = () => {
             <Label check>
                 <Input type="radio" name="radio4" /> Provide a testimonial
             </Label>
-            </FormGroup>
+            </FormGroup> */}
             </div>
             {/* <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
             Character Count: {characterCount}/280
