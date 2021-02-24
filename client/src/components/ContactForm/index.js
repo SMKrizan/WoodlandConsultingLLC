@@ -68,11 +68,11 @@ const ContactForm = () => {
     }
 
     return (
-    <div className="pad"> 
+    <div> 
         <h2>Contact</h2>
         <p>{error && <span className="ml-2">Something went wrong...</span>}</p>
 
-        <form id="contact-form" onSubmit={handleSubmit}>
+        <form id="contact-form" onSubmit={handleSubmit} >
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
             <Label for="userName" sm={2} size="lg">Name:</Label>
             <Col sm={10}>

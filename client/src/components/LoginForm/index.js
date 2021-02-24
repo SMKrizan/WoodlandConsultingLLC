@@ -29,8 +29,8 @@ function LoginForm() {
 }
 
   return (
-    <>
-    <form id="contact-form" onSubmit={handleFormSubmit} style={{ padding: "20px"}}>
+
+    <form id="contact-form" onSubmit={handleFormSubmit}>
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
             <Label for="ownerEmail" sm={2} size="lg">Email Address:</Label>
             <Col sm={10}>
@@ -70,7 +70,7 @@ function LoginForm() {
             Submit
             </Button>
             </form>
-    </>
+
   );
 };
 
