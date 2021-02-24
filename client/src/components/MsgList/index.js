@@ -11,7 +11,8 @@ import Auth from '../../utils/auth';
 
 // conditionally renders message data; destructuring rather than using 'props.userName' etc. throughout JSX code
 const MessageList = (props) => {
-    const [removeMessage, {error}] = useMutation(REMOVE_MESSAGE);
+    const [removeMessage] = useMutation(REMOVE_MESSAGE);
+
     const [state, dispatch] = useStoreContext();
     const { messages } = state;
 
@@ -27,18 +28,19 @@ const MessageList = (props) => {
 
   
 
-    const handleSubmit = async (_id) => {
+    const handleSubmit = async (messageData) => {
+        console.log("handlesubmit", messageData._id)
         const token = Auth.loggedIn() ? Auth.getToken() : null;
         if (!token) {
             return false;
         }
 
         try {
+           
             const { data } = await removeMessage({
                 variables: { _id: messageData._id }
             });
 
-            removeMessage(_id);
         } catch (e) {
             console.error(e);
         }
@@ -50,26 +52,29 @@ const MessageList = (props) => {
             <Table responsive id="messages" className="box shadow">
                     <thead>
                         <tr>
-                            <th >Delete</th>
-                            <th>Type</th>
-                            <th>Name</th>
-                            <th>Company</th>
-                            <th>Email</th>
-                            <th>Message</th>
-                            <th>Date Received</th>
+                            <th key="delete">Delete</th>
+                            <th key="type">Type</th>
+                            <th key="name">Name</th>
+                            <th key="company">Company</th>
+                            <th key="email">Email</th>
+                            <th key="message">Message</th>
+                            <th key="date">Date Received</th>
                         </tr>
                     </thead>
                     <tbody>
                         {messageData &&
-                            messageData.map(message => (
-                                <tr key={messageData._id} onSubmit={handleSubmit}>
-                                    <td>[<button type="submit" >Delete</button>]</td>
-                                    <td>{message.purpose}</td>
-                                    <td>{message.userName}</td>
-                                    <td>{message.userCompany}</td>
-                                    <td>{message.userEmail}</td>
-                                    <td>{message.userMessage}</td>
-                                    <td>{new Date(parseInt(message.created_at)).toLocaleDateString()}</td>
+                            messageData.map((message, i) => (
+                                <tr key={messageData._id}>
+                                    <td key="deleteBtn"><button type="submit" onClick={() => {
+                                        handleSubmit(messageData[i])}}
+                                     >Delete</button></td>
+                                    <td key={messageData.purpose}>{message.purpose}
+                                    </td>
+                                    <td key={messageData.userName}>{message.userName}</td>
+                                    <td key={messageData.userCompany}>{message.userCompany}</td>
+                                    <td key={messageData.userEmail}>{message.userEmail}</td>
+                                    <td key={messageData.userMessage}>{message.userMessage}</td>
+                                    <td key={messageData.created_at}>{new Date(parseInt(message.created_at)).toLocaleDateString()}</td>
                                 </tr>
                             ))}
                     </tbody>

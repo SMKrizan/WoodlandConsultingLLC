@@ -117,17 +117,17 @@ const resolvers = {
       throw new AuthenticationError("You must be logged in to perform this action.")
     },
     addMessage: async (parent, args ) => {
-      console.log("here in mutation", args)
         const message = await Message.create({
           ...args
         });
-        console.log("message", message)
         return message ;
     },
     removeMessage: async ( parent, { _id }, context ) => {
       if (context.owner) {
-        const updatedMessageList = await Message.findByIdAndDelete(_id)
-        console.log(updatedMessageList);
+        const updatedMessageList = await Message.findByIdAndDelete(
+        _id,);
+
+        console.log("======", updatedMessageList);
         return updatedMessageList
       }
       throw new AuthenticationError("You must be logged in to perform this action.");

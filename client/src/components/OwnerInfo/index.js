@@ -33,19 +33,19 @@ const ManageOwnerInfo = () => {
     } 
     
     return (
-
+        <div>
         <Card outline color='secondary'>
             <CardHeader> Owner</CardHeader>
             <CardBody>
-                <CardTitle><p>Name: {ownerData.ownerName}</p></CardTitle>
-                <CardText><p>Email: {ownerData.ownerEmail}</p></CardText>
-                <CardText><p>Address {ownerData.address}</p></CardText>
+                <CardTitle>Name: {ownerData.ownerName}</CardTitle>
+                <CardText>Email: {ownerData.ownerEmail}</CardText>
+                <CardText>Address {ownerData.address}</CardText>
             </CardBody>
             <div>
                 <button onClick={updateOwnerInfo}> Update</button>
             </div>
         </Card>
-
+        </div>
 
     );
 };
