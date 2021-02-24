@@ -1,4 +1,4 @@
-//  Model for data collected from user via contact form
+// Model for data collected from user via contact form
 const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
@@ -41,17 +41,9 @@ const messageSchema = new Schema(
             }
         ]
     },
-    {
-        timestamps: true
-    },
-    {
-        toJSON: {
-            virtuals: true
-        }
-
-    }
 );
 
+// counts length of messages array
 messageSchema.virtual('messageCount').get(function () {
     return this.messages.length;
 });
