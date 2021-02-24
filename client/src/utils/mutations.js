@@ -93,17 +93,9 @@ mutation addMessage(
 
 export const REMOVE_MESSAGE = gql`
 mutation removeMessage(
-    $userName: String!, 
-    $userCompany: String, 
-    $userEmail: String!, 
-    $userMessage: String!, 
-    $purpose: String) {
+    $_id: ID!) {
         removeMessage(
-            userName: $userName, 
-            userCompany: $userCompany, 
-            userEmail: $userEmail, 
-            userMessage: $userMessage, 
-            purpose: $purpose) {
+           _id: $_id) {
                 _id
                 userName
                 userCompany
