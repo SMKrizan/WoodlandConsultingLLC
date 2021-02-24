@@ -8,7 +8,7 @@ function Contact() {
 
   return (
     <section>
-        <div>
+        <div className="pad">
             <ContactForm />
         </div>
     </section>
