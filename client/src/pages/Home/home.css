@@ -36,7 +36,7 @@
     margin:auto;
     display: flex;
     flex-wrap: wrap;
-    padding:0px 80px;
+    padding:0px 40px;
     justify-content: space-around;
     margin-bottom: 80px;
     margin-top: -40px;
@@ -66,24 +66,24 @@
   }
 
 .maps-home {
-    max-width: 500px;
-    min-width:500px;
-    margin-right: -50px;
-    height:500px;
+    max-width: 300px;
+    min-width: 300px;
+    height:300px;
+    margin-right: -10px;
     border-radius: 50%; 
     background-color: var(--maroon);
     overflow: hidden;
-    font-size: 28px;
+    font-size: 18px;
     text-align:center;
 }
 
 .maps-img {
     background-image: url('../../assets/images/maps.png');
     background-position: center;
-    max-width: 500px;
-    width:500px;
-    margin-right: -50px;
-    height:500px;
+    max-width: 300px;
+    width:300px;
+    margin-right: -10px;
+    height:300px;
     border-radius: 50%; 
 }
 

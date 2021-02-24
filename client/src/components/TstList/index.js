@@ -66,28 +66,27 @@ const TestimonialList = (props) => {
 
   return (
     <>
-      <h4>
+      <h3 className="padtb">
         There are currently {tstData.length} testimonials displaying to your
         page:
-      </h4>
+      </h3>
       {tstData &&
         tstData.map((testimonial) => (
           // 'key' is required on mapped data for React to track data changes
           <div key={testimonial._id}>
-            <CardGroup>
-              <Card>
+            <CardGroup className="padb">
+              <Card className=' box shadow pad'>
                 <CardBody>
-                  <CardTitle tag="h5">{testimonial.tstName}</CardTitle>
-                  <CardSubtitle tag="h6" className="mb-2 text-muted">
+                  <h4>{testimonial.tstName}</h4>
+                  <h5 className="mb-2 text-muted">
                     {testimonial.tstCompany}
-                  </CardSubtitle>
+                  </h5>
                   <CardText>{testimonial.tstMessage}</CardText>
-                  <CardSubtitle tag="h6" className="mb-2 text-muted">
-                    {testimonial.updated_at}
-                  </CardSubtitle>
-                  <CardSubtitle tag="h6" className="mb-2 text-muted">
-                    {testimonial.created_at}
-                  </CardSubtitle>
+                  <h5 className="mb-2 text-muted">
+                    Updated: {testimonial.updated_at} 
+                    <br/>
+                    Created: {testimonial.created_at}
+                  </h5>
                   <Button
                     className="button"
                     onClick={() => {

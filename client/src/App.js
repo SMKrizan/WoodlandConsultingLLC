@@ -31,6 +31,7 @@ const client = new ApolloClient({
 function App() {
   const [currentPage, handlePageChange] = useState('Home');
 
+
   const renderPage = () => {
     // Add a switch statement that will return the appropriate component of the 'currentPage'
 

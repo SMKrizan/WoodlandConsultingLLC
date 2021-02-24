@@ -14,7 +14,7 @@ const AdminPage = (props) => {
   return (
     <div>
       {Auth.loggedIn() ? (
-        <div>
+        <div className="pad">
           <MsgList />
           <TstList />
           <OwnerInfo />
