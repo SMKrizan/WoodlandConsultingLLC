@@ -83,9 +83,9 @@ const TestimonialList = (props) => {
                   </h5>
                   <CardText>{testimonial.tstMessage}</CardText>
                   <h5 className="mb-2 text-muted">
-                    Updated: {testimonial.updated_at} 
+                    Updated: {new Date(parseInt(testimonial.updated_at)).toLocaleDateString()} 
                     <br/>
-                    Created: {testimonial.created_at}
+                    Created: {new Date(parseInt(testimonial.created_at)).toLocaleDateString()}
                   </h5>
                   <Button
                     className="button"

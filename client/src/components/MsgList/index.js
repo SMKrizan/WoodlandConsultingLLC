@@ -69,7 +69,7 @@ const MessageList = (props) => {
                                     <td>{message.userCompany}</td>
                                     <td>{message.userEmail}</td>
                                     <td>{message.userMessage}</td>
-                                    <td>{message.created_at}</td>
+                                    <td>{new Date(parseInt(message.created_at)).toLocaleDateString()}</td>
                                 </tr>
                             ))}
                     </tbody>
