@@ -19,13 +19,13 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    projects: async () => {      
-      return await Project.find().populate('category');    
+    projects: async () => {
+      return await Project.find().populate('category');
     },
     owner: async () => {
 
       const owner = await Owner.findOne();
-      console.log('Owner: ', owner)
+      console.log('owner: ', owner)
       return owner
     },
     projects: async () => {
@@ -60,7 +60,6 @@ const resolvers = {
       if (!owner) {
         throw new AuthenticationError("Incorrect credentials!");
       }
-
       const correctPw = await owner.isCorrectPassword(password);
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials!");
@@ -72,15 +71,16 @@ const resolvers = {
     },
     updateOwner: async (parent, args, context) => {
       if (context.owner) {
-        console.log('owner:', context.owner._id, args)
-        const owner = await Owner.findByIdAndUpdate({ _id: context.owner._id }, args, {
+        console.log('Owner:', args)
+        const updatedOwner = await Owner.findByIdAndUpdate({ _id: context.owner._id }, args, {
           new: true,
         });
-        console.log('owner: ', owner)
+        console.log('updatedOwner: ', updatedOwner)
+        return updatedOwner;
       }
-
       throw new AuthenticationError("Not logged in");
     },
+
     addTestimonial: async (parent, args, context) => {
       if (context.owner) {
         const testimonial = await Testimonial.create({
@@ -98,7 +98,6 @@ const resolvers = {
           {
             new: true,
           }
-
         );
         console.log("======================", updatedTestimonial)
         return updatedTestimonial;
@@ -116,13 +115,13 @@ const resolvers = {
       }
       throw new AuthenticationError("You must be logged in to perform this action.")
     },
-    addMessage: async (parent, args ) => {
+    addMessage: async (parent, args) => {
       console.log("here in mutation", args)
-        const message = await Message.create({
-          ...args
-        });
-        console.log("message", message)
-        return message ;
+      const message = await Message.create({
+        ...args
+      });
+      console.log("message", message)
+      return message;
     },
     removeMessage: async (parent, { _id }, context) => {
       if (context.owner) {

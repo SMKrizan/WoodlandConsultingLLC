@@ -30,8 +30,8 @@ export const reducer = (state, action) => {
     case UPDATE_OWNER_INFO:
       return {
         ...state,
-        [action.field]: action.payload,
-        // ownerInfo: [...action.ownerInfo]
+        // [action.field]: action.payload,
+        ownerInfo: [...action.ownerInfo]
       }
 
     default:
