@@ -3,24 +3,21 @@ import { Form, FormGroup, Input, Button, Col, Label } from 'reactstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { OWNER_LOGIN } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-// import { validateEmail  } from '../../utils/helpers';
 
-function LoginForm(props) {
-  console.log("-----", props)
-  // const [characterCount, setCharacterCount] = useState(0);
+
+function LoginForm() {
   const [formState, setFormState] = useState({
   ownerEmail: "",
   password: ""
   })
 
-  const[ownerLogin, { error }] = useMutation(OWNER_LOGIN);
+  const[login, { error }] = useMutation(OWNER_LOGIN);
 
   const handleFormSubmit = async event => {
   event.preventDefault();
 
   try {
-    const mutationResponse = await ownerLogin({ variables: { ownerEmail: formState.ownerEmail, password: formState.password } })
-    console.log("======", mutationResponse)
+    const mutationResponse = await login({ variables: { ownerEmail: formState.ownerEmail, password: formState.password } })
     const token = mutationResponse.data.login.token;
     Auth.login(token);
   } catch (e) {
@@ -35,13 +32,13 @@ function LoginForm(props) {
     <>
     <form id="contact-form" onSubmit={handleFormSubmit} style={{ padding: "20px"}}>
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-            <Label for="email" sm={2} size="lg">Email Address:</Label>
+            <Label for="ownerEmail" sm={2} size="lg">Email Address:</Label>
             <Col sm={10}>
             <Input style={{ width: "90%"}}
                 type="email"
-                name="email"
+                name="ownerEmail"
                 id="emailInput"
-                // defaultValue={ownerEmail}
+                defaultValue={ formState.ownerEmail }
                 onBlur={handleChange}
                 placeholder= "Enter your email"
                 bsSize="lg" 
@@ -55,7 +52,7 @@ function LoginForm(props) {
                 type="text"
                 name="password"
                 id="passwordInput"
-                // defaultValue={password}
+                defaultValue={ formState.password }
                 onBlur={handleChange}
                 placeholder="Enter your password"
                 bsSize="lg"
