@@ -127,6 +127,7 @@ const resolvers = {
     removeMessage: async ( parent, { _id }, context ) => {
       if (context.owner) {
         const updatedMessageList = await Message.findByIdAndDelete(_id)
+        console.log(updatedMessageList);
         return updatedMessageList
       }
       throw new AuthenticationError("You must be logged in to perform this action.");
