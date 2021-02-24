@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import mapStyles from './mapStyles';
 import './map.css';
@@ -11,6 +12,8 @@ import {
 
 import { useQuery } from '@apollo/react-hooks';
 import { GET_PROJECTS } from "../../utils/queries";
+
+require('dotenv').config()
 
 function Map() {
     const { loading, data } = useQuery(GET_PROJECTS);

@@ -67,6 +67,12 @@ const ContactForm = () => {
     }
     }
 
+    // function handleOptionChange(e) {
+    //     this.setState({
+    //       selectedOption: e.target.value
+    //     });
+    //   }
+
     return (
     <div className="pad"> 
         <h2>Contact</h2>
@@ -119,22 +125,32 @@ const ContactForm = () => {
             <div>
             <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio1" value="option1" /> Ask a Question
+                <Input type="radio" name="radio1" 
+                // value="option1" checked={this.state.selectedOption === 'option1'}  onChange={handleOptionChange} 
+                /> 
+                Ask a Question
             </Label>
             </FormGroup>
             <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio2" value="option2" /> Leave a comment
+                <Input type="radio" name="radio2" 
+                // value="option2" checked={this.state.selectedOption === 'option2'}  onChange={handleOptionChange} 
+                /> Leave a comment
             </Label>
             </FormGroup>
             <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio3" value="option3" /> Request a quote
+                <Input type="radio" name="radio3" 
+                // value="option3" checked={this.state.selectedOption === 'option3'}  
+                // onChange={handleOptionChange} 
+                /> Request a quote
             </Label>
             </FormGroup>
             <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio4" value="option4" /> Provide a testimonial
+                <Input type="radio" name="radio4" 
+                // value="option4" checked={this.state.selectedOption === 'option4'}  onChange={handleOptionChange} 
+                /> Provide a testimonial
             </Label>
             </FormGroup>
             </div>
