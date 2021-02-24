@@ -25,7 +25,6 @@ const resolvers = {
     owner: async () => {
 
       const owner = await Owner.findOne();
-      console.log('owner: ', owner)
       return owner
     },
     projects: async () => {
@@ -91,7 +90,6 @@ const resolvers = {
       throw new AuthenticationError("You must be logged in to perform this action.");
     },
     updateTestimonial: async (parent, args, context) => {
-      console.log("args", args)
       if (context.owner) {
         const updatedTestimonial = await Testimonial.findByIdAndUpdate(
           args._id, args,
@@ -99,7 +97,6 @@ const resolvers = {
             new: true,
           }
         );
-        console.log("======================", updatedTestimonial)
         return updatedTestimonial;
 
       }
@@ -115,17 +112,24 @@ const resolvers = {
       }
       throw new AuthenticationError("You must be logged in to perform this action.")
     },
-    addMessage: async (parent, args) => {
-      console.log("here in mutation", args)
-      const message = await Message.create({
-        ...args
-      });
-      console.log("message", message)
-      return message;
+    addMessage: async (parent, args ) => {
+        const message = await Message.create({
+          ...args
+        });
+        return message ;
     },
     removeMessage: async (parent, { _id }, context) => {
       if (context.owner) {
-        const updatedMessageList = await Message.findByIdAndDelete(_id)
+        const updatedMessageList = await Message.findByIdAndDelete(
+        _id,
+        // {
+        //   $pull: _id
+        // },
+        // {
+        //   new: true
+        // }
+        );
+        console.log("======", updatedMessageList);
         return updatedMessageList
       }
       throw new AuthenticationError("You must be logged in to perform this action.");

@@ -5,7 +5,7 @@ import Auth from "../../utils/auth";
 import LoginForm from "../LoginForm";
 import { Card, Modal, Button, Tab } from "react-bootstrap";
 
-function Footer() {
+function Footer(props) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -36,7 +36,7 @@ function Footer() {
           </Modal.Header>
           <Modal.Body>
             <Tab.Pane eventKey="login">
-              <LoginForm handleModalClose={() => setShowModal(false)} />
+              <LoginForm handleModalClose={() => setShowModal(false)} handlePageChange={props.handlePageChange} />
             </Tab.Pane>
           </Modal.Body>
         </Modal>

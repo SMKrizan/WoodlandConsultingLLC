@@ -5,7 +5,7 @@ import { OWNER_LOGIN } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 
-function LoginForm() {
+function LoginForm(props) {
   const [formState, setFormState] = useState({
     ownerEmail: "",
     password: ""
@@ -29,19 +29,19 @@ function LoginForm() {
   }
 
   return (
-    <>
-      <form id="contact-form" onSubmit={handleFormSubmit} style={{ padding: "20px" }}>
-        <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-          <Label for="ownerEmail" sm={2} size="lg">Email Address:</Label>
-          <Col sm={10}>
-            <Input style={{ width: "90%" }}
-              type="email"
-              name="ownerEmail"
-              id="emailInput"
-              defaultValue={formState.ownerEmail}
-              onBlur={handleChange}
-              placeholder="Enter your email"
-              bsSize="lg"
+
+    <form id="contact-form" onSubmit={handleFormSubmit}>
+            <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
+            <Label for="ownerEmail" sm={2} size="lg">Email Address:</Label>
+            <Col sm={10}>
+            <Input style={{ width: "90%"}}
+                type="email"
+                name="ownerEmail"
+                id="emailInput"
+                defaultValue={ formState.ownerEmail }
+                onBlur={handleChange}
+                placeholder= "Enter your email"
+                bsSize="lg" 
             />
           </Col>
         </FormGroup>
@@ -69,8 +69,8 @@ function LoginForm() {
         <Button type="submit" style={{ margin: "auto" }}>
           Submit
             </Button>
-      </form>
-    </>
+            </form>
+
   );
 };
 
