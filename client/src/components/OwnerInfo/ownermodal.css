@@ -1,0 +1,25 @@
+/* .customOverlay { */
+    /* background: yellow;
+    } 
+
+    .customModal {
+      border: 2px black solid;
+      z-index: 100;
+      margin: 5%;
+      width: 90%;
+      padding: 10px;
+      border: 2px white solid;
+      position: absolute;
+      background-color: var(--maroon);
+    } */
+
+    .modal-owner-update {
+        border: 2px black solid;
+        z-index: 100;
+        margin: 5%;
+        width: 90%;
+        padding: 10px;
+        border: 2px white solid;
+        position: absolute;
+        background-color: var(--maroon); 
+    }

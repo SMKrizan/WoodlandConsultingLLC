@@ -3,10 +3,10 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_OWNER } from '../../utils/queries';
 import { UPDATE_OWNER } from '../../utils/mutations';
 import { Modal } from 'react-responsive-modal';
-import 'react-responsive-modal/styles.css';
-
+// import 'react-responsive-modal/styles.css';
+import './ownermodal.css';
 const ManageOwnerInfo = (props) => {
-    
+
     const { loading, data } = useQuery(GET_OWNER);
     const ownerData = data?.owner || [];
     console.log('ownerData: ', data?.owner);
@@ -14,6 +14,7 @@ const ManageOwnerInfo = (props) => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log("LOG", newOwnerInfo);
+
         const mutationResponse = await updateOwner({
             variables: {
                 _id: newOwnerInfo._id,
@@ -49,7 +50,7 @@ const ManageOwnerInfo = (props) => {
     return (
         <>
             <div>
-                <h3>Name: {ownerData.ownerName},{newOwnerInfo.ownerName}</h3>
+                <h3>Name: {ownerData.ownerName}</h3>
                 <h3>Email: {ownerData.ownerEmail}</h3>
                 <h3>Address {ownerData.address}</h3>
             </div>
@@ -60,7 +61,8 @@ const ManageOwnerInfo = (props) => {
                         handleClick(ownerData);
                     }}> Update </button>
             </div>
-            <Modal open={open} onClose={() => setOpen(false)}>
+            <Modal className="modal-owner-update"
+                open={open} onClose={() => setOpen(false)}>
                 {console.log("MODAL", newOwnerInfo)}
                 <h2>Please update your information</h2>
                 <form
