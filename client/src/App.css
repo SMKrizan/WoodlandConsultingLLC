@@ -12,7 +12,7 @@
   --darkplum:#1b0024;
   --darkgreen: #026d10;
   --cream: #f7f7d9;
-  --maroon: #541d3b;
+  --maroon: #410f33;
 
   } 
 
@@ -108,6 +108,7 @@ main {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  width:100%;
 }
 .center {
   text-align: center;
@@ -171,6 +172,12 @@ main {
 .padtb {
   padding: 20px 0px;
 }
+.padb {
+  padding-bottom: 20px;
+}
+.padt {
+  padding-top: 20px;
+}
 .pad-l {
   padding-left: 10px;
 }
@@ -206,6 +213,16 @@ main {
 
 main {
   margin-bottom:0px;
+}
+
+h1 {
+  font-size: 34px;
+}
+h2 {
+  font-size: 26px;
+}
+h3 {
+  font-size: 22px;
 }
 } 
 
