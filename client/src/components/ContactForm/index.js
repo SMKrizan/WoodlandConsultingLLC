@@ -132,7 +132,7 @@ const ContactForm = () => {
             <div style={{}}>
             <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio1" /> Ask a Question
+                <Input type="radio" name="radio1" checked= {true}/> Ask a Question
             </Label>
             </FormGroup>
             <FormGroup check>
