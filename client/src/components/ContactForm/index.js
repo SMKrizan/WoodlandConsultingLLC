@@ -33,7 +33,7 @@ const ContactForm = () => {
 
     const handleSubmit = async event => {
     event.preventDefault();
-    console.log( formState)
+    
     try {
         // adds messages to database
         await addMessage({
@@ -116,25 +116,25 @@ const ContactForm = () => {
             />
             </Col>
             </FormGroup>
-            <div style={{}}>
+            <div>
             <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio1" /> Ask a Question
+                <Input type="radio" name="radio1" value="option1" /> Ask a Question
             </Label>
             </FormGroup>
             <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio2" /> Leave a comment
+                <Input type="radio" name="radio2" value="option2" /> Leave a comment
             </Label>
             </FormGroup>
             <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio3" /> Request a quote
+                <Input type="radio" name="radio3" value="option3" /> Request a quote
             </Label>
             </FormGroup>
             <FormGroup check>
             <Label check>
-                <Input type="radio" name="radio4" /> Provide a testimonial
+                <Input type="radio" name="radio4" value="option4" /> Provide a testimonial
             </Label>
             </FormGroup>
             </div>
