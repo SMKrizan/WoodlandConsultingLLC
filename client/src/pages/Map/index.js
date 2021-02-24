@@ -12,7 +12,6 @@ import {
 
 import { useQuery } from '@apollo/react-hooks';
 import { GET_PROJECTS } from "../../utils/queries";
-require("dotenv").config()
 
 require('dotenv').config()
 
