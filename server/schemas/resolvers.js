@@ -121,9 +121,9 @@ const resolvers = {
       if (context.owner) {
         const updatedMessageList = await Message.findByIdAndDelete(
         _id,
-        {
-          new: true
-        }
+        // {
+        //   new: true
+        // }
         );
         console.log("======", updatedMessageList);
         return updatedMessageList

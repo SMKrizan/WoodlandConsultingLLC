@@ -11,10 +11,27 @@ import Auth from '../../utils/auth';
 
 // conditionally renders message data; destructuring rather than using 'props.userName' etc. throughout JSX code
 const MessageList = (props) => {
-    const [removeMessage] = useMutation(REMOVE_MESSAGE);
+    // const [removeMessage] = useMutation(REMOVE_MESSAGE);
 
     const [state, dispatch] = useStoreContext();
     const { messages } = state;
+
+    const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
+        update(cache, { data: { removeMessage }}) {
+            
+        try {
+            const { messages } = cache.readQuery({ query: GET_MESSAGES });
+            console.log ( messages);
+            cache.writeQuery({
+                query: GET_MESSAGES,
+                data:{ messages: [ ...messages] }
+            });
+            console.log(data)
+        } catch (e) {
+            console.log(e)
+        }
+        }
+    })
 
     // reminder: "data" is the object described by associated query/mutation
     const { loading, data } = useQuery(GET_MESSAGES);
@@ -26,28 +43,25 @@ const MessageList = (props) => {
         return <h2>No messages to display.</h2>;
     }
 
-  
-
     const handleSubmit = async (messageData) => {
         console.log("handlesubmit", messageData._id)
         const token = Auth.loggedIn() ? Auth.getToken() : null;
         if (!token) {
             return false;
         }
-
         try {
-           
             const { data } = await removeMessage({
                 variables: { _id: messageData._id }
             });
-
         } catch (e) {
             console.error(e);
         }
     }
+ 
 
     return (
         <div >
+            <p>{error && <span>Something wen wrong.</span>}</p>
             <h3 className="padtb">You have {messageData.length} messages:</h3>
             <Table responsive id="messages" className="box shadow">
                     <thead>
