@@ -19,8 +19,8 @@ const resolvers = {
     categories: async () => {
       return await Category.find();
     },
-    projects: async () => {      
-      return await Project.find().populate('category');    
+    projects: async () => {
+      return await Project.find().populate('category');
     },
     owner: async () => {
 
@@ -36,7 +36,7 @@ const resolvers = {
         params.categoryName = category;
       }
 
-      const project  = Project.find({ category });
+      const project = Project.find({ category });
       return project
     },
     projectById: async (parent, { _id }) => {
@@ -59,7 +59,6 @@ const resolvers = {
       if (!owner) {
         throw new AuthenticationError("Incorrect credentials!");
       }
-
       const correctPw = await owner.isCorrectPassword(password);
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials!");
@@ -71,13 +70,16 @@ const resolvers = {
     },
     updateOwner: async (parent, args, context) => {
       if (context.owner) {
-        const owner = await Owner.findByIdAndUpdate({_id: context.owner._id}, args, {
+        console.log('Owner:', args)
+        const updatedOwner = await Owner.findByIdAndUpdate({ _id: context.owner._id }, args, {
           new: true,
         });
+        console.log('updatedOwner: ', updatedOwner)
+        return updatedOwner;
       }
-
       throw new AuthenticationError("Not logged in");
     },
+
     addTestimonial: async (parent, args, context) => {
       if (context.owner) {
         const testimonial = await Testimonial.create({
@@ -94,20 +96,19 @@ const resolvers = {
           {
             new: true,
           }
-          
         );
         return updatedTestimonial;
-        
+
       }
-      
+
       throw new AuthenticationError("You must be logged in to perform this action.");
     },
-    removeTestimonial: async (parent, { _id }, context ) => {
+    removeTestimonial: async (parent, { _id }, context) => {
       if (context.owner) {
-      const updatedTestimonials = await Testimonial.findByIdAndDelete(
-        _id,
-      );
-      return updatedTestimonials;
+        const updatedTestimonials = await Testimonial.findByIdAndDelete(
+          _id,
+        );
+        return updatedTestimonials;
       }
       throw new AuthenticationError("You must be logged in to perform this action.")
     },
@@ -117,7 +118,7 @@ const resolvers = {
         });
         return message ;
     },
-    removeMessage: async ( parent, { _id }, context ) => {
+    removeMessage: async (parent, { _id }, context) => {
       if (context.owner) {
         const updatedMessageList = await Message.findByIdAndDelete(
         _id,

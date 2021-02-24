@@ -16,17 +16,15 @@ mutation login($ownerEmail: String!, $password: String!) {
 `;
 
 export const UPDATE_OWNER = gql`
-mutation updateOwner($ownerEmail: String, $ownerName: String, $address: String, $password: String) {
-  updateOwner(ownerEmail: $ownerEmail, ownerName: $ownerName, address: $address, password: $password) {
-    token
-    owner {
+mutation updateOwner($ownerEmail: String, $ownerName: String, $address: String) {
+  updateOwner(ownerEmail: $ownerEmail, ownerName: $ownerName, address: $address) {
       _id
       ownerEmail
       ownerName
       address
       }
     }
-  }
+  
 `;
 
 export const ADD_TESTIMONIAL = gql`
