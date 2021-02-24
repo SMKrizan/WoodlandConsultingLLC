@@ -14,7 +14,7 @@ export const reducer = (state, action) => {
         ...state,
         messages: [...action.messages]
       };
-      // admin-page message deletion
+    // admin-page message deletion
     case DELETE_MESSAGE:
       return {
         ...state,
@@ -30,6 +30,7 @@ export const reducer = (state, action) => {
     case UPDATE_OWNER_INFO:
       return {
         ...state,
+        // [action.field]: action.payload,
         ownerInfo: [...action.ownerInfo]
       }
 

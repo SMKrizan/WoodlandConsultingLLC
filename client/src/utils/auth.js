@@ -1,6 +1,6 @@
 import decode from 'jwt-decode';
-import Portfolio from '../pages/Portfolio';
-import AdminPage from '../pages/AdminPage';
+// import Portfolio from '../pages/Portfolio';
+// import AdminPage from '../pages/AdminPage';
 
 // creates new JS class of which a new version will be instantiated for every component that imports it; this ensures a new version of functionality is being used and reduces risk of leaving remnant data; applied OOP principles so that each method is responsible for one thing and one thing only
 class AuthService {
@@ -14,7 +14,7 @@ class AuthService {
         // checks if there is a saved token and it's still valid
         const token = this.getToken();
         // use type coersion to check whether token is NOT undefined and NOT expired
-        return !!token && !this.isTokenExpired(token); 
+        return !!token && !this.isTokenExpired(token);
     }
 
     // check if token has expired
@@ -44,6 +44,13 @@ class AuthService {
 
         window.location.assign('/Contact');
     }
+
+    // 
+    // updateOwner(idToken) {
+    //     // Saves user token to localStorage
+    //     localStorage.setItem('id_token', idToken);
+    //     window.location.assign('/');
+    // }
 
     // clear token from localStorage and force logout with reload
     logout() {

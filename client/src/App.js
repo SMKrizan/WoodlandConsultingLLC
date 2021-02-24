@@ -8,7 +8,7 @@ import About from './pages/About';
 import Map from './pages/Map';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
-import AdminPage from './pages/AdminPage';
+ import AdminPage from './pages/AdminPage';
 import { StoreProvider } from './utils/GlobalState';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -33,7 +33,6 @@ function App() {
 
 
   const renderPage = () => {
-    // Add a switch statement that will return the appropriate component of the 'currentPage'
 
     switch (currentPage) {
       case 'Home':
@@ -46,7 +45,7 @@ function App() {
         return <Portfolio />;
       case 'Contact':
         return <Contact />;
-      case 'AdminPage' :
+      case 'AdminPage':
         return <AdminPage />
       default:
         return <Home />;
