@@ -122,6 +122,9 @@ const resolvers = {
         const updatedMessageList = await Message.findByIdAndDelete(
         _id,
         // {
+        //   $pull: _id
+        // },
+        // {
         //   new: true
         // }
         );

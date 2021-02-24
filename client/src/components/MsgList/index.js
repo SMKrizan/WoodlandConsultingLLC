@@ -18,13 +18,14 @@ const MessageList = (props) => {
 
     const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
         update(cache, { data: { removeMessage }}) {
-            
+            console.log(removeMessage)
         try {
             const { messages } = cache.readQuery({ query: GET_MESSAGES });
             console.log ( messages);
             cache.writeQuery({
                 query: GET_MESSAGES,
-                data:{ messages: [ ...messages] }
+                data:{ messages: [...messages] }
+                
             });
             console.log(data)
         } catch (e) {
