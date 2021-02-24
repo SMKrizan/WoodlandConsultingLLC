@@ -50,14 +50,13 @@ const resolvers = {
       return await Message.find();
     },
     clientList: async () => {
-      return await Project.find();
+      return await Project.find().populate('category');
     },
 
   },
   Mutation: {
-    login: async (parent, { email, password }) => {
-      const owner = await Owner.findOne({ email });
-      console.log(owner)
+    login: async (parent, { ownerEmail, password }) => {
+      const owner = await Owner.findOne({ ownerEmail });
       if (!owner) {
         throw new AuthenticationError("Incorrect credentials!");
       }
@@ -117,11 +116,13 @@ const resolvers = {
       }
       throw new AuthenticationError("You must be logged in to perform this action.")
     },
-    addMessage: async (parent, args) => {
-      const message = await Message.create({
-        ...args
-      });
-      return message;
+    addMessage: async (parent, args ) => {
+      console.log("here in mutation", args)
+        const message = await Message.create({
+          ...args
+        });
+        console.log("message", message)
+        return message ;
     },
     removeMessage: async (parent, { _id }, context) => {
       if (context.owner) {

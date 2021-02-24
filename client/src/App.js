@@ -6,7 +6,6 @@ import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
 import Map from './pages/Map';
-// import AdminPage from './components/AdminPage';
 import Portfolio from './pages/Portfolio';
 import Contact from './pages/Contact';
  import AdminPage from './pages/AdminPage';

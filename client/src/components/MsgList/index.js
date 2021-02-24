@@ -17,7 +17,6 @@ const MessageList = (props) => {
     // reminder: "data" is the object described by associated query/mutation
     const { loading, data } = useQuery(GET_MESSAGES);
     const messageData = data?.messages;
-    console.log('messageData: ', messageData)
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -50,7 +49,7 @@ const MessageList = (props) => {
                                     <td>{message.userCompany}</td>
                                     <td>{message.userEmail}</td>
                                     <td>{message.userMessage}</td>
-                                    <td>{message.createdAt}</td>
+                                    <td>{message.created_at}</td>
                                 </tr>
                             ))}
                     </tbody>

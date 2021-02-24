@@ -41,17 +41,9 @@ const messageSchema = new Schema(
             }
         ]
     },
-    {
-        timestamps: true
-    },
-    {
-        toJSON: {
-            virtuals: true
-        }
-
-    }
 );
 
+// counts length of messages array
 messageSchema.virtual('messageCount').get(function () {
     return this.messages.length;
 });

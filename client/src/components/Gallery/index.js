@@ -16,7 +16,6 @@ function Gallery() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentPhoto, setCurrentPhoto] = useState();
 
-    
     if (loading) {
         return <div>Loading...</div>;
     }

@@ -5,22 +5,29 @@
 // import { StoreProvider } from './utils/GlobalState';
 // import { useStoreContext } from "../../utils/GlobalState";
 
-import React from 'react';
-import ManageMsg from '../../components/ManageMsg';
-import ManageTst from '../../components/ManageTst';
-import OwnerInfo from '../../components/OwnerInfo';
+import React, { useState } from "react";
+import { useStoreContext } from "../../utils/GlobalState";
+import Auth from "../../utils/auth";
+
+import MsgList from "../../components/MsgList";
+import TstList from "../../components/TstList";
+import OwnerInfo from "../../components/OwnerInfo";
+
 
 const AdminPage = (props) => {
-
-    return (
+  return (
+    <div>
+      {Auth.loggedIn() ? (
         <div>
-
-            <ManageMsg />
-            <ManageTst />
-            <OwnerInfo />
-
+          <MsgList />
+          <TstList />
+          <OwnerInfo />
         </div>
-    )
+      ) : (
+        <span>Please log in.</span>
+      )}
+    </div>
+  );
 };
 
 export default AdminPage;
