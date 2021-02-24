@@ -1,8 +1,10 @@
 
+const bcrypt = require('bcrypt');
 const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
+
 const {
   Owner,
   Category,

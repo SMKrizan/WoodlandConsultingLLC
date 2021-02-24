@@ -6,7 +6,6 @@ import { ADD_MESSAGE } from "../../utils/mutations";
 import { GET_MESSAGES } from "../../utils/queries";
 
 const ContactForm = () => {
-
   const [formState, setFormState] = useState({
     userName: "",
     userEmail: "",
@@ -84,123 +83,118 @@ const ContactForm = () => {
 //       }
 //   }
 
-  return (
-    <div className="pad">
-      <h2>Contact</h2>
-      <p>{error && <span className="ml-2">Something went wrong...</span>}</p>
+    return (
+      <div className="pad">
+        <h2>Contact</h2>
+        <p>{error && <span className="ml-2">Something went wrong...</span>}</p>
 
-      <form id="contact-form" onSubmit={handleSubmit}>
-        <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-          <Label for="userName" sm={2} size="lg">
-            Name:
-          </Label>
-          <Col sm={10}>
-            <Input
-              style={{ width: "90%" }}
-              type="text"
-              name="userName"
-              id="nameInput"
-              defaultValue={formState.userName}
-              onBlur={handleChange}
-              placeholder="Enter your name"
-              bsSize="lg"
-            />
-          </Col>
-        </FormGroup>
-        <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-          <Label for="userCompany" sm={2} size="lg">
-            Company:
-          </Label>
-          <Col sm={10}>
-            <Input
-              style={{ width: "90%" }}
-              type="text"
-              name="userCompany"
-              id="companyInput"
-              defaultValue={formState.userCompany}
-              onBlur={handleChange}
-              placeholder="Company name, if applicable"
-              bsSize="lg"
-            />
-          </Col>
-        </FormGroup>
-        <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-          <Label for="userEmail" sm={2} size="lg">
-            Email Address:
-          </Label>
-          <Col sm={10}>
-            <Input
-              style={{ width: "90%" }}
-              type="email"
-              name="userEmail"
-              id="emailInput"
-              defaultValue={formState.userEmail}
-              onBlur={handleChange}
-              placeholder="Enter your preferred email"
-              bsSize="lg"
-            />
-          </Col>
-        </FormGroup>
-        <div>
-          <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio1" checked={true}
-            //   onChange={handleOptionChange}
+        <form id="contact-form" onSubmit={handleSubmit}>
+          <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
+            <Label for="userName" sm={2} size="lg">
+              Name:
+            </Label>
+            <Col sm={10}>
+              <Input
+                style={{ width: "90%" }}
+                type="text"
+                name="userName"
+                id="nameInput"
+                defaultValue={formState.userName}
+                onBlur={handleChange}
+                placeholder="Enter your name"
+                bsSize="lg"
               />
-              Ask a Question
-            </Label>
+            </Col>
           </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio2" 
-            
-            //   onChange={handleOptionChange}
-              /> Leave a comment
+          <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
+            <Label for="userCompany" sm={2} size="lg">
+              Company:
             </Label>
+            <Col sm={10}>
+              <Input
+                style={{ width: "90%" }}
+                type="text"
+                name="userCompany"
+                id="companyInput"
+                defaultValue={formState.userCompany}
+                onBlur={handleChange}
+                placeholder="Company name, if applicable"
+                bsSize="lg"
+              />
+            </Col>
           </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio3" /> Request a quote
+          <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
+            <Label for="userEmail" sm={2} size="lg">
+              Email Address:
             </Label>
+            <Col sm={10}>
+              <Input
+                style={{ width: "90%" }}
+                type="email"
+                name="userEmail"
+                id="emailInput"
+                defaultValue={formState.userEmail}
+                onBlur={handleChange}
+                placeholder="Enter your preferred email"
+                bsSize="lg"
+              />
+            </Col>
           </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio4" /> Provide a testimonial
-            </Label>
-          </FormGroup>
-        </div>
-        {/* <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
+          <div>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio1" value="option1" /> Ask a
+                Question
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio2" /> Leave a comment
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio3" /> Request a quote
+              </Label>
+            </FormGroup>
+            <FormGroup check>
+              <Label check>
+                <Input type="radio" name="radio4" /> Provide a testimonial
+              </Label>
+            </FormGroup>
+          </div>
+          {/* <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
             Character Count: {characterCount}/280
             </p> */}
-        <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
-          <Label for="userMessage" sm={2} size="lg">
-            Message:
-          </Label>
-          <Col sm={10}>
-            <Input
-              style={{ width: "90%" }}
-              type="textarea"
-              name="userMessage"
-              rows="5"
-              id="messageInput"
-              defaultValue={formState.userMessage}
-              onBlur={handleChange}
-              bsSize="lg"
-            />
-          </Col>
-        </FormGroup>
-        {errorMessage && (
-          <div>
-            <p className="error-text">{errorMessage}</p>
-          </div>
-        )}
-        <Button type="submit" style={{ margin: "auto" }}>
-          Submit
-        </Button>
-        {/* <p>{!error && <span className="ml-2">Thank you for your message! We will be in touch soon!</span>}</p> */}
-      </form>
-    </div>
-  );
+          <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
+            <Label for="userMessage" sm={2} size="lg">
+              Message:
+            </Label>
+            <Col sm={10}>
+              <Input
+                style={{ width: "90%" }}
+                type="textarea"
+                name="userMessage"
+                rows="5"
+                id="messageInput"
+                defaultValue={formState.userMessage}
+                onBlur={handleChange}
+                bsSize="lg"
+              />
+            </Col>
+          </FormGroup>
+          {errorMessage && (
+            <div>
+              <p className="error-text">{errorMessage}</p>
+            </div>
+          )}
+          <Button type="submit" style={{ margin: "auto" }}>
+            Submit
+          </Button>
+          {/* <p>{!error && <span className="ml-2">Thank you for your message! We will be in touch soon!</span>}</p> */}
+        </form>
+      </div>
+    );
 };
 
 export default ContactForm;

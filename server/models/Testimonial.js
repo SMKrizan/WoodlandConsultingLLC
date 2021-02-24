@@ -1,5 +1,5 @@
 // update, delete testimonial
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
@@ -7,31 +7,27 @@ const testimonialSchema = new Schema({
   tstName: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   tstCompany: {
     type: String,
-    trim: true
+    trim: true,
   },
   tstMessage: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
   },
   created_at: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   updated_at: {
     type: Date,
-    default: Date.now
-  }
-},
-{
-  timestamps: true
-}
-);
+    default: Date.now,
+  },
+});
 
-const Testimonial = mongoose.model('Testimonial', testimonialSchema);
+const Testimonial = mongoose.model("Testimonial", testimonialSchema);
 
 module.exports = Testimonial;
