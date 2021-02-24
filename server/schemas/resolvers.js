@@ -47,7 +47,7 @@ const resolvers = {
       return await Message.find();
     },
     clientList: async () => {
-      return await Project.find();
+      return await Project.find().populate('category');
     },
 
   },

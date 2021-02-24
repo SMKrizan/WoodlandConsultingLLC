@@ -23,7 +23,7 @@ function Portfolio() {
         <div className=" darkplumbg project-category-bg">
             <div>
                 <h3>
-                    Full List of Projectsby Category
+                    List of Projects by Category
                 </h3>
             </div>
             < CategoryList/>
