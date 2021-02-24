@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { useStoreContext } from "../../utils/GlobalState";
 import { Table } from 'reactstrap';
-
+import './MsgList.css'
 import { GET_MESSAGES } from '../../utils/queries';
 import { REMOVE_MESSAGE } from '../../utils/mutations';
 // import { REMOVE_MESSAGE } from '../utils/mutations';
@@ -45,12 +45,12 @@ const MessageList = (props) => {
     }
 
     return (
-        <div className="pad">
-            <h4>You have {messageData.length} messages:</h4>
-            <Table responsive>
+        <div >
+            <h3 className="padtb">You have {messageData.length} messages:</h3>
+            <Table responsive id="messages" className="box shadow">
                     <thead>
                         <tr>
-                            <th>Delete</th>
+                            <th >Delete</th>
                             <th>Type</th>
                             <th>Name</th>
                             <th>Company</th>

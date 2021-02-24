@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import mapStyles from './mapStyles';
+
 import './map.css';
 import {
     GoogleMap,
