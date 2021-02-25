@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { useStoreContext } from "../../utils/GlobalState";
 import { Table } from 'reactstrap';
@@ -10,7 +10,7 @@ import Auth from '../../utils/auth';
 
 // conditionally renders message data; destructuring rather than using 'props.userName' etc. throughout JSX code
 const MessageList = (props) => {
-
+    const [list, newList] = useState([]);
     const [state, dispatch] = useStoreContext();
 
     const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
@@ -19,17 +19,20 @@ const MessageList = (props) => {
         try {
             const { messages } = cache.readQuery({ query: GET_MESSAGES });
             console.log ( messages);
+            messages.filter(messages => removeMessage._id !== messages._id)
             cache.writeQuery({
                 query: GET_MESSAGES,
                 data: {messages}
+                // : [removeMessage], ...messages}
             });
-            console.log(messages)
+            console.log(messages, removeMessage._id)
+            
         } catch (e) {
             console.log(e)
         }
         }
     })
-
+   
     // reminder: "data" is the object described by associated query/mutation
     const { loading, data } = useQuery(GET_MESSAGES);
     const messageData = data?.messages;
@@ -50,16 +53,15 @@ const MessageList = (props) => {
             const { data } = await removeMessage({
                 variables: { _id: messageData._id }
             });
-            
+
         } catch (e) {
             console.error(e);
         }
     }
- 
 
     return (
         <div >
-            <p>{error && <span>Something wen wrong.</span>}</p>
+            <p>{error && <span>Something went wrong.</span>}</p>
             <h3 className="padtb">You have {messageData.length} messages:</h3>
             <Table responsive id="messages" className="box shadow">
                     <thead>
