@@ -25,7 +25,13 @@ function LoginForm() {
   }
   }
   function handleChange(e) {
+    hidePasswords();
       setFormState({ ...formState, [e.target.name]: e.target.value });
+}
+function hidePasswords() {
+  var input = document.getElementById('passwordInput');
+  for (var i = 0; i < input.length; ++i)
+      if (input[i].type == 'password') input[i].value = '*****';
 }
 
   return (
@@ -49,12 +55,12 @@ function LoginForm() {
             <Label for="password" sm={2} size="lg">Password:</Label>
             <Col sm={10}>
             <Input style={{ width: "90%"}}
-                type="text"
+                type="password"
                 name="password"
                 id="passwordInput"
                 defaultValue={ formState.password }
                 onBlur={handleChange}
-                placeholder="Enter your password"
+                placeholder="********"
                 bsSize="lg"
             />
             <div>

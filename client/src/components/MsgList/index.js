@@ -5,13 +5,11 @@ import { Table } from 'reactstrap';
 import './MsgList.css'
 import { GET_MESSAGES } from '../../utils/queries';
 import { REMOVE_MESSAGE } from '../../utils/mutations';
-// import { REMOVE_MESSAGE } from '../utils/mutations';
 // import { idbPromise } from "../../utils/helpers";
 import Auth from '../../utils/auth';
 
 // conditionally renders message data; destructuring rather than using 'props.userName' etc. throughout JSX code
 const MessageList = (props) => {
-    // const [removeMessage] = useMutation(REMOVE_MESSAGE);
 
     const [state, dispatch] = useStoreContext();
     const { messages } = state;
@@ -24,7 +22,7 @@ const MessageList = (props) => {
             console.log ( messages);
             cache.writeQuery({
                 query: GET_MESSAGES,
-                data:{ messages: [...messages] }
+                data: { messages: [removeMessage] } 
                 
             });
             console.log(data)
