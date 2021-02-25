@@ -213,7 +213,7 @@ main {
 }
 
 main {
-  margin-bottom:0px;
+  margin-bottom:60px;
 }
 
 h1 {
@@ -227,6 +227,15 @@ h3 {
 }
 } 
 
+.modal-admin-login {
+  z-index: 100;
+  margin: 5%;
+  width: 90%;
+  padding: 10px;
+  border: 2px white solid;
+  position: absolute;
+  background-color: var(--maroon);
+}
 /* 
 ------------------------------ */
 

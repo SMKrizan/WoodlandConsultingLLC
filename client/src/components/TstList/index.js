@@ -101,7 +101,9 @@ const TestimonialList = (props) => {
             </CardGroup>
           </div>
         ))}
-      <Modal open={open} onClose={() => setOpen(false)}>
+      <Modal 
+                      styles={{ overlay: { background: "transparent" }, modal: { background: "var(--maroon)", border: "2px white solid" } }}
+                      open={open} onClose={() => setOpen(false)}>
         {/* {console.log("modalData: ", modalData)} */}
         <h2>Replace/update testimonial:</h2>
         <form>

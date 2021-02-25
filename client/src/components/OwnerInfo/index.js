@@ -60,7 +60,9 @@ const ManageOwnerInfo = (props) => {
                         handleClick(ownerData);
                     }}> Update </button>
             </div>
-            <Modal open={open} onClose={() => setOpen(false)}>
+            <Modal 
+            styles={{ overlay: { background: "transparent" }, modal: { background: "var(--maroon)", border: "2px white solid" } }}
+            open={open} onClose={() => setOpen(false)}>
                 {console.log("MODAL", newOwnerInfo)}
                 <h2>Please update your information</h2>
                 <form
