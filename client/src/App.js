@@ -46,7 +46,7 @@ function App() {
       case 'Contact':
         return <Contact />;
       case 'AdminPage':
-        return <AdminPage handlePageChange={handlePageChange}/>
+        return <AdminPage />
       default:
         return <Home />;
     }
