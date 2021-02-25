@@ -30,7 +30,7 @@ const TestimonialList = (props) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    // console.log("updated modalData: ", modalData);
+
     const mutationResponse = await updatedTst({
       variables: {
         _id: modalData._id,
@@ -59,7 +59,6 @@ const TestimonialList = (props) => {
 
   // modal
   const [open, setOpen] = useState(false);
-  const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
   return (
@@ -101,9 +100,10 @@ const TestimonialList = (props) => {
       <Modal
         styles={{ overlay: { background: "transparent" }, modal: { background: "var(--maroon)", border: "2px white solid" } }}
         open={open} onClose={() => setOpen(false)}>
-        {/* {console.log("modalData: ", modalData)} */}
         <h2>Replace/update testimonial:</h2>
-        <form>
+        <form
+          onClick={handleFormSubmit}
+        >
           <p>
             <label name="tstName">
               Name:
@@ -112,6 +112,7 @@ const TestimonialList = (props) => {
                 name="tstName"
                 value={modalData.tstName}
                 onChange={handleInputChange}
+
               />
             </label>
           </p>
@@ -137,7 +138,7 @@ const TestimonialList = (props) => {
               />
             </label>
           </p>
-          <button onClick={handleFormSubmit}>Submit</button>
+          <button onClick={onCloseModal}>Submit</button>
         </form>
       </Modal>
     </>

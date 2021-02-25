@@ -39,7 +39,7 @@ const ManageOwnerInfo = (props) => {
         });
     }
     const [open, setOpen] = React.useState(false);
-    const onOpenModal = () => setOpen(true);
+    // const onOpenModal = () => setOpen(true);
     const onCloseModal = () => setOpen(false);
     if (loading) {
         return <div>Loading...</div>;
@@ -57,14 +57,16 @@ const ManageOwnerInfo = (props) => {
             </div>
             <div>
                 <button className="button"
-                    onClick={() => {
+                    onClick={(onOpenModal) => {
                         setOpen(true)
                         handleClick(ownerData);
                     }}> Update </button>
             </div>
             <Modal
                 styles={{ overlay: { background: "transparent" }, modal: { background: "var(--maroon)", border: "2px white solid" } }}
-                open={open} onClose={(onCloseModal) => setOpen(false)}>
+                open={open} onClose={() => setOpen(false)}
+                center
+            >
                 {console.log("MODAL", newOwnerInfo)}
                 <h2>Please update your information</h2>
                 <form
@@ -72,6 +74,7 @@ const ManageOwnerInfo = (props) => {
                     key={newOwnerInfo._id}
                     value={newOwnerInfo}
                     onSubmit={handleChange}
+                    onClick={handleFormSubmit}
                 >
                     <p><label htmlFor="ownerName">
                         New Name: <input type="name" name="ownerName" value={newOwnerInfo.ownerName} onChange={handleChange} /></label></p>
@@ -87,10 +90,10 @@ const ManageOwnerInfo = (props) => {
                     <input
                         type="submit"
                         value="Submit"
-                        onClick={handleFormSubmit} />
+                        onClick={onCloseModal} />
 
                 </form>
-            </Modal >
+            </Modal>
         </>
     );
 };
