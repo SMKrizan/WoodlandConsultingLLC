@@ -33,6 +33,14 @@ function hidePasswords() {
   for (var i = 0; i < input.length; ++i)
       if (input[i].type == 'password') input[i].value = '*****';
 }
+function myFunction() {
+  var x = document.getElementById("passwordInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
 
   return (
     <>
@@ -63,6 +71,10 @@ function hidePasswords() {
                 placeholder="********"
                 bsSize="lg"
             />
+            <FormGroup>
+            <Input type="checkbox" onClick={myFunction}></Input>
+            <Label for="showPassword">   Show Password </Label>
+            </FormGroup>
             <div>
               {
                 error ? <div>
