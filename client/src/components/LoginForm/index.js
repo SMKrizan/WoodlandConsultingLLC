@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
-import { Form, FormGroup, Input, Button, Col, Label } from 'reactstrap';
+import { FormGroup, Input, Button, Col, Label } from 'reactstrap';
 import { useMutation } from '@apollo/react-hooks';
 import { OWNER_LOGIN } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
 
-function LoginForm() {
+function LoginForm(props) {
   const [formState, setFormState] = useState({
   ownerEmail: "",
   password: ""
@@ -29,8 +29,8 @@ function LoginForm() {
 }
 
   return (
-    <>
-    <form id="contact-form" onSubmit={handleFormSubmit} style={{ padding: "20px"}}>
+
+    <form id="contact-form" onSubmit={handleFormSubmit}>
             <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
             <Label for="ownerEmail" sm={2} size="lg">Email Address:</Label>
             <Col sm={10}>
@@ -70,7 +70,7 @@ function LoginForm() {
             Submit
             </Button>
             </form>
-    </>
+
   );
 };
 
