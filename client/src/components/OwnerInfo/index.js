@@ -49,9 +49,9 @@ const ManageOwnerInfo = (props) => {
     return (
         <>
             <div>
-                <h3>Name: {ownerData.ownerName},{newOwnerInfo.ownerName}</h3>
-                <h3>Email: {ownerData.ownerEmail}</h3>
-                <h3>Address {ownerData.address}</h3>
+                <h3>{ownerData.ownerName}</h3>
+                <h3>{ownerData.ownerEmail}</h3>
+                <h3>{ownerData.address}</h3>
             </div>
             <div>
                 <button className="button"
