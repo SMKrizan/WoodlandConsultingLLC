@@ -8,8 +8,6 @@ import {
   CardText,
   CardBody,
   CardGroup,
-  CardTitle,
-  CardSubtitle,
   Button,
 } from "reactstrap";
 
@@ -48,7 +46,7 @@ const TestimonialList = (props) => {
   const handleClick = (testimonial) => {
     setModalData(testimonial);
   };
-  
+
   // grabs any updated form values with other retained object properties
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -58,7 +56,7 @@ const TestimonialList = (props) => {
       [name]: value,
     });
   };
-  
+
   // modal
   const [open, setOpen] = useState(false);
   const onOpenModal = () => setOpen(true);
@@ -83,8 +81,8 @@ const TestimonialList = (props) => {
                   </h5>
                   <CardText>{testimonial.tstMessage}</CardText>
                   <h5 className="mb-2 text-muted">
-                    Updated: {new Date(parseInt(testimonial.updated_at)).toLocaleDateString()} 
-                    <br/>
+                    Updated: {new Date(parseInt(testimonial.updated_at)).toLocaleDateString()}
+                    <br />
                     Created: {new Date(parseInt(testimonial.created_at)).toLocaleDateString()}
                   </h5>
                   <Button
@@ -101,7 +99,9 @@ const TestimonialList = (props) => {
             </CardGroup>
           </div>
         ))}
-      <Modal open={open} onClose={() => setOpen(false)}>
+      <Modal
+        styles={{ overlay: { background: "transparent" }, modal: { background: "var(--maroon)", border: "2px white solid" } }}
+        open={open} onClose={() => setOpen(false)}>
         {/* {console.log("modalData: ", modalData)} */}
         <h2>Replace/update testimonial:</h2>
         <form>

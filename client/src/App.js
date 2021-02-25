@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import {Motion, spring} from 'react-motion';
+// import {Motion, spring} from 'react-motion';
 
 import './App.css';
 import Home from './pages/Home';
@@ -42,7 +42,7 @@ function App() {
 
     switch (currentPage) {
       case 'Home':
-        return <Home handlePageChange={handlePageChange}/>;
+        return <Home handlePageChange={handlePageChange} />;
       case 'About':
         return <About />;
       case 'Map':
@@ -64,15 +64,15 @@ function App() {
         <StoreProvider>
           <Header currentPage={currentPage} handlePageChange={handlePageChange} />
           <Fade>
-          <main >
-            {
-              // Render the component returned by 'renderPage()'
-              renderPage(currentPage) 
-            }
-          </main>
+            <main >
+              {
+                // Render the component returned by 'renderPage()'
+                renderPage(currentPage)
+              }
+            </main>
           </Fade>
-          <Footer handlePageChange={handlePageChange}/>
-          <Footer/>
+          <Footer handlePageChange={handlePageChange} />
+          <Footer />
         </StoreProvider>
       </Router>
     </ApolloProvider>

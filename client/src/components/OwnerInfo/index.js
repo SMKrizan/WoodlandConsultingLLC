@@ -3,8 +3,7 @@ import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_OWNER } from '../../utils/queries';
 import { UPDATE_OWNER } from '../../utils/mutations';
 import { Modal } from 'react-responsive-modal';
-// import 'react-responsive-modal/styles.css';
-import './ownermodal.css';
+import 'react-responsive-modal/styles.css';
 const ManageOwnerInfo = (props) => {
 
     const { loading, data } = useQuery(GET_OWNER);
@@ -61,7 +60,8 @@ const ManageOwnerInfo = (props) => {
                         handleClick(ownerData);
                     }}> Update </button>
             </div>
-            <Modal className="modal-owner-update"
+            <Modal
+                styles={{ overlay: { background: "transparent" }, modal: { background: "var(--maroon)", border: "2px white solid" } }}
                 open={open} onClose={() => setOpen(false)}>
                 {console.log("MODAL", newOwnerInfo)}
                 <h2>Please update your information</h2>
@@ -81,11 +81,10 @@ const ManageOwnerInfo = (props) => {
                             < p className="error-text" > Something went wrong..Please provide information</p>
                         </div> : null
                     }
-                    <input
-                        type="submit"
-                        value="Submit"
-                        onClick={handleFormSubmit}
-                    />
+                    <button
+                        onClick={handleFormSubmit}>
+                        Submit
+                    </button>
                 </form>
             </Modal >
         </>
