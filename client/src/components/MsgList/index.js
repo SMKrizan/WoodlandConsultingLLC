@@ -12,7 +12,6 @@ import Auth from '../../utils/auth';
 const MessageList = (props) => {
 
     const [state, dispatch] = useStoreContext();
-    const { messages } = state;
 
     const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
         update(cache, { data: { removeMessage }}) {
@@ -22,10 +21,9 @@ const MessageList = (props) => {
             console.log ( messages);
             cache.writeQuery({
                 query: GET_MESSAGES,
-                data: { messages: [removeMessage] } 
-                
+                data: {messages}
             });
-            console.log(data)
+            console.log(messages)
         } catch (e) {
             console.log(e)
         }
@@ -52,6 +50,7 @@ const MessageList = (props) => {
             const { data } = await removeMessage({
                 variables: { _id: messageData._id }
             });
+            
         } catch (e) {
             console.error(e);
         }

@@ -15,13 +15,15 @@ const ContactForm = () => {
 
   const [addMessage, { error }] = useMutation(ADD_MESSAGE, {
     update(cache, { data: { addMessage } }) {
+        console.log(addMessage)
       try {
         const { messages } = cache.readQuery({ query: GET_MESSAGES });
-
         cache.writeQuery({
           query: GET_MESSAGES,
           data: { messages: [addMessage, ...messages] },
+          
         });
+        console.log(messages)
       } catch (e) {
         console.log(e);
       }
@@ -71,7 +73,7 @@ const ContactForm = () => {
     }
   }
 
-  //   const [purposeType, setPurposeType] = useState('Ask a question');
+    const [purposeType, setPurposeType] = useState('Ask a question');
 
   //   function handleOptionChange(e) {
   //       if (e.target.name === "radio1") {
@@ -157,7 +159,7 @@ const ContactForm = () => {
               Leave a comment
             </Label>
           </FormGroup>
-          <FormGroup check>
+          {/* <FormGroup check>
             <Label check>
               <Input type="radio" name="radio3" /> Request a quote
             </Label>
@@ -166,7 +168,7 @@ const ContactForm = () => {
             <Label check>
               <Input type="radio" name="radio4" /> Provide a testimonial
             </Label>
-          </FormGroup>
+          </FormGroup> */}
         </div>
         {/* <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
             Character Count: {characterCount}/280
