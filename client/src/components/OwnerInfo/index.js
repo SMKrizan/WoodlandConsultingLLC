@@ -39,6 +39,8 @@ const ManageOwnerInfo = (props) => {
         });
     }
     const [open, setOpen] = React.useState(false);
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -62,10 +64,11 @@ const ManageOwnerInfo = (props) => {
             </div>
             <Modal
                 styles={{ overlay: { background: "transparent" }, modal: { background: "var(--maroon)", border: "2px white solid" } }}
-                open={open} onClose={() => setOpen(false)}>
+                open={open} onClose={(onCloseModal) => setOpen(false)}>
                 {console.log("MODAL", newOwnerInfo)}
                 <h2>Please update your information</h2>
                 <form
+                    action=""
                     key={newOwnerInfo._id}
                     value={newOwnerInfo}
                     onSubmit={handleChange}
@@ -81,10 +84,11 @@ const ManageOwnerInfo = (props) => {
                             < p className="error-text" > Something went wrong..Please provide information</p>
                         </div> : null
                     }
-                    <button
-                        onClick={handleFormSubmit}>
-                        Submit
-                    </button>
+                    <input
+                        type="submit"
+                        value="Submit"
+                        onClick={handleFormSubmit} />
+
                 </form>
             </Modal >
         </>
