@@ -67,8 +67,7 @@ const TestimonialList = (props) => {
   return (
     <>
       <h3 className="padtb">
-        There are currently {tstData.length} testimonials displaying to your
-        page:
+        These are the testimonials currently displaying to your page:
       </h3>
       {tstData &&
         tstData.map((testimonial) => (
