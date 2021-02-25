@@ -2,9 +2,15 @@ import React from 'react';
 import './about.css'
 import Example from '../../assets/images/portfolio/UW_SOHE_4-min.JPG'
 import linkedin from "../../assets/images/linkedin.png"
+import {useSpring, animated} from 'react-spring'
+
 
 
 function About() {
+    const propsMove = useSpring(
+        {opacity: 1, 
+        from: {opacity: 0},
+        config: { duration: 1000 }});
     return (
     <section>
         <div className="about-section bg-about pad ">
@@ -46,6 +52,7 @@ function About() {
                 building and energy codes.</p>
             </div>
         </div>
+
     </section>
     )};
     

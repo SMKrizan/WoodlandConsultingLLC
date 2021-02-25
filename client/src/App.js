@@ -3,7 +3,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import {Motion, spring} from 'react-motion';
+// import {useSpring, animated} from 'react-spring'
 
 import './App.css';
 import Home from './pages/Home';
@@ -35,8 +35,10 @@ const client = new ApolloClient({
 
 
 function App() {
+
   const [currentPage, handlePageChange] = useState('Home');
 
+  //const propsMove = useSpring({opacity: 1, from: {opacity: 0}});
 
   const renderPage = () => {
 
@@ -63,14 +65,14 @@ function App() {
       <Router>
         <StoreProvider>
           <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-          <Fade>
+          {/* <animated.div style={propsMove}> */}
           <main >
             {
               // Render the component returned by 'renderPage()'
               renderPage(currentPage) 
             }
           </main>
-          </Fade>
+          {/* </animated.div> */}
           <Footer handlePageChange={handlePageChange}/>
           <Footer/>
         </StoreProvider>
