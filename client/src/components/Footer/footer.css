@@ -16,6 +16,10 @@
     align-items: center;
     text-align: center;
 }
+.mobile-stack {
+    min-width: 200px;
+    padding: 0px 5px;
+}
 
 .footer img {
     max-width:70px;

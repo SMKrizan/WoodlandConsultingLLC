@@ -33,43 +33,53 @@ function Footer() {
     <>
     <div className="footer">
 
+      <div className="w100">
+          {/* <div className="flex1">
+              {Auth.loggedIn() ? (
+                <>
+                  <Button onClick={Auth.logout}>Logout</Button>
+                </>
+              ) : (
+                  <Button onClick={() => setShowModal(true)}>Admin Login</Button>
+                )}
+              <Card>
+                <Modal
+                  className="modal-admin-login"
+                  size="lg"
+                  show={showModal}
+                  onHide={() => setShowModal(false)}
+                  backdrop="static"
+                  keyboard={false}
+                  aria-labelledby="signup-modal"
+                >
+                  <Modal.Header
+                    style={{ fontWeight: "bold", fontSize: "25px", padding: "20px" }}
+                    closeButton
+                  >
+                    <Modal.Title id="signup-modal">Admin login </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <Tab.Pane eventKey="login">
+                      <LoginForm handleModalClose={() => setShowModal(false)} />
+                    </Tab.Pane>
+                  </Modal.Body>
+                </Modal>
+              </Card>
+        </div> */}
+        <a
+            href="https://www.linkedin.com/company/woodland-consulting-llc/about/"
+            target="_blank"
+            rel="noreferrer"
+          >
+              <img alt="linkedin link" src={linkedin} />
+
+          </a>
         <div>
-          {Auth.loggedIn() ? (
-            <>
-              <Button onClick={Auth.logout}>Logout</Button>
-            </>
-          ) : (
-              <Button onClick={() => setShowModal(true)}>Admin Login</Button>
-            )}
-          <Card>
-            <Modal
-              className="modal-admin-login"
-              size="lg"
-              show={showModal}
-              onHide={() => setShowModal(false)}
-              backdrop="static"
-              keyboard={false}
-              aria-labelledby="signup-modal"
-            >
-              <Modal.Header
-                style={{ fontWeight: "bold", fontSize: "25px", padding: "20px" }}
-                closeButton
-              >
-                <Modal.Title id="signup-modal">Admin login </Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <Tab.Pane eventKey="login">
-                  <LoginForm handleModalClose={() => setShowModal(false)} />
-                </Tab.Pane>
-              </Modal.Body>
-            </Modal>
-          </Card>
-        </div>
-          <div>
               <p>
                 Woodland Consulting LLC
               </p>
-          </div>
+        </div>
+
           <a
             href="https://www.facebook.com/woodlandconsultingllc/"
             target="_blank"
@@ -77,18 +87,13 @@ function Footer() {
           >
               <img alt="facebook link" src={facebook} />
           </a>
-          <a
-            href="https://www.linkedin.com/company/woodland-consulting-llc/about/"
-            target="_blank"
-            rel="noreferrer"
-          >
-              <img alt="linkedin link" src={linkedin} />
-          </a>
-
-                <div >{ownerData.ownerName}</div>
-                <div >{ownerData.ownerEmail}</div>
-                <div >{ownerData.address}</div>
-            </div>
+      </div>
+      <div className="flex-ceround">
+                <div className="mobile-stack">{ownerData.ownerName}</div>
+                <div className="mobile-stack">{ownerData.ownerEmail}</div>
+                <div className="mobile-stack">{ownerData.address}</div>
+      </div>
+    </div>
     </>
   );
 }
