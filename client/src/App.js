@@ -65,15 +65,12 @@ function App() {
       <Router>
         <StoreProvider>
           <Header currentPage={currentPage} handlePageChange={handlePageChange} />
-          {/* <animated.div style={propsMove}> */}
           <main >
             {
               // Render the component returned by 'renderPage()'
               renderPage(currentPage) 
             }
           </main>
-          {/* </animated.div> */}
-          <Footer handlePageChange={handlePageChange}/>
           <Footer/>
         </StoreProvider>
       </Router>

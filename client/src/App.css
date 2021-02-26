@@ -22,7 +22,7 @@ body {
   line-height: 1.4;
   color: var(--cream);
   min-height: 100vh;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
   background: var(--plum);
   position: relative;
@@ -77,11 +77,7 @@ button {
   display: block;
 }
 button:hover {
-  font-weight: 400; 
-  padding: 10px 20px;
   background: var(--plum); 
-  border: none;
-  border-radius: 3px;
   color: tint(var(--cream), 50%);
   box-shadow:  2px 2px 5px white;
   transition-duration: .6s;
@@ -190,7 +186,6 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin:auto;
 }
 .w-6 {
   flex:1;
@@ -215,6 +210,10 @@ main {
 }
 
  @media only screen and (max-width: 800px) {
+
+  p {
+    font-size: 16px;
+  }
 .w-9 {
   flex: 1;
 }
@@ -224,7 +223,7 @@ main {
 }
 
 main {
-  margin-bottom:60px;
+  margin-bottom:0px;
 }
 
 h1 {
@@ -235,6 +234,21 @@ h2 {
 }
 h3 {
   font-size: 22px;
+}
+
+
+.pad {
+  padding:10px;
+}
+
+.pad40 {
+  padding:20px;
+}
+.padlr {
+  padding: 0px 20px 0px 20px;
+}
+.pad-l {
+  padding-left: 0px;
 }
 } 
 

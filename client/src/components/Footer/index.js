@@ -12,7 +12,7 @@ import { Card, Modal, Button, Tab } from "react-bootstrap";
 import { GET_OWNER } from '../../utils/queries';
 
 
-function Footer(props) {
+function Footer() {
   const [showModal, setShowModal] = useState(false);
 
       //get projects 
@@ -30,45 +30,57 @@ function Footer(props) {
         }
 
   return (
-    <footer>
-      <div className="w100">
-        <div>
-          {Auth.loggedIn() ? (
-            <>
-              <Button onClick={Auth.logout}>Logout</Button>
-            </>
-          ) : (
-              <Button onClick={() => setShowModal(true)}>Admin Login</Button>
-            )}
-          <Card>
-            <Modal
-              className="modal-admin-login"
-              size="lg"
-              show={showModal}
-              onHide={() => setShowModal(false)}
-              backdrop="static"
-              keyboard={false}
-              aria-labelledby="signup-modal"
-            >
-              <Modal.Header
-                style={{ fontWeight: "bold", fontSize: "25px", padding: "20px" }}
-                closeButton
-              >
-                <Modal.Title id="signup-modal">Admin login </Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <Tab.Pane eventKey="login">
-                  <LoginForm handleModalClose={() => setShowModal(false)} handlePageChange={props.handlePageChange} />
-                </Tab.Pane>
-              </Modal.Body>
-            </Modal>
-          </Card>
+    <>
+    <div className="footer">
+          <div className="flex-ceround">
+            <div>
+              {Auth.loggedIn() ? (
+                <>
+                  <Button onClick={Auth.logout}>Logout</Button>
+                </>
+              ) : (
+                  <Button onClick={() => setShowModal(true)}>Admin Login</Button>
+                )}
+              <Card>
+                <Modal
+                  className="modal-admin-login"
+                  size="lg"
+                  show={showModal}
+                  onHide={() => setShowModal(false)}
+                  backdrop="static"
+                  keyboard={false}
+                  aria-labelledby="signup-modal"
+                >
+                  <Modal.Header
+                    style={{ fontWeight: "bold", fontSize: "25px", padding: "20px" }}
+                    closeButton
+                  >
+                    <Modal.Title id="signup-modal">Admin login </Modal.Title>
+                  </Modal.Header>
+                  <Modal.Body>
+                    <Tab.Pane eventKey="login">
+                      <LoginForm handleModalClose={() => setShowModal(false)} />
+                    </Tab.Pane>
+                  </Modal.Body>
+                </Modal>
+              </Card>
+          </div>
         </div>
-          <div>
+    <div className="w100">
+        <a
+            href="https://www.linkedin.com/company/woodland-consulting-llc/about/"
+            target="_blank"
+            rel="noreferrer"
+          >
+              <img alt="linkedin link" src={linkedin} />
+
+          </a>
+        <div>
               <p>
                 Woodland Consulting LLC
               </p>
-          </div>
+        </div>
+
           <a
             href="https://www.facebook.com/woodlandconsultingllc/"
             target="_blank"
@@ -76,20 +88,14 @@ function Footer(props) {
           >
               <img alt="facebook link" src={facebook} />
           </a>
-          <a
-            href="https://www.linkedin.com/company/woodland-consulting-llc/about/"
-            target="_blank"
-            rel="noreferrer"
-          >
-              <img alt="linkedin link" src={linkedin} />
-          </a>
       </div>
-      <div className="w100">
-                <a className="padlr">{ownerData.ownerName}</a>
-                <a className="padlr">{ownerData.ownerEmail}</a>
-                <a className="padlr">{ownerData.address}</a>
+      <div className="flex-ceround">
+                <div className="mobile-stack">{ownerData.ownerName}</div>
+                <div className="mobile-stack">{ownerData.ownerEmail}</div>
+                <div className="mobile-stack">{ownerData.address}</div>
       </div>
-    </footer>
+    </div>
+    </>
   );
 }
 
