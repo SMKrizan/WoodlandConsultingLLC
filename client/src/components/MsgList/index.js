@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { useStoreContext } from "../../utils/GlobalState";
 import { Table } from "reactstrap";
 import "./MsgList.css";
 import { GET_MESSAGES } from "../../utils/queries";
 import { REMOVE_MESSAGE } from "../../utils/mutations";
+// import { useStoreContext } from "../../utils/GlobalState";
 // import { idbPromise } from "../../utils/helpers";
-import Auth from "../../utils/auth";
+// import Auth from "../../utils/auth";
 
-// conditionally renders message data; destructuring rather than using 'props.userName' etc. throughout JSX code
 const MessageList = (props) => {
-  const [state, dispatch] = useStoreContext();
-  
+  // const [state, dispatch] = useStoreContext();
+  const [message, newMessageData] = useState({});
 
   const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
     update(cache, { data: { removeMessage } }) {
@@ -49,16 +48,16 @@ const MessageList = (props) => {
     //   return false;
     // }
     // try {
-      const { data } = await removeMessage({
-        variables: { _id: messageData._id },
-        
-      });
-      console.log(state)
+    const { data } = await removeMessage({
+      variables: { _id: messageData._id },
 
-      newMessageList({
-        ...messageData,
-      });
-      console.log(state)
+    });
+    console.log(data)
+
+    newMessageData({
+      ...message, data
+    });
+    console.log(newMessageData)
     // } catch (e) {
     //   console.error(e);
     // }
@@ -90,7 +89,7 @@ const MessageList = (props) => {
                     onClick={() => {
                       handleSubmit(messageData[i]);
                     }}
-                    // onChange={handleInputChange}
+                  // onChange={handleInputChange}
                   >
                     Delete
                   </button>

@@ -4,9 +4,8 @@ import { GET_OWNER } from '../../utils/queries';
 import { UPDATE_OWNER } from '../../utils/mutations';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
-
 const ManageOwnerInfo = (props) => {
-    
+
     const { loading, data } = useQuery(GET_OWNER);
     const ownerData = data?.owner || [];
     console.log('ownerData: ', data?.owner);
@@ -14,6 +13,7 @@ const ManageOwnerInfo = (props) => {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         console.log("LOG", newOwnerInfo);
+
         const mutationResponse = await updateOwner({
             variables: {
                 _id: newOwnerInfo._id,
@@ -39,6 +39,8 @@ const ManageOwnerInfo = (props) => {
         });
     }
     const [open, setOpen] = React.useState(false);
+    // const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -49,24 +51,30 @@ const ManageOwnerInfo = (props) => {
     return (
         <>
             <div>
-                <h3>Name: {ownerData.ownerName},{newOwnerInfo.ownerName}</h3>
+                <h3>Name: {ownerData.ownerName}</h3>
                 <h3>Email: {ownerData.ownerEmail}</h3>
                 <h3>Address {ownerData.address}</h3>
             </div>
             <div>
                 <button className="button"
-                    onClick={() => {
+                    onClick={(onOpenModal) => {
                         setOpen(true)
                         handleClick(ownerData);
                     }}> Update </button>
             </div>
-            <Modal open={open} onClose={() => setOpen(false)}>
+            <Modal
+                styles={{ overlay: { background: "transparent" }, modal: { background: "var(--maroon)", border: "2px white solid" } }}
+                open={open} onClose={() => setOpen(false)}
+                center
+            >
                 {console.log("MODAL", newOwnerInfo)}
                 <h2>Please update your information</h2>
                 <form
+                    action=""
                     key={newOwnerInfo._id}
                     value={newOwnerInfo}
                     onSubmit={handleChange}
+                    onClick={handleFormSubmit}
                 >
                     <p><label htmlFor="ownerName">
                         New Name: <input type="name" name="ownerName" value={newOwnerInfo.ownerName} onChange={handleChange} /></label></p>
@@ -82,10 +90,9 @@ const ManageOwnerInfo = (props) => {
                     <input
                         type="submit"
                         value="Submit"
-                        onClick={handleFormSubmit}
-                    />
+                        onClick={onCloseModal} />
                 </form>
-            </Modal >
+            </Modal>
         </>
     );
 };

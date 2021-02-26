@@ -12,7 +12,7 @@ import Auth from "../../utils/auth";
 import MsgList from "../../components/MsgList";
 import TstList from "../../components/TstList";
 import OwnerInfo from "../../components/OwnerInfo";
-
+import './adminmodal.css'
 
 const AdminPage = (props) => {
   return (
@@ -24,8 +24,8 @@ const AdminPage = (props) => {
           <OwnerInfo />
         </div>
       ) : (
-        <span>Please log in.</span>
-      )}
+          <span>Please log in.</span>
+        )}
     </div>
   );
 };

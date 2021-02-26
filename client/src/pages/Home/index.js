@@ -3,8 +3,14 @@ import { useQuery} from '@apollo/react-hooks';
 import {GET_TESTIMONIALS} from '../../utils/queries';
 import ContactForm from '../../components/ContactForm'
 import './home.css'
+import {useSpring, animated} from 'react-spring'
 
-function Home() {
+
+function Home(props) {
+    const propsMove = useSpring(
+        {opacity: 1, 
+        from: {opacity: 0},
+        config: { duration: 2000 }});
 
     const { loading, data} = useQuery(GET_TESTIMONIALS);
     const testimonialData = data?.testimonials ;
@@ -24,22 +30,36 @@ function Home() {
        }
     const quote = randomQuote(testimonialData)
 
+
+
     return (
         <section>
             <div className="feature-home-image">
+            <animated.div style={propsMove}>
                 <div className="glow feature-box">
 
                     <h4><i>"{quote.tstMessage}"</i></h4>
                     <p>{quote.tstName} - {quote.tstCompany}</p>
                     <div className="flex-left">
                         <div>
-                            <button><h3>View Works</h3></button>
+                            <a
+                                href={'# portfolio'}
+                                onClick={() => props.handlePageChange('Portfolio')}
+                            >
+                                <button><h3>View Portfolio</h3></button>
+                             </a>
                         </div>
                         <div>
-                            <button><h3>Contact</h3></button>
+                        <a
+                                href={'# portfolio'}
+                                onClick={() => props.handlePageChange('Contact')}
+                            >
+                                <button><h3>Contact</h3></button>
+                             </a>
                         </div>
                     </div>
                 </div>
+                </animated.div>
             </div>
             <div className="pad-b80 about-home">
                 <div >
@@ -64,8 +84,14 @@ function Home() {
                     <div className="maps-home pad flex1 flex-center">
                         Woodland Consulting's Founder has work located across the United States. Click to see a map showing where you can find her work nearest to you.
             </div>
-            <div className="hover-glow flex-center  glow maps-img">
-                <button><h3>Contact</h3></button>
+            <div className=" flex-center  maps-img">
+                <div>
+                    <a
+                        href={'# portfolio'}
+                        onClick={() => props.handlePageChange('Map')}>
+                        <button><h3>View Map</h3></button>
+                    </a>
+                </div>
             </div>
         </div >
     </div>
