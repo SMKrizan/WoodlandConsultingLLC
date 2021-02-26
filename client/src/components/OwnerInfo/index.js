@@ -91,7 +91,6 @@ const ManageOwnerInfo = (props) => {
                         type="submit"
                         value="Submit"
                         onClick={onCloseModal} />
-
                 </form>
             </Modal>
         </>

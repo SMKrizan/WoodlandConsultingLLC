@@ -112,7 +112,6 @@ const TestimonialList = (props) => {
                 name="tstName"
                 value={modalData.tstName}
                 onChange={handleInputChange}
-
               />
             </label>
           </p>
