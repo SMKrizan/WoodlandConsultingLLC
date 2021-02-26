@@ -8,21 +8,21 @@ import {
   CardGroup,
   Button,
 } from "reactstrap";
-import { useStoreContext } from "../../utils/GlobalState";
+// import { useStoreContext } from "../../utils/GlobalState";
 import { idbPromise } from '../../utils/helpers';
 import "react-responsive-modal/styles.css";
 
 // import TstUpdate from '../TstUpdate';
 import { GET_TESTIMONIALS } from "../../utils/queries";
-import { UPDATE_TST } from "../../utils/actions";
+// import { UPDATE_TST } from "../../utils/actions";
 import { UPDATE_TESTIMONIAL } from "../../utils/mutations";
 // import Auth from "../../utils/auth";
 
 const TestimonialList = (props) => {
   // retrieves global state object and dispatch method to update state and display products to page
-  const [state, dispatch] = useStoreContext();
+  // const [state, dispatch] = useStoreContext();
   // destructures needed data from state object
-  const { testimonials, testimonial } = state();
+  // const { testimonials, testimonial } = state();
 
   // hook responds to global state object
   const { loading, data } = useQuery(GET_TESTIMONIALS);
