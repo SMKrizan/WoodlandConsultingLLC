@@ -7,11 +7,12 @@ const {
 
 const {
   Owner,
-  Category,
+  // Category,
   Project,
   Message,
   Testimonial,
 } = require("../models");
+const Category = require('../models/Category');
 const { signToken } = require("../utils/auth");
 
 const resolvers = {

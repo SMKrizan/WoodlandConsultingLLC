@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "# Resources",
   "main": "server/server.js",
+  "engines": {
+    "node": "12.x"
+  },
   "scripts": {
-    "start": "npm run start:prod",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "cd server && npm start",
     "start:dev": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
@@ -23,12 +26,11 @@
   },
   "homepage": "https://github.com/SMKrizan/WoodlandConsultingLLC#readme",
   "dependencies": {
+    "concurrently": "^6.0.0",
     "if-env": "^1.0.4",
     "nodemon": "^2.0.7",
     "react-responsive-modal": "^6.0.1",
     "react-spring": "^8.0.27"
   },
-  "devDependencies": {
-    "concurrently": "^5.3.0"
-  }
+  "devDependencies": {}
 }
