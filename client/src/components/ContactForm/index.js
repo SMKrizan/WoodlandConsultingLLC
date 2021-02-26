@@ -38,7 +38,8 @@ const ContactForm = (props) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const setRadio = (event) => {
-    const useRadio = selectedOption(event.target.value)
+    const useRadio = selectedOption({radio: event.target.value})
+    setFormState({...formState, purpose: event.target.value})
     console.log(event.target.value, useRadio)
   }
 
