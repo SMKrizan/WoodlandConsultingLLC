@@ -5,16 +5,14 @@ import ImageModal from '../ImageModal'
 import { GET_PROJECTS } from '../../utils/queries';
 
 function Gallery() {
-
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [currentPhoto, setCurrentPhoto] = useState();
 
     //get projects 
     const { loading, data} = useQuery(GET_PROJECTS);
     const projectData = data?.projects || [];
     console.log("projectdata", projectData);
 
-
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [currentPhoto, setCurrentPhoto] = useState();
 
     if (loading) {
         return <div>Loading...</div>;
