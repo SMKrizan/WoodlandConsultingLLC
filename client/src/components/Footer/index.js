@@ -12,7 +12,7 @@ import { Card, Modal, Button, Tab } from "react-bootstrap";
 import { GET_OWNER } from '../../utils/queries';
 
 
-function Footer(props) {
+function Footer() {
   const [showModal, setShowModal] = useState(false);
 
       //get projects 
@@ -30,8 +30,9 @@ function Footer(props) {
         }
 
   return (
-    <footer>
-      <div className="w100">
+    <>
+    <div className="footer">
+
         <div>
           {Auth.loggedIn() ? (
             <>
@@ -58,7 +59,7 @@ function Footer(props) {
               </Modal.Header>
               <Modal.Body>
                 <Tab.Pane eventKey="login">
-                  <LoginForm handleModalClose={() => setShowModal(false)} handlePageChange={props.handlePageChange} />
+                  <LoginForm handleModalClose={() => setShowModal(false)} />
                 </Tab.Pane>
               </Modal.Body>
             </Modal>
@@ -83,13 +84,12 @@ function Footer(props) {
           >
               <img alt="linkedin link" src={linkedin} />
           </a>
-      </div>
-      <div className="w100">
-                <a className="padlr">{ownerData.ownerName}</a>
-                <a className="padlr">{ownerData.ownerEmail}</a>
-                <a className="padlr">{ownerData.address}</a>
-      </div>
-    </footer>
+
+                <div >{ownerData.ownerName}</div>
+                <div >{ownerData.ownerEmail}</div>
+                <div >{ownerData.address}</div>
+            </div>
+    </>
   );
 }
 
