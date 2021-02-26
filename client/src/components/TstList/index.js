@@ -22,24 +22,22 @@ const TestimonialList = (props) => {
   // retrieves global state object and dispatch method to update state and display products to page
   const [state, dispatch] = useStoreContext();
   // destructures needed data from state object
-  const { testimonials, testimonial } = state;
-  console.log('testimonials: ', testimonials)
+  const { testimonials, testimonial } = state();
 
   // hook responds to global state object
   const { loading, data } = useQuery(GET_TESTIMONIALS);
   const tstData = data?.testimonials || [];
-  console.log('tstData: ', tstData)
 
-  useEffect(() => {
-    if(tstData) {
-      dispatch({
-        type: UPDATE_TST,
-        testimonials: tstData.testimonials
-      })
-    }
-  })
+  // useEffect(() => {
+  //   if(tstData) {
+  //     dispatch({
+  //       type: UPDATE_TST,
+  //       testimonials: tstData.testimonials
+  //     })
+  //   }
+  // })
 
-  // submits replaced/updated testimonial values to db for persistent storage
+  // tells front end how to use mutation
   const [updatedTst] = useMutation(UPDATE_TESTIMONIAL);
 
   const handleFormSubmit = async (event) => {
