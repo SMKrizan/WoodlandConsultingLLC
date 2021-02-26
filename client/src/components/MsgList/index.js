@@ -11,7 +11,7 @@ import Auth from "../../utils/auth";
 // conditionally renders message data; destructuring rather than using 'props.userName' etc. throughout JSX code
 const MessageList = (props) => {
   const [state, dispatch] = useStoreContext();
-  const [message, newMessageData] = useState({});
+  
 
   const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
     update(cache, { data: { removeMessage } }) {
@@ -32,8 +32,9 @@ const MessageList = (props) => {
   });
 
   // reminder: "data" is the object described by associated query/mutation
-  const { loading, data } = useQuery(GET_MESSAGES);
+  const { loading, data } = useQuery(GET_MESSAGES)
   const messageData = data?.messages;
+  const [list, newMessageList] = useState({messageData});
   if (loading) {
     return <div>Loading...</div>;
   } else if (!messageData.length) {
@@ -52,12 +53,12 @@ const MessageList = (props) => {
         variables: { _id: messageData._id },
         
       });
-      console.log(data)
+      console.log(state)
 
-      newMessageData({
-        ...message, data
+      newMessageList({
+        ...messageData,
       });
-      console.log(newMessageData)
+      console.log(state)
     // } catch (e) {
     //   console.error(e);
     // }
