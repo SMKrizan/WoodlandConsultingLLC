@@ -1,7 +1,9 @@
 {
+
   "short_name": "Woodland Consulting",
   "name": "Woodland Consulting LLC",
   "description": "lighting engineering and design consulting",
+
   "icons": [
     {
       "src": "/icons/favicon.ico",
