@@ -70,11 +70,9 @@ const resolvers = {
     },
     updateOwner: async (parent, args, context) => {
       if (context.owner) {
-        console.log('Owner:', args)
         const updatedOwner = await Owner.findByIdAndUpdate({ _id: context.owner._id }, args, {
           new: true,
         });
-        console.log('updatedOwner: ', updatedOwner)
         return updatedOwner;
       }
       throw new AuthenticationError("Not logged in");
@@ -129,7 +127,6 @@ const resolvers = {
         //   new: true
         // }
         );
-        console.log("======", updatedMessageList);
         return updatedMessageList
       }
       throw new AuthenticationError("You must be logged in to perform this action.");
