@@ -1,10 +1,7 @@
 import "./footer.css";
 import React, { useState } from "react";
-// import ReactDom from "react-dom";
 import linkedin from "../../assets/images/linkedin.png";
 import Auth from "../../utils/auth";
-// import { validateEmail } from "../../utils/helpers";
-// import { Link } from 'react-router-dom';
 import LoginForm from "../LoginForm";
 import { Card, Modal, Button, Tab } from "react-bootstrap";
 
@@ -22,7 +19,7 @@ function Footer(props) {
         )}
       <Card>
         <Modal
-          style={{ margin: "150px", padding: "30px", border: "solid" }}
+          className="modal-admin-login"
           size="lg"
           show={showModal}
           onHide={() => setShowModal(false)}
@@ -31,10 +28,11 @@ function Footer(props) {
           aria-labelledby="signup-modal"
         >
           <Modal.Header
+
             style={{ fontWeight: "bold", fontSize: "25px", padding: "20px" }}
             closeButton
           >
-            <Modal.Title id="signup-modal">Admin login </Modal.Title>
+            <Modal.Title id="signup-modal"  >Admin login </Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Tab.Pane eventKey="login">
