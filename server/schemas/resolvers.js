@@ -1,4 +1,3 @@
-
 const bcrypt = require('bcrypt');
 const {
   AuthenticationError,
@@ -23,7 +22,6 @@ const resolvers = {
       return await Project.find().populate('category');
     },
     owner: async () => {
-
       const owner = await Owner.findOne();
       return owner
     },
@@ -35,7 +33,6 @@ const resolvers = {
       if (category) {
         params.categoryName = category;
       }
-
       const project = Project.find({ category });
       return project
     },
@@ -51,7 +48,6 @@ const resolvers = {
     clientList: async () => {
       return await Project.find().populate('category');
     },
-
   },
   Mutation: {
     login: async (parent, { ownerEmail, password }) => {
@@ -63,9 +59,7 @@ const resolvers = {
       if (!correctPw) {
         throw new AuthenticationError("Incorrect credentials!");
       }
-
       const token = signToken(owner);
-
       return { token, owner };
     },
     updateOwner: async (parent, args, context) => {
@@ -77,7 +71,6 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
-
     addTestimonial: async (parent, args, context) => {
       if (context.owner) {
         const testimonial = await Testimonial.create({
@@ -96,9 +89,7 @@ const resolvers = {
           }
         );
         return updatedTestimonial;
-
       }
-
       throw new AuthenticationError("You must be logged in to perform this action.");
     },
     removeTestimonial: async (parent, { _id }, context) => {
@@ -123,9 +114,6 @@ const resolvers = {
         {
           $pull: { messages: _id}
         },
-        // {
-        //   new: true
-        // }
         );
         return updatedMessageList
       }
