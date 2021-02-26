@@ -203,6 +203,17 @@ main {
 .flex1 {
   flex:1;
 }
+
+.modal-admin-login {
+  z-index: 100;
+  margin: 5%;
+  width: 90%;
+  padding: 10px;
+  border: 2px white solid;
+  position: absolute;
+  background-color: var(--maroon);
+}
+
  @media only screen and (max-width: 800px) {
 .w-9 {
   flex: 1;

@@ -7,8 +7,6 @@ import linkedin from "../../assets/images/linkedin.png";
 import facebook from "../../assets/images/facebook3.png";
 
 import Auth from "../../utils/auth";
-// import { validateEmail } from "../../utils/helpers";
-// import { Link } from 'react-router-dom';
 import LoginForm from "../LoginForm";
 import { Card, Modal, Button, Tab } from "react-bootstrap";
 import { GET_OWNER } from '../../utils/queries';
@@ -44,7 +42,7 @@ function Footer(props) {
             )}
           <Card>
             <Modal
-              style={{ margin: "150px", padding: "30px", border: "solid" }}
+              className="modal-admin-login"
               size="lg"
               show={showModal}
               onHide={() => setShowModal(false)}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -16,7 +16,7 @@ import { StoreProvider } from './utils/GlobalState';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import 'react-responsive-modal/styles.css';
-import { Fade } from 'reactstrap';
+// import { Fade } from 'reactstrap';
 
 //const cache = new InMemoryCache();
 
@@ -44,7 +44,7 @@ function App() {
 
     switch (currentPage) {
       case 'Home':
-        return <Home handlePageChange={handlePageChange}/>;
+        return <Home handlePageChange={handlePageChange} />;
       case 'About':
         return <About />;
       case 'Map':
