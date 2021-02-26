@@ -1,0 +1,33 @@
+{
+
+  "short_name": "Woodland Consulting",
+  "name": "Woodland Consulting LLC",
+  "description": "lighting engineering and design consulting",
+
+  "icons": [
+    {
+      "src": "/icons/favicon.ico",
+      "sizes": "32x32 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/icons/apple-touch-icon.png",
+      "type": "image/png",
+      "sizes": "180x180"
+    },
+    {
+      "src": "/icons/WCLLC-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/icons/WCLLC-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#3e0040",
+  "background_color": "#1b0024"
+}
