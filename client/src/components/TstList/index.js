@@ -1,17 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
-import { useStoreContext } from "../../utils/GlobalState";
 import { Modal } from "react-responsive-modal";
-import "react-responsive-modal/styles.css";
 import {
   Card,
   CardText,
   CardBody,
   CardGroup,
-  CardTitle,
-  CardSubtitle,
   Button,
 } from "reactstrap";
+// import { useStoreContext } from "../../utils/GlobalState";
+import { idbPromise } from '../../utils/helpers';
+import "react-responsive-modal/styles.css";
 
 // import TstUpdate from '../TstUpdate';
 import { GET_TESTIMONIALS } from "../../utils/queries";
@@ -20,14 +19,25 @@ import { UPDATE_TESTIMONIAL } from "../../utils/mutations";
 // import Auth from "../../utils/auth";
 
 const TestimonialList = (props) => {
-  const [state, dispatch] = useStoreContext();
-  const { testimonials, testimonial } = state;
+  // retrieves global state object and dispatch method to update state and display products to page
+  // const [state, dispatch] = useStoreContext();
+  // destructures needed data from state object
+  // const { testimonials, testimonial } = state();
 
-  // queries data from db to display testimonials to admin page
+  // hook responds to global state object
   const { loading, data } = useQuery(GET_TESTIMONIALS);
   const tstData = data?.testimonials || [];
 
-  // submits replaced/updated testimonial values to db for persistent storage
+  // useEffect(() => {
+  //   if(tstData) {
+  //     dispatch({
+  //       type: UPDATE_TST,
+  //       testimonials: tstData.testimonials
+  //     })
+  //   }
+  // })
+
+  // tells front end how to use mutation
   const [updatedTst] = useMutation(UPDATE_TESTIMONIAL);
 
   const handleFormSubmit = async (event) => {
@@ -67,8 +77,7 @@ const TestimonialList = (props) => {
   return (
     <>
       <h3 className="padtb">
-        There are currently {tstData.length} testimonials displaying to your
-        page:
+        These are the testimonials currently displaying to your page:
       </h3>
       {tstData &&
         tstData.map((testimonial) => (
