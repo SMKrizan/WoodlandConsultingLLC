@@ -1,5 +1,5 @@
 .footer {
-    position: fixed;
+    position: fixed; 
     bottom:0;
     text-align: center;
     padding:10px;
@@ -24,9 +24,9 @@
 }
 
  @media only screen and (max-width: 800px) {
-     /* .footer {
-      position: static;
-    }  */
+     .footer {
+      position: relative;
+    } 
      /* .w100{
 
     }  */

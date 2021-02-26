@@ -12,7 +12,7 @@ import { Card, Modal, Button, Tab } from "react-bootstrap";
 import { GET_OWNER } from '../../utils/queries';
 
 
-function Footer(props) {
+function Footer() {
   const [showModal, setShowModal] = useState(false);
 
       //get projects 
@@ -30,6 +30,7 @@ function Footer(props) {
         }
 
   return (
+    <>
     <div className="footer">
 
         <div>
@@ -58,7 +59,7 @@ function Footer(props) {
               </Modal.Header>
               <Modal.Body>
                 <Tab.Pane eventKey="login">
-                  <LoginForm handleModalClose={() => setShowModal(false)} handlePageChange={props.handlePageChange} />
+                  <LoginForm handleModalClose={() => setShowModal(false)} />
                 </Tab.Pane>
               </Modal.Body>
             </Modal>
@@ -87,8 +88,8 @@ function Footer(props) {
                 <div >{ownerData.ownerName}</div>
                 <div >{ownerData.ownerEmail}</div>
                 <div >{ownerData.address}</div>
-
-    </div>
+            </div>
+    </>
   );
 }
 
