@@ -1,14 +1,30 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import { useQuery} from '@apollo/react-hooks';
 import { GET_PROJECTS} from '../../utils/queries';
 import './CategoryList.css'
-
+import { useStoreContext } from "../../utils/GlobalState";
+import { idbPromise } from "../../utils/helpers";
 
 function CategoryList() {
-
+    const [state, dispatch] = useStoreContext();
     const { loading, data} = useQuery(GET_PROJECTS);
     const projectData = data?.projects ;
-
+    
+    useEffect(() => {
+        // if there's data to be stored
+        if (data) {
+          // let's store it in the global state object
+          dispatch({
+            type: GET_PROJECTS,
+            projects: data.projects
+          });
+      
+          // but let's also take each product and save it to IndexedDB using the helper function 
+          data.projects.forEach((project) => {
+            idbPromise('projects', 'put', project);
+          });
+        }
+      }, [data, loading, dispatch]);
     if (loading) {
       return <div>Loading...</div>;
     }

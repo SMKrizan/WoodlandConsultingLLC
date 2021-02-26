@@ -1,15 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { Table } from "reactstrap";
 import "./MsgList.css";
 import { GET_MESSAGES } from "../../utils/queries";
 import { REMOVE_MESSAGE } from "../../utils/mutations";
-// import { useStoreContext } from "../../utils/GlobalState";
-// import { idbPromise } from "../../utils/helpers";
+import { useStoreContext } from "../../utils/GlobalState";
+import { idbPromise } from "../../utils/helpers";
 // import Auth from "../../utils/auth";
 
 const MessageList = (props) => {
   const [message, newMessageData] = useState({});
+  const [state, dispatch] = useStoreContext();
+    // reminder: "data" is the object described by associated query/mutation
+    const { loading, data } = useQuery(GET_MESSAGES)
+
+  useEffect(() => {
+    // if there's data to be stored
+    if (data) {
+      // let's store it in the global state object
+      dispatch({
+        type: GET_MESSAGES,
+        messages: data.messages
+      });
+  
+      // but let's also take each product and save it to IndexedDB using the helper function 
+      data.messages.forEach((message) => {
+        idbPromise('messages', 'put', message);
+      });
+    }
+  }, [data, loading, dispatch]);
 
   const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
     update(cache, { data: { removeMessage } }) {
@@ -30,8 +49,6 @@ const MessageList = (props) => {
     },
   });
 
-  // reminder: "data" is the object described by associated query/mutation
-  const { loading, data } = useQuery(GET_MESSAGES)
   const messageData = data?.messages;
 
   if (loading) {

@@ -1,12 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { GET_OWNER } from '../../utils/queries';
 import { UPDATE_OWNER } from '../../utils/mutations';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
-const ManageOwnerInfo = (props) => {
+import { useStoreContext } from "../../utils/GlobalState";
+import { idbPromise } from '../../utils/helpers';
 
+const ManageOwnerInfo = (props) => {
+    const [state, dispatch] = useStoreContext();
     const { loading, data } = useQuery(GET_OWNER);
+    // useEffect(() => {
+    //     // if there's data to be stored
+    //     if (data) {
+    //       // let's store it in the global state object
+    //       dispatch({
+    //         type: GET_OWNER,
+    //         owner: data.owner
+    //       });
+      
+    //       // but let's also take each product and save it to IndexedDB using the helper function 
+    //       data.owner.forEach((owner) => {
+    //         idbPromise('owners', 'put', owner);
+    //       });
+    //     }
+    //   }, [data, loading, dispatch]);
+
     const ownerData = data?.owner || [];
     console.log('ownerData: ', data?.owner);
     const [updateOwner, { error }] = useMutation(UPDATE_OWNER);
