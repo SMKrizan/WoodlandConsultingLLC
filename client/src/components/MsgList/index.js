@@ -9,7 +9,6 @@ import { REMOVE_MESSAGE } from "../../utils/mutations";
 // import Auth from "../../utils/auth";
 
 const MessageList = (props) => {
-  // const [state, dispatch] = useStoreContext();
   const [message, newMessageData] = useState({});
 
   const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
@@ -17,11 +16,12 @@ const MessageList = (props) => {
       console.log(removeMessage);
       try {
         const { messages } = cache.readQuery({ query: GET_MESSAGES });
-        console.log(messages);
-        messages.filter((messages) => removeMessage._id !== messages._id);
+        console.log(messages, "=====", removeMessage._id);
+        const newMessageArray = messages.filter((message) => removeMessage._id !== message._id);
+        console.log(newMessageArray)
         cache.writeQuery({
           query: GET_MESSAGES,
-          data: { messages },
+          data: { messages: [...newMessageArray] },
         });
         console.log(messages, removeMessage._id);
       } catch (e) {
@@ -33,7 +33,7 @@ const MessageList = (props) => {
   // reminder: "data" is the object described by associated query/mutation
   const { loading, data } = useQuery(GET_MESSAGES)
   const messageData = data?.messages;
-  const [list, newMessageList] = useState({messageData});
+
   if (loading) {
     return <div>Loading...</div>;
   } else if (!messageData.length) {
@@ -41,13 +41,7 @@ const MessageList = (props) => {
   }
 
   const handleSubmit = async (messageData) => {
-    //   event.preventDefault();
     console.log("handlesubmit", messageData._id);
-    // const token = Auth.loggedIn() ? Auth.getToken() : null;
-    // if (!token) {
-    //   return false;
-    // }
-    // try {
     const { data } = await removeMessage({
       variables: { _id: messageData._id },
 
@@ -58,9 +52,6 @@ const MessageList = (props) => {
       ...message, data
     });
     console.log(newMessageData)
-    // } catch (e) {
-    //   console.error(e);
-    // }
   };
 
   return (
@@ -89,7 +80,6 @@ const MessageList = (props) => {
                     onClick={() => {
                       handleSubmit(messageData[i]);
                     }}
-                  // onChange={handleInputChange}
                   >
                     Delete
                   </button>
