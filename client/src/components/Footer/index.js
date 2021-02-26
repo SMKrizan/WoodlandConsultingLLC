@@ -32,9 +32,8 @@ function Footer() {
   return (
     <>
     <div className="footer">
-
-      <div className="w100">
-          {/* <div className="flex1">
+          <div className="flex-ceround">
+            <div>
               {Auth.loggedIn() ? (
                 <>
                   <Button onClick={Auth.logout}>Logout</Button>
@@ -65,7 +64,9 @@ function Footer() {
                   </Modal.Body>
                 </Modal>
               </Card>
-        </div> */}
+          </div>
+        </div>
+    <div className="w100">
         <a
             href="https://www.linkedin.com/company/woodland-consulting-llc/about/"
             target="_blank"
