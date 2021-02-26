@@ -4,16 +4,19 @@ import { FormGroup, Label, Input, Button, Col } from "reactstrap";
 import { validateEmail } from "../../utils/helpers";
 import { ADD_MESSAGE } from "../../utils/mutations";
 import { GET_MESSAGES } from "../../utils/queries";
-import  Example  from '../Dropdown';
 
 const ContactForm = () => {
-    const [type, selectType] = useState({ radio: ""});
 
+    const [option, selectedOption] = useState("");
+    // const [checked, setChecked] = useState()
+// state for tracking which is checked
+// state for value, listener 
   const [formState, setFormState] = useState({
     userName: "",
     userEmail: "",
     userCompany: "",
     userMessage: ""
+    // purpose: ""
   });
 
   const [addMessage, { error }] = useMutation(ADD_MESSAGE, {
@@ -36,7 +39,7 @@ const ContactForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const setRadio = (event) => {
-    selectType({radio: event.target.value})
+    selectedOption({radio: event.target.value})
     console.log(event.target.value)
   }
 
@@ -51,6 +54,7 @@ const ContactForm = () => {
           userCompany: formState.userCompany,
           userEmail: formState.userEmail,
           userMessage: formState.userMessage
+        //   purpose: formState.purpose
         }
       });
       return alert("Thanks for the message."), window.location.assign("/");
@@ -143,16 +147,17 @@ const ContactForm = () => {
           </Col>
         </FormGroup>
 
-        <div onChange={setRadio}>
+        <div 
+        onChange={setRadio}
+        >
         <FormGroup check >
             <Label check>
               <Input 
               type="radio" 
               name="radio" 
+            //   defaultValue={formState.purpose}
               value='Ask a question'
-            //   checked={radio ==="radio1"}
-            // {...selectRadio}
-                // onChange={() => selectRadio}
+            //   checked={option}
               /> Ask a Question
             </Label>
           </FormGroup>
@@ -162,9 +167,8 @@ const ContactForm = () => {
                 type="radio"
                 name="radio"
                 value='Leave a comment'
-                // checked={radio ==='radio2'}
-                // {...selectRadio}
-                // onChange= {() => selectRadio}
+                // defaultValue={formState.purpose}
+                // checked={option}
               />
               Leave a comment
             </Label>
@@ -173,9 +177,8 @@ const ContactForm = () => {
             <Label check>
               <Input type="radio" name="radio" 
               value="Request a quote"
-            //   checked={radio ==='radio3'}
-            //   {...selectRadio}
-            //   onChange= {handleOptionChange}
+            //   defaultValue={formState.purpose}
+                // checked={option}
               /> Request a quote
             </Label>
           </FormGroup>
@@ -183,41 +186,12 @@ const ContactForm = () => {
             <Label check>
               <Input type="radio" name="radio" 
               value="Provide a testimonial"
-            //   checked={radio ==='radio4'}
-            //   {...selectRadio}
-            //   onChange={handleOptionChange}
+            //   defaultValue={formState.purpose}
+                // checked={option}
               /> Provide a testimonial
             </Label>
           </FormGroup>
         </div>
-          {/* <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio1" checked={true} /> Ask a Question
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input
-                type="radio"
-                name="radio2"
-                // checked= {handleOptionChange}
-              />
-              Leave a comment
-            </Label>
-          </FormGroup> */}
-          {/* <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio3" /> Request a quote
-            </Label>
-          </FormGroup>
-          <FormGroup check>
-            <Label check>
-              <Input type="radio" name="radio4" /> Provide a testimonial
-            </Label>
-          </FormGroup> */}
-        {/* <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
-            Character Count: {characterCount}/280
-            </p> */}
         <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
           <Label for="userMessage" sm={2} size="lg">
             Message:
