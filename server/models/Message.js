@@ -23,7 +23,7 @@ const messageSchema = new Schema(
         },
         purpose: {
             type: String,
-            enum: ['Ask a question', 'Leave a comment', 'Request a quote', 'Provide a testimonial'],
+            // enum: ['Ask a question', 'Leave a comment', 'Request a quote', 'Provide a testimonial'],
             default: 'Ask a question'
         },
         created_at: {
