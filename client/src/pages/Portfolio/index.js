@@ -14,7 +14,7 @@ function Portfolio() {
             {opacity: 1, 
             from: {scale:10,transform: 'scale(0.9)'},
             to: { scale: 150, transform: 'scale(1)', freq: '0.0, 0.0' },
-            config: { duration: 2000 }});
+            config: { duration: 2500 }});
         
     return (
         <section>
