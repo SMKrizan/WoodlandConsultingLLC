@@ -186,7 +186,6 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    margin:auto;
 }
 .w-6 {
   flex:1;
@@ -198,7 +197,6 @@ main {
 }
 .flex1 {
   flex:1;
-  max-width:100%;
 }
 
 .modal-admin-login {
@@ -212,6 +210,10 @@ main {
 }
 
  @media only screen and (max-width: 800px) {
+
+  p {
+    font-size: 16px;
+  }
 .w-9 {
   flex: 1;
 }
@@ -221,7 +223,7 @@ main {
 }
 
 main {
-  margin-bottom:40px;
+  margin-bottom:0px;
 }
 
 h1 {
