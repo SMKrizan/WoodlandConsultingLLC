@@ -1,14 +1,13 @@
-footer {
+.footer {
     position: fixed;
     bottom:0;
-    left: 0;
-    right:0;
     text-align: center;
     padding:10px;
     width:100%;
     background-color: var(--darkplum);
     min-height: 60px;
-    font-size: 12px;
+    font-size: 15px;
+    border-top: solid 2px var(--plum);
 }
 .w100{
     width:100%;
@@ -18,14 +17,17 @@ footer {
     text-align: center;
 }
 
-footer img {
+.footer img {
     max-width:70px;
     padding: 0px 10px;
     margin:auto;
 }
 
-@media only screen and (max-width: 800px) {
-    footer {
-      position: relative;
-    }
-}
+ @media only screen and (max-width: 800px) {
+     /* .footer {
+      position: static;
+    }  */
+     /* .w100{
+
+    }  */
+} 

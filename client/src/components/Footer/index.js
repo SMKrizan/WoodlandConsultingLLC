@@ -30,8 +30,8 @@ function Footer(props) {
         }
 
   return (
-    <footer>
-      <div className="w100">
+    <div className="footer">
+
         <div>
           {Auth.loggedIn() ? (
             <>
@@ -83,13 +83,12 @@ function Footer(props) {
           >
               <img alt="linkedin link" src={linkedin} />
           </a>
-      </div>
-      <div className="w100">
-                <a className="padlr">{ownerData.ownerName}</a>
-                <a className="padlr">{ownerData.ownerEmail}</a>
-                <a className="padlr">{ownerData.address}</a>
-      </div>
-    </footer>
+
+                <div >{ownerData.ownerName}</div>
+                <div >{ownerData.ownerEmail}</div>
+                <div >{ownerData.address}</div>
+
+    </div>
   );
 }
 
