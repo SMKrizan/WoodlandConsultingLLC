@@ -8,7 +8,6 @@ import { GET_MESSAGES } from "../../utils/queries";
 const ContactForm = () => {
 
     const [option, selectedOption] = useState("");
-    // const [checked, setChecked] = useState()
 // state for tracking which is checked
 // state for value, listener 
   const [formState, setFormState] = useState({
