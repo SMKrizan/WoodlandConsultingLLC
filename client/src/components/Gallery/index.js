@@ -39,8 +39,6 @@ function Gallery() {
         setCurrentPhoto({ ...project});
         setIsModalOpen(!isModalOpen);
     };
-    //const [showModal, setShowModal] = useState(false);
-
 
     return (
         <div>

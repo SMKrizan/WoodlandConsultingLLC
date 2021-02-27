@@ -45,7 +45,7 @@ function About() {
                         <img src={require(`../../assets/images/portfolio/UW_SOHE_4-min.JPG`).default} alt='Jessica Walther' />
                     </animated.div>
                 </div>
-                <div className="box-over glow3">
+                <div className="box-over glow3 margin-b80">
                     <h2>About Woodland Consulting LLC</h2>
                     <p>Woodland Consulting, LLC, established in August 2016, provides electrical
                     lighting design consulting services. Woodland implements comprehensive

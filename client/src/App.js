@@ -36,36 +36,13 @@ const client = new ApolloClient({
 
 function App() {
 
-  const [currentPage, handlePageChange] = useState('Home');
   const [isAuthenticated, setAuthenticated] = useState(AuthService.loggedIn())
-
-  //const propsMove = useSpring({opacity: 1, from: {opacity: 0}});
-
-  // const renderPage = () => {
-
-  //   switch (currentPage) {
-  //     case 'Home':
-  //       return <Home handlePageChange={handlePageChange} />;
-  //     case 'About':
-  //       return <About />;
-  //     case 'Map':
-  //       return <Map />;
-  //     case 'Portfolio':
-  //       return <Portfolio />;
-  //     case 'Contact':
-  //       return <Contact />;
-  //     case 'AdminPage':
-  //       return <AdminPage />
-  //     default:
-  //       return <Home />;
-  //   }
-  // };
 
   return (
     <ApolloProvider client={client}>
       <Router>
         <StoreProvider>
-          <Header currentPage={currentPage} />
+          <Header/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/AdminPage" component={AdminPage} />
@@ -74,11 +51,7 @@ function App() {
             <Route exact path="/About" component={About} />
             <Route exact path="/Map" component={Map} />
             <Route exact path="/AdminAccess" component={AdminAccess} />
-            <ProtectedRoute to="/admin_page"
-            // exact path="/AdminAccess" component={AdminAccess}
-            // isAuthenticated={isAuthenticated}
-            // component={AdminAccess} 
-            />
+            <ProtectedRoute to="/admin_page" />
             <ProtectedRoute component={AdminAccess} />
           </Switch>
           <Footer />

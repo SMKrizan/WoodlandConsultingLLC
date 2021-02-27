@@ -20,9 +20,9 @@ function Portfolio() {
         <section>
 
         <div className="feature-image">
-        <animated.div style={propsMove}>
-            <h2>"Dark is not the opposite of light, it's the absence of light."</h2>
-            <h4> - Adam Yauch</h4>
+            <animated.div style={propsMove}>
+                <h2>"Dark is not the opposite of light, it's the absence of light."</h2>
+                <h4> - Adam Yauch</h4>
             </animated.div>
         </div>
 

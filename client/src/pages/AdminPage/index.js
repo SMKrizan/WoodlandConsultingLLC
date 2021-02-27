@@ -13,6 +13,13 @@ const AdminPage = (props) => {
           <MsgList />
           <TstList />
           <OwnerInfo />
+          <div className="pad">
+              <div className="flex-ceround">
+              <div>
+                    <button onClick={Auth.logout}>Logout</button>
+              </div>
+            </div>
+          </div>
         </div>
       ) : (
           <span>Please log in.</span>

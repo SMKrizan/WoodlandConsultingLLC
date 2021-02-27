@@ -10,7 +10,7 @@ function AdminAccess() {
 
   return (
     <section>
-      <Link to="/home">
+      <Link to="/">
         ← Go to Homepage
       </Link>
 
