@@ -1,12 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useMutation } from "@apollo/react-hooks";
 import { FormGroup, Label, Input, Button, Col } from "reactstrap";
 import { validateEmail } from "../../utils/helpers";
 import { ADD_MESSAGE } from "../../utils/mutations";
 import { GET_MESSAGES } from "../../utils/queries";
+import { useStoreContext } from "../../utils/GlobalState";
+import { idbPromise } from "../../utils/helpers";
+import { SUBMIT_MESSAGE } from "../../utils/actions";
 
 const ContactForm = (props) => {
-  const [option, selectedOption] = useState();
+    const [option, selectedOption] = useState();
+    const [state, dispatch] = useStoreContext();
+
+    const addToAdmin = () => {
+        dispatch({
+            type: SUBMIT_MESSAGE,
+            messages: { ...props}
+        });
+        idbPromise('messages', 'put', {...props})
+    }
+//   useEffect(() => {
+//     async function submitMessage() {
+//       const message = await idbPromise('messages', 'get');
+//       dispatch({ type: SUBMIT_MESSAGE, messages: [...message] });
+//     };
+  
+//     if (!state.messages.length) {
+//       submitMessage();
+//     }
+//   }, [state.messages.length, dispatch]);
 
   const [formState, setFormState] = useState({
     userName: "",
@@ -205,7 +227,9 @@ const ContactForm = (props) => {
             <p className="error-text">{errorMessage}</p>
           </div>
         )}
-        <Button type="submit" style={{ margin: "auto" }}>
+        <Button type="submit" style={{ margin: "auto" }}
+        onClick = {() => addToAdmin} 
+        >
           Submit
         </Button>
       </form>

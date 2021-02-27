@@ -7,7 +7,7 @@ import { REMOVE_MESSAGE } from "../../utils/mutations";
 import { useStoreContext } from "../../utils/GlobalState";
 import { idbPromise } from "../../utils/helpers";
 import { SUBMIT_MESSAGE } from "../../utils/actions";
-// import Auth from "../../utils/auth";
+import { ADD_SUBMIT_MESSAGE} from "../../utils/actions";
 
 const MessageList = (props) => {
   const [message, newMessageData] = useState({});
@@ -33,15 +33,16 @@ const MessageList = (props) => {
   }, [data, loading, dispatch]);
 
   useEffect(() => {
-    async function submitMessage() {
-      const message = await idbPromise('messages', 'get');
-      dispatch({ type: SUBMIT_MESSAGE, messages: [...message] });
+    async function getMessage() {
+      const sentMessage = await idbPromise('messages', 'get');
+      dispatch({ type: ADD_SUBMIT_MESSAGE, messages: [...sentMessage] });
     };
   
     if (!state.messages.length) {
-      submitMessage();
+      getMessage();
     }
   }, [state.messages.length, dispatch]);
+
 
   const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
     update(cache, { data: { removeMessage } }) {

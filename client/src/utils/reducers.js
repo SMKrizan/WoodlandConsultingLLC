@@ -4,10 +4,16 @@ import {
   DELETE_MESSAGE,
   UPDATE_TST,
   UPDATE_OWNER_INFO,
+  ADD_SUBMIT_MESSAGE
 } from "./actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {
+    case ADD_SUBMIT_MESSAGE:
+      return {
+        ...state,
+        messages: [...action.messages]
+      }
     // user-submitted form message
     case SUBMIT_MESSAGE:
       return {

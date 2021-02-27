@@ -123,9 +123,6 @@ const resolvers = {
         {
           $pull: { messages: _id}
         },
-        // {
-        //   new: true
-        // }
         );
         return updatedMessageList
       }
