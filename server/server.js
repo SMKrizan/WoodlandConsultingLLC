@@ -33,6 +33,7 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
+// added based on recommendation here: https://coursework.vschool.io/deploying-mern-with-heroku/
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "build", "index.html"))
 });
