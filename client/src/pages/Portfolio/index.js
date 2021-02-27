@@ -34,9 +34,7 @@ function Portfolio() {
                 View Projects: Click to see larger views
             </h5>
         </div>
-        <animated.div style={propsMove2}>
         <Gallery />
-        </animated.div>
         <div className=" darkplumbg project-category-bg">
             <div>
                 <h3>

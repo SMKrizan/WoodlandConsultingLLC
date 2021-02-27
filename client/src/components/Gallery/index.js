@@ -3,8 +3,17 @@ import { useQuery} from '@apollo/react-hooks';
 
 import ImageModal from '../ImageModal'
 import { GET_PROJECTS } from '../../utils/queries';
+import {useSpring, animated} from 'react-spring'
+
 
 function Gallery() {
+
+    const propsMove2 = useSpring(
+        {opacity: 1, 
+        from: {scale:10,transform: 'scale(0.5)'},
+        to: { scale: 150, transform: 'scale(1)', freq: '0.0, 0.0' },
+        config: { duration: 2000 }});
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentPhoto, setCurrentPhoto] = useState();
 
@@ -34,23 +43,25 @@ function Gallery() {
     return (
         <div>
         {isModalOpen && <ImageModal onClose={toggleModal} currentPhoto={currentPhoto} />}
-            <div className="flex-ceround padtb">
-            {galleryImages.map(project => 
+        <animated.div style={propsMove2}>
 
-                    <div            
-                    onClick={() => toggleModal(project)}
-                    key={project._id} 
-                    >
-                        <div className="project">
-                            <div className="project-img" style={{  backgroundImage: `url(" ${project.image} ")`}}> 
-                                <h3>{project.company}</h3>
-                                <h4>{project.category.categoryName}</h4>
-                            </div>
+        <div className="flex-ceround padtb">
+        {galleryImages.map(project => 
+                <div            
+                onClick={() => toggleModal(project)}
+                key={project._id} 
+                >
+                    <div className="project">
+                        <div className="project-img" style={{  backgroundImage: `url(" ${project.image} ")`}}> 
+                            <h3>{project.company}</h3>
+                            <h4>{project.category.categoryName}</h4>
                         </div>
                     </div>
-                
-            )}
-            </div>
+                </div> 
+          )}
+          </div>
+          </animated.div>
+
           </div>
     )
 }
