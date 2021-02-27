@@ -10,17 +10,17 @@ import { idbPromise } from '../../utils/helpers';
 const ManageOwnerInfo = (props) => {
     const [state, dispatch] = useStoreContext();
     const { loading, data } = useQuery(GET_OWNER);
+    
     // useEffect(() => {
     //     // if there's data to be stored
     //     if (data) {
     //       // let's store it in the global state object
     //       dispatch({
     //         type: GET_OWNER,
-    //         owner: data.owner
+    //         ownerInfo: data.ownerInfo
     //       });
-      
     //       // but let's also take each product and save it to IndexedDB using the helper function 
-    //       data.owner.forEach((owner) => {
+    //       data.ownerInfo.forEach((owner) => {
     //         idbPromise('owners', 'put', owner);
     //       });
     //     }

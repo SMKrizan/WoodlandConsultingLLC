@@ -14,6 +14,7 @@ const MessageList = (props) => {
   const [state, dispatch] = useStoreContext();
     // reminder: "data" is the object described by associated query/mutation
     const { loading, data } = useQuery(GET_MESSAGES)
+    const messageData = data?.messages;
 
   useEffect(() => {
     // if there's data to be stored
@@ -42,13 +43,6 @@ const MessageList = (props) => {
     }
   }, [state.messages.length, dispatch]);
 
-  const deleteMessage = (removeMessage) => {
-    dispatch({
-      type: REMOVE_MESSAGE,
-      _id: removeMessage._id,
-    });
-    idbPromise('messages', 'delete', { ...message });
-  };
   const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
     update(cache, { data: { removeMessage } }) {
       console.log(removeMessage);
@@ -62,13 +56,19 @@ const MessageList = (props) => {
           data: { messages: [...newMessageArray] },
         });
         console.log(messages, removeMessage._id);
+        // deleteMessage();
       } catch (e) {
         console.log(e);
       }
     },
   });
-
-  const messageData = data?.messages;
+  // const deleteMessage = (removeMessage) => {
+  //   dispatch({
+  //     type: REMOVE_MESSAGE,
+  //     _id: removeMessage._id,
+  //   });
+  //   idbPromise('messages', 'delete', { ...message });
+  // };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -83,30 +83,30 @@ const MessageList = (props) => {
 
     });
     console.log(data)
-
+   
     newMessageData({
       ...message, data
     });
     console.log(newMessageData)
   };
-  const onChange = (e) => {
-    // const value = e.target.value;
+  // const onChange = (e) => {
+  //   // const value = e.target.value;
   
-    // if (value === '0') {
-      dispatch({
-        type: REMOVE_MESSAGE,
-        _id: removeMessage._id
-      });
-      idbPromise('messages', 'delete', { ...removeMessage });
+  //   // if (value === '0') {
+  //     dispatch({
+  //       type: REMOVE_MESSAGE,
+  //       _id: removeMessage._id
+  //     });
+  //     idbPromise('messages', 'delete', { ...removeMessage });
 
-    // } else {
-    //   dispatch({
-    //     type: UPDATE_MESSAGE_Q,
-    //     _id: item._id,
-    //     purchaseQuantity: parseInt(value)
-    //   });
-    //   idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
-    }
+  //   // } else {
+  //   //   dispatch({
+  //   //     type: UPDATE_MESSAGE_Q,
+  //   //     _id: item._id,
+  //   //     purchaseQuantity: parseInt(value)
+  //   //   });
+  //   //   idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
+  //   }
 
   return (
     <div>
@@ -135,7 +135,7 @@ const MessageList = (props) => {
                       handleSubmit(messageData[i]);
                     }}
                     value={removeMessage._id}
-                    onChange={onChange}
+                    // onChange={onChange}
                   >
                     Delete
                   </button>
