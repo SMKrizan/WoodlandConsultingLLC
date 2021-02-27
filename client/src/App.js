@@ -15,7 +15,7 @@ import AdminPage from './pages/AdminPage';
 import { StoreProvider } from './utils/GlobalState';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import 'react-responsive-modal/styles.css';
+//import 'react-responsive-modal/styles.css';
 // import { Fade } from 'reactstrap';
 
 //const cache = new InMemoryCache();
