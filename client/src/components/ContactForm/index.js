@@ -5,7 +5,7 @@ import { validateEmail } from "../../utils/helpers";
 import { ADD_MESSAGE } from "../../utils/mutations";
 import { GET_MESSAGES } from "../../utils/queries";
 
-const ContactForm = (props) => {
+const ContactForm = () => {
 
     const [option, selectedOption] = useState("");
 // state for tracking which is checked
@@ -14,8 +14,8 @@ const ContactForm = (props) => {
     userName: "",
     userEmail: "",
     userCompany: "",
-    userMessage: ""
-    // purpose: ""
+    userMessage: "",
+    purpose: ""
   });
 
   const [addMessage, { error }] = useMutation(ADD_MESSAGE, {
@@ -38,9 +38,9 @@ const ContactForm = (props) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const setRadio = (event) => {
-    const useRadio = selectedOption({radio: event.target.value})
-    setFormState({...formState, purpose: event.target.value})
-    console.log(event.target.value, useRadio)
+    selectedOption({radio: event.target.value})
+    setFormState({ ...formState, purpose: event.target.value });
+    console.log(event.target.value)
   }
 
   const handleSubmit = async (event) => {
@@ -153,17 +153,10 @@ const ContactForm = (props) => {
         <FormGroup check >
             <Label check>
               <Input 
-              type="radio"
-                onChange={setRadio} 
-                id="1" 
-                isSelected={option} 
-                label="Ask a question" 
-                value="Ask a question"
-
-            //   type="radio" 
-            //   name="radio" 
-            // //   defaultValue={formState.purpose}
-            //   value='Ask a question'
+              type="radio" 
+              name="radio" 
+            //   defaultValue={formState.purpose}
+              value='Ask a question'
             //   checked={option}
               /> Ask a Question
             </Label>
