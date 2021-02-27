@@ -1,21 +1,12 @@
 import "./footer.css";
 import React from "react";
 import { useQuery } from '@apollo/react-hooks';
-
-// import ReactDom from "react-dom";
 import linkedin from "../../assets/images/linkedin.png";
 import facebook from "../../assets/images/facebook3.png";
-
-// import Auth from "../../utils/auth";
-// import LoginForm from "../LoginForm";
-// import { Card, Modal, Button, Tab } from "react-bootstrap";
- import { GET_OWNER } from '../../utils/queries';
-
+import { GET_OWNER } from '../../utils/queries';
 
 function Footer() {
-  // const [showModal, setShowModal] = useState(false);
 
-  //get projects 
   const { loading, data } = useQuery(GET_OWNER);
   const ownerData = data?.owner || [];
   console.log("ownerdata", ownerData);
