@@ -4,13 +4,12 @@ import { Link } from "react-router-dom";
 import Auth from "../../utils/auth";
 import LoginForm from "../../components/LoginForm";
 import { Card, Modal, Button, Tab } from "react-bootstrap";
-// import ReactDom from "react-dom";
 
 function AdminAccess() {
   const [showModal, setShowModal] = useState(false);
 
   return (
-    <div>
+    <section>
       <Link to="/home">
         ← Go to Homepage
       </Link>
@@ -49,7 +48,7 @@ function AdminAccess() {
           </Card>
         </div>
       </div>
-    </div>
+    </section>
 
   );
 };

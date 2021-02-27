@@ -15,7 +15,7 @@ import AdminPage from './pages/AdminPage';
 import { StoreProvider } from './utils/GlobalState';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import AdminAccess from './components/AdminAccess';
+import AdminAccess from './pages/AdminAccess';
 import 'react-responsive-modal/styles.css';
 import { ProtectedRoute } from './components/Protected';
 
@@ -73,8 +73,12 @@ function App() {
             <Route exact path="/Contact" component={Contact} />
             <Route exact path="/About" component={About} />
             <Route exact path="/Map" component={Map} />
-            <Route component={Home} />
-            <ProtectedRoute to="/admin_page" isAuthenticated={isAuthenticated} component={AdminAccess} />
+            <Route exact path="/AdminAccess" component={AdminAccess} />
+            <ProtectedRoute to="/admin_page"
+            // exact path="/AdminAccess" component={AdminAccess}
+            // isAuthenticated={isAuthenticated}
+            // component={AdminAccess} 
+            />
             <ProtectedRoute component={AdminAccess} />
           </Switch>
           <Footer />
