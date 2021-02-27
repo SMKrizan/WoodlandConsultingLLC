@@ -35,9 +35,11 @@ const MessageList = (props) => {
   useEffect(() => {
     async function getMessage() {
       const sentMessage = await idbPromise('messages', 'get');
-      dispatch({ type: ADD_SUBMIT_MESSAGE, messages: [...sentMessage] });
+      dispatch({ 
+        type: ADD_SUBMIT_MESSAGE, 
+        messages: [...sentMessage] });
     };
-  
+    console.log("in useffect for msglist")
     if (!state.messages.length) {
       getMessage();
     }

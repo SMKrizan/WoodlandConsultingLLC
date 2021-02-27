@@ -12,12 +12,13 @@ const ContactForm = (props) => {
     const [option, selectedOption] = useState();
     const [state, dispatch] = useStoreContext();
 
-    const addToAdmin = () => {
+    const addToAdmin = (message) => {
         dispatch({
             type: SUBMIT_MESSAGE,
-            messages: { ...props}
+            messages: { ...message}
         });
-        idbPromise('messages', 'put', {...props})
+        console.log("in addToAdmin")
+        idbPromise('messages', 'put', {...message})
     }
 //   useEffect(() => {
 //     async function submitMessage() {
@@ -228,7 +229,8 @@ const ContactForm = (props) => {
           </div>
         )}
         <Button type="submit" style={{ margin: "auto" }}
-        onClick = {() => addToAdmin} 
+        // onClick = {() => addToAdmin} 
+        onClick={addToAdmin}
         >
           Submit
         </Button>

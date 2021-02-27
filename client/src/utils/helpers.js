@@ -72,3 +72,5 @@ export function idbPromise(storeName, method, object) {
     };
   });
 }
+
+window.addEventListener('online', idbPromise)
