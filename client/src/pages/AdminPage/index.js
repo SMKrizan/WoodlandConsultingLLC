@@ -3,11 +3,12 @@ import MsgList from "../../components/MsgList";
 import TstList from "../../components/TstList";
 import OwnerInfo from "../../components/OwnerInfo";
 import './adminmodal.css'
+import Auth from "../../utils/auth";
 
 const AdminPage = (props) => {
   return (
-    <div>
-      {props.isAuthenticated ? (
+    <section>
+      {Auth.loggedIn() ? (
         <div className="pad">
           <MsgList />
           <TstList />
@@ -16,7 +17,7 @@ const AdminPage = (props) => {
       ) : (
           <span>Please log in.</span>
         )}
-    </div>
+    </section>
   );
 };
 

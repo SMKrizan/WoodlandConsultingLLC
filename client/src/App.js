@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// import {useSpring, animated} from 'react-spring'
+
 import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,7 +18,7 @@ import Footer from './components/Footer';
 import AdminAccess from './components/AdminAccess';
 import 'react-responsive-modal/styles.css';
 import { ProtectedRoute } from './components/Protected';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import AuthService from "./utils/auth";
 
 const client = new ApolloClient({
@@ -34,6 +38,8 @@ function App() {
 
   const [currentPage, handlePageChange] = useState('Home');
   const [isAuthenticated, setAuthenticated] = useState(AuthService.loggedIn())
+
+  //const propsMove = useSpring({opacity: 1, from: {opacity: 0}});
 
   // const renderPage = () => {
 

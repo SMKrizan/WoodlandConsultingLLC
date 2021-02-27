@@ -4,6 +4,8 @@ import {GET_TESTIMONIALS} from '../../utils/queries';
 import ContactForm from '../../components/ContactForm'
 import './home.css'
 import {useSpring, animated} from 'react-spring'
+import { Link } from "react-router-dom";
+
 
 
 function Home(props) {
@@ -42,20 +44,14 @@ function Home(props) {
                     <p>{quote.tstName} - {quote.tstCompany}</p>
                     <div className="flex-left">
                         <div>
-                            <a
-                                href={'# portfolio'}
-                                onClick={() => props.handlePageChange('Portfolio')}
-                            >
+                            <Link to="/Portfolio">
                                 <button><h3>View Portfolio</h3></button>
-                             </a>
+                            </Link>
                         </div>
                         <div>
-                        <a
-                                href={'# portfolio'}
-                                onClick={() => props.handlePageChange('Contact')}
-                            >
+                            <Link to="/Contact">
                                 <button><h3>Contact</h3></button>
-                             </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -86,11 +82,9 @@ function Home(props) {
             </div>
             <div className=" flex-center  maps-img">
                 <div>
-                    <a
-                        href={'# portfolio'}
-                        onClick={() => props.handlePageChange('Map')}>
+                    <Link to="/Map">
                         <button><h3>View Map</h3></button>
-                    </a>
+                    </Link>
                 </div>
             </div>
         </div >
