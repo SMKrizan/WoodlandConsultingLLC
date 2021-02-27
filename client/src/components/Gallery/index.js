@@ -30,29 +30,27 @@ function Gallery() {
         setCurrentPhoto({ ...project});
         setIsModalOpen(!isModalOpen);
     };
-    //const [showModal, setShowModal] = useState(false);
-
 
     return (
         <div>
         {isModalOpen && <ImageModal onClose={toggleModal} currentPhoto={currentPhoto} />}
-        <section className="flex-ceround padtb">
-        {galleryImages.map(project => 
+            <div className="flex-ceround padtb">
+            {galleryImages.map(project => 
 
-                <div            
-                onClick={() => toggleModal(project)}
-                key={project._id} 
-                >
-                    <div className="project">
-                        <div className="project-img" style={{  backgroundImage: `url(" ${project.image} ")`}}> 
-                            <h3>{project.company}</h3>
-                            <h4>{project.category.categoryName}</h4>
+                    <div            
+                    onClick={() => toggleModal(project)}
+                    key={project._id} 
+                    >
+                        <div className="project">
+                            <div className="project-img" style={{  backgroundImage: `url(" ${project.image} ")`}}> 
+                                <h3>{project.company}</h3>
+                                <h4>{project.category.categoryName}</h4>
+                            </div>
                         </div>
                     </div>
-                </div>
-            
-          )}
-          </section>
+                
+            )}
+            </div>
           </div>
     )
 }
