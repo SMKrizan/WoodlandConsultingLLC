@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import { useQuery} from '@apollo/react-hooks';
 import { GET_PROJECTS} from '../../utils/queries';
-import './CategoryList.css'
+import './CategoryList.css';
+import { UPDATE_PROJECTS } from '../../utils/actions';
 import { useStoreContext } from "../../utils/GlobalState";
 import { idbPromise } from "../../utils/helpers";
 
@@ -15,7 +16,7 @@ function CategoryList() {
         if (data) {
           // let's store it in the global state object
           dispatch({
-            type: GET_PROJECTS,
+            type: UPDATE_PROJECTS,
             projects: data.projects
           });
       
@@ -23,8 +24,16 @@ function CategoryList() {
           data.projects.forEach((project) => {
             idbPromise('projects', 'put', project);
           });
+        }else if (!loading) {
+            idbPromise("projects", "get").then((projects) => {
+                dispatch({
+                    type: UPDATE_PROJECTS,
+                    projects: projects,
+                });
+            });
         }
       }, [data, loading, dispatch]);
+      
     if (loading) {
       return <div>Loading...</div>;
     }

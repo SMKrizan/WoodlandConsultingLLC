@@ -6,29 +6,25 @@ import { ADD_MESSAGE } from "../../utils/mutations";
 import { GET_MESSAGES } from "../../utils/queries";
 
 const ContactForm = (props) => {
+  const [option, selectedOption] = useState();
 
-    const [option, selectedOption] = useState("");
-// state for tracking which is checked
-// state for value, listener 
   const [formState, setFormState] = useState({
     userName: "",
     userEmail: "",
     userCompany: "",
-    userMessage: ""
-    // purpose: ""
+    userMessage: "",
   });
 
   const [addMessage, { error }] = useMutation(ADD_MESSAGE, {
     update(cache, { data: { addMessage } }) {
-        console.log(addMessage)
+      console.log(addMessage);
       try {
         const { messages } = cache.readQuery({ query: GET_MESSAGES });
         cache.writeQuery({
           query: GET_MESSAGES,
           data: { messages: [addMessage, ...messages] },
-          
         });
-        console.log(messages)
+        console.log(messages);
       } catch (e) {
         console.log(e);
       }
@@ -38,10 +34,10 @@ const ContactForm = (props) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const setRadio = (event) => {
-    const useRadio = selectedOption({radio: event.target.value})
-    setFormState({...formState, purpose: event.target.value})
-    console.log(event.target.value, useRadio)
-  }
+    const useRadio = selectedOption({ radio: event.target.value });
+    setFormState({ ...formState, purpose: event.target.value });
+    console.log(event.target.value, useRadio);
+  };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -54,8 +50,8 @@ const ContactForm = (props) => {
           userCompany: formState.userCompany,
           userEmail: formState.userEmail,
           userMessage: formState.userMessage,
-          purpose: formState.purpose
-        }
+          purpose: formState.purpose,
+        },
       });
       return alert("Thanks for the message."), window.location.assign("/");
     } catch (e) {
@@ -83,11 +79,8 @@ const ContactForm = (props) => {
     if (!errorMessage) {
       setFormState({ ...formState, [e.target.name]: e.target.value });
     }
-    console.log(e.target.value, formState)
+    console.log(e.target.value, formState);
   }
-
-
-
 
   return (
     <div className="pad">
@@ -147,25 +140,16 @@ const ContactForm = (props) => {
           </Col>
         </FormGroup>
 
-        <div 
-        onChange={setRadio}
-        >
-        <FormGroup check >
+        <div onChange={setRadio}>
+          <FormGroup check>
             <Label check>
-              <Input 
-              type="radio"
-                onChange={setRadio} 
-                id="1" 
-                isSelected={option} 
-                label="Ask a question" 
+              <Input
+                type="radio"
+                name="radio"
+                label="Ask a question"
                 value="Ask a question"
-
-            //   type="radio" 
-            //   name="radio" 
-            // //   defaultValue={formState.purpose}
-            //   value='Ask a question'
-            //   checked={option}
-              /> Ask a Question
+              />{" "}
+              Ask a Question
             </Label>
           </FormGroup>
           <FormGroup check>
@@ -173,29 +157,29 @@ const ContactForm = (props) => {
               <Input
                 type="radio"
                 name="radio"
-                value='Leave a comment'
-                // defaultValue={formState.purpose}
-                // checked={option}
+                value="Leave a comment"
               />
               Leave a comment
             </Label>
           </FormGroup>
-         <FormGroup check>
+          <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio" 
-              value="Request a quote"
-            //   defaultValue={formState.purpose}
-                // checked={option}
-              /> Request a quote
+              <Input
+                type="radio"
+                name="radio"
+                value="Request a quote"
+              />{" "}
+              Request a quote
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio" 
-              value="Provide a testimonial"
-            //   defaultValue={formState.purpose}
-                // checked={option}
-              /> Provide a testimonial
+              <Input
+                type="radio"
+                name="radio"
+                value="Provide a testimonial"
+              />{" "}
+              Provide a testimonial
             </Label>
           </FormGroup>
         </div>
@@ -224,7 +208,6 @@ const ContactForm = (props) => {
         <Button type="submit" style={{ margin: "auto" }}>
           Submit
         </Button>
-        {/* <p>{!error && <span className="ml-2">Thank you for your message! We will be in touch soon!</span>}</p> */}
       </form>
     </div>
   );

@@ -6,6 +6,7 @@ import { GET_MESSAGES } from "../../utils/queries";
 import { REMOVE_MESSAGE } from "../../utils/mutations";
 import { useStoreContext } from "../../utils/GlobalState";
 import { idbPromise } from "../../utils/helpers";
+import { SUBMIT_MESSAGE } from "../../utils/actions";
 // import Auth from "../../utils/auth";
 
 const MessageList = (props) => {
@@ -30,6 +31,24 @@ const MessageList = (props) => {
     }
   }, [data, loading, dispatch]);
 
+  useEffect(() => {
+    async function submitMessage() {
+      const message = await idbPromise('messages', 'get');
+      dispatch({ type: SUBMIT_MESSAGE, messages: [...message] });
+    };
+  
+    if (!state.messages.length) {
+      submitMessage();
+    }
+  }, [state.messages.length, dispatch]);
+
+  const deleteMessage = (removeMessage) => {
+    dispatch({
+      type: REMOVE_MESSAGE,
+      _id: removeMessage._id,
+    });
+    idbPromise('messages', 'delete', { ...message });
+  };
   const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
     update(cache, { data: { removeMessage } }) {
       console.log(removeMessage);
@@ -70,6 +89,24 @@ const MessageList = (props) => {
     });
     console.log(newMessageData)
   };
+  const onChange = (e) => {
+    // const value = e.target.value;
+  
+    // if (value === '0') {
+      dispatch({
+        type: REMOVE_MESSAGE,
+        _id: removeMessage._id
+      });
+      idbPromise('messages', 'delete', { ...removeMessage });
+
+    // } else {
+    //   dispatch({
+    //     type: UPDATE_MESSAGE_Q,
+    //     _id: item._id,
+    //     purchaseQuantity: parseInt(value)
+    //   });
+    //   idbPromise('cart', 'put', { ...item, purchaseQuantity: parseInt(value) });
+    }
 
   return (
     <div>
@@ -97,6 +134,8 @@ const MessageList = (props) => {
                     onClick={() => {
                       handleSubmit(messageData[i]);
                     }}
+                    value={removeMessage._id}
+                    onChange={onChange}
                   >
                     Delete
                   </button>
