@@ -15,10 +15,11 @@ import AdminPage from './pages/AdminPage';
 import { StoreProvider } from './utils/GlobalState';
 import Header from './components/Header';
 import Footer from './components/Footer';
-//import 'react-responsive-modal/styles.css';
-// import { Fade } from 'reactstrap';
+import AdminAccess from './pages/AdminAccess';
+import 'react-responsive-modal/styles.css';
+import { ProtectedRoute } from './components/Protected';
 
-//const cache = new InMemoryCache();
+import AuthService from "./utils/auth";
 
 const client = new ApolloClient({
   request: operation => {
@@ -33,10 +34,10 @@ const client = new ApolloClient({
   uri: '/graphql'
 });
 
-
 function App() {
 
   const [currentPage, handlePageChange] = useState('Home');
+  const [isAuthenticated, setAuthenticated] = useState(AuthService.loggedIn())
 
   //const propsMove = useSpring({opacity: 1, from: {opacity: 0}});
 
@@ -64,19 +65,23 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <StoreProvider>
-          <Header currentPage={currentPage}/>
-      
-              <Switch>
-                  <Route exact path="/" component={Home} />
-                  <Route exact path="/AdminPage" component={AdminPage} />
-                  <Route exact path="/Portfolio" component={Portfolio} />
-                  <Route exact path="/Contact" component={Contact} />
-                  <Route exact path="/About" component={About} />
-                  <Route exact path="/Map" component={Map} />
-                  <Route component={Home} />
-              </Switch>
-     
-          <Footer/>
+          <Header currentPage={currentPage} />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/AdminPage" component={AdminPage} />
+            <Route exact path="/Portfolio" component={Portfolio} />
+            <Route exact path="/Contact" component={Contact} />
+            <Route exact path="/About" component={About} />
+            <Route exact path="/Map" component={Map} />
+            <Route exact path="/AdminAccess" component={AdminAccess} />
+            <ProtectedRoute to="/admin_page"
+            // exact path="/AdminAccess" component={AdminAccess}
+            // isAuthenticated={isAuthenticated}
+            // component={AdminAccess} 
+            />
+            <ProtectedRoute component={AdminAccess} />
+          </Switch>
+          <Footer />
         </StoreProvider>
       </Router>
     </ApolloProvider>
