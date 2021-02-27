@@ -8,7 +8,7 @@ function Navtabs() {
     <div>
       <ul className="nav nav-tabs">
           <li className="nav-item">
-              <Link to="/Home">
+              <Link to="/">
                   Home
               </Link>
           </li>
