@@ -16,7 +16,7 @@ import './adminmodal.css'
 
 const AdminPage = (props) => {
   return (
-    <div>
+    <section>
       {Auth.loggedIn() ? (
         <div className="pad">
           <MsgList />
@@ -26,7 +26,7 @@ const AdminPage = (props) => {
       ) : (
           <span>Please log in.</span>
         )}
-    </div>
+    </section>
   );
 };
 
