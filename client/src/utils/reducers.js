@@ -4,6 +4,7 @@ import {
   DELETE_MESSAGE,
   UPDATE_TST,
   UPDATE_OWNER_INFO,
+  WRITE_OWNER_INFO
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -33,6 +34,12 @@ export const reducer = (state, action) => {
         // [action.field]: action.payload,
         ownerInfo: {...action.modalData}
       }
+      case WRITE_OWNER_INFO:
+        return {
+          ...state,
+          ownerInfo: {...state.owner}
+        }
+  
 
     default:
       return state;

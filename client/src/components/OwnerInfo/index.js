@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { GET_OWNER } from "../../utils/queries";
 import { UPDATE_OWNER } from "../../utils/mutations";
-import { UPDATE_OWNER_INFO } from "../../utils/actions";
+import { UPDATE_OWNER_INFO, WRITE_OWNER_INFO } from "../../utils/actions";
 import { Modal } from "react-responsive-modal";
 import { idbPromise } from "../../utils/helpers";
 import { useStoreContext } from "../../utils/GlobalState";
@@ -13,6 +13,9 @@ const ManageOwnerInfo = (props) => {
   // hook establishes state variable and dispatches fn to update state
   const [state, dispatch] = useStoreContext();
   const { loading, data } = useQuery(GET_OWNER);
+  const ownerData = data?.owner || {};
+  const [updateOwner, { error }] = useMutation(UPDATE_OWNER);
+  const [newOwnerInfo, setNewOwnerInfo] = useState({});
 
   useEffect(() => {
     if (data) {
@@ -33,9 +36,26 @@ const ManageOwnerInfo = (props) => {
     }
   }, [data, loading, dispatch]);
 
-  const ownerData = data?.owner || [];
-  const [updateOwner, { error }] = useMutation(UPDATE_OWNER);
-  const [newOwnerInfo, setNewOwnerInfo] = useState({});
+//     console.log('DATA: ', data)
+//     // console.log('DATA.OWNER: ', data.owner)
+//     console.log('STATE: ', state)
+//     console.log('STATE.DATA: ', state.data)
+//     console.log("OWNERDATA: ", ownerData)
+//   useEffect(() => {
+//       async function getOwner() {
+//           const owner = await idbPromise('owner', 'get');
+//           dispatch({
+//               type: WRITE_OWNER_INFO,
+//               owner: ownerData
+//           });
+//         };
+
+//       if (!ownerData) {
+//           getOwner();
+//       }
+//     }, [ownerData, dispatch]);
+
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();

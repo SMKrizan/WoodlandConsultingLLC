@@ -6,4 +6,7 @@ export const DELETE_MESSAGE = "DELETE_MESSAGE";
 // updates testimonial form with selected testimonial values
 export const UPDATE_TST = "UPDATE_TST";
 
+// captures updated owner info and saves to idb
 export const UPDATE_OWNER_INFO = "UPDATE_OWNER_INFO";
+
+export const WRITE_OWNER_INFO = "WRITE_OWNER_INFO";
