@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import mapStyles from './mapStyles';
 
+
 import './map.css';
 import {
     GoogleMap,
@@ -17,6 +18,8 @@ import { GET_PROJECTS } from "../../utils/queries";
 require('dotenv').config()
 
 function Map() {
+
+
     const { loading, data } = useQuery(GET_PROJECTS);
     const projectData = data?.projects || [];
     console.log("PROJECTS", data?.projects);
@@ -30,6 +33,8 @@ function Map() {
         console.log("nothing pulled....")
         return <h2>LOADING...</h2>;
     }
+
+
 
     return (
 

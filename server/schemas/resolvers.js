@@ -123,9 +123,9 @@ const resolvers = {
       if (context.owner) {
         const updatedMessageList = await Message.findByIdAndDelete(
         _id,
-        // {
-        //   $pull: _id
-        // },
+        {
+          $pull: { messages: _id}
+        },
         // {
         //   new: true
         // }

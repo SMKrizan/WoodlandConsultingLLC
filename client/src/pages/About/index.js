@@ -2,17 +2,17 @@ import React from 'react';
 import './about.css'
 // import Example from '../../assets/images/portfolio/UW_SOHE_4-min.JPG'
 // import linkedin from "../../assets/images/linkedin.png"
-import { useSpring } from 'react-spring';
+import {useSpring, animated} from 'react-spring'
 
 
 
 function About() {
-    const propsMove = useSpring(
-        {
-            opacity: 1,
-            from: { opacity: 0 },
-            config: { duration: 1000 }
-        });
+
+        const propsMove2 = useSpring(
+            {opacity: 1, 
+            from: {scale:10,transform: 'scale(0.5)'},
+            to: { scale: 150, transform: 'scale(1)', freq: '0.0, 0.0' },
+            config: { duration: 1000 }});    
     return (
         <section>
             <div className="about-section bg-about pad ">
@@ -33,15 +33,19 @@ function About() {
                 Airport projects throughout Wisconsin and the United States.</p>
                 </div>
                 <div className="about-img2">
-                    <img src={require(`../../assets/images/jess1sq.jpg`).default} alt='Jessica Walther' />
+                    <animated.div style={propsMove2}>
+                        <img src={require(`../../assets/images/jess1sq.jpg`).default} alt='Jessica Walther' />
+                    </animated.div>
                 </div>
             </div>
 
             <div className="pad margin-b80 about-section">
                 <div className="about-img1">
-                    <img src={require(`../../assets/images/portfolio/UW_SOHE_4-min.JPG`).default} alt='Jessica Walther' />
+                    <animated.div style={propsMove2}>
+                        <img src={require(`../../assets/images/portfolio/UW_SOHE_4-min.JPG`).default} alt='Jessica Walther' />
+                    </animated.div>
                 </div>
-                <div className="box-over glow3">
+                <div className="box-over glow3 margin-b80">
                     <h2>About Woodland Consulting LLC</h2>
                     <p>Woodland Consulting, LLC, established in August 2016, provides electrical
                     lighting design consulting services. Woodland implements comprehensive

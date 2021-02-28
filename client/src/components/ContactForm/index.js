@@ -6,22 +6,29 @@ import { ADD_MESSAGE } from "../../utils/mutations";
 import { GET_MESSAGES } from "../../utils/queries";
 
 const ContactForm = () => {
+
+    const [option, selectedOption] = useState("");
+// state for tracking which is checked
+// state for value, listener 
   const [formState, setFormState] = useState({
     userName: "",
     userEmail: "",
     userCompany: "",
     userMessage: "",
+    purpose: ""
   });
 
   const [addMessage, { error }] = useMutation(ADD_MESSAGE, {
     update(cache, { data: { addMessage } }) {
+        console.log(addMessage)
       try {
         const { messages } = cache.readQuery({ query: GET_MESSAGES });
-
         cache.writeQuery({
           query: GET_MESSAGES,
           data: { messages: [addMessage, ...messages] },
+          
         });
+        console.log(messages)
       } catch (e) {
         console.log(e);
       }
@@ -29,6 +36,12 @@ const ContactForm = () => {
   });
 
   const [errorMessage, setErrorMessage] = useState("");
+
+  const setRadio = (event) => {
+    selectedOption({radio: event.target.value})
+    setFormState({ ...formState, purpose: event.target.value });
+    console.log(event.target.value)
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -41,7 +54,8 @@ const ContactForm = () => {
           userCompany: formState.userCompany,
           userEmail: formState.userEmail,
           userMessage: formState.userMessage,
-        },
+          purpose: formState.purpose
+        }
       });
       return alert("Thanks for the message."), window.location.assign("/");
     } catch (e) {
@@ -69,20 +83,11 @@ const ContactForm = () => {
     if (!errorMessage) {
       setFormState({ ...formState, [e.target.name]: e.target.value });
     }
+    console.log(e.target.value, formState)
   }
 
-  //   const [purposeType, setPurposeType] = useState('Ask a question');
 
-  //   function handleOptionChange(e) {
-  //       if (e.target.name === "radio1") {
 
-  //           const setPurpose = setPurposeType({ ...purposeType, [e.target.name]: e.target.value})
-  //       } else {
-  //           (e.target.name === "radio2"); {
-  //           const setPurposeAgain = setPurposeType({ ...purposeType, [e.target.name]: e.target.value})
-  //           }
-  //       }
-  //   }
 
   return (
     <div className="pad">
@@ -141,36 +146,52 @@ const ContactForm = () => {
             />
           </Col>
         </FormGroup>
-        <div style={{}}>
-          <FormGroup check>
+
+        <div 
+        onChange={setRadio}
+        >
+        <FormGroup check >
             <Label check>
-              <Input type="radio" name="radio1" checked={true} /> Ask a Question
+              <Input 
+              type="radio" 
+              name="radio" 
+            //   defaultValue={formState.purpose}
+              value='Ask a question'
+            //   checked={option}
+              /> Ask a Question
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
               <Input
                 type="radio"
-                name="radio2"
-                // checked= {handleOptionChange}
+                name="radio"
+                value='Leave a comment'
+                // defaultValue={formState.purpose}
+                // checked={option}
               />
               Leave a comment
             </Label>
           </FormGroup>
-          <FormGroup check>
+         <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio3" /> Request a quote
+              <Input type="radio" name="radio" 
+              value="Request a quote"
+            //   defaultValue={formState.purpose}
+                // checked={option}
+              /> Request a quote
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio4" /> Provide a testimonial
+              <Input type="radio" name="radio" 
+              value="Provide a testimonial"
+            //   defaultValue={formState.purpose}
+                // checked={option}
+              /> Provide a testimonial
             </Label>
           </FormGroup>
         </div>
-        {/* <p className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}>
-            Character Count: {characterCount}/280
-            </p> */}
         <FormGroup row style={{ fontWeight: "bold", fontSize: "20px" }}>
           <Label for="userMessage" sm={2} size="lg">
             Message:
