@@ -86,6 +86,7 @@
 .maps-img {
   background-image: url('../../assets/images/maps.png');
   background-position: center;
+  background-size: 400px 385px;
   max-width: 300px;
   width:300px;
   margin-right: -10px;
@@ -94,7 +95,7 @@
   background-size: 400px 385px;
 }
 
-.hover-glow {
+  .hover-glow {
   box-shadow:  2px 2px 5px black;
 }
 .hover-glow :hover {
