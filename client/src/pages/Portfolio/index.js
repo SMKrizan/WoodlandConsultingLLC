@@ -28,11 +28,8 @@ function Portfolio() {
 
         <div className="darkplumbg pad">
             <h3>
-                View Projects: Click to see larger views
+                View Projects: Click to learn more
             </h3>
-            <h5>
-                View Projects: Click to see larger views
-            </h5>
         </div>
         <Gallery />
         <div className=" darkplumbg project-category-bg">
