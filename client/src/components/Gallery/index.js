@@ -3,8 +3,17 @@ import { useQuery} from '@apollo/react-hooks';
 
 import ImageModal from '../ImageModal'
 import { GET_PROJECTS } from '../../utils/queries';
+import {useSpring, animated} from 'react-spring'
+
 
 function Gallery() {
+
+    const propsMove2 = useSpring(
+        {opacity: 1, 
+        from: {scale:10,transform: 'scale(0.5)'},
+        to: { scale: 150, transform: 'scale(1)', freq: '0.0, 0.0' },
+        config: { duration: 2000 }});
+
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [currentPhoto, setCurrentPhoto] = useState();
 
@@ -30,14 +39,14 @@ function Gallery() {
         setCurrentPhoto({ ...project});
         setIsModalOpen(!isModalOpen);
     };
-    
 
     return (
         <div>
         {isModalOpen && <ImageModal onClose={toggleModal} currentPhoto={currentPhoto} />}
-        <section className="flex-ceround padtb">
-        {galleryImages.map(project => 
+        <animated.div style={propsMove2}>
 
+        <div className="flex-ceround padtb">
+        {galleryImages.map(project => 
                 <div            
                 onClick={() => toggleModal(project)}
                 key={project._id} 
@@ -48,10 +57,11 @@ function Gallery() {
                             <h4>{project.category.categoryName}</h4>
                         </div>
                     </div>
-                </div>
-            
+                </div> 
           )}
-          </section>
+          </div>
+          </animated.div>
+
           </div>
     )
 }

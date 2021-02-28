@@ -31,7 +31,7 @@
 }
 .about-img2 img{
     flex:1;
-    top: 100px;
+    top: 70px;
     right: 40px;
     height: 300px;
     width: 300px;
@@ -49,4 +49,32 @@
 }
 .margin-b80 {
     margin-bottom: 80px;
+  }
+
+
+  @media only screen and (max-width: 800px) {
+    .about-img1 img{
+        margin:10px;
+    }
+    .box-over {
+        width:100%;
+        padding: 20px;
+        top:0px;
+        left: 0%;
+    }
+    .box-over2 {
+        width:100%;
+        padding: 20px 20px 20px 20px;
+        top:10px;
+        margin-bottom: 0px;
+    }
+    .margin-b80 {
+        margin-bottom: 0px;
+      }
+      .about-img2 img{
+        top: 0px;
+        right: 0px;
+        height: 270px;
+        width: 270px;
+    }
   }
