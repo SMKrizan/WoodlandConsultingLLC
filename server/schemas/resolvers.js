@@ -4,7 +4,13 @@ const {
   UserInputError,
 } = require("apollo-server-express");
 
-const { Owner, Category, Project, Message, Testimonial } = require("../models");
+const {
+  Owner,
+  Category,
+  Project,
+  Message,
+  Testimonial,
+} = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
