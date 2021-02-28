@@ -9,7 +9,7 @@ return (
 <img src={logo} alt="logo"/>
 <h2>Woodland Consulting LLC</h2>
 </div>
-<Navtabs currentPage={props.currentPage} handlePageChange={props.handlePageChange}></Navtabs>
+<Navtabs></Navtabs>
 </header>
 )};
 

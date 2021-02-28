@@ -4,7 +4,7 @@
     background-image: url('../../assets/images/portfolio/DL_Rogers_4-min.JPG');
     background-size: cover;
     background-position: top;
-    min-height: 400px;
+    min-height: 300px;
     font-size: calc(14px + 1vmin);
     padding:40px;
     background-attachment: fixed;
@@ -34,9 +34,9 @@
   .project{
 
     padding:20px 5px;
-    height: 300px;
-    width: 300px;
-    max-width: 400px;
+    height: 250px;
+    width: 250px;
+    max-width: 300px;
 
   }
 
