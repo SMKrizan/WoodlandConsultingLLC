@@ -11,7 +11,7 @@ const StoreProvider = ({ value = [], ...props }) => {
         testimonials: [],
         testimonial: {},
         modalData: {},
-        ownerInfo: [],
+        ownerInfo: []
         // tstForm: false,
         // tstFormVals: {}
     });

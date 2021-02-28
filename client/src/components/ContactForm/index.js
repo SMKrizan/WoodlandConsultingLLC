@@ -1,34 +1,67 @@
-import React, { useState } from "react";
-import { useMutation } from "@apollo/react-hooks";
+import React, { useState, useEffect} from "react";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { FormGroup, Label, Input, Button, Col } from "reactstrap";
 import { validateEmail } from "../../utils/helpers";
 import { ADD_MESSAGE } from "../../utils/mutations";
 import { GET_MESSAGES } from "../../utils/queries";
+import { useStoreContext } from "../../utils/GlobalState";
+import { idbPromise } from "../../utils/helpers";
+import { SUBMIT_MESSAGE } from "../../utils/actions";
 
-const ContactForm = () => {
+const ContactForm = (props) => {
+    const [option, selectedOption] = useState();
+    const [state, dispatch] = useStoreContext();
 
-    const [option, selectedOption] = useState("");
-// state for tracking which is checked
-// state for value, listener 
-  const [formState, setFormState] = useState({
-    userName: "",
-    userEmail: "",
-    userCompany: "",
-    userMessage: "",
-    purpose: ""
-  });
+    const [formState, setFormState] = useState({
+      userName: "",
+      userEmail: "",
+      userCompany: "",
+      userMessage: "",
+    });
+
+    const { loading, data } = useQuery(GET_MESSAGES);
+    // const request = window.indexedDB.open('Message', 1);
+
+    useEffect(() => {
+      // if there's data to be stored
+      if (data) {
+        // let's store it in the global state object
+        dispatch({
+          type: SUBMIT_MESSAGE,
+          messages: data.messages
+        });
+        console.log("useEffect works, this is in it",data.messages)
+        // but let's also take each product and save it to IndexedDB using the helper function 
+        data.messages.forEach((message) => {
+          idbPromise('messages', 'put', message);
+        });
+  
+        //FOR OFFLINE add else if to check if `loading` is undefined in `useQuery()` Hook
+      } else if (!loading) {
+          // since we're offline, get all of the data from the `products` store
+          console.log("useEffect works, this is in it OFFLINE", dispatch)
+          idbPromise('messages', 'put').then((messages) => {  
+            // use retrieved data to set global state for offline browsing
+            dispatch({
+              type: SUBMIT_MESSAGE,
+              messages: messages
+            });
+          });
+      }
+    }, [data, loading, dispatch]);
+    
+
 
   const [addMessage, { error }] = useMutation(ADD_MESSAGE, {
     update(cache, { data: { addMessage } }) {
-        console.log(addMessage)
+      console.log(addMessage);
       try {
         const { messages } = cache.readQuery({ query: GET_MESSAGES });
         cache.writeQuery({
           query: GET_MESSAGES,
           data: { messages: [addMessage, ...messages] },
-          
         });
-        console.log(messages)
+        console.log(messages);
       } catch (e) {
         console.log(e);
       }
@@ -38,12 +71,13 @@ const ContactForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const setRadio = (event) => {
-    selectedOption({radio: event.target.value})
+    const useRadio = selectedOption({ radio: event.target.value });
     setFormState({ ...formState, purpose: event.target.value });
-    console.log(event.target.value)
-  }
+    console.log(event.target.value, useRadio);
+  };
 
   const handleSubmit = async (event) => {
+
     event.preventDefault();
     console.log(formState);
     try {
@@ -54,12 +88,12 @@ const ContactForm = () => {
           userCompany: formState.userCompany,
           userEmail: formState.userEmail,
           userMessage: formState.userMessage,
-          purpose: formState.purpose
-        }
+          purpose: formState.purpose,
+        },
       });
       return alert("Thanks for the message."), window.location.assign("/");
     } catch (e) {
-      console.error(e);
+      console.error("ERRORRRRR", e);
     }
   };
 
@@ -83,11 +117,8 @@ const ContactForm = () => {
     if (!errorMessage) {
       setFormState({ ...formState, [e.target.name]: e.target.value });
     }
-    console.log(e.target.value, formState)
+    console.log(e.target.value, formState);
   }
-
-
-
 
   return (
     <div className="pad">
@@ -147,18 +178,16 @@ const ContactForm = () => {
           </Col>
         </FormGroup>
 
-        <div 
-        onChange={setRadio}
-        >
-        <FormGroup check >
+        <div onChange={setRadio}>
+          <FormGroup check>
             <Label check>
-              <Input 
-              type="radio" 
-              name="radio" 
-            //   defaultValue={formState.purpose}
-              value='Ask a question'
-            //   checked={option}
-              /> Ask a Question
+              <Input
+                type="radio"
+                name="radio"
+                label="Ask a question"
+                value="Ask a question"
+              />{" "}
+              Ask a Question
             </Label>
           </FormGroup>
           <FormGroup check>
@@ -166,29 +195,29 @@ const ContactForm = () => {
               <Input
                 type="radio"
                 name="radio"
-                value='Leave a comment'
-                // defaultValue={formState.purpose}
-                // checked={option}
+                value="Leave a comment"
               />
               Leave a comment
             </Label>
           </FormGroup>
-         <FormGroup check>
+          <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio" 
-              value="Request a quote"
-            //   defaultValue={formState.purpose}
-                // checked={option}
-              /> Request a quote
+              <Input
+                type="radio"
+                name="radio"
+                value="Request a quote"
+              />{" "}
+              Request a quote
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio" 
-              value="Provide a testimonial"
-            //   defaultValue={formState.purpose}
-                // checked={option}
-              /> Provide a testimonial
+              <Input
+                type="radio"
+                name="radio"
+                value="Provide a testimonial"
+              />{" "}
+              Provide a testimonial
             </Label>
           </FormGroup>
         </div>
@@ -214,10 +243,12 @@ const ContactForm = () => {
             <p className="error-text">{errorMessage}</p>
           </div>
         )}
-        <Button type="submit" style={{ margin: "auto" }}>
+        <Button type="submit" style={{ margin: "auto" }}
+        // onClick = {() => addToAdmin} 
+        // onClick={addToAdmin}
+        >
           Submit
         </Button>
-        {/* <p>{!error && <span className="ml-2">Thank you for your message! We will be in touch soon!</span>}</p> */}
       </form>
     </div>
   );
