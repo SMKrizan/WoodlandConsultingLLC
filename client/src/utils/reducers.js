@@ -1,24 +1,25 @@
 import { useReducer } from "react";
 import {
+  UPDATE_TESTIMONIALS,
   SUBMIT_MESSAGE,
   DELETE_MESSAGE,
   UPDATE_TST,
   UPDATE_OWNER_INFO,
-  ADD_SUBMIT_MESSAGE
 } from "./actions";
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case ADD_SUBMIT_MESSAGE:
+    case UPDATE_TESTIMONIALS:
       return {
         ...state,
-        messages: [...action.messages]
+        testimonials: [...action.testimonials]
       }
     // user-submitted form message
     case SUBMIT_MESSAGE:
       return {
         ...state,
-        messages: [...action.messages]
+        // return new state object with an updated messages array
+        messages: action.messages
       };
     // admin-page message deletion
     case DELETE_MESSAGE:
@@ -39,7 +40,6 @@ export const reducer = (state, action) => {
         // [action.field]: action.payload,
         ownerInfo: [...action.ownerInfo]
       }
-
     default:
       return state;
   }

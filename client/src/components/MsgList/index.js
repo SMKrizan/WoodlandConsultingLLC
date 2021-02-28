@@ -24,27 +24,28 @@ const MessageList = (props) => {
         type: GET_MESSAGES,
         messages: data.messages
       });
-  
       // but let's also take each product and save it to IndexedDB using the helper function 
       data.messages.forEach((message) => {
         idbPromise('messages', 'put', message);
+        console.log(message)
       });
     }
   }, [data, loading, dispatch]);
 
-  useEffect(() => {
-    async function getMessage() {
-      const sentMessage = await idbPromise('messages', 'get');
-      dispatch({ 
-        type: ADD_SUBMIT_MESSAGE, 
-        messages: [...sentMessage] });
-    };
-    console.log("in useffect for msglist")
-    if (!state.messages.length) {
-      getMessage();
-    }
-  }, [state.messages.length, dispatch]);
+  // useEffect(() => {
+  //   async function getMessage() {
+  //     const sentMessage = await idbPromise('messages', 'get');
+  //     console.log(sentMessage)
+  //     dispatch({ 
+  //       type: ADD_SUBMIT_MESSAGE, 
+  //       messages: [sentMessage] });
+  //   };
+  //   console.log("in useffect for msglist", state.messages)
 
+  //   if (!state.messages.length) {
+  //     getMessage();
+  //   }
+  // }, [state.messages.length, dispatch]);
 
   const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
     update(cache, { data: { removeMessage } }) {

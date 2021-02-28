@@ -14,7 +14,7 @@ import "react-responsive-modal/styles.css";
 
 // import TstUpdate from '../TstUpdate';
 import { GET_TESTIMONIALS } from "../../utils/queries";
-// import { UPDATE_TST } from "../../utils/actions";
+import { UPDATE_TESTIMONIALS } from "../../utils/actions";
 import { UPDATE_TESTIMONIAL } from "../../utils/mutations";
 // import Auth from "../../utils/auth";
 
@@ -27,13 +27,13 @@ const TestimonialList = (props) => {
   // hook responds to global state object
   const { loading, data } = useQuery(GET_TESTIMONIALS);
   const tstData = data?.testimonials || [];
-  
+
   useEffect(() => {
     // if there's data to be stored
     if (data) {
       // let's store it in the global state object
       dispatch({
-        type: GET_TESTIMONIALS,
+        type: UPDATE_TESTIMONIALS,
         testimonials: data.testimonials
       });
   

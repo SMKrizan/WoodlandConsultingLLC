@@ -16,7 +16,7 @@ export function idbPromise(storeName, method, object) {
     request.onupgradeneeded = function (e) {
       const db = request.result;
       // creates object store for each type of data and sets "primary" key index to data `_id`
-      db.createObjectStore("messages", { keyPath: "_id" });
+      db.createObjectStore("messages", { autoIncrement: true });
       db.createObjectStore("owner", { keyPath: "_id" });
       db.createObjectStore("projects", { keyPath: "_id" });
       db.createObjectStore("testimonials", { keyPath: "_id" });
@@ -73,4 +73,3 @@ export function idbPromise(storeName, method, object) {
   });
 }
 
-window.addEventListener('online', idbPromise)

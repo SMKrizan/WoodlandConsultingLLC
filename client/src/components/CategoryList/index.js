@@ -19,7 +19,6 @@ function CategoryList() {
             type: UPDATE_PROJECTS,
             projects: data.projects
           });
-      
           // but let's also take each product and save it to IndexedDB using the helper function 
           data.projects.forEach((project) => {
             idbPromise('projects', 'put', project);
@@ -33,7 +32,7 @@ function CategoryList() {
             });
         }
       }, [data, loading, dispatch]);
-      
+
     if (loading) {
       return <div>Loading...</div>;
     }

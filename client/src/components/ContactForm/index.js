@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { FormGroup, Label, Input, Button, Col } from "reactstrap";
 import { validateEmail } from "../../utils/helpers";
 import { ADD_MESSAGE } from "../../utils/mutations";
@@ -9,23 +9,45 @@ import { idbPromise } from "../../utils/helpers";
 import { SUBMIT_MESSAGE } from "../../utils/actions";
 
 const ContactForm = (props) => {
-    const [option, selectedOption] = useState();
-    const [state, dispatch] = useStoreContext();
+  const [option, selectedOption] = useState();
+  const [state, dispatch] = useStoreContext();
+const { loading, data } = useQuery(GET_MESSAGES);
 
-    const addToAdmin = (message) => {
+  const addToAdmin = (message) => {
+      dispatch({
+          type: SUBMIT_MESSAGE,
+          messages: { ...message}
+      });
+      console.log("in addToAdmin", message)
+      idbPromise('messages', 'put', {...message})
+  };
+
+   useEffect(() => {
+       console.log("data", data)
+      if (data) {
         dispatch({
             type: SUBMIT_MESSAGE,
-            messages: { ...message}
-        });
-        console.log("in addToAdmin")
-        idbPromise('messages', 'put', {...message})
-    }
-//   useEffect(() => {
+            messages: data.messages,
+          });
+          console.log("foreach", data.messages)
+          data.messages.forEach((message) => {
+              idbPromise("messages", "put", message)
+          })
+        } else if (!loading) {
+            idbPromise("messages", "put").then((submittedMessage) => {
+                dispatch({
+                    type: SUBMIT_MESSAGE,
+                    messages: submittedMessage
+                });
+            });
+            console.log("DATA", data)
+            }
+        }, [ data, loading, dispatch]);
 //     async function submitMessage() {
-//       const message = await idbPromise('messages', 'get');
+//       const message = await idbPromise("messages", "get");
 //       dispatch({ type: SUBMIT_MESSAGE, messages: [...message] });
-//     };
-  
+//     }
+
 //     if (!state.messages.length) {
 //       submitMessage();
 //     }
@@ -47,7 +69,6 @@ const ContactForm = (props) => {
           query: GET_MESSAGES,
           data: { messages: [addMessage, ...messages] },
         });
-        console.log(messages);
       } catch (e) {
         console.log(e);
       }
@@ -59,15 +80,13 @@ const ContactForm = (props) => {
   const setRadio = (event) => {
     const useRadio = selectedOption({ radio: event.target.value });
     setFormState({ ...formState, purpose: event.target.value });
-    console.log(event.target.value, useRadio);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       // adds messages to database
-      await addMessage({
+      const addedMsg = await addMessage({
         variables: {
           userName: formState.userName,
           userCompany: formState.userCompany,
@@ -76,6 +95,7 @@ const ContactForm = (props) => {
           purpose: formState.purpose,
         },
       });
+
       return alert("Thanks for the message."), window.location.assign("/");
     } catch (e) {
       console.error(e);
@@ -85,7 +105,6 @@ const ContactForm = (props) => {
   function handleChange(e) {
     if (e.target.name === "email") {
       const isValid = validateEmail(e.target.value);
-      console.log(isValid);
       if (!isValid) {
         setErrorMessage("Your email is invalid.");
       } else {
@@ -102,7 +121,6 @@ const ContactForm = (props) => {
     if (!errorMessage) {
       setFormState({ ...formState, [e.target.name]: e.target.value });
     }
-    console.log(e.target.value, formState);
   }
 
   return (
@@ -177,31 +195,19 @@ const ContactForm = (props) => {
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input
-                type="radio"
-                name="radio"
-                value="Leave a comment"
-              />
+              <Input type="radio" name="radio" value="Leave a comment" />
               Leave a comment
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input
-                type="radio"
-                name="radio"
-                value="Request a quote"
-              />{" "}
+              <Input type="radio" name="radio" value="Request a quote" />{" "}
               Request a quote
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input
-                type="radio"
-                name="radio"
-                value="Provide a testimonial"
-              />{" "}
+              <Input type="radio" name="radio" value="Provide a testimonial" />{" "}
               Provide a testimonial
             </Label>
           </FormGroup>
@@ -228,9 +234,11 @@ const ContactForm = (props) => {
             <p className="error-text">{errorMessage}</p>
           </div>
         )}
-        <Button type="submit" style={{ margin: "auto" }}
-        // onClick = {() => addToAdmin} 
-        onClick={addToAdmin}
+        <Button
+          type="submit"
+          style={{ margin: "auto" }}
+          onClick = {() => addToAdmin}
+          
         >
           Submit
         </Button>

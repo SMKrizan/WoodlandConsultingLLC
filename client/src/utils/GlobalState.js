@@ -15,7 +15,7 @@ const StoreProvider = ({ value = [], ...props }) => {
         // tstForm: false,
         // tstFormVals: {}
     });
-    console.log('GlobalState-data: ', state);
+    // console.log('GlobalState-data: ', state);
     return <Provider value={[state, dispatch]} {...props} />;
 };
 
