@@ -13,6 +13,7 @@ import { idbPromise } from '../../utils/helpers';
 import "react-responsive-modal/styles.css";
 
 import { GET_TESTIMONIALS } from "../../utils/queries";
+import { UPDATE_TST } from "../../utils/actions";
 import { UPDATE_TESTIMONIAL } from "../../utils/mutations";
 
 const TestimonialList = (props) => {
@@ -28,7 +29,7 @@ const TestimonialList = (props) => {
     if (data) {
       // let's store it in the global state object
       dispatch({
-        type: GET_TESTIMONIALS,
+        type: UPDATE_TST,
         testimonials: data.testimonials
       });
 
