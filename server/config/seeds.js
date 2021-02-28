@@ -2,6 +2,7 @@ const db = require('./connection');
 const { Category, Project, Owner, Testimonial, Message } = require('../models');
 
 db.once('open', async () => {
+    console.log("starting")
     await Category.deleteMany();
 
     const categories = await Category.insertMany([
