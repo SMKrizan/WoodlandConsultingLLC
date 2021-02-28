@@ -30,7 +30,6 @@ function Portfolio() {
 
       <div className="darkplumbg pad">
         <h3>View Projects: Click to learn more</h3>
-        <h5>View Projects: Click to learn more</h5>
       </div>
       <Gallery />
       <div className=" darkplumbg project-category-bg">
