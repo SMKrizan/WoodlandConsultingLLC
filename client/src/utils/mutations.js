@@ -1,7 +1,5 @@
 import gql from 'graphql-tag';
 
-// names/format... order(?) must match those within server setup
-
 // $email and $password passed as arguments for login; returns logged-in user's data and token
 export const OWNER_LOGIN = gql`
 mutation login($ownerEmail: String!, $password: String!) {
@@ -27,6 +25,7 @@ mutation updateOwner($ownerEmail: String, $ownerName: String, $address: String) 
   
 `;
 
+// future functionality
 export const ADD_TESTIMONIAL = gql`
   mutation addTestimonial($tstName: String!, $tstCompany: String!, $tstMessage: String!) {
     addTestimonial(tstName: $tstName, tstCompany: $tstCompany, tstMessage: $tstMessage) {
@@ -53,6 +52,7 @@ mutation updateTestimonial($_id: ID! $tstName: String, $tstCompany: String, $tst
     }
 `;
 
+// future functionality
 export const REMOVE_TESTIMONIAL = gql`
 mutation removeTestimonial($_id: ID!) {
     removeTestimonial(_id: $id) {

@@ -15,9 +15,3 @@ const categorySchema = new Schema(
 const Category = mongoose.model("Category", categorySchema);
 
 module.exports = Category;
-
-// delete .git
-// open terminal in this project in the root and 'git init'
-// 'git remote add origin https://github.com/SMKrizan/WoodlandConsultingLLC.git'
-// 'git branch -m main'
-// follow heroku

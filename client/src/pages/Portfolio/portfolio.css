@@ -22,8 +22,6 @@
     padding: 20px;
 }
 
-
-
 /* Gallery */
 .gallery {
     display: flex;
@@ -52,7 +50,6 @@
     /* border-radius: 50%; */
     box-shadow: 0px 10px 15px var(--darkplum);
   }
-
   
   .project-img::after {
     content: "";
@@ -67,8 +64,7 @@
     transition: .5s linear;
   }
   
-  
-  .project-img h3 {
+    .project-img h3 {
     font-size: 18px;
     position: relative;
     text-transform: uppercase;
@@ -87,8 +83,6 @@
     z-index: 1;
   }
   
-
-  
   .project:hover .project-img::after {
     opacity: 1;
   }
@@ -102,7 +96,6 @@
       width: 100%;
       padding:20px;
   }
-
 
   .project-category {
     flex:1;

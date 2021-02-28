@@ -52,7 +52,6 @@
   flex:1;
   left: -3%;
   top:80px;
-  /* max-width:60%; */
   padding: 40px;
   background-color: var(--darkplum);
   position: relative;
@@ -64,14 +63,12 @@
   position: relative;
   box-shadow: -10px 7px 5px rgba(270, 270, 210, .8);
 }
-
 .pad-b80 {
   padding-bottom: 80px;
 }
 .pad40lr {
   padding:0px 60px;
 }
-
 .maps-home {
   max-width: 300px;
   min-width: 300px;
@@ -83,7 +80,6 @@
   font-size: 18px;
   text-align:center;
 }
-
 .maps-img {
   background-image: url('../../assets/images/maps.png');
   background-position: center;

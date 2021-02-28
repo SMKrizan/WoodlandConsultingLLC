@@ -3,8 +3,6 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-// import {useSpring, animated} from 'react-spring'
-
 import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';

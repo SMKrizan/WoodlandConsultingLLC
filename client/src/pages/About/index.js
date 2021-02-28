@@ -1,13 +1,8 @@
 import React from 'react';
 import './about.css'
-// import Example from '../../assets/images/portfolio/UW_SOHE_4-min.JPG'
-// import linkedin from "../../assets/images/linkedin.png"
 import {useSpring, animated} from 'react-spring'
 
-
-
 function About() {
-
         const propsMove2 = useSpring(
             {opacity: 1, 
             from: {scale:10,transform: 'scale(0.5)'},
@@ -18,8 +13,8 @@ function About() {
             <div className="about-section bg-about pad ">
                 <div className="box-over2 glow3">
                     <h2>About Jessica Walther</h2>
-                    <p>The owner, Jessica A. Walther, is a certified, professional lighting designer with
-                    22 years’ experience. Mrs. Walther offers strong project coordination skills and
+                    <p>Jessica A. Walther, principal and founder, is a certified, professional lighting designer with
+                    22 years’ experience. Ms. Walther offers strong project coordination skills and
 
                     has served as Project Manager and Construction Administrator on many large-
                     scale lighting projects. Her skill set includes performing photometric analysis,
@@ -58,7 +53,6 @@ function About() {
                 building and energy codes.</p>
                 </div>
             </div>
-
         </section>
     )
 };

@@ -4,26 +4,19 @@ import { Table } from "reactstrap";
 import "./MsgList.css";
 import { GET_MESSAGES } from "../../utils/queries";
 import { REMOVE_MESSAGE } from "../../utils/mutations";
-// import { useStoreContext } from "../../utils/GlobalState";
-// import { idbPromise } from "../../utils/helpers";
-// import Auth from "../../utils/auth";
 
 const MessageList = (props) => {
   const [message, newMessageData] = useState({});
 
   const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
     update(cache, { data: { removeMessage } }) {
-      console.log(removeMessage);
       try {
         const { messages } = cache.readQuery({ query: GET_MESSAGES });
-        console.log(messages, "=====", removeMessage._id);
         const newMessageArray = messages.filter((message) => removeMessage._id !== message._id);
-        console.log(newMessageArray)
         cache.writeQuery({
           query: GET_MESSAGES,
           data: { messages: [...newMessageArray] },
         });
-        console.log(messages, removeMessage._id);
       } catch (e) {
         console.log(e);
       }
@@ -41,17 +34,13 @@ const MessageList = (props) => {
   }
 
   const handleSubmit = async (messageData) => {
-    console.log("handlesubmit", messageData._id);
     const { data } = await removeMessage({
       variables: { _id: messageData._id },
 
     });
-    console.log(data)
-
     newMessageData({
       ...message, data
     });
-    console.log(newMessageData)
   };
 
   return (
