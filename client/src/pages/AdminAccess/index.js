@@ -1,24 +1,40 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-
-import Auth from "../../utils/auth";
-import LoginForm from "../../components/LoginForm";
-import { Card, Modal, Button, Tab } from "react-bootstrap";
+// import React, { useState } from "react";
+import React from "react";
+// import { Link } from "react-router-dom";
+import { useAuth0 } from '@auth0/auth0-react';
+// import Auth from "../../utils/auth";
+import Login from "../../components/Login";
+import Logout from "../../components/Logout";
+import AdminPage from "../AdminPage";
+// import { Card, Modal, Button, Tab } from "react-bootstrap";
 
 function AdminAccess() {
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
+  const { isLoading } = useAuth0();
+
+  if (isLoading) return <div>Loading..</div>
 
   return (
-    <section>
-      <Link to="/">
+    <>
+      {/* <Link to="/">
         ← Go to Homepage
-      </Link>
+      </Link> */}
 
-      <div className="flex-ceround">
+      <Login />
+      <Logout />
+      <AdminPage />
+    </>
+  );
+};
+export default AdminAccess;
+
+/* <div className="flex-ceround">
         <div>
           {Auth.loggedIn() ? (
             <>
-              <Button onClick={Auth.logout}>Logout</Button>
+              <Logout>
+                <Button onClick={Auth.logout}>Logout</Button>
+              </Logout>
             </>
           ) : (
               <Button onClick={() => setShowModal(true)}>Admin Login</Button>
@@ -41,15 +57,10 @@ function AdminAccess() {
               </Modal.Header>
               <Modal.Body>
                 <Tab.Pane eventKey="login">
-                  <LoginForm handleModalClose={() => setShowModal(false)} />
+                  <Login handleModalClose={() => setShowModal(false)} />
                 </Tab.Pane>
               </Modal.Body>
             </Modal>
           </Card>
         </div>
-      </div>
-    </section>
-
-  );
-};
-export default AdminAccess;
+      </div> */

@@ -23,8 +23,10 @@
   },
   "homepage": "https://github.com/SMKrizan/WoodlandConsultingLLC#readme",
   "dependencies": {
+    "@auth0/auth0-react": "^1.3.0",
     "if-env": "^1.0.4",
     "nodemon": "^2.0.7",
+    "react-json-pretty": "^2.2.0",
     "react-responsive-modal": "^6.0.1",
     "react-spring": "^8.0.27"
   },

@@ -3,28 +3,26 @@ import MsgList from "../../components/MsgList";
 import TstList from "../../components/TstList";
 import OwnerInfo from "../../components/OwnerInfo";
 import './adminmodal.css'
-import Auth from "../../utils/auth";
+// import Auth from "../../utils/auth";
+import { useAuth0 } from '@auth0/auth0-react';
+import JSONPretty from 'react-json-pretty';
 
-const AdminPage = (props) => {
+const AdminPage = () => {
+  const { user, isAuthenticated } = useAuth0();
+
   return (
-    <section>
-      {Auth.loggedIn() ? (
-        <div className="pad">
-          <MsgList />
-          <TstList />
-          <OwnerInfo />
-          <div className="pad">
-              <div className="flex-ceround">
-              <div>
-                    <button onClick={Auth.logout}>Logout</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      ) : (
-          <span>Please log in.</span>
-        )}
-    </section>
+
+    isAuthenticated && (
+      <div>
+        <img src={user.picture} alt={user.name} />
+        <h2>{user.name}</h2>
+        <p>{user.email}</p>
+        <JSONPretty data={user} />
+        <MsgList />
+        <TstList />
+        <OwnerInfo />
+      </div>
+    )
   );
 };
 
