@@ -31,7 +31,7 @@ export const reducer = (state, action) => {
       return {
         ...state,
         // [action.field]: action.payload,
-        ownerInfo: [...action.ownerInfo]
+        ownerInfo: {...action.modalData}
       }
 
     default:
