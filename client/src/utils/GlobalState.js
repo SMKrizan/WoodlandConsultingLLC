@@ -12,10 +12,7 @@ const StoreProvider = ({ value = [], ...props }) => {
         testimonial: {},
         modalData: {},
         ownerInfo: {},
-        // tstForm: false,
-        // tstFormVals: {}
     });
-    console.log('GlobalState-data: ', state);
     return <Provider value={[state, dispatch]} {...props} />;
 };
 

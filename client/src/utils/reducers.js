@@ -30,7 +30,6 @@ export const reducer = (state, action) => {
     case UPDATE_OWNER_INFO:
       return {
         ...state,
-        // [action.field]: action.payload,
         ownerInfo: {...action.modalData}
       }
 

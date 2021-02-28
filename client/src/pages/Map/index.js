@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import mapStyles from './mapStyles';
 
@@ -19,10 +18,8 @@ require('dotenv').config()
 
 function Map() {
 
-
     const { loading, data } = useQuery(GET_PROJECTS);
     const projectData = data?.projects || [];
-    console.log("PROJECTS", data?.projects);
 
     const [currentProject, setCurrentProject] = useState(null);
 
@@ -33,8 +30,6 @@ function Map() {
         console.log("nothing pulled....")
         return <h2>LOADING...</h2>;
     }
-
-
 
     return (
 
@@ -56,7 +51,6 @@ function Map() {
                     onClick={() => {
                         currentProject && setCurrentProject(null)
                         setCurrentProject(item);
-                        console.log("data", item)
                     }}
                     defaultIcon={{
                         url: `https://drive.google.com/uc?id=11k7iv_DCI6TdiMbnPTjxNDh42JdMymzy`,

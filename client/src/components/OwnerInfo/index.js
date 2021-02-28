@@ -6,7 +6,6 @@ import { UPDATE_OWNER_INFO } from "../../utils/actions";
 import { Modal } from "react-responsive-modal";
 import { idbPromise } from "../../utils/helpers";
 import { useStoreContext } from "../../utils/GlobalState";
-
 import "react-responsive-modal/styles.css";
 
 const ManageOwnerInfo = (props) => {
@@ -20,10 +19,8 @@ const ManageOwnerInfo = (props) => {
         type: UPDATE_OWNER_INFO,
         ownerInfo: data.owner,
       });
-      console.log("IFdata.owner: ", data.owner);
       idbPromise("owner", "put", data.owner);
     } else if (!loading) {
-        console.log("ELSEIFdata.owner: ", data.owner);
         idbPromise("owner", "get").then((owner) => {
             dispatch({
                 type: UPDATE_OWNER_INFO,
@@ -53,7 +50,6 @@ const ManageOwnerInfo = (props) => {
       type: UPDATE_OWNER_INFO,
       ownerInfo: mutationResponse.data,
     });
-    console.log("newOwnerInfo: ", newOwnerInfo);
     idbPromise("owner", "get", { newOwnerInfo });
   };
 
@@ -69,7 +65,6 @@ const ManageOwnerInfo = (props) => {
     });
   }
   const [open, setOpen] = useState(false);
-  // const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
   return (

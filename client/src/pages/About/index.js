@@ -1,7 +1,5 @@
 import React from 'react';
 import './about.css'
-// import Example from '../../assets/images/portfolio/UW_SOHE_4-min.JPG'
-// import linkedin from "../../assets/images/linkedin.png"
 import {useSpring, animated} from 'react-spring'
 
 
