@@ -1,18 +1,10 @@
-
 const bcrypt = require('bcrypt');
 const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
 
-const {
-  Owner,
-  // Category,
-  Project,
-  Message,
-  Testimonial,
-} = require("../models");
-const Category = require('../models/Category');
+const { Owner, Category, Project, Message, Testimonial, } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
