@@ -2,16 +2,18 @@
 
 ![license](https://img.shields.io/badge/MIT-License-brightgreen)
 <br>
- [View Live Site](hhttps://woodland-consulting.herokuapp.com/)
+ [View Live Site](https://woodland-consulting.herokuapp.com/)
 <br>
  [Github](https://github.com/SMKrizan/WoodlandConsultingLLC)
 </br>
-</br>
+
+
 ## Description 
 
 Our team were commissioned by WoodlandConsulting LLC to create an interactive website to increase web visibility and bring in new leads. We worked with the owner Jessica Walther to identify Woodland Consulting's needs and brand while researching her competitors to understand the lighting field and where we could add features to set her business apart. The final website features an intuitive and simple admin dashboard for retrieving messages and updating information on the site, while the client side display's her work with a focus on the breadth and depth of her experience. 
+
 </br>
-</br>
+
 ## Key Features
 * HomePage Features: randomized testimonial chosen on the admin page, brief about section, links to key features on the site, contact form.
 * About Features: sections about Jessica and Woodland Consulting.
@@ -25,13 +27,13 @@ JWT authentication,
 PWA,
 Queries and mutations for retrieving/adding/updating and deleting data,
 Animations with React Spring
-</br>
-</br>
-## Installation
-Download files from [this github repo](https://cgsdesign.github.io/portfolio-cgs). Instal [React](https://reactjs.org/docs/getting-started.html) & additional node modules via npm install in root, server, and client folders.
-</br>
+
 </br>
 
+## Installation
+Download files from this github repo. Instal React & additional node modules via npm install in root, server, and client folders.
+
+</br>
 
 ## Live Site Stills
 ![Home](./READMEimages/home.png)
@@ -47,7 +49,7 @@ Download files from [this github repo](https://cgsdesign.github.io/portfolio-cgs
 ![Admin](./READMEimages/admin.png)
 
 
-## <a name="badge">Badges/Technologies</a>
+## Badges/Technologies
 
 ![badge](https://img.shields.io/badge/MERN-Stack-orange)
 ![badge](https://img.shields.io/badge/Apollo-brightgreen)
@@ -58,6 +60,9 @@ Download files from [this github repo](https://cgsdesign.github.io/portfolio-cgs
 ![badge](https://img.shields.io/badge/ServiceWorkers-brightgreen)
 ![badge](https://img.shields.io/badge/JS-brightgreen)
 ![badge](https://img.shields.io/badge/CSS-brightgreen)
+![badge](https://img.shields.io/badge/React-brightgreen)
+![badge](https://img.shields.io/badge/NodeJS-brightgreen)
+![badge](https://img.shields.io/badge/Express-brightgreen)
 ![badge](https://img.shields.io/badge/Heroku-brightgreen)
 ![badge](https://img.shields.io/badge/JWT-brightgreen)
 ![badge](https://img.shields.io/badge/ifEnv-brightgreen)
@@ -67,12 +72,10 @@ Download files from [this github repo](https://cgsdesign.github.io/portfolio-cgs
 We are operating with an MIT license, for more information [see the full language](https://choosealicense.com/licenses/mit)
 
 </br>
-</br>
 
 ## Contributing
   Please follow the standard Contributor Covenant when looking to make any additions to this project. The Standard Contributor Covenant can be found at [https://www.contributor-covenant.org/](https://www.contributor-covenant.org/)
 
-</br>
 </br>
 
 ## Creators
@@ -84,11 +87,15 @@ We are operating with an MIT license, for more information [see the full languag
 ### Maryna Pryadka
 * email:  marynapryaka@gmail.com
 * github: https://github.com/MarynaPR
-</br>
+
 ### Joanna Grosshans
 * email: joannagrosshans2@gmail.com
-* github: https://github.com/SMKrizan
+* github: https://github.com/jgrossh2
 
 ### Sara Krizan
 * email: SMKrizan@gmail.com
 * github: https://github.com/SMKrizan
+
+
+## Questions
+### Please contact us with any questions.
