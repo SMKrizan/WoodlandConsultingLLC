@@ -34,12 +34,10 @@ const ContactForm = () => {
   const setRadio = (event) => {
     selectedOption({ radio: event.target.value });
     setFormState({ ...formState, purpose: event.target.value });
-    console.log(event.target.value);
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       // adds messages to database
       await addMessage({
@@ -60,7 +58,6 @@ const ContactForm = () => {
   function handleChange(e) {
     if (e.target.name === "email") {
       const isValid = validateEmail(e.target.value);
-      console.log(isValid);
       if (!isValid) {
         setErrorMessage("Your email is invalid.");
       } else {
@@ -77,7 +74,6 @@ const ContactForm = () => {
     if (!errorMessage) {
       setFormState({ ...formState, [e.target.name]: e.target.value });
     }
-    console.log(e.target.value, formState);
   }
 
   return (

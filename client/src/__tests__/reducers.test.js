@@ -1,9 +1,6 @@
 import {
     UPDATE_MESSAGES,
     UPDATE_TESTIMONIALS,
-    // ADD_TESTIMONIALS,
-    // REMOVE_TESTIMONIALS,
-    // UPDATE_OWNER_INFO
 } from '../utils/actions'
 import { reducer } from '../utils/reducers';
 
@@ -37,17 +34,4 @@ test('UPDATE_TESTIMONIALS', () => {
     expect(initialState.testimonials.length).toBe(0);
 });
 
-// test('UPDATE_OWNER_INFO', () => {
-//     let newState = reducer(initialState, {
-//         type: UPDATE_OWNER_INFO,
-//         ownerInfo: {
-//             ownerName: "Jessica A. Walther",
-//             ownerEmail: "woodlandconsultingllc@gmail.com",
-//             address: "Slinger, WI"
-//         }
-//     });
-
-//     expect(newState.ownerInfo.ownerEmail).toEqual("woodlandconsultingllc@gmail.com");
-//     expect(initialState.ownerInfo.ownerEmail).toEqual("jess@gmail.com");
-// })
 

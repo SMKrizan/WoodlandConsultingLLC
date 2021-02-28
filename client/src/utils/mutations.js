@@ -1,7 +1,5 @@
 import gql from 'graphql-tag';
 
-// names/format... order(?) must match those within server setup
-
 // $email and $password passed as arguments for login; returns logged-in user's data and token
 export const OWNER_LOGIN = gql`
 mutation login($ownerEmail: String!, $password: String!) {

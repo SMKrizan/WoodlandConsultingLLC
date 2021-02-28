@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { useQuery} from '@apollo/react-hooks';
 import { GET_PROJECTS} from '../../utils/queries';
 import './CategoryList.css'
@@ -30,14 +30,12 @@ function CategoryList() {
       return <div>Loading...</div>;
     }
     if (!projectData) {
-        console.log("no testimonials pulled....")
         return <h2>LOADING...</h2>;
       }
     //libraries
     const libraries = projectData.filter((project) => project.category.categoryName == 'Libraries/Schools');
     const isolatedL = libraries.map((project) => project.company)
      let cleanedLibraries = [...new Set(isolatedL)]
-     console.log("libraries", cleanedLibraries)
 
     //commercial
     const commercial = projectData.filter((project) => project.category.categoryName == 'Commercial/Office');

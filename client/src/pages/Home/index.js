@@ -16,17 +16,15 @@ function Home(props) {
 
     const { loading, data} = useQuery(GET_TESTIMONIALS);
     const testimonialData = data?.testimonials ;
-    console.log(data?.testimonials)
+
     if (loading) {
         return <div>Loading...</div>;
     }
     if (!testimonialData) {
-        console.log("no testimonials pulled....")
         return <h2>LOADING...</h2>;
     }
 
       let randomQuote = function(testimonialData){
-         console.log("running randomQuote")
          const chosenQuote = testimonialData[Math.floor(Math.random()*testimonialData.length)]
         return chosenQuote
        }

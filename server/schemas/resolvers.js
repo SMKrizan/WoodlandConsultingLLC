@@ -1,17 +1,10 @@
-
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 const {
   AuthenticationError,
   UserInputError,
 } = require("apollo-server-express");
 
-const {
-  Owner,
-  Category,
-  Project,
-  Message,
-  Testimonial,
-} = require("../models");
+const { Owner, Category, Project, Message, Testimonial } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -20,15 +13,14 @@ const resolvers = {
       return await Category.find();
     },
     projects: async () => {
-      return await Project.find().populate('category');
+      return await Project.find().populate("category");
     },
     owner: async () => {
-
       const owner = await Owner.findOne();
-      return owner
+      return owner;
     },
     projects: async () => {
-      return await Project.find().populate('category');
+      return await Project.find().populate("category");
     },
     projectsByCategory: async (parent, { category }) => {
       const params = {};
@@ -37,7 +29,7 @@ const resolvers = {
       }
 
       const project = Project.find({ category });
-      return project
+      return project;
     },
     projectById: async (parent, { _id }) => {
       return Project.findOne({ _id });
@@ -49,9 +41,8 @@ const resolvers = {
       return await Message.find();
     },
     clientList: async () => {
-      return await Project.find().populate('category');
+      return await Project.find().populate("category");
     },
-
   },
   Mutation: {
     login: async (parent, { ownerEmail, password }) => {
@@ -70,9 +61,13 @@ const resolvers = {
     },
     updateOwner: async (parent, args, context) => {
       if (context.owner) {
-        const updatedOwner = await Owner.findByIdAndUpdate({ _id: context.owner._id }, args, {
-          new: true,
-        });
+        const updatedOwner = await Owner.findByIdAndUpdate(
+          { _id: context.owner._id },
+          args,
+          {
+            new: true,
+          }
+        );
         return updatedOwner;
       }
       throw new AuthenticationError("Not logged in");
@@ -85,51 +80,54 @@ const resolvers = {
         });
         return testimonial;
       }
-      throw new AuthenticationError("You must be logged in to perform this action.");
+      throw new AuthenticationError(
+        "You must be logged in to perform this action."
+      );
     },
     updateTestimonial: async (parent, args, context) => {
       if (context.owner) {
         const updatedTestimonial = await Testimonial.findByIdAndUpdate(
-          args._id, args,
+          args._id,
+          args,
           {
             new: true,
           }
         );
         return updatedTestimonial;
-
       }
 
-      throw new AuthenticationError("You must be logged in to perform this action.");
+      throw new AuthenticationError(
+        "You must be logged in to perform this action."
+      );
     },
     removeTestimonial: async (parent, { _id }, context) => {
       if (context.owner) {
-        const updatedTestimonials = await Testimonial.findByIdAndDelete(
-          _id,
-        );
+        const updatedTestimonials = await Testimonial.findByIdAndDelete(_id);
         return updatedTestimonials;
       }
-      throw new AuthenticationError("You must be logged in to perform this action.")
+      throw new AuthenticationError(
+        "You must be logged in to perform this action."
+      );
     },
-    addMessage: async (parent, args ) => {
-        const message = await Message.create({
-          ...args
-        });
-        return message ;
+    addMessage: async (parent, args) => {
+      const message = await Message.create({
+        ...args,
+      });
+      return message;
     },
     removeMessage: async (parent, { _id }, context) => {
       if (context.owner) {
         const updatedMessageList = await Message.findByIdAndDelete(
-        _id,
-        {
-          $pull: { messages: _id}
-        },
-        // {
-        //   new: true
-        // }
+          _id,
+          {
+            $pull: { messages: _id },
+          }
         );
-        return updatedMessageList
+        return updatedMessageList;
       }
-      throw new AuthenticationError("You must be logged in to perform this action.");
+      throw new AuthenticationError(
+        "You must be logged in to perform this action."
+      );
     },
   },
 };

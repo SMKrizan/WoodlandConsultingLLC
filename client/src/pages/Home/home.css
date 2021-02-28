@@ -52,7 +52,6 @@
   flex:1;
   left: -3%;
   top:80px;
-  /* max-width:60%; */
   padding: 40px;
   background-color: var(--darkplum);
   position: relative;
@@ -92,6 +91,7 @@
   margin-right: -10px;
   height:300px;
   border-radius: 50%; 
+  background-size: 400px 385px;
 }
 
 .hover-glow {

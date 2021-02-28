@@ -32,17 +32,13 @@ const MessageList = (props) => {
 
   const [removeMessage, { error }] = useMutation(REMOVE_MESSAGE, {
     update(cache, { data: { removeMessage } }) {
-      console.log(removeMessage);
       try {
         const { messages } = cache.readQuery({ query: GET_MESSAGES });
-        console.log(messages, "=====", removeMessage._id);
         const newMessageArray = messages.filter((message) => removeMessage._id !== message._id);
-        console.log(newMessageArray)
         cache.writeQuery({
           query: GET_MESSAGES,
           data: { messages: [...newMessageArray] },
         });
-        console.log(messages, removeMessage._id);
       } catch (e) {
         console.log(e);
       }
@@ -58,17 +54,14 @@ const MessageList = (props) => {
   }
 
   const handleSubmit = async (messageData) => {
-    console.log("handlesubmit", messageData._id);
     const { data } = await removeMessage({
       variables: { _id: messageData._id },
 
     });
-    console.log(data)
 
     newMessageData({
       ...message, data
     });
-    console.log(newMessageData)
   };
 
   return (
