@@ -4,6 +4,7 @@ import { GET_PROJECTS} from '../../utils/queries';
 import './CategoryList.css'
 
 
+
 function CategoryList() {
 
     const { loading, data} = useQuery(GET_PROJECTS);
