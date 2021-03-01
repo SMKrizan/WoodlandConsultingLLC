@@ -30,6 +30,22 @@ Animations with React Spring
 
 </br>
 
+## User Story
+* When a user goes to the site they see a testimonial about Woodland Consulting LLC and links to features on the site. Upon scrolling down they can find information about Woodland Consulting, a link to the maps page and a way to contact Jessica directly. 
+* When they chose About from the header menu, they are taken to another page where they can learn more about both Jessica and Woodland Consulting. 
+* When a user clicks on the Maps page, they can see all locations on Jessica’s past jobs. When they click on the job they can view a popup stating the job and category.    
+* When they click on Portfolio, they can view a selection of gallery images of works. When they scroll over and image, the project name and type become visible. * When the image is clicked, a modal is displayed with a larger image and more information. Upon a second click the modal is closed. Upon scrolling down the page, the user can view a list of all jobs by category. 
+* When the user selects Contact from the menu, they are taken to a form  when're they can send questions, quote requests, testimonials and comments.
+* When they click on the links in the footer they can see more of Jessica’s work and details on other sites.  
+
+</br>
+
+* When an admin visits the hidden admin login page, they can provide their login credentials. Once logged in, they are taken to the admin portal, where they can see user messages, update the testimonial on the homepage, and update their contact information in the footer. 
+* When they view messages, they can select to delete old messages. 
+* When they scroll down they can view testimonial options that are randomly selected for the home screen. When they click the button they are presented with a modal to update the testimonial information.
+* When they scroll down further, they are presented with the current contact information for the footer. When they click on the button a modal pops up where they can edit the information.
+* When they are done, they can logout and view the rest of the site to view changes.   
+
 ## Installation
 Download files from this github repo. Instal React & additional node modules via npm install in root, server, and client folders.
 
