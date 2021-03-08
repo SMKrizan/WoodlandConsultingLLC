@@ -22,7 +22,6 @@ body {
   line-height: 1.4;
   color: var(--cream);
   min-height: 100vh;
-  /* display: flex; */
   flex-direction: column;
   background: var(--plum);
   position: relative;
