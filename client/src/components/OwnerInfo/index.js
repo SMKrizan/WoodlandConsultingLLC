@@ -10,7 +10,7 @@ import "react-responsive-modal/styles.css";
 
 const ManageOwnerInfo = (props) => {
   // hook establishes state variable and dispatches fn to update state
-  const [dispatch] = useStoreContext();
+  const [state, dispatch] = useStoreContext();
   const { loading, data } = useQuery(GET_OWNER);
 
   useEffect(() => {

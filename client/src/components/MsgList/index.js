@@ -9,7 +9,7 @@ import { useStoreContext } from "../../utils/GlobalState";
 
 const MessageList = (props) => {
   const [message, newMessageData] = useState({});
-  const [dispatch] = useStoreContext();
+  const [state, dispatch] = useStoreContext();
   // reminder: "data" is the object described by associated query/mutation
   const { loading, data } = useQuery(GET_MESSAGES)
 
