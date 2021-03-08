@@ -2,7 +2,6 @@ import ContactForm from '../../components/ContactForm'
 import './contact.css'
 import {useSpring, animated} from 'react-spring'
 
-
 function Contact() {
   const propsMove = useSpring(
     {opacity: 1, 

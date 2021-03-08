@@ -117,12 +117,9 @@ const resolvers = {
     },
     removeMessage: async (parent, { _id }, context) => {
       if (context.owner) {
-        const updatedMessageList = await Message.findByIdAndDelete(
-          _id,
-          {
-            $pull: { messages: _id },
-          }
-        );
+        const updatedMessageList = await Message.findByIdAndDelete(_id, {
+          $pull: { messages: _id },
+        });
         return updatedMessageList;
       }
       throw new AuthenticationError(

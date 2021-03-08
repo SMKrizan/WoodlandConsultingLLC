@@ -4,7 +4,6 @@ import { useMutation } from '@apollo/react-hooks';
 import { OWNER_LOGIN } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-
 function LoginForm(props) {
   const [formState, setFormState] = useState({
     ownerEmail: "",

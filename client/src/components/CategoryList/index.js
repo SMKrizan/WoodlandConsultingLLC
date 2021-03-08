@@ -33,20 +33,20 @@ function CategoryList() {
         return <h2>LOADING...</h2>;
       }
     //libraries
-    const libraries = projectData.filter((project) => project.category.categoryName == 'Libraries/Schools');
+    const libraries = projectData.filter((project) => project.category.categoryName === 'Libraries/Schools');
     const isolatedL = libraries.map((project) => project.company)
      let cleanedLibraries = [...new Set(isolatedL)]
 
     //commercial
-    const commercial = projectData.filter((project) => project.category.categoryName == 'Commercial/Office');
+    const commercial = projectData.filter((project) => project.category.categoryName === 'Commercial/Office');
     const isolatedC = commercial.map((project) => project.company)
     let cleanedComercial = [...new Set(isolatedC)]
     //retail
-    const retail = projectData.filter((project) => project.category.categoryName == 'Retail/Restaurant');
+    const retail = projectData.filter((project) => project.category.categoryName === 'Retail/Restaurant');
     const isolatedR = retail.map((project) => project.company)
     let cleanedRetail = [...new Set(isolatedR)]
     //industrial
-    const industrial = projectData.filter((project) => project.category.categoryName == 'Industrial/Transport Hubs');
+    const industrial = projectData.filter((project) => project.category.categoryName === 'Industrial/Transport Hubs');
     const isolatedI = industrial.map((project) => project.company)
     let cleanedIndustial = [...new Set(isolatedI)]
 

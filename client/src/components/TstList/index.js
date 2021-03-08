@@ -17,7 +17,7 @@ import { UPDATE_TESTIMONIAL } from "../../utils/mutations";
 
 const TestimonialList = (props) => {
   // retrieves global state object and dispatch method to update state and display products to page
-  const [state, dispatch] = useStoreContext();
+  const [dispatch] = useStoreContext();
 
   // hook responds to global state object
   const { loading, data } = useQuery(GET_TESTIMONIALS);

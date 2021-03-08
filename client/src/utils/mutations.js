@@ -25,6 +25,7 @@ mutation updateOwner($ownerEmail: String, $ownerName: String, $address: String) 
   
 `;
 
+// future functionality
 export const ADD_TESTIMONIAL = gql`
   mutation addTestimonial($tstName: String!, $tstCompany: String!, $tstMessage: String!) {
     addTestimonial(tstName: $tstName, tstCompany: $tstCompany, tstMessage: $tstMessage) {
@@ -51,6 +52,7 @@ mutation updateTestimonial($_id: ID! $tstName: String, $tstCompany: String, $tst
     }
 `;
 
+// future functionality
 export const REMOVE_TESTIMONIAL = gql`
 mutation removeTestimonial($_id: ID!) {
     removeTestimonial(_id: $id) {

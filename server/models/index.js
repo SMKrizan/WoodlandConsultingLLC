@@ -5,5 +5,4 @@ const Message = require('./Message');
 const Project = require('./Project')
 
 
-
 module.exports = { Category, Project, Owner, Testimonial, Message };

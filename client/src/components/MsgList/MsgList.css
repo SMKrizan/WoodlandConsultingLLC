@@ -1,34 +1,33 @@
-.box{
-    background-color: var(--maroon);
-    width: 90%;
-    border:2px solid var(--cream);
+.box {
+  background-color: var(--maroon);
+  width: 90%;
+  border: 2px solid var(--cream);
 }
 #messages {
-    overflow-x:auto;
+  overflow-x: auto;
 }
 
-#messages td, #messages th {
-    padding: 8px;
-  }
-  
-  #messages tr:nth-child(even){
-    background-color: lightgrey;
-    font-weight: 600;
-    color: var(--darkplum);
+#messages td,
+#messages th {
+  padding: 8px;
+}
 
-    }
+#messages tr:nth-child(even) {
+  background-color: lightgrey;
+  font-weight: 600;
+  color: var(--darkplum);
+}
 
-    #messages tr:nth-child(odd){
-        background-color: white;
-        font-weight: 600;
-        color: var(--darkplum);
-    
-        }
-  
-  #messages th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: var(--darkplum);
-    color: var(--cream)
-  }
+#messages tr:nth-child(odd) {
+  background-color: white;
+  font-weight: 600;
+  color: var(--darkplum);
+}
+
+#messages th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--darkplum);
+  color: var(--cream);
+}

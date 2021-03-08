@@ -1,12 +1,15 @@
 import "./footer.css";
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
+
+// import ReactDom from "react-dom";
 import linkedin from "../../assets/images/linkedin.png";
 import facebook from "../../assets/images/facebook3.png";
+
 import { GET_OWNER } from "../../utils/queries";
 
 function Footer() {
-  //get owner information
+  //get projects
   const { loading, data } = useQuery(GET_OWNER);
   const ownerData = data?.owner || [];
 
@@ -31,7 +34,6 @@ function Footer() {
           <div>
             <p>Woodland Consulting LLC</p>
           </div>
-
           <a
             href="https://www.facebook.com/woodlandconsultingllc/"
             target="_blank"
