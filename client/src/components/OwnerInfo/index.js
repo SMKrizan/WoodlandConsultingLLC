@@ -10,7 +10,7 @@ import "react-responsive-modal/styles.css";
 
 const ManageOwnerInfo = (props) => {
   // hook establishes state variable and dispatches fn to update state
-  const [state, dispatch] = useStoreContext();
+  const [dispatch] = useStoreContext();
   const { loading, data } = useQuery(GET_OWNER);
 
   useEffect(() => {
@@ -21,11 +21,11 @@ const ManageOwnerInfo = (props) => {
       });
       idbPromise("owner", "put", data.owner);
     } else if (!loading) {
-        idbPromise("owner", "get").then((owner) => {
-            dispatch({
-                type: UPDATE_OWNER_INFO,
-                ownerInfo: data.owner,
-            });
+      idbPromise("owner", "get").then((owner) => {
+        dispatch({
+          type: UPDATE_OWNER_INFO,
+          ownerInfo: data.owner,
+        });
       });
     }
   }, [data, loading, dispatch]);

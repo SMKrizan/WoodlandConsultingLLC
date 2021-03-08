@@ -59,42 +59,72 @@
   opacity: 0;
   transition: 0.5s linear;
 }
-.project-img h3 {
-  font-size: 18px;
-  position: relative;
-  text-transform: uppercase;
-  bottom: -280px;
-  transition-duration: 0.6s;
-  transition-timing-function: ease-in-out;
-  z-index: 1;
-}
-.project-img h4 {
-  font-size: 15px;
-  position: relative;
-  text-transform: uppercase;
-  bottom: -300px;
-  transition-duration: 0.6s;
-  transition-timing-function: ease-in-out;
-  z-index: 1;
-}
-.project:hover .project-img::after {
-  opacity: 1;
-}
-.project:hover .project-img h3,
-.project:hover .project-img h4 {
-  transform: translateY(-230px);
-}
-/* Project Categories */
-.project-category-bg {
-  width: 100%;
-  padding: 20px;
-}
-.project-category {
-  flex: 1;
-  width: 15%;
-  padding: 20px;
-  min-width: 240px;
-}
-.project-category h3 {
-  color: var(--cream);
-}
+
+  .project-img {
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+    vertical-align: bottom;
+    background-size: cover;
+    background-position: center;
+    overflow: hidden;
+    position: relative;
+    /* border-radius: 50%; */
+    box-shadow: 0px 10px 15px var(--darkplum);
+  }
+  
+  .project-img::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    display: block;
+    background-image: linear-gradient(180deg, var(--darkplum) 0%, rgba(2,78,118,0) 100%);
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    transition: .5s linear;
+  }
+  
+    .project-img h3 {
+    font-size: 18px;
+    position: relative;
+    text-transform: uppercase;
+    bottom: -280px;
+    transition-duration: .6s;
+    transition-timing-function: ease-in-out;
+    z-index: 1;
+  }
+  .project-img h4 {
+    font-size: 15px;
+    position: relative;
+    text-transform: uppercase;
+    bottom: -300px;
+    transition-duration: .6s;
+    transition-timing-function: ease-in-out;
+    z-index: 1;
+  }
+  
+  .project:hover .project-img::after {
+    opacity: 1;
+  }
+  
+  .project:hover .project-img h3, .project:hover .project-img h4 {
+    transform: translateY(-230px);
+  }
+  
+  /* Project Categories */
+  .project-category-bg {
+      width: 100%;
+      padding:20px;
+  }
+
+  .project-category {
+    flex:1;
+    width: 15%;
+    padding: 20px;
+    min-width: 240px;
+  }
+  .project-category h3{
+      color: var(--cream);
+  }

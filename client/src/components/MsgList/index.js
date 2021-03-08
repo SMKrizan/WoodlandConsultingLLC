@@ -4,13 +4,12 @@ import { Table } from "reactstrap";
 import "./MsgList.css";
 import { GET_MESSAGES } from "../../utils/queries";
 import { REMOVE_MESSAGE } from "../../utils/mutations";
-import { useStoreContext } from "../../utils/GlobalState";
 import { idbPromise } from "../../utils/helpers";
-
+import { useStoreContext } from "../../utils/GlobalState";
 
 const MessageList = (props) => {
   const [message, newMessageData] = useState({});
-  const [state, dispatch] = useStoreContext();
+  const [dispatch] = useStoreContext();
   // reminder: "data" is the object described by associated query/mutation
   const { loading, data } = useQuery(GET_MESSAGES)
 
@@ -58,10 +57,6 @@ const MessageList = (props) => {
       variables: { _id: messageData._id },
 
     });
-<<<<<<< HEAD
-=======
-
->>>>>>> develop
     newMessageData({
       ...message, data
     });

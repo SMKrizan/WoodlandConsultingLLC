@@ -18,17 +18,16 @@
   color: var(--darkplum);
 }
 
-    #messages tr:nth-child(odd){
-        background-color: white;
-        font-weight: 600;
-        color: var(--darkplum);
-    
-        }
-  
-  #messages th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: var(--darkplum);
-    color: var(--cream)
-  }
+#messages tr:nth-child(odd) {
+  background-color: white;
+  font-weight: 600;
+  color: var(--darkplum);
+}
+
+#messages th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: var(--darkplum);
+  color: var(--cream);
+}
