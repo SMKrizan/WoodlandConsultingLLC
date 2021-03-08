@@ -1,15 +1,12 @@
 import "./footer.css";
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-
-// import ReactDom from "react-dom";
 import linkedin from "../../assets/images/linkedin.png";
 import facebook from "../../assets/images/facebook3.png";
-
 import { GET_OWNER } from "../../utils/queries";
 
 function Footer() {
-  //get projects
+  //get owner information
   const { loading, data } = useQuery(GET_OWNER);
   const ownerData = data?.owner || [];
 

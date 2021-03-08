@@ -48,6 +48,18 @@ Download files from this github repo. Instal React & additional node modules via
 </br>
 ![Admin](./READMEimages/admin.png)
 
+## Live Site Stills
+![Home](./READMEimages/home.png)
+</br>
+![About](./READMEimages/about.png)
+</br>
+![Map](./READMEimages/map.png)
+</br>
+![Portfolio](./READMEimages/gallery.png)
+</br>
+![Contact](./READMEimages/contact.png)
+</br>
+![Admin](./READMEimages/admin.png)
 
 ## Badges/Technologies
 
@@ -96,7 +108,8 @@ We are operating with an MIT license, for more information [see the full languag
 * email: SMKrizan@gmail.com
 * github: https://github.com/SMKrizan
 
-
 ## Questions
 ### Please contact us with any questions.
 
+## Questions
+### Please contact us with any questions.

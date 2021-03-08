@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
 import './App.css';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -15,9 +14,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import AdminAccess from './pages/AdminAccess';
 import 'react-responsive-modal/styles.css';
-import { ProtectedRoute } from './components/Protected';
-
-import AuthService from "./utils/auth";
 
 const client = new ApolloClient({
   request: operation => {
@@ -34,8 +30,6 @@ const client = new ApolloClient({
 
 function App() {
 
-  const [isAuthenticated, setAuthenticated] = useState(AuthService.loggedIn())
-
   return (
     <ApolloProvider client={client}>
       <Router>
@@ -49,8 +43,6 @@ function App() {
             <Route exact path="/About" component={About} />
             <Route exact path="/Map" component={Map} />
             <Route exact path="/AdminAccess" component={AdminAccess} />
-            <ProtectedRoute to="/admin_page" />
-            <ProtectedRoute component={AdminAccess} />
           </Switch>
           <Footer />
         </StoreProvider>

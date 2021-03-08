@@ -25,6 +25,7 @@ function Map() {
     return <div>Loading...</div>;
   }
   if (!projectData) {
+    console.log("nothing pulled....");
     return <h2>LOADING...</h2>;
   }
 
@@ -67,6 +68,7 @@ function Map() {
           <div className="infoWindow">
             <h5>{currentProject.projectName}</h5>
             <p>{currentProject.description}</p>
+            <p>{currentProject.cityState}</p>
           </div>
         </InfoWindow>
       )}

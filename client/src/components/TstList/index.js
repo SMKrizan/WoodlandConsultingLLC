@@ -8,15 +8,37 @@ import {
   CardGroup,
   Button,
 } from "reactstrap";
+import { useStoreContext } from "../../utils/GlobalState";
+import { idbPromise } from '../../utils/helpers';
 import "react-responsive-modal/styles.css";
-
+import { UPDATE_TST } from "../../utils/actions";
 import { GET_TESTIMONIALS } from "../../utils/queries";
 import { UPDATE_TESTIMONIAL } from "../../utils/mutations";
 
 const TestimonialList = (props) => {
+  // retrieves global state object and dispatch method to update state and display products to page
+  const [state, dispatch] = useStoreContext();
+
+  // hook responds to global state object
   const { loading, data } = useQuery(GET_TESTIMONIALS);
   const tstData = data?.testimonials || [];
 
+  useEffect(() => {
+    // if there's data to be stored
+    if (data) {
+      // let's store it in the global state object
+      dispatch({
+        type: UPDATE_TST,
+        testimonials: data.testimonials
+      });
+
+      // but let's also take each product and save it to IndexedDB using the helper function 
+      data.testimonials.forEach((testimonial) => {
+        idbPromise('testimonials', 'put', testimonial);
+      });
+    }
+  }, [data, loading, dispatch]);
+  
   // tells front end how to use mutation
   const [updatedTst] = useMutation(UPDATE_TESTIMONIAL);
 

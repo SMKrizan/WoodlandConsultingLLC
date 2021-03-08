@@ -24,14 +24,13 @@ export const reducer = (state, action) => {
     case UPDATE_TST:
       return {
         ...state,
-        testimonial: [...action.testimonial]
+        testimonials: [...action.testimonials]
       }
     // update owner info on admin page
     case UPDATE_OWNER_INFO:
       return {
         ...state,
-        // [action.field]: action.payload,
-        ownerInfo: [...action.ownerInfo]
+        ownerInfo: {...action.modalData}
       }
 
     default:

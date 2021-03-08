@@ -33,3 +33,5 @@ test('UPDATE_TESTIMONIALS', () => {
     expect(newState.testimonials.length).toBe(3);
     expect(initialState.testimonials.length).toBe(0);
 });
+
+

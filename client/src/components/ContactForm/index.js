@@ -137,25 +137,41 @@ const ContactForm = () => {
         <div onChange={setRadio}>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio" value="Ask a question" /> Ask a
-              Question
+              <Input
+                type="radio"
+                name="radio"
+                value="Ask a question"
+              />{" "}
+              Ask a Question
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio" value="Leave a comment" />
+              <Input
+                type="radio"
+                name="radio"
+                value="Leave a comment"
+              />
               Leave a comment
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio" value="Request a quote" />{" "}
+              <Input
+                type="radio"
+                name="radio"
+                value="Request a quote"
+              />{" "}
               Request a quote
             </Label>
           </FormGroup>
           <FormGroup check>
             <Label check>
-              <Input type="radio" name="radio" value="Provide a testimonial" />{" "}
+              <Input
+                type="radio"
+                name="radio"
+                value="Provide a testimonial"
+              />{" "}
               Provide a testimonial
             </Label>
           </FormGroup>

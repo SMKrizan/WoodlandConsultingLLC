@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/react-hooks";
-
 import ImageModal from "../ImageModal";
 import { GET_PROJECTS } from "../../utils/queries";
 import { useSpring, animated } from "react-spring";

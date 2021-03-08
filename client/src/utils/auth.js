@@ -6,7 +6,6 @@ class AuthService {
   getProfile() {
     return decode(this.getToken());
   }
-
   // check whether user is still logged in
   loggedIn() {
     // checks if there is a saved token and it's still valid
@@ -14,7 +13,6 @@ class AuthService {
     // use type coersion to check whether token is NOT undefined and NOT expired
     return !!token && !this.isTokenExpired(token);
   }
-
   // check if token has expired
   isTokenExpired(token) {
     try {
@@ -28,13 +26,11 @@ class AuthService {
       return false;
     }
   }
-
   // retrieve token from localStorage
   getToken() {
     // retrieves user token from localStorage
     return localStorage.getItem("id_token");
   }
-
   // set token to localStorage and reload page to homepage
   login(idToken) {
     // saves user token to localStorage
@@ -42,7 +38,6 @@ class AuthService {
 
     window.location.assign("/Contact");
   }
-
   // clear token from localStorage and force logout with reload
   logout() {
     // Clear user token and profile data from localStorage

@@ -1,14 +1,39 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { GET_OWNER } from "../../utils/queries";
 import { UPDATE_OWNER } from "../../utils/mutations";
+import { UPDATE_OWNER_INFO } from "../../utils/actions";
 import { Modal } from "react-responsive-modal";
+import { idbPromise } from "../../utils/helpers";
+import { useStoreContext } from "../../utils/GlobalState";
 import "react-responsive-modal/styles.css";
 
 const ManageOwnerInfo = (props) => {
+  // hook establishes state variable and dispatches fn to update state
+  const [state, dispatch] = useStoreContext();
   const { loading, data } = useQuery(GET_OWNER);
+
+  useEffect(() => {
+    if (data) {
+      dispatch({
+        type: UPDATE_OWNER_INFO,
+        ownerInfo: data.owner,
+      });
+      idbPromise("owner", "put", data.owner);
+    } else if (!loading) {
+        idbPromise("owner", "get").then((owner) => {
+            dispatch({
+                type: UPDATE_OWNER_INFO,
+                ownerInfo: data.owner,
+            });
+      });
+    }
+  }, [data, loading, dispatch]);
+
   const ownerData = data?.owner || [];
   const [updateOwner, { error }] = useMutation(UPDATE_OWNER);
+  const [newOwnerInfo, setNewOwnerInfo] = useState({});
+
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
@@ -20,13 +45,14 @@ const ManageOwnerInfo = (props) => {
         address: newOwnerInfo.address,
       },
     });
+
+    dispatch({
+      type: UPDATE_OWNER_INFO,
+      ownerInfo: mutationResponse.data,
+    });
+    idbPromise("owner", "get", { newOwnerInfo });
   };
 
-  const [newOwnerInfo, setNewOwnerInfo] = useState({
-    ownerName: "",
-    ownerEmail: "",
-    address: "",
-  });
   const handleClick = (data) => {
     setNewOwnerInfo(data);
   };
@@ -40,12 +66,6 @@ const ManageOwnerInfo = (props) => {
   }
   const [open, setOpen] = useState(false);
   const onCloseModal = () => setOpen(false);
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-  if (!ownerData) {
-    return <h2>Something went wrong.</h2>;
-  }
 
   return (
     <>
