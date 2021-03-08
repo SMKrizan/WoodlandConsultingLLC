@@ -72,6 +72,7 @@ function Map() {
                     <div className="infoWindow">
                         <h5>{currentProject.projectName}</h5>
                         <p>{currentProject.description}</p>
+                        <p>{currentProject.cityState}</p>
                     </div>
                 </InfoWindow>
             )}
